@@ -1,0 +1,38 @@
+[
+  {
+    "n_target": 30,
+    "n_analysed": 31,
+    "tables": 17,
+    "figures": 6,
+    "missing": [],
+    "unwatermarked": [],
+    "ok": true,
+    "primary": "one-way ANCOVA",
+    "ancova": "F(2, 27) = 0.82, p = .450, \u03b7\u00b2\u209a = .057, 95% CI [.000, .225]",
+    "kruskal": "H(2) = 1.21, p = .546, \u03b5\u00b2 = .040"
+  },
+  {
+    "n_target": 60,
+    "n_analysed": 59,
+    "tables": 17,
+    "figures": 6,
+    "missing": [],
+    "unwatermarked": [],
+    "ok": true,
+    "primary": "one-way ANCOVA",
+    "ancova": "F(2, 55) = 5.48, p = .007, \u03b7\u00b2\u209a = .166, 95% CI [.015, .317]",
+    "kruskal": "H(2) = 8.34, p = .015, \u03b5\u00b2 = .144"
+  },
+  {
+    "n_target": 120,
+    "n_analysed": 125,
+    "tables": 17,
+    "figures": 6,
+    "missing": [],
+    "unwatermarked": [],
+    "ok": true,
+    "primary": "one-way ANCOVA",
+    "ancova": "F(2, 121) = 4.00, p = .021, \u03b7\u00b2\u209a = .062, 95% CI [.001, .149]",
+    "kruskal": "H(2) = 3.04, p = .219, \u03b5\u00b2 = .025"
+  }
+]

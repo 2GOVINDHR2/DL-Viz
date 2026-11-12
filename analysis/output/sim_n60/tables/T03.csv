@@ -1,0 +1,4 @@
+Assumption,Test,Statistic,p,Verdict
+Normality of ANCOVA residuals,Shapiro–Wilk,W = 0.977,.320,met
+Homogeneity of variance,Levene,F = 0.03,.974,met
+Homogeneity of regression slopes,condition × pre-test,"F(2, 53) = 0.24",.787,met

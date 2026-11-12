@@ -1,0 +1,5 @@
+Concept cluster,C1 Control,C2 Baseline,C3 DL-VizLab
+fundamentals (7 items),62 → 59 (-0.07),59 → 66 (0.17),54 → 67 (0.29)
+optimisation (5 items),46 → 45 (-0.02),53 → 61 (0.17),43 → 54 (0.19)
+backpropagation (5 items),45 → 44 (-0.02),57 → 66 (0.21),38 → 61 (0.37)
+convolutional (3 items),62 → 54 (-0.21),74 → 76 (0.07),50 → 70 (0.40)

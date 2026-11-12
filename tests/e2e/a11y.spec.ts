@@ -1,0 +1,214 @@
+/**
+ * WCAG 2.1 A/AA automated audit (axe-core) of every experiment's main screen,
+ * the export panel, and every Study Mode screen. Findings are written to
+ * reports/a11y.json; the test fails on any violation.
+ */
+import AxeBuilder from '@axe-core/playwright';
+import { writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { expect, test, type Page } from '@playwright/test';
+import { openExperiment, unlockAll } from './helpers';
+
+const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
+const results: Record<
+  string,
+  { violations: { id: string; impact: string | null; nodes: number; help: string }[]; passes: number }
+> = {};
+
+async function audit(page: Page, name: string): Promise<void> {
+  const r = await new AxeBuilder({ page }).withTags(TAGS).analyze();
+  results[name] = {
+    passes: r.passes.length,
+    violations: r.violations.map((v) => ({
+      id: v.id,
+      impact: v.impact ?? null,
+      nodes: v.nodes.length,
+      help: v.help,
+    })),
+  };
+  expect(
+    r.violations.map(
+      (v) =>
+        `${v.id}: ${v.help} (${v.nodes
+          .map((n) => n.target.join(' '))
+          .slice(0, 3)
+          .join(' | ')})`,
+    ),
+    name,
+  ).toEqual([]);
+}
+
+test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
+  test.setTimeout(180_000);
+  test.afterAll(() => {
+    writeFileSync(
+      resolve(import.meta.dirname, '../../reports/a11y.json'),
+      JSON.stringify(results, null, 2) + '\n',
+    );
+  });
+
+  const titles = [
+    'A single neuron',
+    'Activation functions',
+    'Forward propagation',
+    'Loss functions',
+    'Gradient descent',
+    'Back-propagation',
+    'XOR needs a hidden layer',
+    'A CNN on handwritten digits',
+    'Vanishing gradients',
+    'Learning-rate pathology',
+  ];
+
+  test('every experiment, mid-run, with the export panel open', async ({ page }) => {
+    await unlockAll(page);
+    await page.goto('/?mode=expert');
+    for (const t of titles) {
+      await openExperiment(page, t);
+      await page.getByRole('button', { name: 'Step ▶' }).click();
+      await page.keyboard.press('ArrowRight');
+      await audit(page, `experiment: ${t}`);
+    }
+    await page.locator('details.export summary').click();
+    await expect(page.locator('.export-fig').first()).toBeVisible();
+    await audit(page, 'export panel');
+  });
+
+  test('parameter editor open and the bound inspector with a weight selected (Fix Round 2b)', async ({
+    page,
+  }) => {
+    await unlockAll(page);
+    await page.goto('/?mode=expert');
+    await openExperiment(page, 'XOR needs a hidden layer');
+    await page.locator('[data-control="param:L1.W"]').click();
+    await page.getByLabel('Position', { exact: true }).fill('30');
+    await page
+      .getByRole('button', { name: /Weight from Input unit 2 to Hidden 1 \(tanh\) unit 3/ })
+      .press('Enter');
+    await expect(page.locator('.inspector [data-instruction]').first()).toBeVisible();
+    await audit(page, 'parameter editor and inspector');
+    await page.getByRole('button', { name: /^Hidden 1 \(tanh\), unit 2/ }).press('Enter');
+    await expect(page.locator('.inspector')).toHaveAttribute('data-element', 'L1.unit[2]');
+    await audit(page, 'inspector, a neuron selected');
+  });
+
+  test('typed parameter fields showing a refusal, both themes (Fix Round 3)', async ({ page }) => {
+    await unlockAll(page);
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
+      await page.goto('/?mode=expert');
+      await openExperiment(page, 'XOR needs a hidden layer');
+      // A Try-it field, a structure-editor field and a starting-value cell, each holding a refused entry.
+      await page.locator('[data-control="tryit:0"]').fill('0');
+      await page.locator('[data-control="tryit:0"]').press('Enter');
+      await page.locator('[data-control="arch:epochs"]').fill('many');
+      await page.locator('[data-control="arch:epochs"]').press('Enter');
+      await page.locator('[data-control="param:L1.W"]').click();
+      await page.locator('[data-control="param-value"]').first().fill('abc');
+      await page.locator('[data-control="param-value"]').first().press('Enter');
+      await expect(page.getByRole('alert')).toHaveCount(3);
+      await audit(page, `parameter fields refusing entries (${scheme})`);
+    }
+  });
+
+  test('every novice screen (Fix Round 2): first view, after a prediction and a step, every "going deeper" open, both themes', async ({
+    page,
+  }) => {
+    await unlockAll(page);
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
+      await page.goto('/');
+      for (const t of titles) {
+        await page.getByRole('button', { name: new RegExp(`^\\S+\\. ${t}`) }).click();
+        const screen = page.locator('article.novice');
+        if (!(await screen.count())) {
+          // Not yet rebuilt: the workbench filtered by the experiment's declared surface.
+          await expect(page.locator('.position[data-cursor="-1"]')).toBeVisible({ timeout: 90_000 });
+          await audit(page, `novice workbench (${scheme}): ${t}`);
+          continue;
+        }
+        await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });
+        await audit(page, `novice (${scheme}): ${t}`);
+        const option = page.locator('.predict-options button').first();
+        if (await option.count()) await option.click();
+        await page.getByRole('button', { name: /^Next: / }).click();
+        const closed = page.locator('.deeper-buttons button[aria-expanded="false"]');
+        while (await closed.count()) await closed.first().click();
+        await audit(page, `novice (${scheme}), predicted, stepped, deeper open: ${t}`);
+      }
+    }
+  });
+
+  test('experiment 1, Fix Round 4 states, both themes: after learning with a solution, and the expert trace view filtered', async ({
+    page,
+  }) => {
+    await unlockAll(page);
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
+      await page.goto('/');
+      await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });
+      await audit(page, `novice (${scheme}): experiment 1, worked example`);
+      await page.locator('[data-control="worked:dismiss"]').click();
+      await page
+        .locator('fieldset.predict')
+        .filter({ hasText: 'Prediction about learning' })
+        .getByRole('button')
+        .first()
+        .click();
+      await page.locator('table.outputs [data-control="row:pin"]').nth(3).click();
+      await page.getByRole('button', { name: 'Let it learn' }).click();
+      await expect(page.locator('section.before-after')).toHaveCount(1);
+      await page.locator('[data-control="solution"]').click();
+      await expect(
+        page.locator('section.before-after').filter({ hasText: 'A working solution' }),
+      ).toBeVisible({
+        timeout: 30_000,
+      });
+      const closed = page.locator('.deeper-buttons button[aria-expanded="false"]');
+      while (await closed.count()) await closed.first().click();
+      await audit(page, `novice (${scheme}): experiment 1, learned, solution, attempts, deeper open`);
+      await page.goto('/?mode=expert');
+      await expect(page.locator('.position[data-cursor="-1"]')).toBeVisible({ timeout: 60_000 });
+      await page.getByLabel('Position', { exact: true }).fill('150');
+      await page.locator('[data-control="trace:phase"]').selectOption('backward');
+      await expect(page.locator('[data-control="trace:clear"]')).toBeVisible();
+      await audit(page, `experiment 1 expert, trace view filtered, landmarks (${scheme})`);
+    }
+  });
+
+  test('every Study Mode screen', async ({ page }) => {
+    page.on('dialog', (d) => void d.accept());
+    await page.goto('/#study');
+    await audit(page, 'study: researcher');
+    await page
+      .getByLabel(/Load the ethics-approved consent file/)
+      .setInputFiles(resolve(import.meta.dirname, 'fixtures/consent-filled.json'));
+    await page.locator('#limit-intervention').fill('0.05');
+    await page.getByLabel('Condition for the next participant').selectOption('C2');
+    await page.getByRole('button', { name: 'Start a participant session' }).click();
+    await audit(page, 'study: consent');
+    for (const box of await page.getByRole('checkbox').all()) await box.check();
+    await page.getByRole('button', { name: /I agree to all/ }).click();
+    await audit(page, 'study: demographics');
+    for (const n of ['year_of_study', 'prior_ml_course', 'programming_years', 'familiarity'])
+      await page.locator(`input[name="${n}"]`).first().check();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await audit(page, 'study: test item');
+    for (let k = 0; k < 20; k++) await page.getByRole('button', { name: 'Skip this question' }).click();
+    await audit(page, 'study: intervention C2');
+    await expect(page.getByText('Question 1 of 24.')).toBeVisible({ timeout: 20_000 });
+    for (let k = 0; k < 24; k++) await page.getByRole('button', { name: 'Skip this question' }).click();
+    await audit(page, 'study: questionnaires');
+    for (let k = 0; k < 10; k++) await page.locator(`input[name="sus-${k}"]`).nth(2).check();
+    // A rating left at the starting value still counts once the participant has touched the slider (keys here).
+    for (const s of ['mental', 'physical', 'temporal', 'performance', 'effort', 'frustration']) {
+      await page.locator(`#tlx-${s}`).focus();
+      await page.keyboard.press('Home');
+      await page.keyboard.press('End');
+    }
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await audit(page, 'study: feedback');
+    await page.getByRole('button', { name: 'Finish' }).click();
+    await audit(page, 'study: debrief');
+  });
+});

@@ -1,0 +1,187 @@
+/**
+ * The declared control surface of every experiment screen (Fix Round 2b,
+ * invariant A). Every interactive control inside an experiment screen carries
+ * `data-control="<id>"`; the invariant is
+ *
+ *   always ⊆ rendered ⊆ always ∪ conditional
+ *
+ * at every state, where `always` must render whenever a run is loaded and
+ * `conditional` may appear depending on the state (a selection, an open
+ * disclosure, a staged prediction). Reset is required on every screen.
+ *
+ * Workbench screens derive their declaration from the experiment's surface
+ * (step sizes, *Try it* parameters, structure and parameter editors, panels)
+ * and its *current* configuration, so the declaration follows architecture
+ * edits. Purpose-built novice screens declare their own list in the registry.
+ */
+import type { TrainConfig } from '../core/engine/session';
+import { trainableParams } from './architecture';
+import { guidedControls } from './guided';
+import { offeredGranularities, type Mode } from './surface';
+import type { BreakpointKey, EditableParam, Experiment } from './types';
+
+const BREAKPOINT_KEYS: BreakpointKey[] = [
+  'nonFinite',
+  'vanishing',
+  'exploding',
+  'deadRelu',
+  'lossIncrease',
+  'lossPlateau',
+  'gradInit',
+];
+
+export interface DeclaredControls {
+  always: string[];
+  conditional: string[];
+}
+
+/** True when a parameter's typed field also has a slider (`<control>:slider`), as ParamField renders it. */
+export const hasSlider = (p: EditableParam): boolean =>
+  p.kind === 'initialValue' || (p.kind === 'probe' && p.min !== undefined && p.max !== undefined);
+
+/** Controls every experiment screen must offer. */
+export const REQUIRED_CONTROLS = ['reset-experiment'] as const;
+
+export function declaredControls(
+  exp: Experiment,
+  mode: Mode,
+  config: TrainConfig,
+  /** True when the purpose-built novice screen is shown rather than the workbench. */
+  noviceScreen: boolean,
+): DeclaredControls {
+  const selfCheck = exp.selfCheck.map((q) => `selfcheck:${q.id}`);
+  // The one-click run that opens a question about the run's outcome, while it is locked (Fix Round 5).
+  const runOwn = exp.selfCheck.some((q) => q.afterRun) ? ['selfcheck:run-own'] : [];
+  if (noviceScreen) {
+    const g = exp.surface.guided;
+    const n = g
+      ? guidedControls({
+          ...g,
+          editable: exp.editable,
+          levels: exp.surface.granularities,
+          parameterEditor: exp.surface.parameterEditor,
+        })
+      : exp.surface.noviceControls;
+    if (!n) throw new Error(`${exp.id} shows a novice screen but declares no novice controls`);
+    // `passed`: the expandable narration of what a novice step passed on the way (ADR-053).
+    // A screen that embeds the starting-value editor declares `params`; its per-parameter rows follow the model.
+    const params = n.conditional.includes('params')
+      ? trainableParams(config).map((p) => `param:${p.name}`)
+      : [];
+    return {
+      always: [...REQUIRED_CONTROLS, ...n.always, ...selfCheck],
+      conditional: [...n.conditional, ...params, 'passed', ...runOwn],
+    };
+  }
+  const conv = config.model.layers.some((l) => l.type === 'conv2d');
+  const offered = offeredGranularities(exp, mode);
+  const always = [
+    ...REQUIRED_CONTROLS,
+    'rewind',
+    'back',
+    'step',
+    'play',
+    'to-breakpoint',
+    'speed',
+    'scrub',
+    ...(offered.length > 1 ? offered.map((g) => `step-size:${g}`) : []),
+    ...BREAKPOINT_KEYS.map((k) => `breakpoint:${k}`),
+    ...(mode === 'novice' ? ['more-controls'] : []),
+    ...exp.editable.map((_, k) => `tryit:${k}`),
+    ...exp.editable.flatMap((p, k) => (hasSlider(p) ? [`tryit:${k}:slider`] : [])),
+    ...(exp.editable.some((p) => p.more) ? ['tryit:more'] : []),
+    'structure:expand',
+    ...(exp.surface.architectureEditor
+      ? ['arch:add', 'arch:lr', 'arch:epochs', 'arch:apply', 'arch:restore']
+      : []),
+    ...(exp.surface.parameterEditor
+      ? ['params', ...trainableParams(config).map((p) => `param:${p.name}`)]
+      : []),
+    ...(conv ? [] : ['select:unit', 'select:edge']),
+    'explain:novice',
+    'explain:detailed',
+    // The trace view (Fix Round 4, D1–D2): filters, the gradient search, and the rows.
+    ...(exp.surface.traceView && mode === 'expert'
+      ? [
+          'trace:kind',
+          'trace:layer',
+          'trace:phase',
+          'trace:epoch',
+          'trace:when',
+          'trace:threshold',
+          'trace:find',
+          'trace:row',
+          // Compare two points (D4).
+          'compare:pin',
+          // Ask the trace (Fix Round 5, 3.2): the question and its button, disabled until the trace is read.
+          'trace:ask',
+          'trace:ask-run',
+        ]
+      : []),
+    ...selfCheck,
+    ...(mode === 'expert' ? ['export:open'] : []),
+  ];
+  const conditional = [
+    ...(exp.surface.architectureEditor ? ['arch:width', 'arch:activation', 'arch:remove'] : []),
+    ...(exp.surface.parameterEditor ? ['param-value'] : []),
+    ...(conv ? ['select:cell'] : []),
+    'walkthrough:hide',
+    'walkthrough:show',
+    'walkthrough:prev',
+    'walkthrough:next',
+    'walkthrough:show-me',
+    'explain:maths',
+    'explain:numbers',
+    'chart:pick',
+    'chart:heatmap',
+    'chart:table',
+    'inspector:clear',
+    ...runOwn,
+    // The loss calculator's detach (Fix Round 5, 6.4.1).
+    ...(exp.panels.includes('lossCompare') ? ['calc:detach'] : []),
+    ...(exp.surface.traceView && mode === 'expert'
+      ? [
+          'trace:clear',
+          'compare:jump',
+          'compare:clear',
+          // Ask the trace: the epoch for questions that take one, and the answer's links.
+          'trace:ask-epoch',
+          'trace:ask-jump',
+        ]
+      : []),
+    ...(mode === 'novice' ? ['passed'] : []),
+    ...(mode === 'expert'
+      ? [
+          'export:mode',
+          'export:refresh',
+          'export:zip',
+          'export:svg',
+          'export:pdf',
+          'export:csv',
+          'export:caption',
+        ]
+      : []),
+  ];
+  return { always, conditional };
+}
+
+/** The data-control values inside an experiment screen's markup (its `<main>` element). */
+export function renderedControls(html: string): Set<string> {
+  const main = html.slice(html.indexOf('<main'), html.lastIndexOf('</main>'));
+  return new Set([...main.matchAll(/data-control="([^"]+)"/g)].map((m) => m[1]));
+}
+
+/** Violations of always ⊆ rendered ⊆ always ∪ conditional. */
+export function surfaceViolations(declared: DeclaredControls, rendered: Set<string>): string[] {
+  const allowed = new Set([...declared.always, ...declared.conditional]);
+  return [
+    ...declared.always.filter((c) => !rendered.has(c)).map((c) => `declared but not rendered: ${c}`),
+    ...[...rendered].filter((c) => !allowed.has(c)).map((c) => `rendered but not declared: ${c}`),
+  ];
+}
+
+/** The canvas annotations rendered in a page (`data-annotation`), for invariant A (Fix Round 5, 1.4). */
+export function renderedAnnotations(html: string): Set<string> {
+  const main = html.slice(html.indexOf('<main'), html.lastIndexOf('</main>'));
+  return new Set([...main.matchAll(/data-annotation="([^"]+)"/g)].map((m) => m[1]));
+}

@@ -1,0 +1,91 @@
+# Known Gaps
+
+Items dropped, deferred, or known to be weak. Each entry names its phase.
+
+- **P1 (SHOULD):** Web Worker boundary not established in P1; it is built in P3 together with the trace streaming protocol.
+- **A4:** Concept-inventory distractors encode commonly reported novice difficulties, but each misconception has not yet been matched to a published source; the items have not been piloted or reviewed for content validity. Both are required before the ethics submission (STUDY-PROTOCOL §6, §10).
+- **SUS interpretation (resolved in the Fix Round 1 supplement, S2, with one caveat):**
+  - Adjectives now use all seven Bangor et al. (2009) anchors as means, with nearest-anchor assignment. The Sauro–Lewis grades are kept as a separate scheme (ADR-036).
+  - The anchor values come from a peer-reviewed reproduction citing the primary source, not from the PDF itself. A team member with library access should spot-check Table 3 of Bangor et al. (2009), in particular "Best imaginable": the reproduction gives 90.0, others give 90.9. Only scores from 87.75 to just under 88.2 would change label.
+- **A4:** Consent and information-sheet text is draft wording with `[[PLACEHOLDERS]]`; it must be replaced verbatim by the approved text.
+- **Repository access (resolved 2026-10-13):** pushes failed with HTTP 403 during P0–P4; access was restored and the branch was pushed on 2026-10-13.
+- **P4 deployment:** `.github/workflows/pages.yml` deploys `dist/` to GitHub Pages, but it cannot run until the push works and Pages is enabled (Settings → Pages → Source: GitHub Actions). The production build was also published as a private claude.ai Artifact (https://claude.ai/artifact/1Y4v3owvbHYTHuE8DsUWRa); it must be shared by its owner before others can open it. Its rendering inside the Artifact viewer (module script + Web Worker) has not been verified by the build agent.
+- **P4 performance:** browser measurements exist for headless Chromium only; Firefox and Edge are not installed in the build environment. Run `npx playwright test tests/e2e/perf.spec.ts --project=firefox` (and `msedge`) then `npm run report` to fill those rows.
+- **P4 task analysis:** counts for third-party tools are analytical, from published descriptions; NeuroViz rows rest on the brief's summary only. A second rater should check them against the live tools.
+- **P8:** Study Mode has been run end to end by automated tests only (all three conditions, withdrawal, refusal, export → pandas → analysis pipeline). A pilot with real participants (STUDY-PROTOCOL §10) is still required, in particular to check the 30-minute intervention length and the readability of the C1 screenshots.
+- **P8 (resolved in Fix Round 1, C1):** C2 used to need network access to TensorFlow Playground. It now uses a pinned, offline local copy (`docs/THIRD-PARTY.md`). Time spent inside the Playground tab is still measured only as the stage duration (no Playground telemetry).
+- **P8 (resolved in Fix Round 1, C2):** exports from several lab machines are merged by `analysis/merge_exports.py`. It validates columns, refuses participant-code collisions and mixed simulated/real data, and writes a row-level manifest; it is tested on three simulated machines.
+- **P9 memory (partly addressed in Fix Round 1, C3):** at the CNN experiment, live memory after garbage collection is ~81 MB. The tab's peak resident set was 537–538 MB and is now 519–543 MB after in-place batch-gradient accumulation (ADR-035; three runs in Fix Round 1 gave 519–532 MB, four in the supplement 525–543 MB, each with the perf spec running alone), 5–9 % above the brief's "~500 MB" budget. The remaining churn is the trace content itself (729 MB of per-example tensors over the run). The convolution kernels have no scratch buffers to reuse, and yielding during generation did not help.
+- **P9 accessibility:** the WCAG audit is automated (axe-core, 19 screens) plus a manual criterion review; it has not been validated with screen-reader users.
+- **Novice path (Fix Round 2), open by design until November–December.**
+  - Seven of the ten experiments still use the filtered workbench rather than a purpose-built screen.
+  - C1 must be regenerated from the novice screens, with parity re-verified, before any participant session.
+  - The telemetry summary covers mode, going deeper, predictions and step sizes, but no time-per-screen measure yet.
+  - The accessibility re-audit of the remaining seven screens follows when they are built (the three built screens pass axe in both themes).
+- **NaN/∞ breakpoint unreachable from shipped controls** (CONTROL-AUDIT finding 5): reported, not changed.
+
+- **Cold review (Fix Round 2b), accepted and open.** The point ids refer to `docs/COLD-REVIEW.md`.
+  - **KG-R2b-1 — Terms are used before they are explained** (weight, bias, σ, z, sigmoid, η, gradient, chain rule, ℓ against L, ŷ). There is also a double use of "prediction": the learner's guess, and the network's output. The vocabulary test checks the order in which terms appear, not that each is explained where it first appears. Proposed fixes:
+    - one plain sentence per term at its first appearance;
+    - "the network's answer" for the network's output;
+    - a test that every curriculum term has a first-use gloss.
+  - **KG-R2b-2 — Step labels do not match what a step does.** *Partly resolved in Fix Round 2c (ADR-053):* novice steps are now semantic, and passed units are narrated. The breakpoint re-firing and the scope labels of the two panels below are still open. A step stops at set-up and control instructions ("Mini-batch begins", "Between examples") as well as at computations. A breakpoint re-fires on every press. "What just happened" narrates the last instruction of a step, while "What changed" covers the whole step. Proposed fixes:
+    - on the Guided path, pass set-up and control instructions without stopping (a navigator option; the trace is unchanged);
+    - let a breakpoint fire once;
+    - label the two panels by their scope.
+  - **KG-R2b-3 — Curriculum review of the self-checks and demonstration choices.** This covers:
+    - experiment 2's self-check about back-propagation;
+    - experiment 5's θ/∂ item;
+    - experiment 2 showing saturation on an example that is already correct;
+    - experiment 4's unannounced flip of the target;
+    - "one layer" offered for a one-layer network;
+    - the structure editor (learning rate, epochs) declared for experiment 3;
+    - D1's "almost stopped learning" wording on the first backward pass.
+  - **KG-R2b-4 — Visual encoding.** This covers:
+    - line thickness is relative, and the legend should say so;
+    - a legend for neuron fill colour;
+    - minus signs at the edge of dark circles;
+    - plain-words names for the ℓ/∂ labels on the Guided path;
+    - overlapping gradient labels in narrow columns;
+    - no scroll cue on the deep network;
+    - an empty heat map drawing its colour legend, and its scale rescaling over the run;
+    - the decision plot without axis labels;
+    - the capped cross-entropy curve not saying it is capped;
+    - an empty third segment in the step selector;
+    - a missing "Step size" label in experiment 6;
+    - the followed weight not labelled before initialisation.
+  - **KG-R2b-5 — Experiments 5 and 6 content.**
+    - Experiment 5: a view of the 50 points and the current line, linked to the loss map, and a prompt for the first learning-rate change.
+    - Experiment 6: the prediction asked once the example is visible, η shown, and a comparison of the followed weight's gradient with the rest of its layer.
+  - **KG-R2b-6 — The walkthrough on the reduced workbench** does not follow the step buttons, which leaves three competing "next" controls.
+  - **KG-R2b-7 — D2.** *The η = 0.95 caption was corrected in Fix Round 2c (ADR-052).* The passes-against-epochs wording and the shuffle check below are still open. At η = 0.95 the weight overshoots but the loss falls monotonically, so the caption "overshoots back and forth" does not describe the curve shown. Experiment 5 says 40 passes and D2 says 30 epochs for the same η = 0.3 result. The status line shows the same example at every epoch's end, so whether this configuration shuffles needs checking. Changing the rate changes a registry configuration that C1 and the validation report depend on, so it is logged rather than changed.
+
+## Fix Round 4 — deferred to the experiment-by-experiment rounds
+
+- **KG-R4-1 — Experiment 5 resolves its learning-rate prediction from the run's end before the learner reaches it.**
+  - **What happens:** after a prediction, the screen re-runs with the new rate and compares the final loss at once, while the cursor is at the start.
+  - **Why it is deferred:** the panel no longer *shows* the final loss early (A4 fixed that). But the reveal itself is the defect B1 fixes for experiment 1, and changing it is a redesign of experiment 5, which this round leaves for its own review.
+- **Invariant I (layout overflow) found no violation confined to experiments 2–10.** The 6 real violations at 1280×720 were in the shared parameter field and were fixed (PROGRESS, Fix Round 4). Nothing from invariant I is deferred.
+
+## Fix Round 5 — deferred or partial
+
+- **KG-R5-1 — The canvas does not yet fit its space with a legibility floor (2.2).** Not done:
+  - fitting the viewBox to the drawn content;
+  - stopping the scaling below a minimum text size;
+  - pan and zoom, with "fit to view", for experiments 7 and 8.
+
+  Large networks still keep their scale and scroll horizontally (the existing behaviour). Invariant I passes at all four widths, so nothing escapes, clips or drops. But a large network is not yet comfortable to read at 768 px.
+- **KG-R5-2 — Values inside neurons (2.3) are fitted by formatting only.**
+  - **Guided path:** the plain format is short.
+  - **Expert mode:** a value such as 4.69×10⁻⁴ can be wider than its circle.
+  - **Full precision on hover:** the hover label (5.1) shows the formatted value, not the full one. The full value is in the inspector.
+- **KG-R5-3 — The new guided screens reveal a prediction as soon as the new run has finished generating, as experiment 5 does (KG-R4-1).** The prediction is decided by the two finished runs, never scripted. But the learner sees the outcome before watching the new run reach its end. Experiment 1's screen (Fix Round 4, B1) shows the alternative.
+- **KG-R5-4 — Part 7's citations are not checked against their sources.** The environment's network policy blocks arxiv.org and research.google. Each new entry in RELATED-REPRESENTATIONS §4 says so, and the descriptions follow the team's 4 November search.
+- **KG-R5-5 — Per-experiment items not done:**
+  - **Experiment 5 (6.5):** removing the expert "Network diagram" tooltip over the output neuron; the expert screen's vestigial canvas.
+  - **Experiment 2 (6.2), the beginner inspector:** superseded, because experiment 2's guided screen has no canvas. The three curves carry the lesson.
+  - **Experiment 3 (6.3):** the current layer is lit by the existing illumination, and an uncomputed neuron shows "·". There is no separate band marking which layers have computed.
+- **KG-R5-6 — Hover covers dense networks only (5.1).** The convolutional view (experiment 8) has no hover yet. Hover's dependencies come from the layer structure, which is the dense layer's MATMUL dataflow (ADR-077), not from walking operand references.
+- **KG-R5-7 — Determinism across JavaScript engines is not established** (NPM-SPEC §8, scope). Firefox and Safari may differ from V8 in the last bit of `Math.exp`, `tanh` and `log`.
+- **KG-R5-8 — Pin-and-compare (3.4) is in expert mode only.** It is now offered in every experiment's expert mode, not on the guided path.
+- **KG-R5-9 — On the CNN, the trace list reads only the rows in view, so filtering, searching and "Ask the trace" are not offered there.** Reading the whole trace into the page took the heap past 1.5 GB. Querying it in the worker, which holds the trace already, would remove the limit.

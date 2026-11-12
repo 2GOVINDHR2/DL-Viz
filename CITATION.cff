@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: 'If you use DL-VizLab or the Neural Program Model in your work, please cite it as below.'
+title: 'DL-VizLab: an observable, replayable deep-learning training environment built on the Neural Program Model'
+type: software
+version: 0.9.0
+date-released: 2026-10-13
+license: MIT
+repository-code: 'https://github.com/2GOVINDHR2/viz'
+authors:
+  # ORCID iDs to be added by each author as an `orcid:` line under their entry (format: https://orcid.org/0000-0000-0000-0000).
+  # An empty value is invalid CFF, so the key is left out until the iD is known.
+  - given-names: Abhinav G
+    family-names: Nair
+    affiliation: 'Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri Campus'
+  - given-names: Govindh
+    family-names: R
+    affiliation: 'Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri Campus'
+  # A single name is given as given-names: CFF's `name` key is for organisations and allows no affiliation.
+  - given-names: Meenakshi
+    affiliation: 'Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri Campus'
+  - given-names: Swayam
+    family-names: Agrahari
+    affiliation: 'Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri Campus'
+  # [[CONFIRM WITH GUIDE]] Supervisor authorship on the software release is the team's decision.
+  - given-names: J
+    family-names: Swaminathan
+    affiliation: 'Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri Campus'
+keywords:
+  - deep learning
+  - education
+  - visualization
+  - intermediate representation
+  - backpropagation
+abstract: >-
+  A browser-only learning environment in which every operation of neural-network
+  training is recorded as an instruction of the Neural Program Model (NPM), a
+  formally specified, serializable and replayable intermediate representation.
+  Learners step through a run at six granularities, forwards and backwards, with
+  each step explained by its general formula, the same formula with the step's
+  numbers, and a sentence. Includes a curriculum of ten experiments, a CNN on
+  reduced MNIST, a study mode that runs a three-condition evaluation, and an
+  analysis pipeline validated on simulated data.

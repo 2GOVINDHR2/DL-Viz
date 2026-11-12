@@ -1,0 +1,442 @@
+# The Neural Program Model (NPM) — Specification
+
+**Version 1.0.0** · Status: stable for DL-VizLab 0.x · Normative artefacts: this document, `src/core/npm/schema.json`, and the reference tools `tools/npm-verify.mjs` and `tools/npm-replay.mjs`.
+
+## 1. Purpose and scope
+
+The Neural Program Model is an intermediate representation (IR) of **one complete run of supervised neural-network training**. It plays the role that the *program model* plays in CS-OLabs (Swaminathan et al., 2025): it is the single artefact between an execution engine and the visualisations that explain the execution. Where CS-OLabs represents procedural instruction semantics (assignments, branches, calls), the NPM represents *tensor and gradient semantics*: weighted sums, activations, loss evaluation, the chain rule applied layer by layer, gradient averaging and parameter updates.
+
+A trace is:
+
+- **Flat and ordered** — a sequence of typed instructions with dense ids 0, 1, 2, …; time is position.
+- **Dataflow-explicit** — every input of an instruction is a reference to a result slot of an earlier instruction, so the computation graph of the whole run is recoverable from the trace alone.
+- **Hierarchically navigable** — every instruction carries its position in the hierarchy *epoch → batch → sample → phase → layer → operation* (§5).
+- **Self-contained** — every result value is stored, and every value can be re-derived from referenced values by the semantics in §4. This is checked mechanically by an independent verifier that shares no code with the engine (§9).
+- **Serializable and lossless** — the JSON encoding (§6) round-trips every float64 bit pattern, including −0, NaN and ±∞.
+- **Deterministic** — the same configuration and seed produce a byte-identical trace (§8).
+- **Extensible** — a new operation is added through four registration points without editing the engine, emitter or views (§7).
+
+Out of scope: inference-only graphs, recurrent and attention architectures, distributed or mixed-precision training.
+
+### 1.1 Conformance
+
+A **conforming trace** satisfies the JSON Schema (`schema.json`), the grammar of §3, the well-formedness rules of §3.2, and the value semantics of §4 to a relative tolerance of 1e-9. A **conforming producer** emits only conforming traces. A **conforming consumer** relies only on what this document specifies. The DL-VizLab engine is the reference producer; `tools/npm-verify.mjs` decides conformance of a trace file.
+
+### 1.2 What is new, stated accurately (Fix Round 5, Part 7)
+
+Record-and-replay has been applied to training in order to reproduce runs. Intermediate tensors have been inspected at runtime. Training has been provenance-tracked at epoch granularity with SQL access. Execution graphs over model internals have been serialised. What has not been done is to record the execution itself — every operation, with its operands and results, structured by epoch, batch, example, phase and layer — as a specified artifact from which any intermediate state can be reconstructed without re-running.
+
+**Prior art this concedes.** Record-and-replay itself is mature for general program execution (`rr`, Pernosco, time-travel and omniscient debugging), so the novelty is not replay. It is replay with training semantics. The systems, and where each stops, are in `docs/RELATED-REPRESENTATIONS.md` §3–4.
+
+**What this replaces.** It replaces any wording that says record-and-replay has never been applied to neural-network training, which is false.
+
+## 2. Data model
+
+### 2.1 Values
+
+All numeric values are IEEE-754 binary64. A **tensor** is a pair *(shape, data)* where *shape* is a list of non-negative integers and *data* a row-major list of `∏ shape` numbers. A scalar has shape `[]`. Per-sample tensors carry a leading batch axis of size 1: a dense activation is `[1, F]`; a feature map is `[1, C, H, W]` (channel-major, "NCHW").
+
+### 2.2 Instructions
+
+An instruction is the 7-tuple
+
+```
+⟨ id, kind, path, operands, results, meta, symbolic ⟩
+```
+
+| Field | Type | Meaning |
+|---|---|---|
+| `id` | integer ≥ 0 | Position in the trace. Ids are dense and strictly increasing. |
+| `kind` | identifier `[A-Z][A-Z0-9_]*` | The instruction kind (§4). |
+| `path` | `{epoch, batch, sample, phase, layer}` | Nesting position (§5). Levels above the instruction's scope are `null`. |
+| `operands` | list of `{ref, slot, role}` | Inputs: the value in result slot `slot` of instruction `ref`, playing role `role` (e.g. `input`, `weight`, `upstream`). Always `ref < id`. |
+| `results` | map slot → tensor | Values produced. Slot names are fixed per kind. |
+| `meta` | map key → scalar or list | Kind-specific static attributes (activation function, stride, learning rate, parameter name …). |
+| `symbolic` | string | Human-readable symbolic form with this instruction's indices substituted, e.g. `u² = a¹ · W²`. |
+
+A **value reference** `#r.s` denotes result slot *s* of instruction *r*. The set of all operands defines a directed acyclic graph over value references — the run's complete computation graph.
+
+### 2.3 Parameters and their versions
+
+Each trainable tensor has a name `L<k>.<role>` (`L2.W`, `L2.b`, or an extension role such as `L3.gamma`). Its first version is the `value` slot of its `INIT_PARAM`; each `APPLY_UPDATE` for that parameter creates the next version in its `value` slot. Forward instructions reference the version current at the time they execute, so *which* version of a weight a computation used is explicit in the trace.
+
+## 3. Grammar
+
+### 3.1 Instruction sequence
+
+The kind sequence of a conforming trace is generated by the grammar below (EBNF). `fwdOp` is any kind of phase `forward` other than `LOAD_INPUT` and `FORWARD_LAYER_END`; `bwdOp` is any kind of phase `backward` other than `GRAD_INIT` and `BACKWARD_LAYER_END` — including extension kinds.
+
+```ebnf
+trace     ::= INIT_PARAM+ epoch*
+epoch     ::= EPOCH_BEGIN batch+ EVAL_BEGIN EVAL_END EPOCH_END
+batch     ::= BATCH_BEGIN sample+ LOSS_REDUCE update+ BATCH_END
+sample    ::= LOAD_INPUT fwdLayer+ COMPUTE_LOSS GRAD_INIT bwdLayer*
+fwdLayer  ::= fwdOp+ FORWARD_LAYER_END
+bwdLayer  ::= bwdOp+ BACKWARD_LAYER_END
+update    ::= GRAD_ACCUMULATE OPTIMIZER_STATE? COMPUTE_UPDATE APPLY_UPDATE
+```
+
+The grammar is compiled to a regular expression in `src/core/npm/grammar.ts`; the test suite checks every planned architecture's trace against it and checks that it rejects corrupted sequences.
+
+### 3.2 Well-formedness
+
+- **W1** `instructions[k].id = k`.
+- **W2** Every operand satisfies `ref < id` and names an existing result slot of instruction `ref`.
+- **W3** `path.phase` equals the phase declared for `kind` (table in §4).
+- **W4** Within a `sample`, forward layers appear in network order `L1 … Ln`; backward layers appear in reverse order, each at most once. A layer that produces no gradient (e.g. a first-layer pooling, whose input needs none) has no `bwdLayer`.
+- **W5** Within a `batch`, there is exactly one `update` per trainable parameter, in parameter declaration order. `OPTIMIZER_STATE` is present iff the optimiser keeps state (momentum).
+- **W6** `header.epochStarts[e]` is the id of epoch *e*'s `EPOCH_BEGIN`; its last element equals the trace length.
+- **W7** `header.length` equals the number of instructions.
+
+## 4. Instruction set
+
+### 4.1 Instruction table
+
+The table is generated from the instruction-kind registry and from traces of every architecture the curriculum uses (`scripts/gen-npm-spec.ts`); operand roles, result slots and metadata keys are those actually emitted.
+
+<!-- BEGIN GENERATED: instruction-table -->
+**Forward**
+
+| Kind | Phase | Operand roles | Result slots | Metadata keys | Symbolic form (example) | Meaning |
+|---|---|---|---|---|---|---|
+| `INIT_PARAM` | init | — | `value` | `param`, `role`, `initializer`, `shape` | `W¹ ~ glorotUniform` | Initialise one parameter tensor from a seeded distribution. |
+| `LOAD_INPUT` | forward | — | `x`, `y` | `datasetIndex` | `a⁰ = x⁽36⁾, y = y⁽36⁾` | Load one training example and its target. |
+| `MATMUL` | forward | `input`, `weight` | `out` | — | `u¹ = a⁰ · W¹` | Multiply the incoming activations by the layer weight matrix. |
+| `ADD_BIAS` | forward | `input`, `bias` | `out` | — | `z¹ = u¹ + b¹` | Add the bias of each unit (or channel). |
+| `CONV2D` | forward | `input`, `kernel` | `out` | `stride`, `padding` | `u¹ = a⁰ ⋆ K¹  (stride 1, pad 1)` | Slide each kernel over the input and take dot products (cross-correlation). |
+| `POOL` | forward | `input` | `out` | `mode`, `size`, `stride` | `a² = maxpool_2×2(a¹)` | Down-sample each channel by taking the max (or mean) of each window. |
+| `FLATTEN` | forward | `input` | `out` | — | `a⁵ = vec(a⁴)` | Reshape feature maps into one vector (channel-major). |
+| `ACTIVATE` | forward | `preactivation` | `out` | `fn`, `fusedWithLoss` | `a¹ = σ(z¹)` | Apply the activation function element-wise (softmax: per row). |
+| `FORWARD_LAYER_END` | forward | `layer output` | — | `layer` | `end of forward pass through layer 1` | Marks the end of one layer in the forward pass. |
+
+**Loss**
+
+| Kind | Phase | Operand roles | Result slots | Metadata keys | Symbolic form (example) | Meaning |
+|---|---|---|---|---|---|---|
+| `COMPUTE_LOSS` | loss | `prediction`, `target`, `logits` | `loss` | `loss`, `outputLayer` | `ℓ = BCE(ŷ, y)` | Compare this example's prediction with its target. |
+| `LOSS_REDUCE` | loss | `sample loss` | `loss` | `batchSize` | `L = (1/B) Σₛ ℓₛ` | Average the per-example losses over the mini-batch. |
+
+**Backward**
+
+| Kind | Phase | Operand roles | Result slots | Metadata keys | Symbolic form (example) | Meaning |
+|---|---|---|---|---|---|---|
+| `GRAD_INIT` | backward | `loss`, `prediction`, `target`, `logits` | `grad` | `loss`, `wrt`, `outputLayer` | `∂ℓ/∂ŷ = BCE′(ŷ, y)` | Start back-propagation: the gradient of the loss with respect to the network output. |
+| `GRAD_ACTIVATE` | backward | `upstream`, `preactivation`, `activation` | `grad` | `fn` | `∂ℓ/∂z¹ = ∂ℓ/∂a¹ ⊙ σ′(z¹)` | Multiply the upstream gradient by the activation's derivative. |
+| `GRAD_MATMUL_W` | backward | `upstream`, `input` | `grad` | — | `∂ℓ/∂W¹ = (a⁰)ᵀ · ∂ℓ/∂z¹` | Weight gradient: outer product of the layer input and the upstream gradient. |
+| `GRAD_MATMUL_X` | backward | `upstream`, `weight` | `grad` | — | `∂ℓ/∂a¹ = ∂ℓ/∂z² · (W²)ᵀ` | Send the gradient back to the previous layer through the transposed weights. |
+| `GRAD_BIAS` | backward | `upstream` | `grad` | — | `∂ℓ/∂b¹ = Σ ∂ℓ/∂z¹` | The bias gradient is the upstream gradient (summed over a channel's positions). |
+| `GRAD_CONV2D` | backward | `upstream`, `input`, `kernel` | `dW`, `dX` | `stride`, `padding` | `∂ℓ/∂K³ = a² ⋆ ∂ℓ/∂u³,  ∂ℓ/∂a² = ∂ℓ/∂u³ ∗ rot180(K³)` | Kernel gradient (input ⋆ upstream) and, if needed, input gradient (full convolution with the kernel). |
+| `GRAD_POOL` | backward | `upstream`, `input` | `grad` | `mode`, `size`, `stride` | `∂ℓ/∂a³ = spread ÷ 4(∂ℓ/∂a⁴)` | Route each gradient to the window element that won the max (or spread it for mean pooling). |
+| `GRAD_FLATTEN` | backward | `upstream` | `grad` | — | `∂ℓ/∂a⁴ = reshape(∂ℓ/∂a⁵)` | Reshape the gradient vector back into feature-map shape. |
+| `BACKWARD_LAYER_END` | backward | `gradient` | — | `layer` | `end of backward pass through layer 1` | Marks the end of one layer in the backward pass. |
+
+**Update**
+
+| Kind | Phase | Operand roles | Result slots | Metadata keys | Symbolic form (example) | Meaning |
+|---|---|---|---|---|---|---|
+| `GRAD_ACCUMULATE` | update | `sample gradient` | `grad` | `param`, `batchSize` | `ḡ(W¹) = (1/B) Σₛ ∂ℓₛ/∂W¹` | Average this parameter's per-example gradients over the mini-batch. |
+| `OPTIMIZER_STATE` | update | `mean gradient`, `previous velocity` | `velocity` | `param`, `momentum` | `v(W¹) ← 0.9·v + ḡ` | Update the momentum accumulator. |
+| `COMPUTE_UPDATE` | update | `mean gradient`, `velocity` | `delta` | `param`, `lr`, `optimizer` | `ΔW¹ = −0.5 · ḡ` | Scale the (momentum-smoothed) gradient by −η to get the step. |
+| `APPLY_UPDATE` | update | `parameter`, `step` | `value` | `param` | `W¹ ← W¹ + ΔW¹` | Add the step to the parameter. |
+
+**Control**
+
+| Kind | Phase | Operand roles | Result slots | Metadata keys | Symbolic form (example) | Meaning |
+|---|---|---|---|---|---|---|
+| `EPOCH_BEGIN` | control | — | `order` | `shuffled` | `begin epoch 0` | Start a pass over the training set (in a freshly shuffled order). |
+| `EPOCH_END` | control | — | `meanLoss`, `batchLosses`, `gradNorms`, `paramNorms` | `params` | `end epoch 0` | End of the pass; summarise its losses and per-parameter gradient and weight magnitudes. |
+| `BATCH_BEGIN` | control | — | `indices` | `size` | `begin batch 0 (B = 4)` | Start a mini-batch. |
+| `BATCH_END` | control | — | — | `loss` | `end batch 0` | End of the mini-batch; parameters have been updated. |
+| `EVAL_BEGIN` | eval | — | — | `n` | `begin evaluation` | Evaluate the current model on the whole training set (no learning). |
+| `EVAL_END` | eval | — | `loss`, `accuracy`, `boundary` | `n`, `bounds` | `end evaluation` | Report evaluation loss and accuracy (and the decision boundary for 2-D data). |
+<!-- END GENERATED: instruction-table -->
+
+### 4.2 Value semantics
+
+Notation: for a per-sample instruction, *a*, *z*, *u* are row vectors (dense) or `[1, C, H, W]` maps (convolutional); ⊙ is element-wise product; *B* is the number of samples in the batch; *K* the number of output elements. Every rule below is implemented independently in `tools/npm-verify.mjs`.
+
+| Kind | Result(s) as a function of operands and meta |
+|---|---|
+| `MATMUL` | `out = input · weight` |
+| `CONV2D` | `out[f,i,j] = Σ_{c,u,v} input[c, i·s+u−p, j·s+v−p] · kernel[f,c,u,v]`, zero outside the input; `s = meta.stride`, `p = meta.padding` |
+| `ADD_BIAS` | `out = input + bias`, broadcast along axis 1 (features or channels) |
+| `ACTIVATE` | `out = f(preactivation)` element-wise for `f ∈ {linear, sigmoid, tanh, relu}`; row-wise softmax for `softmax`. `meta.fusedWithLoss = true` marks a softmax that is displayed but not on the gradient path (§4.3) |
+| `POOL` | max or mean over non-overlapping or overlapping `size × size` windows with stride `meta.stride`, no padding |
+| `FLATTEN` | same data, shape `[1, C·H·W]` (channel-major order) |
+| `COMPUTE_LOSS` | MSE `(1/K)Σ(ŷ−y)²`; BCE `−(1/K)Σ[y log q + (1−y) log(1−q)]`, `q = clip(ŷ, 1e−7, 1−1e−7)`; CE on logits `−Σ y_k log softmax(z)_k` |
+| `GRAD_INIT` | ∂ℓ/∂ŷ for MSE and BCE (zero where BCE clips); `softmax(z) − y` with respect to the logits for CE (`meta.wrt = "logits"`) |
+| `GRAD_ACTIVATE` | `upstream ⊙ f′(preactivation)`; for softmax the Jacobian-vector product `a ⊙ (g − ⟨g, a⟩)` |
+| `GRAD_BIAS` | `upstream` summed over every axis except 1 |
+| `GRAD_MATMUL_W` | `inputᵀ · upstream` |
+| `GRAD_MATMUL_X` | `upstream · weightᵀ` |
+| `GRAD_CONV2D` | `dW[f,c,u,v] = Σ upstream[f,i,j] · input[c, i·s+u−p, j·s+v−p]`; `dX` (if present) the matching scatter through the kernel |
+| `GRAD_POOL` | max: each window's gradient to its first maximal element (row-major); mean: spread equally |
+| `GRAD_FLATTEN` | `upstream` reshaped to the pre-flatten shape |
+| `LOSS_REDUCE` | mean of the `sample loss` operands |
+| `GRAD_ACCUMULATE` | element-wise mean of the `sample gradient` operands |
+| `OPTIMIZER_STATE` | `velocity = meta.momentum · previous velocity + mean gradient` (previous = 0 if absent) |
+| `COMPUTE_UPDATE` | `delta = −meta.lr · (velocity or mean gradient)` |
+| `APPLY_UPDATE` | `value = parameter + step` |
+| `EPOCH_BEGIN` | `order` is a permutation of `0 … N−1` |
+| `BATCH_BEGIN` | `indices = order[batch·B_max … batch·B_max + B)` |
+| `EVAL_END` | `loss` (and `accuracy`, `boundary`) of the current parameters on the whole training set |
+| `EPOCH_END` | `meanLoss = Σ_batches B·L / N`; `batchLosses` = the epoch's `LOSS_REDUCE` values in order; `gradNorms[p]` = mean over the epoch's batches of ‖`GRAD_ACCUMULATE.grad`‖₂ for parameter `meta.params[p]`; `paramNorms[p]` = ‖current version of that parameter‖₂. These summaries let long-horizon views (loss curves, gradient magnitude per layer over epochs) read O(epochs) instructions instead of the whole trace |
+
+### 4.3 Design notes
+
+- **Per-sample execution.** Within a mini-batch every sample has its own forward and backward pass, and gradients are averaged by `GRAD_ACCUMULATE`. This is mathematically identical to batched training (verified against TF.js, see `docs/VALIDATION-REPORT.md`) and makes *sample* a real unit of execution (ADR-005).
+- **Softmax–cross-entropy pairing.** The CE loss consumes the logits, and `GRAD_INIT` returns `softmax(z) − y` with respect to them. The softmax `ACTIVATE` is still emitted (with `fusedWithLoss`) so that views can show probabilities, but it has no `GRAD_ACTIVATE`: the softmax Jacobian is applied exactly once (ADR-007).
+- **Bias pass-through.** ∂ℓ/∂u equals ∂ℓ/∂z for `z = u + b`; no instruction is emitted for it, and `GRAD_MATMUL_*` reference the `GRAD_ACTIVATE` result directly.
+- **Added kinds.** `GRAD_FLATTEN` and `GRAD_ACCUMULATE` are not in the original brief's list; they are required for a dataflow-complete trace (ADR-010).
+
+## 5. Nesting and granularity
+
+### 5.1 Paths
+
+`path = (epoch, batch, sample, phase, layer)`. `epoch` and `batch` are 0-based; `sample` is the position within the batch (the dataset index is `LOAD_INPUT.meta.datasetIndex`); `phase ∈ {init, forward, loss, backward, update, eval, control}`; `layer` is `L1 … Ln` or `null`. A `null` level means the instruction lies above that level: `INIT_PARAM` has `epoch = null`; batch-level loss reduction and all updates have `sample = null`; `LOAD_INPUT`, `COMPUTE_LOSS` and `GRAD_INIT` have `layer = null`.
+
+### 5.2 Units
+
+For each granularity *g* ∈ {operation, layer, phase, sample, batch, epoch} define the key
+
+| g | key(instruction) |
+|---|---|
+| operation | `id` |
+| layer | `(epoch, batch, sample, phase, layer)` |
+| phase | `(epoch, batch, sample, phase)` |
+| sample | `(epoch, batch, sample)` |
+| batch | `(epoch, batch)` |
+| epoch | `(epoch)` |
+
+A **unit** at granularity *g* is a maximal run of consecutive instructions with equal key. Units at a coarser granularity are unions of units at every finer one. Because `null` is a legal key component, instructions above a level form their own units at that level — for instance, at *sample* granularity the batch's update block (`sample = null`) is one unit, distinct from every sample.
+
+### 5.3 Stepping
+
+A cursor designates the last executed instruction; −1 denotes the initial state in which nothing has executed. With *U(c)* the unit containing *c*:
+
+- **Step forward at g.** If *c* is not the last instruction of *U(c)* (the learner arrived mid-unit, e.g. after stepping at a finer granularity), the cursor moves to the end of *U(c)* — the current unit is completed. Otherwise it moves to the last instruction of the next unit.
+- **Step backward at g.** The cursor moves to the last instruction of the unit before *U(c)*, i.e. to the state just before the current unit began (−1 if *U(c)* is the first unit).
+- **Jump.** The cursor is set to any id.
+- **Run to breakpoint.** The cursor advances to the first instruction after it that satisfies any active breakpoint predicate (NPM-SPEC is agnostic about the predicates; the reference set — instruction kind, layer, epoch, non-finite values, gradient magnitude above/below a threshold, weight sign change, loss plateau — is in `src/core/npm/breakpoints.ts`).
+
+Forward then backward stepping at the same granularity is an exact inverse, and stepping forward from −1 to the end visits exactly one cursor per unit (both tested for every granularity and architecture). Because no unit other than an epoch crosses a segment boundary (§9), a step inspects at most two segments; epoch units are resolved from `header.epochStarts`. Implementation: `src/core/npm/navigator.ts`; replicated independently in `tools/npm-replay.mjs`.
+
+### 5.4 State reconstruction
+
+The state after instruction *k* — current parameter versions, the current sample's activations and gradients per layer, the batch loss, the update block's gradients, velocities and steps, and the latest evaluation — is a left fold over instructions `0 … k`. It never needs the whole prefix: every batch ends by updating every parameter, so parameter versions are found in *k*'s segment or the one before it, and the current sample lies within *k*'s segment. `src/core/npm/state.ts` implements this; a test reconstructs the state at every sample boundary of a CNN run while stepping backward through a store whose cache holds only a few segments, and checks it is identical to the state computed from the fully materialised trace.
+
+## 6. Trace file format
+
+A trace file is a UTF-8 JSON document `{ "header": …, "instructions": [ … ] }` that validates against `src/core/npm/schema.json` (JSON Schema 2020-12). The schema is generated from the kind registry (`scripts/gen-schema.ts`), so registering a kind extends it; a test fails if the committed schema is stale. The schema enforces, per kind, the declared phase and the presence of every declared result slot.
+
+**Header.** `format = "npm-trace"`, `version` (semver), `generator`, `seed`, `config` (the full training configuration), `model` (layer list with shapes, activations and parameter names), `dataset` (name, size, input shape, class names, and the data itself when it has at most 20 000 values), `length`, `epochStarts`.
+
+**Numbers.** Finite numbers use ECMAScript shortest round-trip formatting (exact for binary64 and identical across conforming engines). Non-finite values and negative zero are encoded as the strings `"NaN"`, `"Infinity"`, `"-Infinity"` and `"-0"`. Plain JSON would turn −0 into 0; the NPM encoding does not, so round-trip is bit-exact.
+
+**Canonical form.** Object keys are written in a fixed order, so equal traces serialise to equal bytes; byte equality of serialisations is therefore a valid equality test for traces, and SHA-256 of the canonical serialisation is used as the trace hash (§8).
+
+Sample traces: `samples/xor-mlp.trace.json` (2-2-1 MLP on XOR, 2 epochs, 232 instructions) and `samples/cnn-bars.trace.json` (conv–pool–dense on 6×6 images, 154 instructions).
+
+## 7. Extension model and tutorial
+
+### 7.1 The four registration points
+
+| # | Point | API | Declares |
+|---|---|---|---|
+| 1 | Gradient rule | `registerOp` (`src/core/autodiff/registry.ts`) | Forward computation and analytic backward rule of a tape op |
+| 2 | Instruction kind | `registerInstructionKind`, `registerOpMapping` (`src/core/npm/kinds.ts`); `registerLayer` (`src/core/layers/extensions.ts`) if the op is a new layer | Kind name, phase, result slots, symbolic form; which kinds the op emits forward and backward and which slot carries which input's gradient; how a model configuration instantiates it |
+| 3 | Explainer | `registerExplainer` (`src/explain/registry.ts`) | General formula, substituted formula, plain-language sentence |
+| 4 | Visual mapping | `registerVisualMapping` (`src/views/registry.ts`) | Flow direction, diagram target, value slot to paint, mode label |
+
+The emitter, serializer, schema generator, granularity engine, state reconstruction and views are generic over these tables: none needs editing to support a new operation. Registration is checked: mapping an op to an unregistered kind throws, a registered op without a gradcheck case fails the test suite, and a kind without an explainer fails `tests/unit/explain.test.ts`.
+
+### 7.2 Tutorial: adding Layer Normalisation
+
+The complete extension is `examples/layernorm.ts` (121 lines including the 16-line numerical helper, imports and comments; about 90 lines of registration code). It is loaded by `tests/unit/extension.test.ts`, which gradchecks it, trains a `dense → layerNorm → dense` network, validates the trace against a schema regenerated from the registry, and explains every instruction. The four steps:
+
+**Step 1 — gradient rule.** Register a three-input op `layerNorm(x, γ, β)` with `y = γ ⊙ x̂ + β`, `x̂ = (x − μ)/√(σ² + ε)` per row, and its backward rule:
+
+```ts
+registerOp({
+  name: 'layerNorm',
+  arity: 3,
+  forward: ([x, g, b]) => { /* y = γ·x̂ + β */ },
+  backward: ({ grad, inputs: [x, g] }) => [dx, dGamma, dBeta],
+});
+```
+
+where `dβ = Σ_rows g`, `dγ = Σ_rows g ⊙ x̂`, and `dx = (1/σ)(g⊙γ − mean(g⊙γ) − x̂ ⊙ mean(g⊙γ⊙x̂))`.
+
+**Step 2 — instruction kinds, op mapping, layer.**
+
+```ts
+registerInstructionKind({ kind: 'LAYER_NORM', phase: 'forward', results: ['out'], summary: '…', symbolic: (i) => `a = γ ⊙ (x − μ)/σ + β  (${i.path.layer})` });
+registerInstructionKind({ kind: 'GRAD_LAYER_NORM', phase: 'backward', results: ['dGamma', 'dBeta'], summary: '…', symbolic: … });
+registerOpMapping({
+  op: 'layerNorm', forwardKind: 'LAYER_NORM', forwardRoles: ['input', 'gamma', 'beta'],
+  backward: [{ kind: 'GRAD_LAYER_NORM',
+               slots: [{ slot: 'dX', input: 0 }, { slot: 'dGamma', input: 1 }, { slot: 'dBeta', input: 2 }],
+               operands: [{ source: { from: 'upstream' }, role: 'upstream' }, { source: { from: 'input', index: 0 }, role: 'input' }] }],
+});
+registerLayer({
+  kind: 'layerNorm',
+  outShape: (inShape) => [...inShape],
+  params: (inShape) => [{ role: 'gamma', shape: [inShape[0]], init: 'ones' }, { role: 'beta', shape: [inShape[0]], init: 'zeros' }],
+  forward: (tape, x, p, _o, meta) => tape.apply('layerNorm', [x, p('gamma'), p('beta')], {}, meta),
+});
+```
+
+The slot table tells the generic emitter that `dGamma` and `dBeta` are parameter gradients: they automatically flow into `GRAD_ACCUMULATE` → `COMPUTE_UPDATE` → `APPLY_UPDATE` for `L2.gamma` and `L2.beta`. `dX` is emitted only when the layer's input needs a gradient.
+
+**Step 3 — explainers.** One function per new kind returning `{ general, substituted, sentence }`.
+
+**Step 4 — visual mappings.** One record per new kind, e.g. `{ flow: 'forward', target: 'units', valueSlot: 'out', label: 'Forward · layer norm' }`.
+
+The model configuration then uses `{ type: 'extension', kind: 'layerNorm' }`.
+
+## 8. Determinism
+
+All randomness (initialisation, shuffling, synthetic data) is drawn from a seeded xoshiro128** generator; `Math.random` and `crypto` are banned in `src/core/**` by lint rule. Parameter tensors are immutable, and all reductions use a fixed summation order. Consequently the same configuration and seed produce byte-identical canonical serialisations. The test suite checks this by hashing traces of repeated runs (`tests/determinism`).
+
+**Scope of the claim (Fix Round 5, 3.6).** Byte-identical traces are established for the same build, the same configuration and seed, and the same JavaScript engine and platform:
+- **Node:** Node 22 (V8) on linux-x64, by the hashes in `reports/trace-hash.json`. The CI runners use the same engine and platform.
+- **Chromium (V8):** the engine runs in the browser's worker, and the end-to-end tests compare traces within one browser session.
+
+**Not established: across JavaScript engines** (SpiderMonkey in Firefox, JavaScriptCore in Safari). The reason is specific. ECMAScript does not require `Math.exp`, `Math.tanh` or `Math.log` to be correctly rounded, and the engine uses them (sigmoid, tanh, softmax, cross-entropy). Two engines may therefore differ in the last bit of an activation, and so in every value that depends on it. Every arithmetic operation and reduction order is otherwise fixed.
+
+So the precise statement is:
+- deterministic on a given engine and platform;
+- portable across engines only up to the last-bit behaviour of those three functions.
+
+Closing the gap would mean replacing them with correctly rounded implementations in `src/core/tensor`, which is outside this round (the engine may not change).
+
+**Reconstruction is a separate claim.** It does not depend on this scope. A trace, once written, is reconstructed bit-identically by any consumer. Reconstruction only reads stored values; it never recomputes them (VALIDATION-REPORT §6).
+
+## 9. Memory bounding: checkpointing and recomputation
+
+A trace's values grow with epochs × samples × activations: the full trace of a 4-epoch CNN run on 150 12×12 images is ~17 MiB, and of a reduced-MNIST run (P7) hundreds of MiB. The reference store (`src/core/npm/store.ts`) never needs to hold it all.
+
+**Segments.** The trace is partitioned into the prologue and one segment per mini-batch (the first batch of an epoch also holds `EPOCH_BEGIN`, the last also holds `EVAL_*` and `EPOCH_END`).
+
+**Checkpoints.** For each segment the store keeps a checkpoint: references to the immutable parameter and optimiser tensors current at the segment start, the PRNG state, the epoch's sample order and progress, and the emitter's table of which instruction currently holds each parameter version. Because tensors are immutable, a checkpoint costs nothing for tensors still alive elsewhere, and at most one parameter-set per batch otherwise.
+
+**Recomputation.** A segment absent from the cache is regenerated by restoring its checkpoint and re-running exactly one batch through the emitter, which resumes numbering at the segment's first id. Regenerated segments are byte-identical to the originals (tested for every segment of every planned architecture).
+
+**Cache.** Materialised segments live in an LRU cache bounded by a byte budget; generation itself admits segments through the same cache, so memory stays bounded during generation as well as during navigation.
+
+**Measured trade-off** (`scripts/measure-memory.ts`; Node 22, one core).
+- **The columns.** "Random access" is the mean time to fetch an instruction at a uniformly random position, over 1,000 reads. "Sequential step back" is the mean per-instruction time when walking backwards over the last 2,000 instructions, the access pattern of backward stepping.
+- **The protocol** (VERIFICATION-METHOD §7). Each row is measured in its own fresh process with nothing else running. Until Fix Round 3 every row was measured in one long-lived process with 300 reads; the table was regenerated under the new protocol on 2026-10-30.
+
+<!-- BEGIN GENERATED: memory-table -->
+| Run | Instructions | Cache budget | Full trace | Resident (cache + checkpoints) | Reduction factor | Random access | Sequential step back | Generation |
+|---|---|---|---|---|---|---|---|---|
+| MLP 2-8-1 on circles (200 samples, 20 epochs, B=10) | 86,084 | 100% | 19.99 MiB | 20.09 MiB (100.5%) | 1.0× | 0.001 ms | 0.0009 ms | 310 ms |
+| MLP 2-8-1 on circles (200 samples, 20 epochs, B=10) | 86,084 | 25% | 19.99 MiB | 5.05 MiB (25.3%) | 4.0× | 0.622 ms | 0.0019 ms | 314 ms |
+| MLP 2-8-1 on circles (200 samples, 20 epochs, B=10) | 86,084 | 5% | 19.99 MiB | 1.10 MiB (5.5%) | 18.2× | 0.79 ms | 0.0025 ms | 348 ms |
+| MLP 2-8-1 on circles (200 samples, 20 epochs, B=10) | 86,084 | 1% | 19.99 MiB | 307.3 KiB (1.5%) | 66.6× | 0.7 ms | 0.0048 ms | 264 ms |
+| CNN conv(4@3x3)-pool-dense on 12x12 bars (150 samples, 4 epochs, B=10) | 17,360 | 100% | 17.36 MiB | 17.67 MiB (101.8%) | 1.0× | 0.001 ms | 0.0006 ms | 147 ms |
+| CNN conv(4@3x3)-pool-dense on 12x12 bars (150 samples, 4 epochs, B=10) | 17,360 | 25% | 17.36 MiB | 4.65 MiB (26.8%) | 3.7× | 1.542 ms | 0.0053 ms | 136 ms |
+| CNN conv(4@3x3)-pool-dense on 12x12 bars (150 samples, 4 epochs, B=10) | 17,360 | 5% | 17.36 MiB | 1.18 MiB (6.8%) | 14.7× | 1.903 ms | 0.0068 ms | 137 ms |
+| CNN conv(4@3x3)-pool-dense on 12x12 bars (150 samples, 4 epochs, B=10) | 17,360 | 1% | 17.36 MiB | 615.0 KiB (3.5%) | 28.9× | 2.026 ms | 0.0066 ms | 126 ms |
+<!-- END GENERATED: memory-table -->
+
+**Reduction factor (Fix Round 5, 3.6).** This is the full trace divided by what the store holds (cache plus checkpoints): how many times less memory the store uses than retaining every value. At a 1 % budget it is 66.6× for the MLP run and 28.9× for the CNN run (from the table, not rounded further).
+
+**Cost against distance.** The curve of reconstruction cost against distance from the checkpoint, over every curriculum configuration, is in VALIDATION-REPORT §6.
+
+**Reading the table.**
+- **Random jumps:** holding 1 % of the trace costs at most a few milliseconds per random jump, because one batch is recomputed.
+- **Sequential stepping,** the dominant interaction, stays in the microsecond range, because one regeneration serves a whole segment.
+- **The margin:** the cost of one miss varies by up to 2× between processes, so rows within that margin are to be read as equal. Here, the MLP's 5 % and 1 % rows (0.79 and 0.70 ms) are equal, not a reversal.
+
+**At ten times the scale** (Fix Round 3; `scripts/measure-scale.ts`, `reports/scale.json`, VALIDATION-REPORT §5). The same MLP was run for 200 epochs instead of 20, giving **860,804 instructions** in 4,001 segments: 200 MiB in memory and 328 MiB as JSON. Every property held:
+- the whole trace validates against the schema;
+- the independent verifier re-derives all 860,804 instructions;
+- serialise → parse → serialise is byte-identical;
+- all 4,001 segments regenerate byte-identically under a 1 % cache budget, with checkpoints costing 1.0 MiB in total;
+- at a 1 % budget (3.0 MiB resident), random access takes about 1.5 ms and stepping back about 3 µs per instruction.
+
+**The shape of the curve, explained** (VALIDATION-REPORT §5; `scripts/diagnose-cache.ts`).
+- **The model.** With uniform random reads, the hit rate equals the budget fraction. A miss costs one batch's recomputation, which is independent of the budget (0.85–1.13 ms in one process). So read time ≈ (1 − budget) × miss cost, and recomputation is 97–99 % of it.
+- **Ruled out:** eviction, and segment size against the budget. Bookkeeping and eviction cost about 0.01 ms per read, and segments are near-uniform in size (median 51 KiB).
+- **Run-to-run variation.** The miss cost varies by up to 2× between processes. Neighbouring rows whose hit rates barely differ (5 % and 1 %) should therefore be read as equal.
+
+**The first measurement, and why it was wrong.** It was not monotonic: the 25 % row measured 4.9 ms against 1.1 ms at 5 %.
+- **Cause:** it was taken in the same process just after the 328 MiB serialise-and-parse step. There, young-generation garbage collections ran three times longer (about 25 ms per pause against 8.5 ms) and slowed regeneration and generation alike.
+- **Fix:** measured in a fresh process, the curve is monotonic in every run, and the script now measures it in a child process.
+- **Not established:** why the collections were dearer in that state (the likely cause is the large uncollected old generation).
+
+**In the tradition of omniscient debugging.** In systems terms the store is an omniscient, or back-in-time, debugger for one training run: any past state can be inspected, and the design question is the one Pothier, Tanter & Piquer (2007) studied for TOD. How much of an execution should be stored, and how much recomputed or re-queried, when a past state is asked for?
+- **The general case.** A program cannot in general be re-executed to the same state, so TOD's answer combines efficient instrumentation, a specialised trace database and partial traces.
+- **Training in the NPM.** It can be re-executed exactly (§8). That reduces the trade to a single parameter, the cache budget: a checkpoint per batch costs about 260 bytes in the measured runs, and recomputing one batch costs milliseconds.
+- **The measured curve.** The table above and its ten-times counterpart are that trade-off measured at both ends:
+  - with the full trace held, access costs microseconds;
+  - with 1 % held, it costs a millisecond or two;
+  - sequential stepping, the dominant interaction, stays in microseconds throughout.
+
+`docs/RELATED-REPRESENTATIONS.md` §3 gives the comparison in full.
+
+## 10. Reference tools: two independent consumers
+
+The trace format is shown to be self-contained by two programs that read it **without the engine**. Neither imports anything except Node's standard library (`node:fs`); a test checks every import statement. They are what lets the paper demonstrate renderer-independence and semantic correctness rather than assert them.
+
+| Tool | Lines | Imports | What it establishes |
+|---|---|---|---|
+| `tools/npm-verify.mjs` | 473 | `node:fs` only | **Semantic correctness and self-containment.** It re-derives every instruction's results from the results of the instructions it references, using its own implementation of §4, and reports every mismatch. Agreement shows that the trace alone determines the run: a consumer needs the trace and this specification, never the engine. |
+| `tools/npm-replay.mjs` | 86 | `node:fs` only | **Renderer-independence of navigation.** It steps through a trace as text at any granularity of §5, using only the nesting paths. Its steps are exactly the application's steps, so the granularity semantics live in the IR, not in the renderer. |
+
+**What is tested, in CI** (`tests/unit/npm.test.ts`, `tests/unit/consumers.test.ts`; both run in the unit job):
+- **Verifier, on every planned architecture.** Every planned-architecture trace verifies with zero mismatches.
+- **Verifier, on the committed samples.** Both samples verify with zero mismatches.
+- **Verifier, against a perturbation.** A single perturbed gradient value is detected, so the check is not vacuous.
+- **Verifier, at scale.** It re-derives all 860,804 instructions of the scale run (§9; measured by `scripts/measure-scale.ts`, not in CI).
+- **Replay.** It runs as a separate process on both samples at all six granularities. The last instruction of each of its steps is compared with the application's navigator (`stepForward`), and they agree at every step.
+- **The samples are current.** Both committed sample traces (`samples/*.trace.json`) are byte-identical to what the current engine and serialiser produce, so the consumers are tested on the current format, not on a stale file.
+
+**Running them, without building the application** (Node 22 or later):
+
+```sh
+node tools/npm-verify.mjs samples/xor-mlp.trace.json
+node tools/npm-replay.mjs samples/xor-mlp.trace.json --granularity layer --values
+```
+
+### 10.1 Querying a trace (Fix Round 4, D2)
+
+**Where it lives.** The expert trace view filters and searches the run with pure functions over instructions, in `src/views/trace/query.ts`. Like the two consumers above, they read the trace only, so the same queries run over a trace file or over the live run.
+
+| Query | Signature | Meaning |
+|---|---|---|
+| Structural filter | `filterTrace(instructions, { kind?, layer?, phase?, epoch? })` → instruction ids | The instructions whose kind, layer, phase and epoch all match the given fields (an absent field matches anything), in trace order |
+| Gradient search | `firstGradient(instructions, { when: 'below' \| 'above', threshold, from?, filter? })` → instruction or null | The first gradient instruction (phase `backward`, or `GRAD_ACCUMULATE`) at or after `from` whose largest element magnitude is below, or above, the threshold, optionally within a filter. NaN counts as infinitely large |
+| Magnitude | `largestMagnitude(instruction)` | The largest absolute value among an instruction's results |
+
+**How it is tested.** `tests/unit/trace-view.test.ts` checks both queries against a direct scan of experiment 1's trace. It includes the property that no gradient before the one found meets the condition. A mutant that ignores the phase in the filter is killed.
+
+**Two points compared (D4).** `compareStates(header, A, B)` (`src/views/trace/compare.ts`) is a query too. Given the states reconstructed at two instructions (§5, state reconstruction), it reports:
+- every parameter's changed elements and its largest change;
+- every layer's activations, and whether they differ.
+
+It is checked against the update instructions themselves (`tests/unit/compare.test.ts`).
+
+**Why this belongs in the specification.** A representation that holds every intermediate value is only as useful as the questions it can answer. DLProv answers SQL queries over epoch-level provenance during training (RELATED-REPRESENTATIONS §2). The NPM answers structural and numeric queries over every operation, after the fact, from the trace alone.
+
+
+
+### 10.2 Diagnostic questions (Fix Round 5, 3.2)
+
+**What they are.** Five questions a person debugging training actually asks, each answered from the instructions alone (`src/views/trace/diagnose.ts`) and offered in the expert trace view as **Ask the trace**. Each answer names the instructions that justify it, one click away. None can be answered from an epoch-level log such as TensorBoard's scalars: each needs per-operation values and the operand references between them.
+
+| Question | Signature | Answer |
+|---|---|---|
+| Where does a weight gradient first fall below 10⁻⁴? | `firstVanishing(instructions, threshold = 1e-4)` | The first `GRAD_ACCUMULATE` of a weight tensor with no element at or above the threshold: experiment D1 as a question |
+| Which instructions read the weight that changed most in an epoch? | `readersOfMostChanged(instructions, epoch)` | The weight element with the largest change from the epoch's start to its end, and every instruction in the epoch whose operands refer to any version of that tensor |
+| Which example had the largest loss in an epoch, and its forward pass? | `largestLossExample(instructions, epoch)` | The `COMPUTE_LOSS` with the largest value, its dataset index, and the ids of its forward pass (`LOAD_INPUT` to `COMPUTE_LOSS`) |
+| Where did a ReLU neuron go inactive and never recover? | `deadRelus(instructions)` | Each dense ReLU neuron whose every response, from some forward pass on, is zero across at least two epochs: where it went inactive and when it was last active |
+| After which instruction did the loss stop decreasing? | `lossStoppedDecreasing(instructions)` | The `EVAL_END` of the epoch with the lowest evaluation loss, when a later epoch exists; null when the last epoch is the lowest |
+
+**Filters beside them.** Filtering by kind, layer, phase and epoch, and the numeric gradient condition, are those of §10.1.
+
+**How they are tested.** `tests/unit/diagnose.test.ts` checks each answer on a real trace against an independent brute-force computation: reconstructed states (§5.4), epoch summaries, or a direct scan. Mutants of three of the queries are each killed (PROGRESS, Fix Round 5).
+
+**A finding the test made.** None of 36 ReLU configurations searched (three experiments, four learning rates, three seeds) kills a neuron on its own. The dead-neuron test therefore starts one neuron with a bias of −50, through the starting-value editor. The question is still worth asking: a learner who raises the learning rate or edits a bias can create the condition.
