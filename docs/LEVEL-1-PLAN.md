@@ -32,7 +32,7 @@ Written after the Phase 0 port was verified (see `docs/PORT-VERIFICATION.md`) an
 | Exp 03 linear vs nonlinear | `TransformView` (points and grid lines transformed by the engine), the composed-layers demonstration, XOR with and without ReLU |
 | Exp 04 MLP | `ArchitectureBuilder` → `TrainConfig`; worker `generate`; `TrainingOverview`; `TraceExplorer` (epoch → batch → phase → layer → operation), built on `advance` / `jump` / `range` |
 | Knowledge-check feedback true for any settings | Conceptual questions whose feedback holds for any settings, plus one "predict" question per experiment. Its answer is computed from the learner's current settings by the engine. |
-| Research readiness | Fixed defaults; the same content for everyone; `?l1-seed=` can pin Experiment 04's seed for a study session. No accounts, no analytics. |
+| Research readiness | Fixed defaults in one data file (`src/experiments/level1.ts`); nothing randomised between participants; no accounts, no analytics. |
 
 ## Out of scope here
 
