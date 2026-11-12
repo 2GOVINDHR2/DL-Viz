@@ -246,3 +246,55 @@ test('I. no element escapes, clips or drops, every screen, both modes, four widt
     ),
   ).toEqual([]);
 });
+
+test('II. Level 1: no horizontal scroll, and no element escapes or clips, at five widths down to a phone', async ({
+  page,
+}) => {
+  test.setTimeout(600_000);
+  const pages = [
+    '/#/',
+    '/#/levels',
+    '/#/level-1',
+    '/#/level-1/orientation',
+    '/#/level-1/experiment-01',
+    '/#/level-1/experiment-02',
+    '/#/level-1/experiment-03',
+    '/#/level-1/experiment-04',
+    '/#/level-1/assessment',
+  ];
+  const all: Violation[] = [];
+  for (const width of [1440, 1024, 768, 390, 360]) {
+    await page.setViewportSize({ width, height: 800 });
+    for (const url of pages) {
+      await page.goto(url);
+      await expect(page.locator('main h1').first()).toBeVisible();
+      const states = url.endsWith('experiment-04') ? ['opened', 'trained'] : ['opened'];
+      for (const state of states) {
+        if (state === 'trained') {
+          await page.locator('[data-control="train"]').click();
+          await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });
+          await page.locator('[data-control="trace:detail:operations"]').check({ force: true });
+          for (let k = 0; k < 4; k++) await page.locator('[data-control="trace:next"]').click();
+        }
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await page.waitForTimeout(250);
+        const tag = `${url} @${width} ${state}`;
+        const scroll = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        if (scroll > 0)
+          all.push({ screen: tag, kind: 'escape', element: 'page', parent: 'viewport', overflowPx: scroll });
+        all.push(...(await overflows(page, tag)), ...(await clipped(page, tag)));
+      }
+    }
+  }
+  // Text kept for screen readers only is clipped on purpose.
+  const real = all.filter((v) => !v.element.includes('lv-visually-hidden'));
+  writeFileSync(
+    resolve(import.meta.dirname, '../../reports/layout-level1.json'),
+    JSON.stringify(real, null, 2) + '\n',
+  );
+  expect(
+    real.map((v) => `${v.kind} ${v.screen}: ${v.element} beyond ${v.parent} by ${v.overflowPx}px`),
+  ).toEqual([]);
+});

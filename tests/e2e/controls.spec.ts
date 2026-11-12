@@ -661,7 +661,7 @@ test.describe('control audit: curriculum, mode and declared surface', () => {
   });
 
   test('switching mode keeps the position, in both directions', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/#/workbench');
     await page.getByRole('button', { name: /^6\. / }).click();
     await expect(page.locator('article.novice')).toBeVisible();
     await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });

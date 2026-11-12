@@ -209,24 +209,14 @@ function Tree({
   depth?: number;
 }) {
   return (
-    <ul
-      className="lv-tree"
-      role={depth === 0 ? 'tree' : 'group'}
-      aria-label={depth === 0 ? 'The epoch, step by step' : undefined}
-    >
+    <ul className="lv-tree" aria-label={depth === 0 ? 'The epoch, step by step' : undefined}>
       {nodes.map((n) => {
         const inside = n.first <= cursor && cursor <= n.last;
         const here =
           inside &&
           (n.children.length === 0 || !n.children.some((c) => c.first <= cursor && cursor <= c.last));
         return (
-          <li
-            key={n.key}
-            className="lv-tree-item"
-            role="treeitem"
-            aria-expanded={n.children.length ? inside : undefined}
-            aria-selected={here}
-          >
+          <li key={n.key} className="lv-tree-item">
             <button
               type="button"
               onClick={() => onPick(n)}

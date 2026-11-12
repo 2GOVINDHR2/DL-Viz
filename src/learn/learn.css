@@ -1317,3 +1317,11 @@ body:has(.lv-root) {
     scroll-behavior: auto !important;
   }
 }
+
+/* Layout fixes found by tests/e2e/layout.spec.ts II: range inputs carry a browser margin; terms stay whole. */
+.lv-control input[type='range'] {
+  margin: 0;
+}
+.lv-term {
+  display: inline-block;
+}

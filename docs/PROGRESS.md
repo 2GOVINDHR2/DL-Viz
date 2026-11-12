@@ -660,3 +660,14 @@ They run on every guided screen. An e2e test drives each screen through question
 - **Fuzz:** 2,000 sequences (200 per experiment), 0 failures. They include 419 Going-deeper and 412 key-parameter actions on the guided screens, with invariants A–D after every action.
 - **Coverage:** 95.1 % statements.
 - **Typecheck, lint and format:** clean.
+
+## Level 1 rebuild — 2026-11-12 — new repository, Level 1 learning interface
+
+- **Phase 0, port:** the repository was copied unchanged from `2GOVINDHR2/viz@a894d57` and verified. Every engine suite passes. `measure` and the reconstruction harness reproduce the deterministic figures exactly (`docs/PORT-VERIFICATION.md`).
+- **Level 1:**
+  - The orientation, four experiments, an assessment, and the Level 1 landing page, in `src/learn/`.
+  - Every value comes from the engine: probes for 01–03 (ADR-082), and real training with the trace explorer for 04 (ADR-085).
+- **The workbench** is unchanged and reachable for Levels 2+ (ADR-080).
+- **Palette:** the CVD-safe Level 1 palette (ADR-083).
+- **Inventory:** Level 1 was appended to the capability inventory (ADR-086).
+- **Report:** `docs/LEVEL-1-REPORT.md`; open items in `docs/KNOWN-GAPS.md` (KG-L1).

@@ -30,7 +30,7 @@ export function Levels() {
             Open
           </a>
         </li>
-        <li className="lv-path-item" aria-disabled="true">
+        <li className="lv-path-item">
           <span className="lv-path-num lv-muted" aria-hidden="true">
             2+
           </span>

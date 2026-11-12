@@ -243,8 +243,120 @@
     "passes": 32,
     "violations": []
   },
+  "Level 1 /#/ (light)": {
+    "passes": 19,
+    "violations": []
+  },
+  "Level 1 /#/levels (light)": {
+    "passes": 20,
+    "violations": []
+  },
+  "Level 1 /#/level-1 (light)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 1 /#/level-1/orientation (light)": {
+    "passes": 27,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-01 (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-02 (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-03 (light)": {
+    "passes": 30,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-04 (light)": {
+    "passes": 31,
+    "violations": []
+  },
+  "Level 1 /#/level-1/assessment (light)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 1 experiment 01: tour open, a wrong answer's feedback (light)": {
+    "passes": 30,
+    "violations": []
+  },
+  "Level 1 experiment 02: XOR (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 experiment 04 trained, stages (light)": {
+    "passes": 34,
+    "violations": []
+  },
+  "Level 1 experiment 04 trained, layers (light)": {
+    "passes": 34,
+    "violations": []
+  },
+  "Level 1 experiment 04 trained, operations (light)": {
+    "passes": 34,
+    "violations": []
+  },
+  "Level 1 /#/ (dark)": {
+    "passes": 19,
+    "violations": []
+  },
+  "Level 1 /#/levels (dark)": {
+    "passes": 20,
+    "violations": []
+  },
+  "Level 1 /#/level-1 (dark)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 1 /#/level-1/orientation (dark)": {
+    "passes": 27,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-01 (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-02 (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-03 (dark)": {
+    "passes": 30,
+    "violations": []
+  },
+  "Level 1 /#/level-1/experiment-04 (dark)": {
+    "passes": 31,
+    "violations": []
+  },
+  "Level 1 /#/level-1/assessment (dark)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 1 experiment 01: tour open, a wrong answer's feedback (dark)": {
+    "passes": 30,
+    "violations": []
+  },
+  "Level 1 experiment 02: XOR (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 experiment 04 trained, stages (dark)": {
+    "passes": 34,
+    "violations": []
+  },
+  "Level 1 experiment 04 trained, layers (dark)": {
+    "passes": 34,
+    "violations": []
+  },
+  "Level 1 experiment 04 trained, operations (dark)": {
+    "passes": 34,
+    "violations": []
+  },
   "study: researcher": {
-    "passes": 6,
+    "passes": 7,
     "violations": []
   },
   "study: consent": {

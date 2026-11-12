@@ -13,6 +13,17 @@ node tools/npm-verify.mjs samples/xor-mlp.trace.json      # re-derives every ins
 node tools/npm-replay.mjs samples/cnn-bars.trace.json --granularity layer --values
 ```
 
+## Start here: Level 1
+
+Open the app and you land on **Level 1 — Beginner: Neural Network Foundations** (`src/learn/`). It is a 45–65-minute path for learners with no deep-learning background: a short orientation, then four experiments:
+
+1. **Inside a Neuron**: inputs, weights, bias, the weighted sum, and activation functions.
+2. **Perceptrons and Logic Gates**: AND, OR and NOT by hand, decision boundaries, and why XOR fails.
+3. **Linear vs Nonlinear Transformations**: why stacked linear layers act as one, and how ReLU solves XOR.
+4. **Multilayer Perceptron: From Architecture to Training Trace**: build a network, train it for real, and step through the recorded run, from epochs down to single operations.
+
+Every number in Level 1 comes from the engine. Experiments 01–03 run the learner's settings through the engine and read the values back from its record (ADR-082). Experiment 04 trains in the engine worker and explores the real NPM trace (ADR-085). The full workbench below covers Levels 2+ and expert inspection, at `?mode=novice`, `?mode=expert` or `#/workbench` (ADR-080).
+
 ## What is in it
 
 - **Engine** (`src/core`): an own float64 tensor and reverse-mode autodiff core, dense, conv2d, pooling and flatten layers, MSE/BCE/CCE losses, SGD and momentum. It is gradient-checked, and agrees with TensorFlow.js on every loss and every parameter after every step (TF.js is used in tests only). Runs are bit-for-bit deterministic from a seed.
@@ -40,7 +51,7 @@ Requirements: Node 22, and Python 3.13 for the analysis pipeline.
 
 ```sh
 npm ci
-npm run dev            # app at http://localhost:5173 (Study Mode: /#study)
+npm run dev            # Level 1 at http://localhost:5173 · workbench: /?mode=expert · Study Mode: /#study
 npm run build          # static site in dist/ — no server, no network calls at run time
 npm test               # unit, gradcheck, TF.js parity, determinism, Study Mode, figures
 npm run test:e2e       # Playwright (Chromium), including the WCAG audit

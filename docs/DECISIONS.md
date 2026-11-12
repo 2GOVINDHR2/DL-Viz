@@ -665,3 +665,71 @@ Append-only. Each entry: context / options / decision / consequence.
 - **Unchanged:** the gate still requires having watched the starting run (Fix Round 4, B2; Fix Round 5, 5.3). Running other settings to the end does not open it.
 - **Applies to:** every `afterRun` question (experiments 1 to 5).
 - **Tests:** `tests/unit/after-run-lock.test.ts` (the old rule fails it); the e2e self-check audit; capability inventory; axe.
+
+## ADR-080 — 2026-11-12 — Level 1 is a new interface beside the workbench, which stays (Level 1 rebuild)
+- **Context:** the Level 1 task rebuilds the beginner interface. It also forbids removing existing capability, and `capabilities.spec.ts` enforces that. The workbench (`src/ui/`, `src/views/`) carries 2,090 inventoried capabilities, the `perf` measurements behind the paper's frame-rate figures, and the only interface to the Levels 2+ experiments. Rebuilding all of it in this round would mean deleting capability or delaying Level 1.
+- **Decision:**
+  - The new learning interface lives in `src/learn/` and is the default entry (`/`, hash routes `#/levels`, `#/level-1/…`).
+  - The workbench is carried across unchanged and loads on demand at `?mode=novice|expert` (its existing URLs) or `#/workbench`, with its own stylesheet.
+  - Study Mode keeps `#study`.
+  - The two interfaces share no state. Level 1 styles are prefixed `lv-`, so the stylesheets cannot collide.
+- **Consequences:**
+  - Every workbench e2e spec keeps working; three specs that opened `/` now open `/#/workbench`.
+  - The 18 UI-facing unit tests still test the workbench they were written for, unchanged.
+  - Their properties (vocabulary, values from the engine, nothing from the future) are tested again for Level 1 in `tests/unit/level1-*.test.ts`.
+  - The workbench's own redesign belongs to Levels 2+.
+
+## ADR-081 — 2026-11-12 — Step is the threshold rule applied to the engine's z, never an engine activation
+- **Context:** Experiments 01 and 02 need Step, the classic perceptron activation. The engine's activations are linear, sigmoid, tanh, ReLU and softmax. Step has zero gradient almost everywhere, so the core never needed it, and adding it would change the core and the instruction set.
+- **Decision:** for Step, the model's unit is linear: the engine computes u, z and the recorded trace. The interface applies `stepRule(z) = z ≥ 0 ? 1 : 0` (`src/learn/engine/probe.ts`). It is the only arithmetic Level 1 applies to an engine value. Every screen that uses it says so: the Step caption, the calculation breakdown, and Experiment 02's record note.
+- **Rejected:** a registered extension op. That would put a non-trainable op into the trace format for a teaching convenience.
+
+## ADR-082 — 2026-11-12 — Experiments 01–03 read every value from engine probes
+- **Context:** Experiments 01–03 do not train, but the task requires every number to come from the engine.
+- **Decision:**
+  - A *probe* (`src/learn/engine/probe.ts`) is a real engine run: `TraceStore.generate` with the learner's parameters as `initialParams`, one epoch, one batch, learning rate 0. Δ = −0·g leaves every parameter as set, which the tests check.
+  - Values are read back from the recorded instructions: MATMUL for u, ADD_BIAS for z, ACTIVATE for a, COMPUTE_LOSS for the loss, EVAL_END for the decision grid.
+  - A probe refuses to run with a missing or non-finite parameter, so it can never fall back to random values.
+- **Details:**
+  - Experiment 01's per-input products come from two extra probe examples, (x₁, 0) and (0, x₂), whose weighted sums are each input's contribution.
+  - Decision regions come from the engine's evaluation grid. The probe places two frame examples so that the engine's padded grid is exactly the requested rectangle (`probeGrid`). Feeding grid points as examples cost 71 ms at 32×32; the evaluation grid costs 0.8 ms at 48×48.
+  - The single layer equivalent to two linear layers (Experiment 03, Part 2) is read off the network's engine outputs for (0,0), (1,0) and (0,1), then run by the engine. The two agree to rounding, which a test checks to 10⁻¹².
+- **Threading:** probes are tiny and synchronous, so they run on the main thread, cached (LRU, 96 entries). Training (Experiment 04) runs in the worker.
+- **Tests:** `tests/unit/level1-engine.test.ts` checks probes against `TrainingSession.predict`, an independent path in the engine, for every activation.
+
+## ADR-083 — 2026-11-12 — The Level 1 palette: meaning by hue and lightness, graphics only
+- **Context:** the task prescribes blue inputs, purple weights, orange bias, green correct, red incorrect and grey inactive. Red/green is the classic colour-vision-deficiency failure. Purple and blue also collapse under protanopia. With text contrast (4.5:1) also required, no red and green that read as red and green stayed apart for protanopes: a search of OKLCH space within each hue band found none.
+- **Decision:**
+  - Semantic colours are used only for graphics (strokes, fills, chips, markers), which need 3:1 (WCAG 1.4.11). Values and labels are printed in the body text colour (4.5:1).
+  - Correct and incorrect differ in lightness as well as hue: light theme `#2f9e7a` / `#a8231a`, dark theme `#7be0b0` / `#d9443b`.
+  - Purple is darker than blue in the light theme and lighter in the dark theme.
+  - Every state also has a non-colour cue: ✓/✕, solid/dashed rings, filled circle and open square, dashed negative weights, dotted zero weights.
+- **Tests:**
+  - `tests/unit/level1-palette.test.ts`: contrast, ΔE ≥ 15 for six meaning pairs under normal vision, protanopia and deuteranopia (the same method and threshold as `cvd.test.ts`), a lightness gap ≥ 0.1 for correct/incorrect, and agreement between `learn.css` and `tokens.ts`.
+  - The test caught two values below 3:1 (orange and grey on the page background). Both were darkened.
+- **Unchanged:** `cvd.test.ts` and `contrast.test.ts`, which test the workbench palette.
+
+## ADR-084 — 2026-11-12 — Level 1 is data in `src/experiments/level1.ts`; the registry is untouched
+- **Decision:**
+  - The four Level 1 experiments are defined as data in `src/experiments/level1.ts`: objectives, primer terms (2–4), the tour, challenges, the fixed questions, and the vocabulary schedule `LEVEL1_TERMS`.
+  - The ten registry experiments are not edited or removed. Level 1 *draws on* them: AND from experiment 1's `points` dataset, and Experiment 04's defaults from experiment 7's XOR configuration with batches of 2.
+- **Determinism for the study:** every default is a constant in that file and nothing is randomised. Experiment 04 uses a fixed seed (3), and for each of seeds 1–10 its defaults reach 100 % on XOR, which a test checks. Every participant sees the same content and the same runs.
+- **Feedback stays true:** questions whose answer depends on the settings are built from engine results at the current settings: the ReLU and Step outputs, the perceptron's answer, the XOR count, the batch count, the run's loss trend. Every other question's feedback is written to hold for any settings. This fixes the defect where self-check feedback described the default run.
+
+## ADR-085 — 2026-11-12 — Experiment 04's explorer is a view over the existing trace system
+- **Decision:**
+  - Training uses the existing worker (`src/ui/engine.worker.ts` through `src/ui/engineClient.ts`) and `EngineHost` requests: `generate`, `epochSummaries`, `advance`, `jump`, `range`, `paramHistory`, `compareRuns`.
+  - The explorer's hierarchy groups one epoch's instructions with the NPM's own `unitKey`, so a node and a navigator step of the same granularity cover the same instructions (tested with `unitBounds`).
+  - Stepping uses `advance`, which keeps the two-segment bound. Only the selected epoch is read whole, capped at 6,000 instructions; the largest Level 1 network uses far fewer, which is tested.
+- **Progressive disclosure:**
+  - Epochs appear as a timeline. One epoch opens into batches, examples and stages.
+  - The "Layers" and "Operations" detail levels add the two deepest levels, and offer the matching step sizes.
+- **Separation:**
+  - The architecture and training settings live in the component; `toConfig` makes the `TrainConfig`.
+  - The run store holds only engine replies.
+  - A record whose settings no longer match the controls is labelled as belonging to its run.
+- **Tests:** `tests/unit/level1-explorer.test.ts` runs the same `EngineHost` in-process.
+
+## ADR-086 — 2026-11-12 — The capability inventory gains the Level 1 screens by appending
+- **Context:** `reports/capability-inventory.json` is the pre-removal baseline. 472 of its entries were removed deliberately under ADR-070 to ADR-076 and are listed in `capability-removed.json`. A full `CAPTURE=1` would drop them from the baseline and erase that record.
+- **Decision:** `CAPTURE=append` adds screens that are new to the baseline and leaves every existing entry as it was. The ten Level 1 screens (480 capabilities, including Experiment 04 after a real run at each level of detail) were added this way. Result: 2,570 capabilities over 30 screens, none lost.

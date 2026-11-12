@@ -5000,6 +5000,2406 @@
     "text": "Your settings"
   },
   {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-batch:0 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-batch:1 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-batch:2 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-boundary:0 (radio): The line of inputs where its weighted sum plus bias is exactly at the threshold"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-boundary:1 (radio): The largest input it accepts"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-boundary:2 (radio): The set of inputs it gets wrong"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-linear:0 (radio): Without it, any stack of layers acts like a single linear layer"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-linear:1 (radio): It makes training faster"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-linear:2 (radio): It keeps the weights small"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-neuron:0 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-neuron:1 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-neuron:2 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-relu:0 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-relu:1 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-relu:2 (radio): #"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-separable:0 (radio): XOR"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-separable:1 (radio): AND"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-separable:2 (radio): NOT"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-trace:0 (radio): A record of every operation the engine performed during that run, which you can step through in both directions"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-trace:1 (radio): An animation showing roughly what a network does"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-trace:2 (radio): A summary of the final accuracy only"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-training:0 (radio): Adjusting the parameters, using examples, so that predictions improve"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-training:1 (radio): Choosing the number of layers"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "control",
+    "text": "check:a-training:2 (radio): Running the network on one input to see its answer"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does ReLU output when z is #?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is a perceptron’s decision boundary?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is the training trace you explored in Experiment #?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhich sentence describes training?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy do networks put a nonlinear activation between layers?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Predict the outputA neuron has inputs # and # weights # and # and bias #. What is its weighted sum z?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: Predict the outputThere are # training examples and the batch size is #. How many batches are in one epoch?"
+  },
+  {
+    "screen": "learn: assessment",
+    "kind": "information",
+    "text": "legend: ScenarioWhich of these gates can a single perceptron NOT implement?"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "activation:relu (radio): ReLU"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "activation:sigmoid (radio): Sigmoid"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "activation:step (radio): Step"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "activation:tanh (radio): Tanh"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "b (range): Bias b"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "b:exact (input): Bias b, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-live-relu:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-live-relu:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-live-relu:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-live-step:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-live-step:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-stages:0 (radio): The weighted sum z: each input times its weight, added up, plus the bias"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-stages:1 (radio): The output a"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-stages:2 (radio): A new set of weights"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-step:0 (radio): Step"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-step:1 (radio): Sigmoid"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-step:2 (radio): ReLU"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-zero:0 (radio): Nothing: z stays the same"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-zero:1 (radio): z goes up by #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "check:n-zero:2 (radio): z becomes #"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Perceptrons and Logic Gates →"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "primer:w (range): Weight w"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "primer:w:exact (input): Weight w, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "primer:x (range): Input x"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "primer:x:exact (input): Input x, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "reset (button): Reset to starting values"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "w1 (range): Weight w₁"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "w1:exact (input): Weight w₁, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "w2 (range): Weight w₂"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "w2:exact (input): Weight w₂, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "x1 (range): Input x₁"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "x1:exact (input): Input x₁, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "x2 (range): Input x₂"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "control",
+    "text": "x2:exact (input): Input x₂, exact value"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "disclosure",
+    "text": "See the engine’s record of this calculation"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "disclosure",
+    "text": "Show the calculation"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "disclosure",
+    "text": "Show the formula"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "caption: Step by step, as the engine computed it"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "caption: Steps in the engine’s record"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "figcaption: Sigmoid: the orange marker is the current z. The output a is read off the curve."
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Flip a weight"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Inputs"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Push with the bias"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Raise one input"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Sigmoid against ReLU"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Silence a connection"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Try it: one input, one weight"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Weights and bias"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "h3: Your neuron"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "legend: Activation function"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceA neuron works in two stages. What does the first stage produce?"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhich activation function can only give # or #?"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsKeep these settings (z = #) and choose Step. What does the neuron output?"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith the settings on screen, the weighted sum is z = #. What would the ne"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "information",
+    "text": "legend: ScenarioYou set weight w₁ to #. Then you change input x₁ from # to #. What happens to z?"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "panel",
+    "text": "Neuron controls"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "panel",
+    "text": "Result"
+  },
+  {
+    "screen": "learn: experiment 01",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "b (range): Bias b"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "b:exact (input): Bias b, exact value"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-bias:0 (radio): It grows"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-bias:1 (radio): It shrinks: every z drops by the same amount, so fewer inputs reach the threshold"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-bias:2 (radio): It turns around"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-live:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-live:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-rule:0 (radio): When its weighted sum plus bias, z, is at least #"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-rule:1 (radio): When both inputs are #"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-rule:2 (radio): When its weights are positive"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-xor:0 (radio): Its decision boundary is one straight line, and no straight line puts (#) and (#) on one side with (#) and (#) on the ot"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-xor:1 (radio): The weights would need to be very large"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "check:p-xor:2 (radio): XOR has too few examples"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "gate:AND (radio): AND"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "gate:NOT (radio): NOT"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "gate:OR (radio): OR"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "gate:XOR (radio): XOR"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Linear vs Nonlinear Transformations →"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "reset (button): Reset to starting values"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "solution (button): Show me one setting that works"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "w1 (range): Weight w₁"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "w1:exact (input): Weight w₁, exact value"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "w2 (range): Weight w₂"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "control",
+    "text": "w2:exact (input): Weight w₂, exact value"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "disclosure",
+    "text": "See the engine’s record of these rows"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "caption: Steps in the engine’s record"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "caption: Truth table and the perceptron’s answers"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "figcaption: AND: inputs in the shaded region give output #."
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h3: Build NOT"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h3: Build OR"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h3: Fight XOR"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h3: Turn the line"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h3: Weights and bias"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "h3: Your perceptron"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceIn this experiment, when does the perceptron output #?"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy can no setting of one perceptron get all four XOR rows right?"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith the weights and bias on screen (w₁ = #, w₂ = #, b = #), what does th"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "legend: ScenarioYou make the bias much more negative and leave the weights alone. What happens to the region that outputs #?"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "information",
+    "text": "legend: Target gate"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "panel",
+    "text": "Perceptron controls"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "panel",
+    "text": "Score"
+  },
+  {
+    "screen": "learn: experiment 02",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-compose:0 (radio): exactly what one linear layer can do, and nothing more"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-compose:1 (radio): twice as much as one layer"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-compose:2 (radio): anything, if the layers are wide enough"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-fix:0 (radio): Adding a nonlinear activation between the layers"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-fix:1 (radio): Adding more linear layers"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-fix:2 (radio): Using larger weights"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-grid:0 (radio): They stay straight, and parallel lines stay parallel"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-grid:1 (radio): They can bend into curves"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-grid:2 (radio): They always stay exactly the same"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-live:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-live:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "check:l-live:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "combine (button): Find the single layer that does the same"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer1:flip (radio): Mirror"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer1:identity (radio): Leave as is"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer1:rotate (radio): Turn"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer1:shear (radio): Shear"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer1:shift (radio): Shift"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer1:stretch (radio): Stretch"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer2:flip (radio): Mirror"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer2:identity (radio): Leave as is"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer2:rotate (radio): Turn"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer2:shear (radio): Shear"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer2:shift (radio): Shift"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "layer2:stretch (radio): Stretch"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Multilayer Perceptron: From Architecture to Training Trace →"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "nonlinear:linear (radio): None (linear)"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "nonlinear:relu (radio): ReLU (nonlinear)"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:b0 (range): Bias: shift x′"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:b0:exact (input): Bias: shift x′, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:b1 (range): Bias: shift y′"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:b1:exact (input): Bias: shift y′, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w0 (range): Weight: x′ from x₁"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w0:exact (input): Weight: x′ from x₁, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w1 (range): Weight: y′ from x₁"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w1:exact (input): Weight: y′ from x₁, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w2 (range): Weight: x′ from x₂"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w2:exact (input): Weight: x′ from x₂, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w3 (range): Weight: y′ from x₂"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p1:w3:exact (input): Weight: y′ from x₂, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p3:b (range): Bias b"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p3:b:exact (input): Bias b, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p3:w0 (range): Weight w₁"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p3:w0:exact (input): Weight w₁, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p3:w1 (range): Weight w₂"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p3:w1:exact (input): Weight w₂, exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p4:b0 (range): Hidden bias #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p4:b0:exact (input): Hidden bias # exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p4:b1 (range): Hidden bias #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "p4:b1:exact (input): Hidden bias # exact value"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "preset:flip (radio): Mirror"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "preset:identity (radio): Leave as is"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "preset:rotate (radio): Turn"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "preset:shear (radio): Shear"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "preset:shift (radio): Shift"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "preset:stretch (radio): Stretch"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "disclosure",
+    "text": "Change the hidden biases"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "disclosure",
+    "text": "Set the weights and bias yourself"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "disclosure",
+    "text": "Why: the formula"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: After layer #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: After the layer"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: Before: the original points"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: Linear only: one straight boundary."
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: Original"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: The output neuron draws one straight line in this hidden space."
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "figcaption: XOR with a linear classifier"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: Add a nonlinear step"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: Break the solution"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: Compose two layers"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: Look inside"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: Squash the plane"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: Two linear layers in a row"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: What one linear layer does"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h3: XOR, with one straight line"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h4: Inside: where the hidden layer puts the four points"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "h4: The network’s decision"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: Choose a transformation"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: Hidden-layer activation"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: Layer #"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: Multiple choiceTwo linear layers, one after the other, with no activation between them, can do…"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhich change lets a network separate XOR?"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith the hidden activation set to none (linear) and the hidden biases on "
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "information",
+    "text": "legend: ScenarioYou apply any linear layer to a square grid. What happens to the grid lines?"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: experiment 03",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:activation:relu (radio): ReLU"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:activation:sigmoid (radio): Sigmoid"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:activation:tanh (radio): Tanh"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:layers:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:layers:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:layers:3 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:units:0:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:units:0:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:units:0:3 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:units:0:4 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:units:0:6 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "arch:units:0:8 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-epoch:0 (radio): One complete pass through all the training examples"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-epoch:1 (radio): One group of examples processed together"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-epoch:2 (radio): One adjustment of the parameters"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-live-batches:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-live-batches:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-live-batches:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-live-run:0 (radio): lower"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-live-run:1 (radio): about the same (within # %)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-live-run:2 (radio): higher"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-loss:0 (radio): The one that predicts #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-loss:1 (radio): The one that predicts #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-loss:2 (radio): They are equal"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-lr:0 (radio): How large each adjustment of the parameters is"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-lr:1 (radio): How many examples are processed together"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:m-lr:2 (radio): How many neurons each layer has"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "loop:next (button): Next step →"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "loss:prediction (range): Prediction"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "loss:prediction:exact (input): Prediction, exact value"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "loss:target:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "loss:target:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "lr:compare (button): Compare three learning rates"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Level # assessment →"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:history (button): Show how L#.W changed up to here"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ##"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:layer (button): Hidden layer # (L#)(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:layer (button): Output layer (L#)(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:layer (button): Whole network(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:operation (button): finish this layer (backwards)##(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:operation (button): pass the adjustment signal back through the activation##(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:operation (button): work out how each bias should change##(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:operation (button): work out how each weight should change##(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Backward: work out how to adjustbackward(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Forward: the network predictsforward(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Loss: compare the prediction with the targetloss(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Adjust the parameters (one update for the batch)update"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Batch beginscontrol(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Example ##: inputs (# #), target #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Example ##: inputs (# #), target #(done)"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:param (select): ParameterWeights of hidden layer # (l#)Biases of hidden layer # (l#)Weights of output layer (l#)Biases of output layer ("
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:pin (button): 📌 Pin these values to compare"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:layer (radio): Layer"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:operation (radio): Operation"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train (button): Train again with these settings"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:batch:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:batch:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:batch:4 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:epochs:150 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:epochs:300 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:epochs:50 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:lr:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:lr:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "control",
+    "text": "train:lr:10 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Inspect and compare parameters"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "The recorded instruction ##: BACKWARD_LAYER_END"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Values inside the network for this example"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: L#.W now"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: Parameters per layer"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: Runs so far: compare their outcomes"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "figcaption: Loss after each epoch (checked on all four examples). Solid: up to the current point in the record. Dashed grey: the res"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Build a network"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Down to the operations"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: How a network learns"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: One example at a time"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The words you need for training"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Too large a step"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Too small a network"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Train it, then inspect what happened"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Watch a weight change"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs and batches"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: How far off is a prediction?"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Progress at this point in the record"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Small, moderate and large steps"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: The learning loop"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: The network’s decision"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Your training settings"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Activation in the hidden layers"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Batch size"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Epochs"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Hidden layers"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Learning rate"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does the learning rate control?"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is an epoch?"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Neurons in hidden layer #"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith your batch size of # and the # XOR examples, how many batches, and s"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Scenario · uses your current settingsLook at the loss chart of run #. Compared with after epoch # the loss at the end of"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioA network predicts # for an example whose target is #. Another predicts # for the same example. Which has the la"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Target"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Training overview"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Your training settings"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:activation:relu (radio): ReLU"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:activation:sigmoid (radio): Sigmoid"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:activation:tanh (radio): Tanh"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:layers:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:layers:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:layers:3 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:units:0:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:units:0:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:units:0:3 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:units:0:4 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:units:0:6 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "arch:units:0:8 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-epoch:0 (radio): One complete pass through all the training examples"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-epoch:1 (radio): One group of examples processed together"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-epoch:2 (radio): One adjustment of the parameters"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-live-batches:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-live-batches:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-live-batches:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-live-run:0 (radio): lower"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-live-run:1 (radio): about the same"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-live-run:2 (radio): higher"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-loss:0 (radio): The one that predicts #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-loss:1 (radio): The one that predicts #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-loss:2 (radio): They are equal"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-lr:0 (radio): How large each adjustment of the parameters is"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-lr:1 (radio): How many examples are processed together"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "check:m-lr:2 (radio): How many neurons each layer has"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "loop:next (button): Next step →"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "loss:prediction (range): Prediction"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "loss:prediction:exact (input): Prediction, exact value"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "loss:target:0 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "loss:target:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "lr:compare (button): Compare three learning rates"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "next-experiment (a): Level # assessment →"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train (button): Train the network"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:batch:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:batch:2 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:batch:4 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:epochs:150 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:epochs:300 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:epochs:50 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:lr:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:lr:1 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "control",
+    "text": "train:lr:10 (radio): #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "caption: Parameters per layer"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: Build a network"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: Down to the operations"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: How a network learns"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: One example at a time"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: The words you need for training"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: Too large a step"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: Too small a network"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: Train it, then inspect what happened"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h3: Watch a weight change"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h4: Epochs and batches"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h4: How far off is a prediction?"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h4: Small, moderate and large steps"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h4: The learning loop"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "h4: Your training settings"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Activation in the hidden layers"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Batch size"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Epochs"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Hidden layers"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Learning rate"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does the learning rate control?"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is an epoch?"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Neurons in hidden layer #"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith your batch size of # and the # XOR examples, how many batches, and s"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Scenario · uses your current settingsCompared with after epoch # is the loss at the end of your run lower, the same or h"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: ScenarioA network predicts # for an example whose target is #. Another predicts # for the same example. Which has the la"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "information",
+    "text": "legend: Target"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: experiment 04",
+    "kind": "panel",
+    "text": "Your training settings"
+  },
+  {
+    "screen": "learn: home",
+    "kind": "control",
+    "text": "start-learning (a): Start learning: Level # →"
+  },
+  {
+    "screen": "learn: home",
+    "kind": "information",
+    "text": "h2: How it works"
+  },
+  {
+    "screen": "learn: home",
+    "kind": "information",
+    "text": "h3: Experiment"
+  },
+  {
+    "screen": "learn: home",
+    "kind": "information",
+    "text": "h3: Look back at every step"
+  },
+  {
+    "screen": "learn: home",
+    "kind": "information",
+    "text": "h3: Real computation"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "control",
+    "text": "start-level (a): Start learning →"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h2: By the end you will understand"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h2: Your path"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h3: Experiment #: Inside a Neuron"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h3: Experiment #: Linear vs Nonlinear Transformations"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h3: Experiment #: Multilayer Perceptron: From Architecture to Training Trace"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h3: Experiment #: Perceptrons and Logic Gates"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h3: Level # assessment"
+  },
+  {
+    "screen": "learn: level 1",
+    "kind": "information",
+    "text": "h3: Orientation: AI, ML and DL"
+  },
+  {
+    "screen": "learn: levels",
+    "kind": "control",
+    "text": "open-workbench (a): Open the workbench"
+  },
+  {
+    "screen": "learn: levels",
+    "kind": "information",
+    "text": "h2: Level # — Beginner: Neural Network Foundations"
+  },
+  {
+    "screen": "learn: levels",
+    "kind": "information",
+    "text": "h2: Levels # and beyond"
+  },
+  {
+    "screen": "learn: orientation",
+    "kind": "control",
+    "text": "next-experiment (a): Start Experiment # · Inside a Neuron →"
+  },
+  {
+    "screen": "learn: orientation",
+    "kind": "information",
+    "text": "h2: Artificial intelligence (AI)"
+  },
+  {
+    "screen": "learn: orientation",
+    "kind": "information",
+    "text": "h2: Deep learning (DL)"
+  },
+  {
+    "screen": "learn: orientation",
+    "kind": "information",
+    "text": "h2: How this lab works"
+  },
+  {
+    "screen": "learn: orientation",
+    "kind": "information",
+    "text": "h2: Machine learning (ML)"
+  },
+  {
     "screen": "loss (expert)",
     "kind": "control",
     "text": "back (button): ◀ Back"

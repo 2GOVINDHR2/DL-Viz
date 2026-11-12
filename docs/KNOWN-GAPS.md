@@ -89,3 +89,23 @@ Items dropped, deferred, or known to be weak. Each entry names its phase.
 - **KG-R5-7 — Determinism across JavaScript engines is not established** (NPM-SPEC §8, scope). Firefox and Safari may differ from V8 in the last bit of `Math.exp`, `tanh` and `log`.
 - **KG-R5-8 — Pin-and-compare (3.4) is in expert mode only.** It is now offered in every experiment's expert mode, not on the guided path.
 - **KG-R5-9 — On the CNN, the trace list reads only the rows in view, so filtering, searching and "Ask the trace" are not offered there.** Reading the whole trace into the page took the heap past 1.5 GB. Querying it in the worker, which holds the trace already, would remove the limit.
+
+## Level 1 rebuild — 2026-11-12 — open items
+
+- **KG-L1-1 — No learner has used Level 1.**
+  - Its wording, pacing and the 45–65-minute estimate are design targets, not measurements.
+  - The study instruments in `src/study/` still address the workbench's ten experiments. They have not been aligned to Level 1's objectives.
+- **KG-L1-2 — The workbench was carried across, not redesigned (ADR-080).**
+  - The self-check defect noted in the context report (feedback describing the default run) is fixed for Level 1 (ADR-084). It is still present in the workbench's experiment 1.
+  - Fix Rounds 6 and 7 are not applied to the workbench.
+  - Round 7's chart clipping (ReLU and linear looking saturated) is avoided in Level 1's activation graph, which fits its axis to the curve, but not in the workbench.
+- **KG-L1-3 — Probes run on the main thread (ADR-082).**
+  - Measured in Node, uncached: Experiment 03's largest (58 examples through one or two 2-unit layers) takes 5.4–6.1 ms; Experiment 01's takes 0.2 ms; a 48×48 decision grid takes 0.9 ms. Repeated settings come from the cache.
+  - Frame time while dragging a slider has not been measured in the browser. `perf.spec.ts` still measures the workbench only.
+- **KG-L1-4 — Experiment 04 trains on the four XOR examples only.** Batch size is therefore limited to 1, 2 or 4, and an epoch has at most four batches. A larger dataset would show batching better, at the cost of a longer record.
+- **KG-L1-5 — The learning-rate comparison uses `compareRuns`.** Its curves are real engine runs (the evaluation loss per epoch), but they are not recorded as traces and cannot be opened in the explorer.
+- **KG-L1-6 — Parameter history (`paramHistory`) walks the record up to the cursor.** It runs only on request ("Show how … changed"). Its memory is bounded by the trace store's cache budget, not by the two-segment bound that stepping keeps.
+- **KG-L1-7 — The explorer's step list is a nested list of buttons, not an ARIA tree.** Keyboard users move through it with Tab, not with arrow keys.
+- **KG-L1-8 — Accessibility is checked automatically only:** axe, on every Level 1 page in both themes, with the tour open and the explorer at each level of detail. Manual testing with screen readers is outstanding, as it is for the workbench.
+- **KG-L1-9 — Only Chromium was run here.** The Firefox and WebKit projects in `playwright.config.ts` were not run for Level 1 in this environment.
+- **KG-L1-10 — The Level 1 status indicator lives in `sessionStorage`.** It resets when the tab closes. This is deliberate (task §5): it is not a progress record.

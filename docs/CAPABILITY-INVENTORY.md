@@ -1,17 +1,18 @@
 # Capability Inventory
 
 **What this is (Fix Round 5, Part 0).** Every capability of every screen, read from the running build by `tests/e2e/capabilities.spec.ts`:
-- every experiment, in both modes;
+- every experiment of the workbench, in both modes;
+- every page of the Level 1 learning interface, and Experiment 04 after a real run at each level of detail;
 - in two states, as opened and part-way through the run;
 - with every disclosure section open.
 
 Numbers are shown as `#`, so an entry means the same capability whatever values the run holds.
 
-**It is generated, not written by hand.** Regenerate it with `CAPTURE=1 npx playwright test tests/e2e/capabilities.spec.ts`, which also writes the JSON baseline (`reports/capability-inventory.json`).
+**It is generated, not written by hand.** Regenerate it with `CAPTURE=1 npx playwright test tests/e2e/capabilities.spec.ts`, which also writes the JSON baseline (`reports/capability-inventory.json`). `CAPTURE=append` adds only screens new to the baseline and leaves every existing entry as it was (ADR-086); the Level 1 screens were added this way.
 
 **How it protects the baseline.** Without `CAPTURE`, the same test fails if any baseline capability is missing from the current build, unless `reports/capability-removed.json` lists it with the ADR that removed it. A capability can be removed deliberately; it cannot disappear silently.
 
-**Totals:** 2090 capabilities over 20 screens.
+**Totals:** 2570 capabilities over 30 screens.
 
 **What it does not cover.** States that appear only after a particular interaction (a revealed prediction, a pinned comparison) are not captured here. They are covered by the e2e tests named in PROGRESS, Fix Round 5.
 
@@ -1154,6 +1155,593 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - legend: #. The loss grows larger after every step. The most likely fix is to…
 - legend: #. The update rule is θ ← θ − η·∂L/∂θ. Why the minus sign?
 - legend: #. You change the batch size from # to # on these # points. What happens in each epoch?
+
+## learn: assessment
+
+**Controls (data-control id, element, accessible name)** (24)
+
+- check:a-batch:0 (radio): #
+- check:a-batch:1 (radio): #
+- check:a-batch:2 (radio): #
+- check:a-boundary:0 (radio): The line of inputs where its weighted sum plus bias is exactly at the threshold
+- check:a-boundary:1 (radio): The largest input it accepts
+- check:a-boundary:2 (radio): The set of inputs it gets wrong
+- check:a-linear:0 (radio): Without it, any stack of layers acts like a single linear layer
+- check:a-linear:1 (radio): It makes training faster
+- check:a-linear:2 (radio): It keeps the weights small
+- check:a-neuron:0 (radio): #
+- check:a-neuron:1 (radio): #
+- check:a-neuron:2 (radio): #
+- check:a-relu:0 (radio): #
+- check:a-relu:1 (radio): #
+- check:a-relu:2 (radio): #
+- check:a-separable:0 (radio): XOR
+- check:a-separable:1 (radio): AND
+- check:a-separable:2 (radio): NOT
+- check:a-trace:0 (radio): A record of every operation the engine performed during that run, which you can step through in both directions
+- check:a-trace:1 (radio): An animation showing roughly what a network does
+- check:a-trace:2 (radio): A summary of the final accuracy only
+- check:a-training:0 (radio): Adjusting the parameters, using examples, so that predictions improve
+- check:a-training:1 (radio): Choosing the number of layers
+- check:a-training:2 (radio): Running the network on one input to see its answer
+
+**Information shown (headings, captions, legends)** (8)
+
+- legend: Multiple choiceWhat does ReLU output when z is #?
+- legend: Multiple choiceWhat is a perceptron’s decision boundary?
+- legend: Multiple choiceWhat is the training trace you explored in Experiment #?
+- legend: Multiple choiceWhich sentence describes training?
+- legend: Multiple choiceWhy do networks put a nonlinear activation between layers?
+- legend: Predict the outputA neuron has inputs # and # weights # and # and bias #. What is its weighted sum z?
+- legend: Predict the outputThere are # training examples and the batch size is #. How many batches are in one epoch?
+- legend: ScenarioWhich of these gates can a single perceptron NOT implement?
+
+## learn: experiment 01
+
+**Panels** (4)
+
+- Learning objectives
+- Neuron controls
+- Result
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (36)
+
+- activation:relu (radio): ReLU
+- activation:sigmoid (radio): Sigmoid
+- activation:step (radio): Step
+- activation:tanh (radio): Tanh
+- b (range): Bias b
+- b:exact (input): Bias b, exact value
+- begin (a): Begin ↓
+- check:n-live-relu:0 (radio): #
+- check:n-live-relu:1 (radio): #
+- check:n-live-relu:2 (radio): #
+- check:n-live-step:0 (radio): #
+- check:n-live-step:1 (radio): #
+- check:n-stages:0 (radio): The weighted sum z: each input times its weight, added up, plus the bias
+- check:n-stages:1 (radio): The output a
+- check:n-stages:2 (radio): A new set of weights
+- check:n-step:0 (radio): Step
+- check:n-step:1 (radio): Sigmoid
+- check:n-step:2 (radio): ReLU
+- check:n-zero:0 (radio): Nothing: z stays the same
+- check:n-zero:1 (radio): z goes up by #
+- check:n-zero:2 (radio): z becomes #
+- next-experiment (a): Next: # · Perceptrons and Logic Gates →
+- primer:w (range): Weight w
+- primer:w:exact (input): Weight w, exact value
+- primer:x (range): Input x
+- primer:x:exact (input): Input x, exact value
+- reset (button): Reset to starting values
+- tour:start (button): ▶ Start guided tour
+- w1 (range): Weight w₁
+- w1:exact (input): Weight w₁, exact value
+- w2 (range): Weight w₂
+- w2:exact (input): Weight w₂, exact value
+- x1 (range): Input x₁
+- x1:exact (input): Input x₁, exact value
+- x2 (range): Input x₂
+- x2:exact (input): Input x₂, exact value
+
+**Disclosure sections** (3)
+
+- See the engine’s record of this calculation
+- Show the calculation
+- Show the formula
+
+**Information shown (headings, captions, legends)** (24)
+
+- caption: Step by step, as the engine computed it
+- caption: Steps in the engine’s record
+- figcaption: Sigmoid: the orange marker is the current z. The output a is read off the curve.
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Flip a weight
+- h3: Inputs
+- h3: Push with the bias
+- h3: Raise one input
+- h3: Sigmoid against ReLU
+- h3: Silence a connection
+- h3: Try it: one input, one weight
+- h3: Weights and bias
+- h3: Your neuron
+- legend: Activation function
+- legend: Multiple choiceA neuron works in two stages. What does the first stage produce?
+- legend: Multiple choiceWhich activation function can only give # or #?
+- legend: Predict the output · uses your current settingsKeep these settings (z = #) and choose Step. What does the neuron output?
+- legend: Predict the output · uses your current settingsWith the settings on screen, the weighted sum is z = #. What would the ne
+- legend: ScenarioYou set weight w₁ to #. Then you change input x₁ from # to #. What happens to z?
+
+## learn: experiment 02
+
+**Panels** (4)
+
+- Learning objectives
+- Perceptron controls
+- Score
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (26)
+
+- b (range): Bias b
+- b:exact (input): Bias b, exact value
+- begin (a): Begin ↓
+- check:p-bias:0 (radio): It grows
+- check:p-bias:1 (radio): It shrinks: every z drops by the same amount, so fewer inputs reach the threshold
+- check:p-bias:2 (radio): It turns around
+- check:p-live:0 (radio): #
+- check:p-live:1 (radio): #
+- check:p-rule:0 (radio): When its weighted sum plus bias, z, is at least #
+- check:p-rule:1 (radio): When both inputs are #
+- check:p-rule:2 (radio): When its weights are positive
+- check:p-xor:0 (radio): Its decision boundary is one straight line, and no straight line puts (#) and (#) on one side with (#) and (#) on the ot
+- check:p-xor:1 (radio): The weights would need to be very large
+- check:p-xor:2 (radio): XOR has too few examples
+- gate:AND (radio): AND
+- gate:NOT (radio): NOT
+- gate:OR (radio): OR
+- gate:XOR (radio): XOR
+- next-experiment (a): Next: # · Linear vs Nonlinear Transformations →
+- reset (button): Reset to starting values
+- solution (button): Show me one setting that works
+- tour:start (button): ▶ Start guided tour
+- w1 (range): Weight w₁
+- w1:exact (input): Weight w₁, exact value
+- w2 (range): Weight w₂
+- w2:exact (input): Weight w₂, exact value
+
+**Disclosure sections** (1)
+
+- See the engine’s record of these rows
+
+**Information shown (headings, captions, legends)** (20)
+
+- caption: Steps in the engine’s record
+- caption: Truth table and the perceptron’s answers
+- figcaption: AND: inputs in the shaded region give output #.
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Build NOT
+- h3: Build OR
+- h3: Fight XOR
+- h3: Turn the line
+- h3: Weights and bias
+- h3: Your perceptron
+- legend: Multiple choiceIn this experiment, when does the perceptron output #?
+- legend: Multiple choiceWhy can no setting of one perceptron get all four XOR rows right?
+- legend: Predict the output · uses your current settingsWith the weights and bias on screen (w₁ = #, w₂ = #, b = #), what does th
+- legend: ScenarioYou make the bias much more negative and leave the weights alone. What happens to the region that outputs #?
+- legend: Target gate
+
+## learn: experiment 03
+
+**Panels** (2)
+
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (58)
+
+- begin (a): Begin ↓
+- check:l-compose:0 (radio): exactly what one linear layer can do, and nothing more
+- check:l-compose:1 (radio): twice as much as one layer
+- check:l-compose:2 (radio): anything, if the layers are wide enough
+- check:l-fix:0 (radio): Adding a nonlinear activation between the layers
+- check:l-fix:1 (radio): Adding more linear layers
+- check:l-fix:2 (radio): Using larger weights
+- check:l-grid:0 (radio): They stay straight, and parallel lines stay parallel
+- check:l-grid:1 (radio): They can bend into curves
+- check:l-grid:2 (radio): They always stay exactly the same
+- check:l-live:0 (radio): #
+- check:l-live:1 (radio): #
+- check:l-live:2 (radio): #
+- combine (button): Find the single layer that does the same
+- layer1:flip (radio): Mirror
+- layer1:identity (radio): Leave as is
+- layer1:rotate (radio): Turn
+- layer1:shear (radio): Shear
+- layer1:shift (radio): Shift
+- layer1:stretch (radio): Stretch
+- layer2:flip (radio): Mirror
+- layer2:identity (radio): Leave as is
+- layer2:rotate (radio): Turn
+- layer2:shear (radio): Shear
+- layer2:shift (radio): Shift
+- layer2:stretch (radio): Stretch
+- next-experiment (a): Next: # · Multilayer Perceptron: From Architecture to Training Trace →
+- nonlinear:linear (radio): None (linear)
+- nonlinear:relu (radio): ReLU (nonlinear)
+- p1:b0 (range): Bias: shift x′
+- p1:b0:exact (input): Bias: shift x′, exact value
+- p1:b1 (range): Bias: shift y′
+- p1:b1:exact (input): Bias: shift y′, exact value
+- p1:w0 (range): Weight: x′ from x₁
+- p1:w0:exact (input): Weight: x′ from x₁, exact value
+- p1:w1 (range): Weight: y′ from x₁
+- p1:w1:exact (input): Weight: y′ from x₁, exact value
+- p1:w2 (range): Weight: x′ from x₂
+- p1:w2:exact (input): Weight: x′ from x₂, exact value
+- p1:w3 (range): Weight: y′ from x₂
+- p1:w3:exact (input): Weight: y′ from x₂, exact value
+- p3:b (range): Bias b
+- p3:b:exact (input): Bias b, exact value
+- p3:w0 (range): Weight w₁
+- p3:w0:exact (input): Weight w₁, exact value
+- p3:w1 (range): Weight w₂
+- p3:w1:exact (input): Weight w₂, exact value
+- p4:b0 (range): Hidden bias #
+- p4:b0:exact (input): Hidden bias # exact value
+- p4:b1 (range): Hidden bias #
+- p4:b1:exact (input): Hidden bias # exact value
+- preset:flip (radio): Mirror
+- preset:identity (radio): Leave as is
+- preset:rotate (radio): Turn
+- preset:shear (radio): Shear
+- preset:shift (radio): Shift
+- preset:stretch (radio): Stretch
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (3)
+
+- Change the hidden biases
+- Set the weights and bias yourself
+- Why: the formula
+
+**Information shown (headings, captions, legends)** (30)
+
+- figcaption: After layer #
+- figcaption: After the layer
+- figcaption: Before: the original points
+- figcaption: Linear only: one straight boundary.
+- figcaption: Original
+- figcaption: The output neuron draws one straight line in this hidden space.
+- figcaption: XOR with a linear classifier
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Add a nonlinear step
+- h3: Break the solution
+- h3: Compose two layers
+- h3: Look inside
+- h3: Squash the plane
+- h3: Two linear layers in a row
+- h3: What one linear layer does
+- h3: XOR, with one straight line
+- h4: Inside: where the hidden layer puts the four points
+- h4: The network’s decision
+- legend: Choose a transformation
+- legend: Hidden-layer activation
+- legend: Layer #
+- legend: Multiple choiceTwo linear layers, one after the other, with no activation between them, can do…
+- legend: Multiple choiceWhich change lets a network separate XOR?
+- legend: Predict the output · uses your current settingsWith the hidden activation set to none (linear) and the hidden biases on 
+- legend: ScenarioYou apply any linear layer to a square grid. What happens to the grid lines?
+
+## learn: experiment 04 (trained)
+
+**Panels** (5)
+
+- Learning objectives
+- Trace explorer
+- Training overview
+- What you will understand
+- Your training settings
+
+**Controls (data-control id, element, accessible name)** (82)
+
+- arch:activation:relu (radio): ReLU
+- arch:activation:sigmoid (radio): Sigmoid
+- arch:activation:tanh (radio): Tanh
+- arch:layers:1 (radio): #
+- arch:layers:2 (radio): #
+- arch:layers:3 (radio): #
+- arch:units:0:1 (radio): #
+- arch:units:0:2 (radio): #
+- arch:units:0:3 (radio): #
+- arch:units:0:4 (radio): #
+- arch:units:0:6 (radio): #
+- arch:units:0:8 (radio): #
+- begin (a): Begin ↓
+- check:m-epoch:0 (radio): One complete pass through all the training examples
+- check:m-epoch:1 (radio): One group of examples processed together
+- check:m-epoch:2 (radio): One adjustment of the parameters
+- check:m-live-batches:0 (radio): #
+- check:m-live-batches:1 (radio): #
+- check:m-live-batches:2 (radio): #
+- check:m-live-run:0 (radio): lower
+- check:m-live-run:1 (radio): about the same (within # %)
+- check:m-live-run:2 (radio): higher
+- check:m-loss:0 (radio): The one that predicts #
+- check:m-loss:1 (radio): The one that predicts #
+- check:m-loss:2 (radio): They are equal
+- check:m-lr:0 (radio): How large each adjustment of the parameters is
+- check:m-lr:1 (radio): How many examples are processed together
+- check:m-lr:2 (radio): How many neurons each layer has
+- loop:next (button): Next step →
+- loss:prediction (range): Prediction
+- loss:prediction:exact (input): Prediction, exact value
+- loss:target:0 (radio): #
+- loss:target:1 (radio): #
+- lr:compare (button): Compare three learning rates
+- next-experiment (a): Level # assessment →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:history (button): Show how L#.W changed up to here
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol(done)
+- trace:node:layer (button): Hidden layer # (L#)(done)
+- trace:node:layer (button): Output layer (L#)(done)
+- trace:node:layer (button): Whole network(done)
+- trace:node:operation (button): finish this layer (backwards)##(done)
+- trace:node:operation (button): pass the adjustment signal back through the activation##(done)
+- trace:node:operation (button): work out how each bias should change##(done)
+- trace:node:operation (button): work out how each weight should change##(done)
+- trace:node:phase (button): Backward: work out how to adjustbackward(done)
+- trace:node:phase (button): Forward: the network predictsforward(done)
+- trace:node:phase (button): Loss: compare the prediction with the targetloss(done)
+- trace:node:sample (button): Adjust the parameters (one update for the batch)update
+- trace:node:sample (button): Batch beginscontrol(done)
+- trace:node:sample (button): Example ##: inputs (# #), target #
+- trace:node:sample (button): Example ##: inputs (# #), target #(done)
+- trace:param (select): ParameterWeights of hidden layer # (l#)Biases of hidden layer # (l#)Weights of output layer (l#)Biases of output layer (
+- trace:pin (button): 📌 Pin these values to compare
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:layer (radio): Layer
+- trace:size:operation (radio): Operation
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+- train (button): Train again with these settings
+- train:batch:1 (radio): #
+- train:batch:2 (radio): #
+- train:batch:4 (radio): #
+- train:epochs:150 (radio): #
+- train:epochs:300 (radio): #
+- train:epochs:50 (radio): #
+- train:lr:0.1 (radio): #
+- train:lr:1 (radio): #
+- train:lr:10 (radio): #
+
+**Disclosure sections** (3)
+
+- Inspect and compare parameters
+- The recorded instruction ##: BACKWARD_LAYER_END
+- Values inside the network for this example
+
+**Information shown (headings, captions, legends)** (43)
+
+- caption: L#.W now
+- caption: Parameters per layer
+- caption: Runs so far: compare their outcomes
+- figcaption: Loss after each epoch (checked on all four examples). Solid: up to the current point in the record. Dashed grey: the res
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Build a network
+- h3: Down to the operations
+- h3: How a network learns
+- h3: One example at a time
+- h3: The record of run #
+- h3: The words you need for training
+- h3: Too large a step
+- h3: Too small a network
+- h3: Train it, then inspect what happened
+- h3: Watch a weight change
+- h4: Epochs
+- h4: Epochs and batches
+- h4: How far off is a prediction?
+- h4: Inside epoch # of #
+- h4: Progress at this point in the record
+- h4: Small, moderate and large steps
+- h4: The learning loop
+- h4: The network’s decision
+- h4: Your training settings
+- legend: Activation in the hidden layers
+- legend: Batch size
+- legend: Detail
+- legend: Epochs
+- legend: Hidden layers
+- legend: Learning rate
+- legend: Multiple choiceWhat does the learning rate control?
+- legend: Multiple choiceWhat is an epoch?
+- legend: Neurons in hidden layer #
+- legend: Predict the output · uses your current settingsWith your batch size of # and the # XOR examples, how many batches, and s
+- legend: Scenario · uses your current settingsLook at the loss chart of run #. Compared with after epoch # the loss at the end of
+- legend: ScenarioA network predicts # for an example whose target is #. Another predicts # for the same example. Which has the la
+- legend: Step size
+- legend: Target
+
+## learn: experiment 04
+
+**Panels** (3)
+
+- Learning objectives
+- What you will understand
+- Your training settings
+
+**Controls (data-control id, element, accessible name)** (46)
+
+- arch:activation:relu (radio): ReLU
+- arch:activation:sigmoid (radio): Sigmoid
+- arch:activation:tanh (radio): Tanh
+- arch:layers:1 (radio): #
+- arch:layers:2 (radio): #
+- arch:layers:3 (radio): #
+- arch:units:0:1 (radio): #
+- arch:units:0:2 (radio): #
+- arch:units:0:3 (radio): #
+- arch:units:0:4 (radio): #
+- arch:units:0:6 (radio): #
+- arch:units:0:8 (radio): #
+- begin (a): Begin ↓
+- check:m-epoch:0 (radio): One complete pass through all the training examples
+- check:m-epoch:1 (radio): One group of examples processed together
+- check:m-epoch:2 (radio): One adjustment of the parameters
+- check:m-live-batches:0 (radio): #
+- check:m-live-batches:1 (radio): #
+- check:m-live-batches:2 (radio): #
+- check:m-live-run:0 (radio): lower
+- check:m-live-run:1 (radio): about the same
+- check:m-live-run:2 (radio): higher
+- check:m-loss:0 (radio): The one that predicts #
+- check:m-loss:1 (radio): The one that predicts #
+- check:m-loss:2 (radio): They are equal
+- check:m-lr:0 (radio): How large each adjustment of the parameters is
+- check:m-lr:1 (radio): How many examples are processed together
+- check:m-lr:2 (radio): How many neurons each layer has
+- loop:next (button): Next step →
+- loss:prediction (range): Prediction
+- loss:prediction:exact (input): Prediction, exact value
+- loss:target:0 (radio): #
+- loss:target:1 (radio): #
+- lr:compare (button): Compare three learning rates
+- next-experiment (a): Level # assessment →
+- tour:start (button): ▶ Start guided tour
+- train (button): Train the network
+- train:batch:1 (radio): #
+- train:batch:2 (radio): #
+- train:batch:4 (radio): #
+- train:epochs:150 (radio): #
+- train:epochs:300 (radio): #
+- train:epochs:50 (radio): #
+- train:lr:0.1 (radio): #
+- train:lr:1 (radio): #
+- train:lr:10 (radio): #
+
+**Information shown (headings, captions, legends)** (33)
+
+- caption: Parameters per layer
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Build a network
+- h3: Down to the operations
+- h3: How a network learns
+- h3: One example at a time
+- h3: The words you need for training
+- h3: Too large a step
+- h3: Too small a network
+- h3: Train it, then inspect what happened
+- h3: Watch a weight change
+- h4: Epochs and batches
+- h4: How far off is a prediction?
+- h4: Small, moderate and large steps
+- h4: The learning loop
+- h4: Your training settings
+- legend: Activation in the hidden layers
+- legend: Batch size
+- legend: Epochs
+- legend: Hidden layers
+- legend: Learning rate
+- legend: Multiple choiceWhat does the learning rate control?
+- legend: Multiple choiceWhat is an epoch?
+- legend: Neurons in hidden layer #
+- legend: Predict the output · uses your current settingsWith your batch size of # and the # XOR examples, how many batches, and s
+- legend: Scenario · uses your current settingsCompared with after epoch # is the loss at the end of your run lower, the same or h
+- legend: ScenarioA network predicts # for an example whose target is #. Another predicts # for the same example. Which has the la
+- legend: Target
+
+## learn: home
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- start-learning (a): Start learning: Level # →
+
+**Information shown (headings, captions, legends)** (4)
+
+- h2: How it works
+- h3: Experiment
+- h3: Look back at every step
+- h3: Real computation
+
+## learn: level 1
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- start-level (a): Start learning →
+
+**Information shown (headings, captions, legends)** (8)
+
+- h2: By the end you will understand
+- h2: Your path
+- h3: Experiment #: Inside a Neuron
+- h3: Experiment #: Linear vs Nonlinear Transformations
+- h3: Experiment #: Multilayer Perceptron: From Architecture to Training Trace
+- h3: Experiment #: Perceptrons and Logic Gates
+- h3: Level # assessment
+- h3: Orientation: AI, ML and DL
+
+## learn: levels
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- open-workbench (a): Open the workbench
+
+**Information shown (headings, captions, legends)** (2)
+
+- h2: Level # — Beginner: Neural Network Foundations
+- h2: Levels # and beyond
+
+## learn: orientation
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- next-experiment (a): Start Experiment # · Inside a Neuron →
+
+**Information shown (headings, captions, legends)** (4)
+
+- h2: Artificial intelligence (AI)
+- h2: Deep learning (DL)
+- h2: How this lab works
+- h2: Machine learning (ML)
 
 ## loss (expert)
 

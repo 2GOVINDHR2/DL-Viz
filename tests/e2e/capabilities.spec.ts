@@ -10,7 +10,7 @@
  * Numbers are replaced by "#" so a capability is the same capability whatever values the run holds.
  *
  * With CAPTURE=1 the result is written as the baseline: reports/capability-inventory.json and
- * docs/CAPABILITY-INVENTORY.md. Without it, the test fails if any baseline capability is missing, unless it is
+ * docs/CAPABILITY-INVENTORY.md. With CAPTURE=append only screens new to the baseline are added (ADR-086). Without it, the test fails if any baseline capability is missing, unless it is
  * listed in reports/capability-removed.json with the ADR that removed it. A feature that disappears silently
  * therefore fails a test (Part 0.4).
  */
@@ -103,6 +103,41 @@ async function screen(
 
 const key = (c: Capability): string => `${c.screen}|${c.kind}|${c.text}`;
 
+/** The Level 1 learning interface (ADR-080): every page as opened, and Experiment 04 after a real run. */
+const LEVEL1_PAGES: [string, string][] = [
+  ['learn: home', '/#/'],
+  ['learn: levels', '/#/levels'],
+  ['learn: level 1', '/#/level-1'],
+  ['learn: orientation', '/#/level-1/orientation'],
+  ['learn: experiment 01', '/#/level-1/experiment-01'],
+  ['learn: experiment 02', '/#/level-1/experiment-02'],
+  ['learn: experiment 03', '/#/level-1/experiment-03'],
+  ['learn: experiment 04', '/#/level-1/experiment-04'],
+  ['learn: assessment', '/#/level-1/assessment'],
+];
+
+async function level1(page: Page): Promise<Capability[]> {
+  const caps: Capability[] = [];
+  for (const [name, url] of LEVEL1_PAGES) {
+    await page.goto(url);
+    await expect(page.locator('main h1').first()).toBeVisible();
+    await openAll(page);
+    for (const c of await read(page)) caps.push({ screen: name, ...c });
+    if (name === 'learn: experiment 04') {
+      await page.locator('[data-control="train"]').click();
+      await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });
+      for (const d of ['stages', 'layers', 'operations']) {
+        await page.locator(`[data-control="trace:detail:${d}"]`).check({ force: true });
+        for (let k = 0; k < 3; k++) await page.locator('[data-control="trace:next"]').click();
+        await page.waitForTimeout(300);
+        await openAll(page);
+        for (const c of await read(page)) caps.push({ screen: `${name} (trained)`, ...c });
+      }
+    }
+  }
+  return caps;
+}
+
 test('capability inventory: nothing in the baseline disappears without an ADR', async ({ page }) => {
   test.setTimeout(900_000);
   await page.setViewportSize({ width: 1280, height: 720 });
@@ -112,6 +147,7 @@ test('capability inventory: nothing in the baseline disappears without an ADR', 
     await page.goto(`/?mode=${mode}`);
     for (const e of EXPERIMENTS) all.push(...(await screen(page, mode, e.id, e.number)));
   }
+  all.push(...(await level1(page)));
   const unique = [...new Map(all.map((c) => [key(c), c])).values()].sort((a, b) =>
     key(a).localeCompare(key(b)),
   );
@@ -119,6 +155,18 @@ test('capability inventory: nothing in the baseline disappears without an ADR', 
   if (process.env.CAPTURE === '1') {
     writeFileSync(BASELINE, JSON.stringify(unique, null, 2) + '\n');
     writeFileSync(resolve(ROOT, 'docs/CAPABILITY-INVENTORY.md'), markdown(unique));
+    return;
+  }
+  // CAPTURE=append adds screens the baseline does not have yet, and never rewrites an existing screen's entries,
+  // so entries removed under an ADR (capability-removed.json) stay on record (ADR-086).
+  if (process.env.CAPTURE === 'append') {
+    const base: Capability[] = JSON.parse(readFileSync(BASELINE, 'utf8'));
+    const known = new Set(base.map((c) => c.screen));
+    const merged = [...base, ...unique.filter((c) => !known.has(c.screen))].sort((a, b) =>
+      key(a).localeCompare(key(b)),
+    );
+    writeFileSync(BASELINE, JSON.stringify(merged, null, 2) + '\n');
+    writeFileSync(resolve(ROOT, 'docs/CAPABILITY-INVENTORY.md'), markdown(merged));
     return;
   }
   const baseline: Capability[] = JSON.parse(readFileSync(BASELINE, 'utf8'));
@@ -139,13 +187,14 @@ function markdown(caps: Capability[]): string {
     '# Capability Inventory',
     '',
     '**What this is (Fix Round 5, Part 0).** Every capability of every screen, read from the running build by `tests/e2e/capabilities.spec.ts`:',
-    '- every experiment, in both modes;',
+    '- every experiment of the workbench, in both modes;',
+    '- every page of the Level 1 learning interface, and Experiment 04 after a real run at each level of detail;',
     '- in two states, as opened and part-way through the run;',
     '- with every disclosure section open.',
     '',
     'Numbers are shown as `#`, so an entry means the same capability whatever values the run holds.',
     '',
-    '**It is generated, not written by hand.** Regenerate it with `CAPTURE=1 npx playwright test tests/e2e/capabilities.spec.ts`, which also writes the JSON baseline (`reports/capability-inventory.json`).',
+    '**It is generated, not written by hand.** Regenerate it with `CAPTURE=1 npx playwright test tests/e2e/capabilities.spec.ts`, which also writes the JSON baseline (`reports/capability-inventory.json`). `CAPTURE=append` adds only screens new to the baseline and leaves every existing entry as it was (ADR-086); the Level 1 screens were added this way.',
     '',
     '**How it protects the baseline.** Without `CAPTURE`, the same test fails if any baseline capability is missing from the current build, unless `reports/capability-removed.json` lists it with the ADR that removed it. A capability can be removed deliberately; it cannot disappear silently.',
     '',

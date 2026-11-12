@@ -117,7 +117,7 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
     await unlockAll(page);
     for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme });
-      await page.goto('/');
+      await page.goto('/#/workbench');
       for (const t of titles) {
         await page.getByRole('button', { name: new RegExp(`^\\S+\\. ${t}`) }).click();
         const screen = page.locator('article.novice');
@@ -145,7 +145,7 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
     await unlockAll(page);
     for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme });
-      await page.goto('/');
+      await page.goto('/#/workbench');
       await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });
       await audit(page, `novice (${scheme}): experiment 1, worked example`);
       await page.locator('[data-control="worked:dismiss"]').click();
@@ -173,6 +173,52 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       await page.locator('[data-control="trace:phase"]').selectOption('backward');
       await expect(page.locator('[data-control="trace:clear"]')).toBeVisible();
       await audit(page, `experiment 1 expert, trace view filtered, landmarks (${scheme})`);
+    }
+  });
+
+  test('every Level 1 page, both themes: as opened with every disclosure open, the guided tour, Experiment 04 trained at every level of detail', async ({
+    page,
+  }) => {
+    const pages = [
+      '/#/',
+      '/#/levels',
+      '/#/level-1',
+      '/#/level-1/orientation',
+      '/#/level-1/experiment-01',
+      '/#/level-1/experiment-02',
+      '/#/level-1/experiment-03',
+      '/#/level-1/experiment-04',
+      '/#/level-1/assessment',
+    ];
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
+      for (const url of pages) {
+        await page.goto(url);
+        await expect(page.locator('main h1').first()).toBeVisible();
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await audit(page, `Level 1 ${url} (${scheme})`);
+      }
+      await page.goto('/#/level-1/experiment-01');
+      await page.locator('[data-control="tour:start"]').click();
+      await page.locator('[data-control="check:n-stages:1"]').check();
+      await audit(page, `Level 1 experiment 01: tour open, a wrong answer's feedback (${scheme})`);
+      await page.goto('/#/level-1/experiment-02');
+      await page.locator('[data-control="gate:XOR"]').check({ force: true });
+      await audit(page, `Level 1 experiment 02: XOR (${scheme})`);
+      await page.goto('/#/level-1/experiment-04');
+      await page.locator('[data-control="train"]').click();
+      await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });
+      for (const d of ['stages', 'layers', 'operations']) {
+        await page.locator(`[data-control="trace:detail:${d}"]`).check({ force: true });
+        for (let k = 0; k < 3; k++) await page.locator('[data-control="trace:next"]').click();
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await page.waitForTimeout(200);
+        await audit(page, `Level 1 experiment 04 trained, ${d} (${scheme})`);
+      }
     }
   });
 
