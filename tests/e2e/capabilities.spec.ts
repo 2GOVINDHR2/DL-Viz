@@ -15,7 +15,7 @@
  * therefore fails a test (Part 0.4).
  */
 import { expect, test, type Page } from '@playwright/test';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { EXPERIMENTS } from '../../src/experiments/registry';
 import { unlockAll } from './helpers';
@@ -128,6 +128,7 @@ test('capability inventory: nothing in the baseline disappears without an ADR', 
   const allowed = new Set(removed.map((r) => r.key));
   const now = new Set(unique.map(key));
   const lost = baseline.map(key).filter((k) => !now.has(k) && !allowed.has(k));
+  mkdirSync(resolve(ROOT, '.tmp'), { recursive: true });
   writeFileSync(resolve(ROOT, '.tmp/capabilities-now.json'), JSON.stringify(unique, null, 2) + '\n');
   expect(lost).toEqual([]);
 });

@@ -1,9 +1,10 @@
+import { existsSync } from 'node:fs';
 import { defineConfig, devices } from '@playwright/test';
 
-// The build container ships Chromium at a fixed path; elsewhere Playwright's own browsers are used.
+// Build containers ship Chromium at a fixed path; elsewhere Playwright's own browsers are used.
+const CONTAINER_CHROMIUM = ['/opt/pw-browsers/chromium-1194/chrome-linux/chrome', '/opt/pw-browsers/chromium'];
 const chromiumPath =
-  process.env.PW_CHROMIUM ??
-  (process.env.CI ? undefined : '/opt/pw-browsers/chromium-1194/chrome-linux/chrome');
+  process.env.PW_CHROMIUM ?? (process.env.CI ? undefined : CONTAINER_CHROMIUM.find((p) => existsSync(p)));
 
 export default defineConfig({
   testDir: 'tests/e2e',
