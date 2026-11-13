@@ -344,7 +344,9 @@ body:has(.lv-root) {
   border-radius: 999px;
   border: 1px solid var(--lv-border);
   background: var(--lv-surface);
-  white-space: nowrap;
+  /* Chips wrap at narrow widths: fonts differ between systems, so no fixed width is safe (CI found this). */
+  max-width: 100%;
+  white-space: normal;
 }
 .lv-swatch {
   display: inline-block;
