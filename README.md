@@ -4,7 +4,18 @@ A browser-only learning environment that makes neural-network **training** obser
 
 ![The XOR experiment during a parameter update: the network with weights and error signals, the explanation with the update rule and its numbers, the step controls and pathology breakpoints](docs/screenshots/xor.png)
 
-**Live demo:** https://viz-mu-one.vercel.app (Study Mode: append `#study`). The same static build is also published to GitHub Pages by `.github/workflows/pages.yml` once Pages is enabled for the repository (Settings → Pages → Source: GitHub Actions), at `https://2govindhr2.github.io/viz/`.
+**Deploy (static site, no server):**
+
+- **Vercel:** import the repository at vercel.com/new. `vercel.json` sets the build (`npm ci`, `npm run build`, output `dist/`), so no further settings are needed.
+- **GitHub Pages:** in the repository's Settings → Pages, set Source to "GitHub Actions". `.github/workflows/pages.yml` then builds and publishes on every push to `main` or `claude/exciting-heisenberg-weq2n6`, at `https://2govindhr2.github.io/DL-Viz/`.
+
+On either host:
+
+- Level 1 is the start page.
+- The workbench is at `?mode=expert`.
+- Study Mode is at `#study`.
+
+The build uses relative paths and hash routes, so it works from any sub-path.
 
 **Without building anything** (Node 22): the sample traces in `samples/` can be verified and replayed by the two reference consumers, which share no code with the application:
 
