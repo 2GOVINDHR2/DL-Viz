@@ -11,6 +11,7 @@ import { L2Experiment01 } from '../../src/learn/level2/Experiment01';
 import { L2Experiment02 } from '../../src/learn/level2/Experiment02';
 import { L2Experiment03 } from '../../src/learn/level2/exp03/Experiment03';
 import { NEURON_DATASET, neuronConfig } from '../../src/learn/level2/exp03/Training';
+import { L2Experiment04, networkConfig } from '../../src/learn/level2/exp04/Experiment04';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
 import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
@@ -48,6 +49,7 @@ describe('Level 2 vocabulary', () => {
     ['01', L2Experiment01],
     ['02', L2Experiment02],
     ['03', L2Experiment03],
+    ['04', L2Experiment04],
   ] as const)
     it(`Experiment ${id} uses no term taught later, and marks its engine values`, () => {
       const html = renderToStaticMarkup(createElement(page));
@@ -72,6 +74,25 @@ describe('Level 2 vocabulary', () => {
         );
         expect(html).toContain('The record of run');
         expect(violations('03', text(html)), `at ${at}`).toEqual([]);
+      }
+    } finally {
+      useRun.getState().dispose();
+      setEngineFactory(restore);
+    }
+  });
+
+  it('Experiment 04, trained, with its explorer at several points, uses no term taught after Experiment 04', async () => {
+    const restore = setEngineFactory(inProcessEngine);
+    try {
+      await useRun.getState().train(networkConfig(), 'v', { kind: 'xor' });
+      await useRun.getState().showEpoch(0);
+      renderCurrentRunState();
+      const h = useRun.getState().header!;
+      for (const at of [h.epochStarts[0] + 1, h.epochStarts[0] + 8, h.epochStarts[0] + 20, h.length - 1]) {
+        await useRun.getState().jump(at);
+        const html = renderToStaticMarkup(createElement(L2Experiment04));
+        expect(html).toContain('The record of run');
+        expect(violations('04', text(html)), `at ${at}`).toEqual([]);
       }
     } finally {
       useRun.getState().dispose();

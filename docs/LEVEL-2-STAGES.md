@@ -294,3 +294,108 @@ The interface computes no network or loss value. Experiment 01's matrix rows lis
 The test was corrected: it now trains sequentially by hand, compares numerically, and uses the x = (1, 1) example for the decomposition. The engine was not changed.
 
 **Conclusion.** The engine supports Experiment 04 as specified, and **no engine or NPM extension is needed**. Gradient accumulation through a value with several *trainable* consumers does not occur in this network: its only shared value, the input, needs no gradient. Experiment 05 shows that case on the tape, and G5 tests it.
+
+### 1. Implemented
+
+Experiment 04, "Backpropagation: How Errors Travel Through a Network", in three parts:
+
+- **Part A, the chain rule.** y = σ(x²) with an x slider. The two local rates dg/dx and dy/dg, their product, and the engine's own dy/dx for the whole chain are shown side by side.
+- **Part B, one neuron backward.** One sigmoid neuron, one example, binary cross-entropy. You set w, b, x and the target. The boxes show ∂L/∂a from the loss, ∂L/∂z = ∂L/∂a × σ′(z), ∂L/∂w = ∂L/∂z × x and ∂L/∂b, each read from a recorded instruction and labelled with its id.
+- **Part C, a 2-2-1 network on XOR** (decision D4), one update per example, 10 epochs, learning rate 1, fixed starting weights.
+  - The learner steps through one example's recorded forward pass, loss and backward pass, then applies the update.
+  - **Controls:** Replay, Step back, Step, To the end of the backward pass, Apply this example's update (enabled only at the end of the backward pass) and Next example.
+  - **A diagram tells the two directions apart by line style as well as colour:** forward is solid with values a; backward is dashed arrows with ∂L/∂… labels. A value appears only once the engine has computed it.
+  - **The parameter inspector** takes any of the 9 parameters and shows: incoming gradient ∂L/∂z × local derivative (x, a¹ or 1) = recorded gradient, with "✓ the same". For a hidden parameter it also shows where ∂L/∂z¹ came from: w² × ∂L/∂z² → ∂L/∂a¹ × σ′(z¹).
+  - Below it are the example's update table and the shared trace explorer, with Level 2 wording.
+- **The rest of the page** follows the pattern of earlier experiments: a 5-step tour, 4 challenges, knowledge checks (3 fixed questions and 2 live ones built from engine values), and a primer.
+- **XOR convergence is explicitly not the goal.**
+
+### 2. Files
+
+- **New:**
+  - `src/learn/level2/exp04/{math.ts, Experiment04.tsx}`
+  - `src/learn/level2/viz/BackpropDiagram.tsx`
+  - `tests/unit/level2-backprop-gate.test.ts`
+  - `tests/unit/level2-exp04.test.ts`
+  - `tests/e2e/level2-exp04.spec.ts`
+  - `reports/level2-backprop-gate.json`
+  - `docs/screenshots/level2/exp04-*.jpg`
+- **Changed:**
+  - `src/experiments/level2.ts`: Experiment 04's definition and defaults; only Experiment 05 is still planned.
+  - `src/learn/curriculum.ts`: Experiment 04 is open.
+  - `src/learn/LearnApp.tsx`: the route.
+  - `src/learn/engine/probe.ts`: an example's backward-phase instructions are kept (`backward`).
+  - Tests: `level2-math` and `level2-vocabulary` unit tests; `level2`, `a11y` and `layout` e2e specs.
+  - Docs: `DECISIONS.md` (ADR-092) and this file.
+- **Not changed:** `src/core` (the engine and the NPM), the shared trace store and explorer, and every Level 1 file.
+
+### 3. NPM integration
+
+- **Part C is a real run.** `useRun.train` runs in the worker through `TraceStore.generate`. Stepping, replay and apply are the engine's `advance`/`jump` over the recorded trace. Replay is a jump back to `BATCH_BEGIN`, so it re-reads the record and cannot change a value.
+- **The diagram and inspector read `reconstructState` at the cursor**, using `layers.{u,z,a,gradA,gradZ,gradW,gradB}` and `params`.
+- **The update is visible only after `BATCH_END`.** Until then the parameters are the ones from before the example (tested).
+- **Parts A and B** use the engine's tape (`withGradient`) and a learning-rate-0 probe. They are labelled "not a training run".
+- **The only arithmetic done in the page:**
+  - Part A's product dy/dg × dg/dx;
+  - the inspector's incoming × local;
+  - the inspector's hidden chain products.
+  - Each is labelled, and each is shown beside the engine value it reproduces.
+
+### 4. Mathematical validation
+
+- **Gate (G1–G7, above):** the engine's gradients match hand backpropagation to 1.1 × 10⁻¹⁶ and finite differences to 9 × 10⁻¹⁰ (relative).
+- **`level2-exp04.test.ts`** (16 tests):
+  - Part A at 6 values of x: dg/dx = 2x, dy/dg = σ(1−σ), and the product equals the engine's dy/dx.
+  - σ′ comes from the op rule.
+  - Part B at 4 settings of (x, y, w, b): z, a, the loss, ∂L/∂a = −y/a + (1−y)/(1−a), ∂L/∂z = a − y, ∂L/∂w and ∂L/∂b, plus the recorded order.
+  - Part C on all 4 examples of epoch 1, trained by hand in sequence: all 9 recorded gradients match within 10⁻¹²; incoming × local equals recorded within 10⁻¹⁵; for the hidden layer, ∂L/∂a¹ × σ′ = ∂L/∂z¹ and w² × ∂L/∂z² = ∂L/∂a¹.
+  - The x = (0, 0) example gives exactly zero first-layer weight gradients.
+  - Nothing is shown for a parameter before its gradient is computed.
+  - Replay leaves the parameters and gradients identical.
+  - After `BATCH_END`, W² = W² − η·g.
+  - The live questions' correct answers are the engine values.
+- **e2e (`level2-exp04.spec`, 7 tests):** the expected values are computed in the test by hand, including the first example's output-weight gradient a¹₁·a².
+
+### 5. Test results
+
+| Suite | Result |
+|---|---|
+| typecheck, lint, format | pass |
+| `test:unit` | 52 files, 645 tests, all pass (621 before; the gate and Experiment 04 tests added the rest) |
+| gradcheck / parity / determinism | 48 / 8 / 18, all pass |
+| build | pass |
+| e2e (Chromium, 2 workers), full run | 84 of 88 passed. 3 failures were in tests written this stage and are fixed (below). The 4th was `perf-cnn` (861 MB against a 700 MB guard under parallel load; it passes alone, as in Stages 2 and 3). |
+| Re-run of the affected specs (`level2-exp04`, `level2`, `a11y`, `layout`) | 19 of 19 pass; `perf-cnn` alone passes |
+| Level 2 e2e | `level2.spec` 3 of 3 (landing: 01–04 open, 05 in preparation; Experiment 03 → 04 → overview); `level2-exp04.spec` 7 of 7 |
+| Accessibility (axe) | 111 screen states, 0 violations; 4 new ones for Experiment 04 (as opened, and trained to the end of example 1 with its update applied), in both themes |
+| Layout (1440 to 360 px, Experiment 04 also trained) | 0 violations |
+
+**The 3 fixed failures, all in tests written this stage, none in the application:**
+- `a11y` and `layout` used `.lv-where`, which also matches the explorer's own status line. Both now use `.first()`.
+- `level2-exp04` read the phase immediately after clicking Step, before the asynchronous move had landed. Under load it read the previous phase. It now waits for the callout to change before reading it.
+
+### 6. Screenshots
+
+`docs/screenshots/level2/exp04-{a,b,c-forward,c-backward}-{desktop,mobile}.jpg` are at 1280 px and 390 px, at 2× scale. The Part C captures show example 4, x = (1, 1), mid-forward and at the end of the backward pass, with weight x₂ → hidden 1 selected: +0.1952 = +0.1952 ✓.
+
+### 7. Known limitations
+
+- **On a phone, the network diagram keeps a 560 px minimum width and scrolls sideways** in a focusable region, because shrunk to 390 px its labels fell to about 6 px. The page itself does not scroll sideways.
+- **Right after training the cursor sits at the example's start** (between examples). The example's inputs appear in the status line once the first step loads them.
+- **The page computes three kinds of product for display** (§3). Each is labelled and shown beside the engine value it reproduces.
+- **The run is fixed at 10 epochs from fixed weights.** Whether it solves XOR is not shown or claimed.
+- **No learner has used Level 2.**
+
+### 8. Models used
+
+- **This session (Opus):**
+  - the gate test and its diagnosis;
+  - the Experiment 04 design and implementation (math, diagram, page, probe change);
+  - the unit tests and vocabulary/structure updates;
+  - the review of the delegated spec;
+  - the screenshots and documentation.
+- **Delegated to a Sonnet agent:** `tests/e2e/level2-exp04.spec.ts` (7 tests). It was given selectors and hand formulas, and it changed no other file.
+  - Its report found two behaviours that differed from my brief, and I confirmed both are intended: the status line gains the example's inputs only once they are loaded, and the first phase is "Between examples".
+  - It reported no application defect.
+  - I checked the spec: it imports only `@playwright/test` and computes expected values independently.
+- **Deviation from the allocation policy:** I implemented the Experiment 04 components in this session, for the same reason as in Stage 3. They depend directly on the engine-state reading that the gate had just established.

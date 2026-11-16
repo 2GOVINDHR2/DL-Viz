@@ -12,7 +12,7 @@ const set = async (page: Page, control: string, value: string): Promise<void> =>
 const sigmoid = (z: number): number => 1 / (1 + Math.exp(-z));
 const f = (v: number, d: number): string => v.toFixed(d).replace(/^-/, '−');
 
-test('Level 2 is reachable from the levels page; 01–03 are open, 04–05 are listed as in preparation', async ({
+test('Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation', async ({
   page,
 }) => {
   await page.goto('/#/levels');
@@ -20,8 +20,8 @@ test('Level 2 is reachable from the levels page; 01–03 are open, 04–05 are l
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('How Neural Networks Learn');
   const items = page.locator('.lv-path-item');
   await expect(items).toHaveCount(5);
-  for (const k of [0, 1, 2]) await expect(items.nth(k).getByRole('link')).toBeVisible();
-  for (const k of [3, 4]) {
+  for (const k of [0, 1, 2, 3]) await expect(items.nth(k).getByRole('link')).toBeVisible();
+  for (const k of [4]) {
     await expect(items.nth(k).getByRole('link')).toHaveCount(0);
     await expect(items.nth(k)).toContainText('In preparation');
   }
@@ -41,6 +41,14 @@ test('Level 2 is reachable from the levels page; 01–03 are open, 04–05 are l
   await page.locator('[data-control="next-experiment"]').click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     'Derivatives and Gradient Descent: How Parameters Learn',
+  );
+  await expect(page.locator('[data-control="next-experiment"]')).toHaveAttribute(
+    'href',
+    '#/level-2/experiment-04',
+  );
+  await page.locator('[data-control="next-experiment"]').click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Backpropagation: How Errors Travel Through a Network',
   );
   // The last open experiment leads back to the overview, not to an unbuilt one.
   await expect(page.locator('[data-control="next-experiment"]')).toHaveAttribute('href', '#/level-2');

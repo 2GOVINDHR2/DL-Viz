@@ -628,6 +628,188 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
       },
     ],
   },
+  {
+    id: '04',
+    title: 'Backpropagation: How Errors Travel Through a Network',
+    short: 'The chain rule, and gradients flowing back through a 2-2-1 network.',
+    description:
+      'A network’s loss depends on its first layer’s weights only through the layers after them. Backpropagation uses the chain rule to send the gradient back from the loss, layer by layer, so every weight and bias gets its own gradient. Here you follow that, one recorded operation at a time.',
+    minutes: '20–25 min',
+    concept: 'Backpropagation',
+    objectives: [
+      'Apply the chain rule to a composed function y = f(g(x)).',
+      'Follow one neuron’s backward pass: from ∂L/∂a, through the activation to ∂L/∂z, to ∂L/∂w and ∂L/∂b.',
+      'Trace the gradient backwards through a 2-2-1 network, from the output layer to the hidden layer.',
+      'Explain any weight’s gradient as the incoming gradient times a local derivative.',
+    ],
+    outcomes: [
+      'what the chain rule says',
+      'why the backward pass starts at the loss',
+      'where each weight’s gradient comes from',
+    ],
+    primer: {
+      intro: 'In Experiment 03 the gradient arrived ready-made. Here is where it comes from.',
+      terms: [
+        {
+          term: 'Chain rule',
+          meaning:
+            'For a function of a function, y = f(g(x)): dy/dx = (dy/dg) × (dg/dx). Multiply the rates along the chain.',
+          role: 'weight',
+        },
+        {
+          term: 'Local derivative',
+          meaning:
+            'The derivative of one single operation with respect to its own input, such as σ′(z) for a sigmoid.',
+          role: 'bias',
+        },
+        {
+          term: 'Incoming gradient',
+          meaning:
+            'The gradient of the loss arriving at an operation from the layer after it: ∂L/∂(its output).',
+          role: 'incorrect',
+        },
+        {
+          term: 'Backpropagation',
+          meaning:
+            'Computing every gradient from the loss backwards: incoming gradient × local derivative, layer by layer.',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'chain-controls',
+        title: 'Two rates, multiplied',
+        text: 'y depends on x through g. The chain rule multiplies the two local rates.',
+        doThis: 'Move x.',
+        waitFor: 'chain-moved',
+      },
+      {
+        target: 'neuron-backward',
+        title: 'One neuron, backwards',
+        text: 'Each box takes the gradient arriving from its right and multiplies it by its own local derivative.',
+        doThis: 'Change the weight w.',
+        waitFor: 'neuron-changed',
+      },
+      {
+        target: 'net-train',
+        title: 'A real network',
+        text: 'The engine trains the 2-2-1 network and records every operation, forward and backward.',
+        doThis: 'Press “Run the network”.',
+        waitFor: 'trained',
+      },
+      {
+        target: 'net-stepper',
+        title: 'Step through one example',
+        text: 'Forward first, then backward from the loss. The update is applied only when you ask for it.',
+        doThis: 'Step forward to the end of the backward pass.',
+        waitFor: 'backward-done',
+      },
+      {
+        target: 'param-inspector',
+        title: 'Where a weight’s gradient comes from',
+        text: 'Pick any weight: its gradient is the incoming gradient times its input.',
+        doThis: 'Choose a hidden-layer weight.',
+        waitFor: 'param-picked:L1',
+      },
+    ],
+    challenges: [
+      {
+        id: 'chain-zero',
+        title: 'A broken link',
+        prompt: 'In Part A, find an x where dy/dx is 0.',
+        notice: 'If any link in the chain has rate 0, the whole product is 0.',
+        doneOn: 'chain-zero',
+      },
+      {
+        id: 'right-answer',
+        title: 'Nothing to learn',
+        prompt: 'In Part B, set w and b so the neuron’s prediction is almost exactly the target.',
+        notice: 'All the gradients shrink towards 0: a right answer leaves nothing to correct.',
+        doneOn: 'neuron-near-target',
+      },
+      {
+        id: 'zero-input',
+        title: 'A silent input',
+        prompt: 'In Part C, inspect a hidden weight while example #1, x = (0, 0), is being processed.',
+        notice:
+          'Its gradient is exactly 0: the weight’s input is 0, so it did not affect this example’s loss.',
+        doneOn: 'param-zero-input',
+      },
+      {
+        id: 'replay',
+        title: 'Replay before updating',
+        prompt: 'Run an example’s backward pass, replay it, then apply its update.',
+        notice: 'Replaying changes nothing: the record is fixed. The update happens only once.',
+        doneOn: 'update-applied',
+      },
+    ],
+    questions: [
+      {
+        id: 'b-chain',
+        kind: 'choice',
+        prompt: 'For y = f(g(x)), what does the chain rule say dy/dx is?',
+        options: [
+          {
+            text: 'f′(g(x)) × g′(x): the rate of f at g, times the rate of g',
+            correct: true,
+            feedback: 'Right. The rates along the chain multiply.',
+          },
+          {
+            text: 'f′(x) + g′(x)',
+            feedback: 'No. Composed rates multiply, they do not add. And f′ is taken at g(x), not at x.',
+          },
+          {
+            text: 'f′(x) × g′(x)',
+            feedback: 'Almost: f′ must be evaluated at g(x), the value that f actually receives.',
+          },
+        ],
+      },
+      {
+        id: 'b-order',
+        kind: 'scenario',
+        prompt: 'In the backward pass of a 2-2-1 network, which gradients are computed first?',
+        options: [
+          {
+            text: 'The output layer’s, because the hidden layer’s gradients need the gradient arriving from the output layer',
+            correct: true,
+            feedback:
+              'Right. The backward pass starts at the loss and moves towards the inputs. Each layer needs the incoming gradient from the layer after it.',
+          },
+          {
+            text: 'The hidden layer’s, because it comes first in the network',
+            feedback:
+              'That is the order of the forward pass. Backwards, the hidden layer must wait for the gradient arriving from the output layer.',
+          },
+          {
+            text: 'All at the same time',
+            feedback:
+              'No. Each layer’s gradients depend on the gradient from the layer after it, so they are computed in order.',
+          },
+        ],
+      },
+      {
+        id: 'b-weight',
+        kind: 'choice',
+        prompt: 'A weight connects input aᵢ to neuron j. What is its gradient ∂L/∂w?',
+        options: [
+          {
+            text: 'aᵢ × ∂L/∂zⱼ: the weight’s input times the gradient arriving at neuron j',
+            correct: true,
+            feedback: 'Right. The local derivative of z = … + w·aᵢ + … with respect to w is aᵢ.',
+          },
+          {
+            text: 'w × ∂L/∂zⱼ',
+            feedback:
+              'No. That would be the gradient passed back to the input aᵢ, not the weight’s own gradient.',
+          },
+          {
+            text: 'The same for every weight of the layer',
+            feedback: 'No. Each weight’s gradient depends on its own input aᵢ.',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /** Experiments of later stages: listed on the landing page, not yet open. */
@@ -638,13 +820,6 @@ export const LEVEL2_PLANNED: {
   minutes: string;
   concept: string;
 }[] = [
-  {
-    id: '04',
-    title: 'Backpropagation: How Errors Travel Through a Network',
-    short: 'The chain rule, and gradients flowing back through a 2-2-1 network.',
-    minutes: '20–25 min',
-    concept: 'Backpropagation',
-  },
   {
     id: '05',
     title: 'Automatic Differentiation: Inside the Computational Graph',

@@ -265,6 +265,7 @@ test('II. Level 1: no horizontal scroll, and no element escapes or clips, at fiv
     '/#/level-2/experiment-01',
     '/#/level-2/experiment-02',
     '/#/level-2/experiment-03',
+    '/#/level-2/experiment-04',
   ];
   const all: Violation[] = [];
   for (const width of [1440, 1024, 768, 390, 360]) {
@@ -273,9 +274,18 @@ test('II. Level 1: no horizontal scroll, and no element escapes or clips, at fiv
       await page.goto(url);
       await expect(page.locator('main h1').first()).toBeVisible();
       const l2e3 = url.endsWith('level-2/experiment-03');
+      const l2e4 = url.endsWith('level-2/experiment-04');
       const states = url.endsWith('experiment-04') || l2e3 ? ['opened', 'trained'] : ['opened'];
       for (const state of states) {
-        if (state === 'trained' && l2e3) {
+        if (state === 'trained' && l2e4) {
+          await page.locator('[data-control="c:train"]').click();
+          await expect(page.locator('.lv-where').first()).toContainText('example 1 of 4', {
+            timeout: 60_000,
+          });
+          await page.locator('[data-control="c:to-backward-end"]').click();
+          await page.locator('[data-control="c:param"]').selectOption('0');
+          await page.locator('[data-control="c:apply"]').click();
+        } else if (state === 'trained' && l2e3) {
           await page.locator('[data-control="e:train"]').click();
           await expect(page.getByText('The first update, read from the record')).toBeVisible({
             timeout: 60_000,

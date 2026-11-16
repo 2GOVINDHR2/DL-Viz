@@ -50,6 +50,8 @@ export interface ExampleValues {
   loss: number | null;
   /** The instructions that produced these values (LOAD_INPUT, then each layer's MATMUL, ADD_BIAS, ACTIVATE), for "see the record". */
   instructions: Instruction[];
+  /** The example's backward-phase instructions (GRAD_INIT, GRAD_ACTIVATE, GRAD_MATMUL_W …), in recorded order. */
+  backward: Instruction[];
 }
 
 export interface ProbeResult {
@@ -109,6 +111,7 @@ export function runProbe(spec: ProbeSpec): ProbeResult {
         output: [],
         loss: null,
         instructions: [ins],
+        backward: [],
       };
       examples.push(cur);
       continue;
@@ -135,6 +138,8 @@ export function runProbe(spec: ProbeSpec): ProbeResult {
       }
     } else if (ins.kind === 'COMPUTE_LOSS') {
       cur.loss = ins.results.loss.item();
+    } else if (ins.path.phase === 'backward' && ins.kind !== 'BACKWARD_LAYER_END') {
+      cur.backward.push(ins);
     }
   }
   examples.sort((p, q) => p.index - q.index);

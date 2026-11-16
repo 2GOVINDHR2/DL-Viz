@@ -796,3 +796,17 @@ Append-only. Each entry: context / options / decision / consequence.
   - 10 rises in at least 10 of 50 epochs and stays far from the minimum.
   - Part D's parabola uses η = 0.1, 0.45, 0.9 and 1.05: slow, fast, oscillating-but-converging, and diverging. The tests check each against xₖ − 1 = (1 − 2η)ᵏ(x₀ − 1).
 - **Experiment 02 chart cap (decision D2).** `FunctionChart` marks a capped axis with a dashed line and "axis capped at 5". Points above the cap are not drawn at a false height: the curve breaks, and a current value above it is marked ▲ with its exact value. Experiment 02's comparison says the cap is for readability, not a limit of the loss. In Experiment 02 no value exceeds the cap, because p stays in [0.01, 0.99] and BCE ≤ −ln 0.01 ≈ 4.61.
+
+## ADR-092 — 2026-11-16 — Experiment 04: backpropagation on recorded gradients (Level 2, Stage 4)
+- **Gate first.** `tests/unit/level2-backprop-gate.test.ts` (G1–G7, see LEVEL-2-STAGES.md) showed that the existing engine and NPM already record every value the experiment needs. No engine or NPM change was made.
+- **Part A (chain rule, y = σ(x²)):** both local rates and the whole dy/dx come from the engine's backward pass on its tape (`withGradient`). The page multiplies the two local rates, labels that product as worked out here, and shows it beside the engine's own dy/dx.
+- **Part B (one neuron, BCE):** a learning-rate-0 probe records `GRAD_INIT`, `GRAD_ACTIVATE`, `GRAD_BIAS` and `GRAD_MATMUL_W`. The page shows those recorded values with their instruction ids. σ′(z) comes from the sigmoid op's registered backward rule (`sigmoidLocal`).
+- **Part C (decision D4: 2-2-1 sigmoid, XOR, one update per example):**
+  - A real run in the worker, through the shared trace store, starting from fixed weights (`L2_EXP04_DEFAULTS`).
+  - The learner steps through one example's recorded instructions, replays it (a jump to `BATCH_BEGIN`), runs to the end of its backward pass, and only then can apply the update (a jump to `BATCH_END`). Navigation is the engine's own `advance`/`jump`, so replay re-reads the record and cannot change a value.
+  - The diagram and the inspector read the reconstructed state at the cursor (`reconstructState`). A value appears only once its instruction has run.
+  - The inspector shows a parameter's gradient as the recorded incoming gradient ∂L/∂z times its recorded input (x, a¹, or 1 for a bias), beside the recorded gradient. For hidden parameters it also shows ∂L/∂a¹ (recorded), σ′(z¹) from the op rule, and the output weight and ∂L/∂z² it came from.
+  - The one multiplication done in the page, incoming × local, is labelled as such. Tests show it equals the recorded gradient for all 9 parameters on all 4 examples, and that the recorded gradients equal an independent hand backpropagation within 10⁻¹².
+- **The shared explorer is used unchanged,** with `LEVEL2_WORDING`.
+- **XOR convergence is not a goal** and the page says so.
+- **The probe gained `backward`,** the example's backward-phase instructions. It already read the whole trace, so the change only keeps instructions it used to skip.
