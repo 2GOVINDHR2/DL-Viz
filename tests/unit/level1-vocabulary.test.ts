@@ -21,7 +21,7 @@ import { Experiment04 } from '../../src/learn/level1/exp04/Experiment04';
 import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
 import { TrainingOverview } from '../../src/learn/trace/TrainingOverview';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
-import { useRun } from '../../src/learn/trace/store';
+import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
 import { fmt } from '../../src/learn/format';
 
 const PAGES = { '01': Experiment01, '02': Experiment02, '03': Experiment03, '04': Experiment04 } as const;
@@ -52,8 +52,9 @@ function violations(id: string, t: string): string[] {
 let restore: ReturnType<typeof setEngineFactory>;
 beforeAll(() => {
   restore = setEngineFactory(inProcessEngine);
-  // Server renders read the store's current state (as the workbench tests do, ADR-050).
-  (useRun as unknown as { getInitialState: () => unknown }).getInitialState = useRun.getState;
+  // Server renders read the store's current state (as the workbench tests do, ADR-050). The earlier override of
+  // the hook's own property had no effect, so this test rendered an empty explorer; corrected in Stage 3 (ADR-090).
+  renderCurrentRunState();
 });
 afterAll(() => {
   useRun.getState().dispose();
@@ -80,6 +81,9 @@ describe('Level 1 vocabulary follows the experiments', () => {
           createElement(TraceExplorer, { stale: false }),
         ),
       );
+      // The explorer really rendered (guards against the empty render this test once checked).
+      expect(html).toContain('The record of run');
+      expect(html).toContain('Epochs');
       expect(violations('04', text(html)), `at ${at}`).toEqual([]);
     }
   });

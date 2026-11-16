@@ -192,6 +192,7 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       '/#/level-2',
       '/#/level-2/experiment-01',
       '/#/level-2/experiment-02',
+      '/#/level-2/experiment-03',
     ];
     for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme });
@@ -210,6 +211,19 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       await page.goto('/#/level-1/experiment-02');
       await page.locator('[data-control="gate:XOR"]').check({ force: true });
       await audit(page, `Level 1 experiment 02: XOR (${scheme})`);
+      await page.goto('/#/level-2/experiment-03');
+      await page.locator('[data-control="e:train"]').click();
+      await expect(page.getByText('The first update, read from the record')).toBeVisible({ timeout: 60_000 });
+      await page.locator('[data-control="e:reveal-all"]').click();
+      await page.locator('[data-control="trace:detail:operations"]').check({ force: true });
+      for (let k = 0; k < 4; k++) await page.locator('[data-control="trace:next"]').click();
+      await page.evaluate(() =>
+        document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+      );
+      await audit(
+        page,
+        `Level 2 experiment 03 trained, every stage shown, explorer at operations (${scheme})`,
+      );
       await page.goto('/#/level-1/experiment-04');
       await page.locator('[data-control="train"]').click();
       await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });

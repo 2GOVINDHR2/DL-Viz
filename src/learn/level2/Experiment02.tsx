@@ -300,6 +300,7 @@ function PartC() {
             xLabel="probability p"
             yLabel="loss"
             yMax={5}
+            capNote="The vertical axis stops at 5 for readability only: cross-entropy itself has no upper limit."
             title={`Binary cross-entropy for target ${y}, against the predicted probability`}
           />
         </div>
@@ -397,6 +398,7 @@ function PartD() {
             xLabel="probability p"
             yLabel="loss"
             yMax={5}
+            capNote="The vertical axis stops at 5 for readability only: cross-entropy itself has no upper limit."
             title={`Both losses for target ${y}`}
           />
         </div>
@@ -440,6 +442,11 @@ function PartD() {
             Squared error can never exceed 1 here, however wrong the probability. Cross-entropy keeps growing
             as the right answer becomes less likely. That is why it is the usual choice for probabilities: a
             confident mistake stands out.
+          </p>
+          <p className="lv-small lv-muted">
+            The chart’s axis stops at 5 to keep the squared-error curve readable. That is not a limit of the
+            loss: cross-entropy keeps growing as the probability of the right answer approaches 0. The engine
+            stops it near 16.1 by clipping (Part E). The exact values are in the table above.
           </p>
         </div>
       </div>

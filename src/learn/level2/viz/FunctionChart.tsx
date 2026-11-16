@@ -22,6 +22,7 @@ export function FunctionChart({
   yLabel,
   yMax,
   title,
+  capNote,
   width = 560,
   height = 240,
 }: {
@@ -31,6 +32,12 @@ export function FunctionChart({
   yLabel: string;
   yMax: number;
   title: string;
+  /**
+   * When set, the vertical axis is a readability cap: a dashed line and this note mark it on the chart. Points above
+   * it are never drawn at a false height. The curve breaks there, and a current value above it is marked ▲ at the top
+   * edge with its exact value in text.
+   */
+  capNote?: string;
   width?: number;
   height?: number;
 }) {
@@ -60,7 +67,7 @@ export function FunctionChart({
       <svg
         viewBox={`0 0 ${width} ${height}`}
         role="img"
-        aria-label={`${title}. ${desc}.${clipped ? ` Values above ${yMax} run off the top of the chart.` : ''}`}
+        aria-label={`${title}. ${desc}.${clipped ? ` Values above ${yMax} run off the top of the chart and are not drawn.` : ''}${capNote ? ` ${capNote}` : ''}`}
       >
         {y.ticks(4).map((t) => (
           <g key={t}>
@@ -81,13 +88,35 @@ export function FunctionChart({
         <text x={4} y={m.t + 2} className="lv-svg-muted" dominantBaseline="hanging">
           {yLabel}
         </text>
+        {capNote && (
+          <g>
+            <line
+              x1={m.l}
+              x2={width - m.r}
+              y1={y(yMax)}
+              y2={y(yMax)}
+              stroke="var(--lv-text)"
+              strokeDasharray="6 4"
+            />
+            <text
+              x={width - m.r}
+              y={y(yMax) + 13}
+              textAnchor="end"
+              className="lv-svg-muted"
+              style={{ fontSize: 11 }}
+            >
+              axis capped at {fmt(yMax, 0)}
+            </text>
+          </g>
+        )}
         {series.map((s) => (
           <path
             key={s.label}
             d={
               line<{ x: number; y: number }>()
                 .x((p) => x(p.x))
-                .y((p) => y(Math.min(p.y, yMax)))(s.points) ?? ''
+                .defined((p) => p.y <= yMax)
+                .y((p) => y(p.y))(s.points) ?? ''
             }
             fill="none"
             stroke={s.stroke}
@@ -107,22 +136,36 @@ export function FunctionChart({
         )}
         {series.map((s) => {
           const p = at(s);
-          return p ? (
+          if (!p) return null;
+          if (p.y > yMax)
+            return (
+              <g key={s.label}>
+                <path
+                  d={`M ${x(p.x) - 7} ${m.t + 9} L ${x(p.x) + 7} ${m.t + 9} L ${x(p.x)} ${m.t - 3} Z`}
+                  fill={s.stroke}
+                />
+                <text x={x(p.x) + 10} y={m.t + 12} className="lv-svg-mono" style={{ fontSize: 12 }}>
+                  {fmt(p.y, 2)} (above the chart)
+                </text>
+              </g>
+            );
+          return (
             <circle
               key={s.label}
               cx={x(p.x)}
-              cy={y(Math.min(p.y, yMax))}
+              cy={y(p.y)}
               r={6}
               fill="var(--lv-surface)"
               stroke={s.stroke}
               strokeWidth={3}
             />
-          ) : null;
+          );
         })}
       </svg>
       <figcaption className="lv-small lv-muted">
         {title}
-        {clipped ? ` Values above ${yMax} run off the top of the chart.` : ''}
+        {clipped ? ` Values above ${yMax} run off the top of the chart and are not drawn.` : ''}
+        {capNote ? ` ${capNote}` : ''}
       </figcaption>
       <ul className="lv-legend">
         {series.map((s) => (

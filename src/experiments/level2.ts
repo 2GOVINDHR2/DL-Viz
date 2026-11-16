@@ -36,6 +36,30 @@ export const L2_EXP01_DEFAULTS = {
   },
 };
 
+/**
+ * Experiment 03's fixed settings (decision D4): a one-input sigmoid neuron on four examples, trained full batch.
+ * The data are not separable, so the loss has a finite minimum (near w ≈ 0.602, b ≈ 0.086, loss ≈ 0.6038, checked
+ * by tests/unit/level2-training.test.ts). The start w = −1.5, b = 1 is deliberately poor.
+ */
+export const L2_EXP03_DEFAULTS = {
+  xs: [-2, -1, 0.5, 2],
+  ys: [0, 1, 0, 1],
+  w0: -1.5,
+  b0: 1,
+  lr: 1,
+  learningRates: [0.1, 1, 10],
+  epochs: 50,
+  /** Part A's curve f(x) = (x − 1)² + 0.5 and its range. */
+  parabola: { x0: -0.6, min: 1, range: [-1, 3] as [number, number] },
+  /** Part D's learning rates on the parabola: slow, suitable, oscillating, diverging. */
+  demoRates: [
+    { lr: 0.1, label: 'Small (0.1)', kind: 'small' },
+    { lr: 0.45, label: 'Suitable (0.45)', kind: 'good' },
+    { lr: 0.9, label: 'Large (0.9)', kind: 'oscillate' },
+    { lr: 1.05, label: 'Too large (1.05)', kind: 'diverge' },
+  ] as const,
+};
+
 /** Experiment 02's starting settings. */
 export const L2_EXP02_DEFAULTS = {
   single: { prediction: 0.3, target: 1 },
@@ -395,6 +419,198 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
       },
     ],
   },
+  {
+    id: '03',
+    title: 'Derivatives and Gradient Descent: How Parameters Learn',
+    short: 'Slopes, derivatives, and a real single-neuron training run.',
+    description:
+      'A loss says how wrong the predictions are. A derivative says which way to move a parameter to make it smaller, and gradient descent takes that step. Explore slopes, step downhill on a real loss landscape, then train a neuron and inspect every number of its update.',
+    minutes: '20–25 min',
+    concept: 'Gradient descent',
+    objectives: [
+      'Read a slope from a tangent line: positive, negative or zero.',
+      'Explain a derivative as the local rate of change of a function, and a gradient as one partial derivative per parameter.',
+      'Apply the update w ← w − η·∂L/∂w, telling the gradient apart from the update it produces.',
+      'Predict how a small, a suitable and an excessive learning rate move a parameter.',
+      'Follow one full-batch update of a real neuron: four predictions and losses, the averaged gradients, and one parameter update.',
+    ],
+    outcomes: [
+      'what a derivative tells you',
+      'how a gradient becomes an update',
+      'what one training step really computes',
+    ],
+    primer: {
+      intro: 'Loss tells you how wrong the network is. These four terms say what to do about it.',
+      terms: [
+        {
+          term: 'Slope',
+          meaning:
+            'How steeply a curve rises or falls at a point: positive uphill, negative downhill, zero at the flat bottom.',
+          role: 'input',
+        },
+        {
+          term: 'Derivative',
+          meaning: 'The slope of a function at one point: how fast its output changes as its input changes.',
+          role: 'bias',
+        },
+        {
+          term: 'Gradient',
+          meaning:
+            'For a function of several parameters, the list of its derivatives, one per parameter, such as (∂L/∂w, ∂L/∂b).',
+          role: 'weight',
+        },
+        {
+          term: 'Gradient descent',
+          meaning:
+            'Repeatedly moving every parameter a little against its derivative, so the loss goes down.',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'slope-controls',
+        title: 'A point on a curve',
+        text: 'The straight line touching the curve at the point is the tangent. Its steepness is the slope.',
+        doThis: 'Move the point.',
+        waitFor: 'point-moved',
+      },
+      {
+        target: 'landscape',
+        title: 'The loss of a real neuron',
+        text: 'Every point of this map is a choice of w and b; the shading is the loss there. The arrow points downhill.',
+        doThis: 'Take one gradient descent step.',
+        waitFor: 'gd-step',
+      },
+      {
+        target: 'lr-demo',
+        title: 'Step sizes',
+        text: 'The same starting point, different learning rates. Watch where each run ends up.',
+        doThis: 'Pick a different learning rate.',
+        waitFor: 'lr-demo',
+      },
+      {
+        target: 'train-neuron',
+        title: 'Real training',
+        text: 'Now the engine trains the neuron and records every operation.',
+        doThis: 'Press “Train the neuron”.',
+        waitFor: 'trained',
+      },
+      {
+        target: 'one-update',
+        title: 'One update, every number',
+        text: 'Four examples are processed, their gradients averaged, and the parameters updated once.',
+        doThis: 'Reveal the next stage.',
+        waitFor: 'update-reveal',
+      },
+    ],
+    challenges: [
+      {
+        id: 'flat',
+        title: 'Find the flat spot',
+        prompt: 'Move the point until the slope is zero.',
+        notice:
+          'That is the bottom of the curve: the minimum. A derivative of zero means no direction is downhill.',
+        doneOn: 'slope-zero',
+      },
+      {
+        id: 'walk',
+        title: 'Walk downhill',
+        prompt: 'Take five gradient descent steps on the landscape.',
+        notice: 'The steps get shorter as the ground flattens, even with the same learning rate.',
+        doneOn: 'gd-steps-5',
+      },
+      {
+        id: 'overshoot',
+        title: 'Too big a step',
+        prompt: 'Choose the learning rate that diverges.',
+        notice: 'Each step jumps past the minimum and lands higher than before.',
+        doneOn: 'lr-demo:diverge',
+      },
+      {
+        id: 'one-vs-four',
+        title: 'One update or four?',
+        prompt: 'Compare the full batch with updating after every example.',
+        notice: 'Same four examples, but four separate updates instead of one averaged update.',
+        doneOn: 'batch1-compared',
+      },
+      {
+        id: 'big-lr',
+        title: 'Train with learning rate 10',
+        prompt: 'Train the real neuron with learning rate 10.',
+        notice: 'Compare its loss curve with learning rate 1: it does not settle.',
+        doneOn: 'trained:lr-10',
+      },
+    ],
+    questions: [
+      {
+        id: 'g-vs-u',
+        kind: 'choice',
+        prompt: 'What is the difference between the gradient ∂L/∂w and the update applied to w?',
+        options: [
+          {
+            text: 'The update is −η times the gradient: the gradient gives the direction uphill, and the update steps the other way, scaled by the learning rate',
+            correct: true,
+            feedback:
+              'Right. The gradient is computed from the loss. The update is what gradient descent does with it: Δw = −η·∂L/∂w.',
+          },
+          {
+            text: 'They are the same number',
+            feedback:
+              'No. Only with η = 1 and the sign reversed would they match in size. The update is always −η·∂L/∂w.',
+          },
+          {
+            text: 'The update is the gradient plus the learning rate',
+            feedback: 'No. The learning rate multiplies the gradient; it is not added to it.',
+          },
+        ],
+      },
+      {
+        id: 'full-batch',
+        kind: 'scenario',
+        prompt:
+          'A neuron is trained with full-batch gradient descent on 4 examples. How many times are its parameters updated in one epoch?',
+        options: [
+          {
+            text: 'Once: the four examples’ gradients are averaged into one update',
+            correct: true,
+            feedback:
+              'Right. All four examples are processed (four predictions, four losses, four gradients), then one update uses their average.',
+          },
+          {
+            text: 'Four times, once per example',
+            feedback:
+              'That is training with batch size 1. With the full batch, the four gradients are averaged first.',
+          },
+          {
+            text: 'It depends on the learning rate',
+            feedback: 'No. The learning rate sets the size of each update, not how many there are.',
+          },
+        ],
+      },
+      {
+        id: 'too-large',
+        kind: 'scenario',
+        prompt: 'With a very large learning rate, the loss jumps up and down and never settles. Why?',
+        options: [
+          {
+            text: 'Each step moves so far that it passes the minimum and lands on the other side, often higher',
+            correct: true,
+            feedback:
+              'Right. The gradient points the right way, but the step is too long for the shape of the loss.',
+          },
+          {
+            text: 'The gradient points the wrong way',
+            feedback:
+              'No. The gradient is the same whatever the learning rate. Only the size of the step changes.',
+          },
+          {
+            text: 'A large learning rate always converges faster',
+            feedback: 'No. Beyond a certain size, gradient descent stops converging altogether.',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 /** Experiments of later stages: listed on the landing page, not yet open. */
@@ -405,13 +621,6 @@ export const LEVEL2_PLANNED: {
   minutes: string;
   concept: string;
 }[] = [
-  {
-    id: '03',
-    title: 'Derivatives and Gradient Descent: How Parameters Learn',
-    short: 'Slopes, derivatives, and a real single-neuron training run.',
-    minutes: '20–25 min',
-    concept: 'Gradient descent',
-  },
   {
     id: '04',
     title: 'Backpropagation: How Errors Travel Through a Network',

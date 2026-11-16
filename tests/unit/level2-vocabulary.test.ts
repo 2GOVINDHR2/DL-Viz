@@ -9,6 +9,12 @@ import { describe, expect, it } from 'vitest';
 import { LEVEL2_TERMS, type Level2Id } from '../../src/experiments/level2';
 import { L2Experiment01 } from '../../src/learn/level2/Experiment01';
 import { L2Experiment02 } from '../../src/learn/level2/Experiment02';
+import { L2Experiment03 } from '../../src/learn/level2/exp03/Experiment03';
+import { NEURON_DATASET, neuronConfig } from '../../src/learn/level2/exp03/Training';
+import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
+import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
+import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
+import { LEVEL2_WORDING, TraceWordingProvider } from '../../src/learn/trace/wording';
 import { Level2Landing } from '../../src/learn/pages/Level2Landing';
 
 const ORDER: Level2Id[] = ['01', '02', '03', '04', '05'];
@@ -41,12 +47,37 @@ describe('Level 2 vocabulary', () => {
   for (const [id, page] of [
     ['01', L2Experiment01],
     ['02', L2Experiment02],
+    ['03', L2Experiment03],
   ] as const)
     it(`Experiment ${id} uses no term taught later, and marks its engine values`, () => {
       const html = renderToStaticMarkup(createElement(page));
       expect(violations(id, text(html))).toEqual([]);
-      expect(html).toMatch(/Computed by the engine/);
+      expect(html).toMatch(/computed by the engine|recorded training run/i);
     });
+
+  it('Experiment 03’s trace explorer, with Level 2 wording on a real run, uses no term taught after Experiment 03', async () => {
+    const restore = setEngineFactory(inProcessEngine);
+    try {
+      await useRun.getState().train(neuronConfig(1, 3), 'v', NEURON_DATASET);
+      renderCurrentRunState();
+      const h = useRun.getState().header!;
+      for (const at of [-1, h.epochStarts[0] + 5, h.epochStarts[0] + 20, h.length - 1]) {
+        await useRun.getState().jump(at);
+        const html = renderToStaticMarkup(
+          createElement(
+            TraceWordingProvider,
+            { value: LEVEL2_WORDING },
+            createElement(TraceExplorer, { stale: false }),
+          ),
+        );
+        expect(html).toContain('The record of run');
+        expect(violations('03', text(html)), `at ${at}`).toEqual([]);
+      }
+    } finally {
+      useRun.getState().dispose();
+      setEngineFactory(restore);
+    }
+  });
 
   it('the landing page names only the level’s topics, and no term of a later level', () => {
     const t = text(renderToStaticMarkup(createElement(Level2Landing)));

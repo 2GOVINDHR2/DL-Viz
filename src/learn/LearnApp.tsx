@@ -8,6 +8,7 @@ import { Experiment03 } from './level1/Experiment03';
 import { Experiment04 } from './level1/exp04/Experiment04';
 import { L2Experiment01 } from './level2/Experiment01';
 import { L2Experiment02 } from './level2/Experiment02';
+import { L2Experiment03 } from './level2/exp03/Experiment03';
 import { LEVEL_2 } from './curriculum';
 import { Level2Landing } from './pages/Level2Landing';
 import { Assessment } from './pages/Assessment';
@@ -25,7 +26,11 @@ const EXPERIMENTS = {
   '03': Experiment03,
   '04': Experiment04,
 } as const;
-const L2_EXPERIMENTS: Record<string, () => ReactElement> = { '01': L2Experiment01, '02': L2Experiment02 };
+const L2_EXPERIMENTS: Record<string, () => ReactElement> = {
+  '01': L2Experiment01,
+  '02': L2Experiment02,
+  '03': L2Experiment03,
+};
 
 function Page({ route }: { route: Route }) {
   switch (route.page) {

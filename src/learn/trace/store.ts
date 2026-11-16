@@ -56,7 +56,10 @@ export interface RunState {
   epochViewError: string | null;
   runs: RunSummary[];
   pinned: Pinned | null;
-  train(config: TrainConfig, label: string): Promise<void>;
+  /** Trains through the engine. `dataset` defaults to XOR (Level 1, Experiment 04). */
+  train(config: TrainConfig, label: string, dataset?: DatasetSpec): Promise<void>;
+  /** Instructions [from, to) of the current run, at most one epoch's read limit at a time. */
+  read(from: number, to: number): Promise<Instruction[]>;
   step(direction: 1 | -1, g: Granularity): Promise<void>;
   jump(id: number): Promise<void>;
   showEpoch(epoch: number): Promise<void>;
@@ -90,7 +93,19 @@ const initial = {
   pinned: null,
 };
 
-export const useRun = create<RunState>((set, get) => {
+let runApi: { getInitialState: () => RunState; getState: () => RunState } | null = null;
+
+/**
+ * Server renders (tests) read a store's initial state, not its current one. This makes them read the current
+ * state, as `renderCurrentState` does for the workbench store (ADR-050). Zustand reads the internal API object, so
+ * assigning to the hook's own property has no effect.
+ */
+export function renderCurrentRunState(): void {
+  if (runApi) runApi.getInitialState = runApi.getState;
+}
+
+export const useRun = create<RunState>((set, get, api) => {
+  runApi = api;
   const applyMove = async (
     p: Promise<{ cursor: number; state: ExecState; operands: Record<string, Tensor> }>,
   ): Promise<void> => {
@@ -113,12 +128,12 @@ export const useRun = create<RunState>((set, get) => {
   };
   return {
     ...initial,
-    async train(config, label) {
+    async train(config, label, dataset = DATASET) {
       const run = get().run + 1;
       set({ status: 'training', error: null, run, pinned: null, epochView: null, epochViewError: null });
       try {
         const eng = getEngine();
-        const g = await eng.request<'generate'>({ op: 'generate', config, dataset: DATASET });
+        const g = await eng.request<'generate'>({ op: 'generate', config, dataset });
         const { summaries } = await eng.request<'epochSummaries'>({ op: 'epochSummaries' });
         const m = await eng.request<'move'>({ op: 'jump', cursor: -1 });
         const last = summaries[summaries.length - 1];
@@ -193,6 +208,11 @@ export const useRun = create<RunState>((set, get) => {
       } catch (err) {
         set({ epochViewError: err instanceof Error ? err.message : String(err) });
       }
+    },
+    async read(from, to) {
+      if (to - from > EPOCH_READ_LIMIT) throw new Error(`refusing to read ${to - from} instructions at once`);
+      const { instructions } = await getEngine().request<'range'>({ op: 'range', from, to });
+      return instructions;
     },
     async history(name) {
       const r = await getEngine().request<'paramHistory'>({

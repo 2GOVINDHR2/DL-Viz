@@ -7,6 +7,7 @@
 import type { Instruction, TraceHeader } from '../../core/npm/ir';
 import { type Granularity, unitKey } from '../../core/npm/stats';
 import { fmt } from '../format';
+import { LEVEL1_WORDING, type TraceWording } from './wording';
 
 export interface TreeNode {
   key: string;
@@ -25,15 +26,8 @@ export type Detail = 'stages' | 'layers' | 'operations';
 const LEVELS: Granularity[] = ['batch', 'sample', 'phase', 'layer', 'operation'];
 const DEPTH: Record<Detail, number> = { stages: 3, layers: 4, operations: 5 };
 
-export const PHASE_WORDS: Record<string, { tag: string; label: string }> = {
-  forward: { tag: 'forward', label: 'Forward: the network predicts' },
-  loss: { tag: 'loss', label: 'Loss: compare the prediction with the target' },
-  backward: { tag: 'backward', label: 'Backward: work out how to adjust' },
-  update: { tag: 'update', label: 'Update: adjust the parameters' },
-  eval: { tag: 'check', label: 'Check: test every example' },
-  control: { tag: 'control', label: 'Bookkeeping' },
-  init: { tag: 'start', label: 'Starting values' },
-};
+/** Level 1's phase words; the explorer passes its level's own (src/learn/trace/wording.ts). */
+export const PHASE_WORDS: Record<string, { tag: string; label: string }> = LEVEL1_WORDING.phases;
 
 export function layerWords(header: TraceHeader | null, layer: string | null): string {
   if (!layer) return 'Whole network';
@@ -63,6 +57,7 @@ function label(
   g: Granularity,
   ins: Instruction[],
   batchesPerEpoch: number,
+  words: TraceWording,
 ): Pick<TreeNode, 'label' | 'tag'> {
   const head = ins[0];
   const p = head.path;
@@ -83,10 +78,9 @@ function label(
     }
     case 'sample': {
       if (p.sample === null) {
-        if (ins.some((i) => i.kind === 'APPLY_UPDATE'))
-          return { label: 'Adjust the parameters (one update for the batch)', tag: 'update' };
+        if (ins.some((i) => i.kind === 'APPLY_UPDATE')) return { label: words.updateGroup, tag: 'update' };
         if (ins.some((i) => i.kind === 'BATCH_BEGIN')) return { label: 'Batch begins', tag: 'control' };
-        return { label: PHASE_WORDS[p.phase]?.label ?? p.phase, tag: PHASE_WORDS[p.phase]?.tag };
+        return { label: words.phases[p.phase]?.label ?? p.phase, tag: words.phases[p.phase]?.tag };
       }
       const load = ins.find((i) => i.kind === 'LOAD_INPUT');
       if (!load) return { label: `Example ${p.sample + 1}` };
@@ -99,7 +93,7 @@ function label(
       return { label: `Example #${Number(load.meta.datasetIndex) + 1}: inputs (${x}), target ${y}` };
     }
     case 'phase':
-      return { label: PHASE_WORDS[p.phase]?.label ?? p.phase, tag: PHASE_WORDS[p.phase]?.tag };
+      return { label: words.phases[p.phase]?.label ?? p.phase, tag: words.phases[p.phase]?.tag };
     case 'layer':
       return { label: layerWords(header, p.layer) };
     case 'operation':
@@ -110,7 +104,12 @@ function label(
 }
 
 /** The tree of one epoch's instructions, to the depth `detail` allows. */
-export function epochTree(ins: Instruction[], header: TraceHeader | null, detail: Detail): TreeNode[] {
+export function epochTree(
+  ins: Instruction[],
+  header: TraceHeader | null,
+  detail: Detail,
+  words: TraceWording = LEVEL1_WORDING,
+): TreeNode[] {
   const depth = DEPTH[detail];
   const n = header ? Math.max(1, ...ins.map((i) => (i.path.batch ?? -1) + 1)) : 1;
   const build = (list: Instruction[], level: number): TreeNode[] => {
@@ -119,7 +118,7 @@ export function epochTree(ins: Instruction[], header: TraceHeader | null, detail
       const node: TreeNode = {
         key: unitKey(part[0], g) + `@${part[0].id}`,
         granularity: g,
-        ...label(header, g, part, n),
+        ...label(header, g, part, n, words),
         first: part[0].id,
         last: part[part.length - 1].id,
         children: [],

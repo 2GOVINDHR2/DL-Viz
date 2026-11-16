@@ -12,11 +12,12 @@ import { line } from 'd3-shape';
 import { useEffect, useMemo, useState } from 'react';
 import type { Granularity } from '../../core/npm/stats';
 import type { Tensor } from '../../core/tensor/tensor';
-import { Disclosure, EngineBadge, ErrorNote, kindWords, Segmented } from '../components/ui';
+import { Disclosure, EngineBadge, ErrorNote, Segmented } from '../components/ui';
 import { fmt } from '../format';
 import { signal } from '../signals';
-import { epochTree, layerWords, PHASE_WORDS, type Detail, type TreeNode } from './hierarchy';
+import { epochTree, layerWords, type Detail, type TreeNode } from './hierarchy';
 import { useRun } from './store';
+import { useTraceWording } from './wording';
 
 const STEP_WORDS: Record<Granularity, string> = {
   epoch: 'Epoch',
@@ -30,18 +31,6 @@ const OFFERED: Record<Detail, Granularity[]> = {
   stages: ['epoch', 'batch', 'sample', 'phase'],
   layers: ['epoch', 'batch', 'sample', 'phase', 'layer'],
   operations: ['epoch', 'batch', 'sample', 'phase', 'layer', 'operation'],
-};
-
-const PHASE_EXPLAIN: Record<string, string> = {
-  init: 'Before training: every weight and bias gets its starting value, chosen by the seeded random generator, so the same seed always gives the same start.',
-  forward: 'The example’s inputs flow through the layers, layer by layer, to a prediction.',
-  loss: 'The prediction is compared with the target. The loss says how far off it is.',
-  backward:
-    'Working backwards from the loss, the engine works out, for every weight and bias, which way and how much it should change to reduce the loss.',
-  update:
-    'Each parameter is adjusted once for the whole batch: the average of the examples’ adjustments, scaled by the learning rate.',
-  eval: 'After the epoch, every example is checked with the new parameters, giving a loss and the share of correct answers.',
-  control: 'Bookkeeping: an epoch or batch begins or ends.',
 };
 
 const vec = (t: Tensor | undefined, d = 3, max = Infinity): string => {
@@ -208,6 +197,7 @@ function Tree({
   onPick: (n: TreeNode) => void;
   depth?: number;
 }) {
+  const words = useTraceWording();
   return (
     <ul className="lv-tree" aria-label={depth === 0 ? 'The epoch, step by step' : undefined}>
       {nodes.map((n) => {
@@ -225,7 +215,7 @@ function Tree({
               data-control={`trace:node:${n.granularity}`}
             >
               <span className="lv-tree-dot" aria-hidden="true" />
-              <span>{n.granularity === 'operation' ? kindWords(n.label) : n.label}</span>
+              <span>{n.granularity === 'operation' ? words.kind(n.label) : n.label}</span>
               {n.tag && <span className="lv-phase-tag">{n.tag}</span>}
               {n.last <= cursor && <span className="lv-visually-hidden">(done)</span>}
             </button>
@@ -240,6 +230,7 @@ function Tree({
 }
 
 function Hierarchy({ detail }: { detail: Detail }) {
+  const words = useTraceWording();
   const view = useRun((s) => s.epochView);
   const err = useRun((s) => s.epochViewError);
   const header = useRun((s) => s.header);
@@ -247,8 +238,8 @@ function Hierarchy({ detail }: { detail: Detail }) {
   const jump = useRun((s) => s.jump);
   const epochs = useRun((s) => s.epochs.length);
   const tree = useMemo(
-    () => (view ? epochTree(view.instructions, header, detail) : []),
-    [view, header, detail],
+    () => (view ? epochTree(view.instructions, header, detail, words) : []),
+    [view, header, detail, words],
   );
   if (err) return <ErrorNote title="This epoch cannot be listed.">{err}</ErrorNote>;
   if (!view || !header) return <p className="lv-muted">Select an epoch, or step forward, to open it.</p>;
@@ -488,6 +479,7 @@ function ParameterInspector() {
 }
 
 function DetailPanel({ detail }: { detail: Detail }) {
+  const words = useTraceWording();
   const exec = useRun((s) => s.exec);
   const header = useRun((s) => s.header);
   const operands = useRun((s) => s.operands);
@@ -506,12 +498,12 @@ function DetailPanel({ detail }: { detail: Detail }) {
   const last = header.model.layers[header.model.layers.length - 1].name;
   const sample = exec.sample && path.sample !== null ? exec.sample : null;
   const prediction = sample?.layers[last]?.a;
-  const batches = config ? Math.ceil(4 / config.batchSize) : null;
+  const batches = config ? Math.ceil(header.dataset.n / config.batchSize) : null;
   const where = [
     path.epoch !== null ? `Epoch ${path.epoch + 1} of ${header.epochStarts.length - 1}` : 'Before training',
     path.batch !== null ? `Batch ${path.batch + 1}${batches ? ` of ${batches}` : ''}` : null,
     sample ? `Example #${sample.datasetIndex + 1}` : null,
-    PHASE_WORDS[path.phase]?.tag ? `${PHASE_WORDS[path.phase].tag} stage` : null,
+    words.phases[path.phase]?.tag ? `${words.phases[path.phase].tag} stage` : null,
     path.layer && path.layer !== 'loss' ? layerWords(header, path.layer) : null,
   ]
     .filter(Boolean)
@@ -525,10 +517,10 @@ function DetailPanel({ detail }: { detail: Detail }) {
           {where}
         </p>
         <p className="lv-small lv-muted" style={{ margin: '4px 0 0' }}>
-          Last step executed: {kindWords(cur.kind)} (instruction #{cur.id})
+          Last step executed: {words.kind(cur.kind)} (instruction #{cur.id})
         </p>
       </div>
-      <p style={{ margin: 0 }}>{PHASE_EXPLAIN[path.phase]}</p>
+      <p style={{ margin: 0 }}>{words.phaseExplain[path.phase]}</p>
       {sample && (
         <dl className="lv-kv">
           <dt>Inputs</dt>
@@ -553,7 +545,7 @@ function DetailPanel({ detail }: { detail: Detail }) {
                 <tr>
                   <th scope="col">Layer</th>
                   <th scope="col">Output values (activations)</th>
-                  <th scope="col">Adjustment signal</th>
+                  <th scope="col">{words.signalColumn}</th>
                 </tr>
               </thead>
               <tbody>
@@ -571,17 +563,13 @@ function DetailPanel({ detail }: { detail: Detail }) {
               </tbody>
             </table>
           </div>
-          <p className="lv-small lv-muted">
-            The adjustment signal (worked out in the backward stage) says, for each neuron, which way and how
-            strongly its value should change to reduce the loss. Experiments in later levels explain how it is
-            computed.
-          </p>
+          <p className="lv-small lv-muted">{words.signalExplain}</p>
         </Disclosure>
       )}
       {updates.length > 0 && (
         <div className="lv-table-wrap">
           <table className="lv-table lv-small">
-            <caption>Parameters adjusted in this batch</caption>
+            <caption>{words.updatesCaption}</caption>
             <thead>
               <tr>
                 <th scope="col">Parameter</th>
@@ -601,10 +589,7 @@ function DetailPanel({ detail }: { detail: Detail }) {
               ))}
             </tbody>
           </table>
-          <p className="lv-small lv-muted">
-            First four values of each. The step is the learning rate times the batch’s average adjustment,
-            with its sign reversed so that the loss goes down.
-          </p>
+          <p className="lv-small lv-muted">{words.updatesNote}</p>
         </div>
       )}
       {exec.batchLoss !== undefined && path.batch !== null && (
@@ -617,7 +602,7 @@ function DetailPanel({ detail }: { detail: Detail }) {
           <dl className="lv-kv">
             <dt>Kind</dt>
             <dd>
-              {cur.kind} · {kindWords(cur.kind)}
+              {cur.kind} · {words.kind(cur.kind)}
             </dd>
             <dt>Formula</dt>
             <dd>{cur.symbolic || '—'}</dd>
@@ -665,9 +650,10 @@ export function TraceExplorer({ stale }: { stale: boolean }) {
         <EngineBadge instructions={header.length} text="A real recorded run" />
       </div>
       <p className="lv-small lv-muted" style={{ marginTop: 0 }}>
-        Network 2 → {arch} ({act} hidden) · learning rate {config.optimizer.lr} · batch size{' '}
-        {config.batchSize} · {config.epochs} epochs · seed {config.seed} · recorded in {fmt(generationMs, 0)}{' '}
-        ms. Every operation the engine performed is in this record, with its values.
+        Network {header.model.inputShape[0]} → {arch} ({act}{' '}
+        {config.model.layers.length > 1 ? 'hidden' : 'output'}) · learning rate {config.optimizer.lr} · batch
+        size {config.batchSize} · {config.epochs} epochs · seed {config.seed} · recorded in{' '}
+        {fmt(generationMs, 0)} ms. Every operation the engine performed is in this record, with its values.
       </p>
       {stale && (
         <div className="lv-callout" role="status">

@@ -291,12 +291,20 @@
     "passes": 32,
     "violations": []
   },
+  "Level 1 /#/level-2/experiment-03 (light)": {
+    "passes": 32,
+    "violations": []
+  },
   "Level 1 experiment 01: tour open, a wrong answer's feedback (light)": {
     "passes": 30,
     "violations": []
   },
   "Level 1 experiment 02: XOR (light)": {
     "passes": 32,
+    "violations": []
+  },
+  "Level 2 experiment 03 trained, every stage shown, explorer at operations (light)": {
+    "passes": 33,
     "violations": []
   },
   "Level 1 experiment 04 trained, stages (light)": {
@@ -359,12 +367,20 @@
     "passes": 32,
     "violations": []
   },
+  "Level 1 /#/level-2/experiment-03 (dark)": {
+    "passes": 32,
+    "violations": []
+  },
   "Level 1 experiment 01: tour open, a wrong answer's feedback (dark)": {
     "passes": 30,
     "violations": []
   },
   "Level 1 experiment 02: XOR (dark)": {
     "passes": 32,
+    "violations": []
+  },
+  "Level 2 experiment 03 trained, every stage shown, explorer at operations (dark)": {
+    "passes": 33,
     "violations": []
   },
   "Level 1 experiment 04 trained, stages (dark)": {

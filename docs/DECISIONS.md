@@ -756,3 +756,43 @@ Append-only. Each entry: context / options / decision / consequence.
 - **Context:** the engine computes row-wise (`u = a·W`, W of shape [inputs × neurons]; NPM-SPEC §5). The Level 2 specification writes z = W a + b.
 - **Decision:** Experiment 01's matrix view shows W one row per neuron (`textbookRows`, a transposition of the engine's weights) and says in one sentence that the engine stores it the other way round. Only the layout changes: every z and a shown is the engine's recorded value.
 - **Test:** the textbook rows times a, plus b, reproduce each recorded z (`tests/unit/level2-math.test.ts`).
+
+## ADR-090 — 2026-11-16 — One trace explorer for both levels, with per-level wording (Level 2, Stage 3; decision D3)
+- **Move.** `store`, `hierarchy`, `engine`, `TraceExplorer` and `TrainingOverview` moved from `src/learn/level1/exp04/` to `src/learn/trace/`. This was committed on its own (`97dc402`), with only import paths changed.
+- **Wording.** `src/learn/trace/wording.ts` holds the words the explorer uses: phase labels and explanations, the batch-update label, the ∂L/∂z column and its note, the update table, and the plain words for each instruction kind.
+  - `LEVEL1_WORDING` is the original text, unchanged, and is the default of a React context, so Level 1 passes nothing.
+  - `LEVEL2_WORDING` names gradients ("Gradient ∂L/∂z", "w ← w − η·g").
+  - Nothing was replaced globally.
+- **Other parameters:**
+  - the store's `train` takes a dataset (default XOR);
+  - the store gains `read(from, to)`, capped at the one-epoch read limit;
+  - the batch count comes from the trace header's example count, not a fixed 4;
+  - the run summary reads the input size from the header, and says "output" instead of "hidden" for a one-layer model.
+  - For Level 1's XOR network all of these give the same values.
+- **The NPM trace format and the engine are unchanged.**
+- **Evidence that Level 1 is unchanged:**
+  - Level 1's Experiment 04 page, and the explorer plus training overview at six cursor positions of a real run, were server-rendered from the pre-refactor commit and from the refactored code.
+  - The 335,979-byte outputs differ only in the measured generation time printed in the run summary (13 ms against 14 ms).
+- **A test defect found and fixed.**
+  - Level 1's vocabulary test made server renders read the store's current state by assigning `getInitialState` on the zustand hook.
+  - Zustand 5 reads the internal API object instead, so the explorer rendered empty and that part of the test checked nothing.
+  - The store now exposes `renderCurrentRunState()`. The test uses it and asserts that the explorer actually rendered, and it passes.
+
+## ADR-091 — 2026-11-16 — Experiment 03: engine demonstrations, then a real recorded run (Level 2, Stage 3)
+- **Demonstrations (Parts A–D):** labelled "Demonstration computed by the engine · not a training run".
+  - Values and derivatives come from the engine's tape and its backward pass (`withGradient` in `src/learn/engine/expr.ts`), by the ops' registered gradient rules; no difference quotient is used.
+  - Steps use `computeUpdate`, the engine's own optimiser function, which `TrainingSession` calls, and its tensor `add`.
+  - Part B's rise-over-run table divides two engine values to show what a derivative means. It is labelled "worked out here from engine values", and the exact derivative beside it is the engine's.
+  - Part C's path of k steps equals k epochs of real full-batch training, to 10⁻¹² (tested).
+- **Real training (Part E):** the one-input sigmoid neuron on four examples (decision D4), x = (−2, −1, 0.5, 2), y = (0, 1, 0, 1).
+  - It starts from w = −1.5, b = 1 and uses BCE with full batches, trained in the worker through the shared store.
+  - The data are not separable, so the loss has a finite minimum, near w ≈ 0.602, b ≈ 0.086, loss ≈ 0.6038 (tested).
+  - The step-by-step view (`oneUpdate`) reads the starting values, the four forward passes, losses and per-example gradients, the averaged gradient, −η·g, the update, and the next epoch's forward pass from the recorded instructions, each keeping its instruction id.
+  - The trace's own counts show 4 examples processed and 1 update per epoch.
+  - A separate real run with batch size 1 shows 4 updates.
+- **Learning rates.** 0.1, 1 and 10 on the real run were chosen from a recorded sweep, and the tests check each:
+  - 0.1 falls every epoch but stays above the minimum after 50 epochs;
+  - 1 falls every epoch and reaches the minimum;
+  - 10 rises in at least 10 of 50 epochs and stays far from the minimum.
+  - Part D's parabola uses η = 0.1, 0.45, 0.9 and 1.05: slow, fast, oscillating-but-converging, and diverging. The tests check each against xₖ − 1 = (1 − 2η)ᵏ(x₀ − 1).
+- **Experiment 02 chart cap (decision D2).** `FunctionChart` marks a capped axis with a dashed line and "axis capped at 5". Points above the cap are not drawn at a false height: the curve breaks, and a current value above it is marked ▲ with its exact value. Experiment 02's comparison says the cap is for readability, not a limit of the loss. In Experiment 02 no value exceeds the cap, because p stays in [0.01, 0.99] and BCE ≤ −ln 0.01 ≈ 4.61.
