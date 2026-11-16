@@ -1,0 +1,19 @@
+{
+  "G1G2_worstAbsDeviation": 1.1102230246251565e-16,
+  "G3_worstAbsDeviationFromHand": 1.1102230246251565e-16,
+  "G3_worstRelativeDeviationFromFiniteDifferences": 8.954610836605094e-10,
+  "G3_parametersChecked": "9 values (L1.W ×4, L1.b ×2, L2.W ×2, L2.b ×1) × 4 examples = 36",
+  "G4_backwardOrder": [
+    "GRAD_INIT:loss",
+    "GRAD_ACTIVATE:L2",
+    "GRAD_BIAS:L2",
+    "GRAD_MATMUL_W:L2",
+    "GRAD_MATMUL_X:L2",
+    "GRAD_ACTIVATE:L1",
+    "GRAD_BIAS:L1",
+    "GRAD_MATMUL_W:L1"
+  ],
+  "G5": "batch-1 accumulation is the identity; batch-2 is the mean; a Var used on two paths gets the sum (2x + 1 at x = 1.5 → 4)",
+  "G6": "state.sample.layers gives z, a, ∂L/∂a, ∂L/∂z, ∂L/∂W, ∂L/∂b per layer; input × incoming gradient equals each recorded weight gradient exactly",
+  "G7": "GRAD_MATMUL_W of both layers, for each of the 4 examples, bit-identical to TrainingSession.runSample"
+}

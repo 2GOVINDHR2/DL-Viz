@@ -266,3 +266,31 @@ The interface computes no network or loss value. Experiment 01's matrix rows lis
 - **Delegated to a Sonnet agent:** `tests/e2e/level2-exp03.spec.ts` (7 tests), given exact selectors and the formulas to compute expected values by hand. Its report named 4 selector refinements, all on the test side, and no application defect. I reviewed the spec: it imports no application code, computes the update independently, and checks real back-and-forth navigation.
 - **No agent changed the engine, the NPM, or any application file.**
 - **Deviation from the allocation policy:** I implemented the Experiment 03 components in this session rather than delegating them to Sonnet. They were tightly coupled to the engine-integration decisions being made at the same time, and splitting them would have meant handing an agent unreviewed engine APIs.
+
+## Stage 4 — Experiment 04: backpropagation (2026-11-16)
+
+### The capability gate (completed before any Experiment 04 visualisation code)
+
+**Question.** Can the existing engine run Experiment 04's network and expose every gradient the visualisation needs? The network is 2-2-1, sigmoid hidden and output, BCE, on XOR, one update per example, with fixed starting weights (`L2_EXP04_DEFAULTS`).
+
+**Method.** `tests/unit/level2-backprop-gate.test.ts` checks each capability against values computed independently in the test: plain-arithmetic forward and backward passes, with sequential hand updates for later examples, and central finite differences (h = 10⁻⁶) of the engine's own loss. Its results are written to `reports/level2-backprop-gate.json`.
+
+| | Capability | Result |
+|---|---|---|
+| G1 | Forward pass through the 2-2-1 network | matches the hand computation for all 4 examples; worst deviation 1.1 × 10⁻¹⁶ |
+| G2 | Loss (BCE) | as G1 |
+| G3 | Gradients of every hidden- and output-layer weight and bias | 36 values (9 parameters × 4 examples): worst deviation from the hand backpropagation 1.1 × 10⁻¹⁶; worst relative deviation from finite differences **9.0 × 10⁻¹⁰** |
+| G4 | Propagation through the hidden layer | ∂L/∂a¹ (`GRAD_MATMUL_X` of the output layer) equals W² ∂L/∂z², and ∂L/∂z¹ (`GRAD_ACTIVATE` of L1) equals ∂L/∂a¹ ⊙ σ′(z¹), within 10⁻¹⁵ for all 4 examples. No gradient is recorded for the network's input, which needs none. |
+| G5 | Accumulation | `GRAD_ACCUMULATE` with batch size 1 is the example's own gradient; with batch size 2 it is the mean of the two. A value used on two paths of the tape gets the sum: y = x·x + x gives dy/dx = 2x + 1 = 4 at x = 1.5. |
+| G6 | Access from the visualisation layer | `reconstructState` gives z, a, ∂L/∂a, ∂L/∂z, ∂L/∂W and ∂L/∂b per layer. Before the update, `updates` is empty. Input × incoming gradient equals every recorded weight gradient **exactly**, for both layers. The local derivative σ′(z) from the sigmoid op's registered rule, times ∂L/∂a, gives ∂L/∂z to within 10⁻¹⁶. |
+| G7 | NPM compatibility | `GRAD_MATMUL_W` of both layers, for every example, is bit-identical to `TrainingSession.runSample`'s gradients |
+
+**Backward order recorded for each example:** `GRAD_INIT` (loss) → `GRAD_ACTIVATE` L2 → `GRAD_BIAS` L2 → `GRAD_MATMUL_W` L2 → `GRAD_MATMUL_X` L2 → `GRAD_ACTIVATE` L1 → `GRAD_BIAS` L1 → `GRAD_MATMUL_W` L1.
+
+**First run.** 3 of the 6 checks failed, all because of the test:
+- my hand calculation used the starting weights for examples that come after earlier updates;
+- the zero gradients of the x = (0, 0) example compared +0 with −0 through `Object.is`.
+
+The test was corrected: it now trains sequentially by hand, compares numerically, and uses the x = (1, 1) example for the decomposition. The engine was not changed.
+
+**Conclusion.** The engine supports Experiment 04 as specified, and **no engine or NPM extension is needed**. Gradient accumulation through a value with several *trainable* consumers does not occur in this network: its only shared value, the input, needs no gradient. Experiment 05 shows that case on the tape, and G5 tests it.

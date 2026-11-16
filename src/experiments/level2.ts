@@ -60,6 +60,23 @@ export const L2_EXP03_DEFAULTS = {
   ] as const,
 };
 
+/**
+ * Experiment 04's network (decision D4): 2-2-1, sigmoid hidden and output, binary cross-entropy, on the four XOR
+ * examples, one update per example (batch size 1), examples in a fixed order. The starting weights are fixed so that
+ * every learner inspects the same gradients. The aim is to see gradient propagation; XOR convergence is not
+ * guaranteed or needed. Weights are in the engine's layout: W[i][j] joins input i to neuron j, row-major.
+ */
+export const L2_EXP04_DEFAULTS = {
+  initialParams: {
+    'L1.W': [0.6, -0.4, -0.3, 0.8],
+    'L1.b': [0.1, -0.1],
+    'L2.W': [0.9, -0.7],
+    'L2.b': [0.05],
+  },
+  lr: 1,
+  epochs: 10,
+};
+
 /** Experiment 02's starting settings. */
 export const L2_EXP02_DEFAULTS = {
   single: { prediction: 0.3, target: 1 },
