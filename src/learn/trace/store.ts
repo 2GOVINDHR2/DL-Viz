@@ -9,15 +9,15 @@
  * from this store.
  */
 import { create } from 'zustand';
-import type { EpochSummary } from '../../../core/engine/protocol';
-import type { TrainConfig } from '../../../core/engine/session';
-import type { Instruction, TraceHeader } from '../../../core/npm/ir';
-import type { Granularity } from '../../../core/npm/stats';
-import type { ExecState } from '../../../core/npm/state';
-import type { Tensor } from '../../../core/tensor/tensor';
-import type { DatasetSpec } from '../../../core/engine/protocol';
-import type { EngineClient } from '../../../ui/engineClient';
-import { signal } from '../../signals';
+import type { EpochSummary } from '../../core/engine/protocol';
+import type { TrainConfig } from '../../core/engine/session';
+import type { Instruction, TraceHeader } from '../../core/npm/ir';
+import type { Granularity } from '../../core/npm/stats';
+import type { ExecState } from '../../core/npm/state';
+import type { Tensor } from '../../core/tensor/tensor';
+import type { DatasetSpec } from '../../core/engine/protocol';
+import type { EngineClient } from '../../ui/engineClient';
+import { signal } from '../signals';
 import { createEngine } from './engine';
 
 /** One epoch's instructions are read at a time for the hierarchy; Level 1's networks stay far below this. */

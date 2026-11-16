@@ -18,10 +18,10 @@ import { Experiment01, neuronProbe, neuronValues } from '../../src/learn/level1/
 import { Experiment02 } from '../../src/learn/level1/Experiment02';
 import { Experiment03 } from '../../src/learn/level1/Experiment03';
 import { Experiment04 } from '../../src/learn/level1/exp04/Experiment04';
-import { TraceExplorer } from '../../src/learn/level1/exp04/TraceExplorer';
-import { TrainingOverview } from '../../src/learn/level1/exp04/TrainingOverview';
-import { inProcessEngine, setEngineFactory } from '../../src/learn/level1/exp04/engine';
-import { useRun } from '../../src/learn/level1/exp04/store';
+import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
+import { TrainingOverview } from '../../src/learn/trace/TrainingOverview';
+import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
+import { useRun } from '../../src/learn/trace/store';
 import { fmt } from '../../src/learn/format';
 
 const PAGES = { '01': Experiment01, '02': Experiment02, '03': Experiment03, '04': Experiment04 } as const;

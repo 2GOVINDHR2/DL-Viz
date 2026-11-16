@@ -12,10 +12,10 @@ import { resolveDataset } from '../../src/core/engine/host';
 import { TraceStore, storeSource } from '../../src/core/npm';
 import { unitBounds } from '../../src/core/npm/navigator';
 import { EXP04_DEFAULTS } from '../../src/experiments/level1';
-import { inProcessEngine, setEngineFactory } from '../../src/learn/level1/exp04/engine';
-import { epochTree, nodesAt, type TreeNode } from '../../src/learn/level1/exp04/hierarchy';
+import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
+import { epochTree, nodesAt, type TreeNode } from '../../src/learn/trace/hierarchy';
 import { toConfig } from '../../src/learn/level1/exp04/parts';
-import { EPOCH_READ_LIMIT, useRun } from '../../src/learn/level1/exp04/store';
+import { EPOCH_READ_LIMIT, useRun } from '../../src/learn/trace/store';
 
 const small = { ...EXP04_DEFAULTS, epochs: 20 };
 let restore: ReturnType<typeof setEngineFactory>;

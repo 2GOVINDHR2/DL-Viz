@@ -21,9 +21,9 @@ import {
   type Architecture,
   type Training,
 } from './parts';
-import { useRun } from './store';
-import { TraceExplorer } from './TraceExplorer';
-import { TrainingOverview } from './TrainingOverview';
+import { useRun } from '../../trace/store';
+import { TraceExplorer } from '../../trace/TraceExplorer';
+import { TrainingOverview } from '../../trace/TrainingOverview';
 
 const EXP = level1ById('04')!;
 

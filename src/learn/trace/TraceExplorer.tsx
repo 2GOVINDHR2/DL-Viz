@@ -10,11 +10,11 @@
 import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
 import { useEffect, useMemo, useState } from 'react';
-import type { Granularity } from '../../../core/npm/stats';
-import type { Tensor } from '../../../core/tensor/tensor';
-import { Disclosure, EngineBadge, ErrorNote, kindWords, Segmented } from '../../components/ui';
-import { fmt } from '../../format';
-import { signal } from '../../signals';
+import type { Granularity } from '../../core/npm/stats';
+import type { Tensor } from '../../core/tensor/tensor';
+import { Disclosure, EngineBadge, ErrorNote, kindWords, Segmented } from '../components/ui';
+import { fmt } from '../format';
+import { signal } from '../signals';
 import { epochTree, layerWords, PHASE_WORDS, type Detail, type TreeNode } from './hierarchy';
 import { useRun } from './store';
 

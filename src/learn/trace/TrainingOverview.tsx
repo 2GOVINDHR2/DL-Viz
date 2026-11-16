@@ -5,9 +5,9 @@
  */
 import { scaleLinear } from 'd3-scale';
 import { line } from 'd3-shape';
-import { GATES } from '../../../experiments/level1';
-import { pct, fmt } from '../../format';
-import { BoundaryLegend, DecisionBoundary } from '../../viz/DecisionBoundary';
+import { GATES } from '../../experiments/level1';
+import { pct, fmt } from '../format';
+import { BoundaryLegend, DecisionBoundary } from '../viz/DecisionBoundary';
 import { useRun } from './store';
 
 function LossChart() {

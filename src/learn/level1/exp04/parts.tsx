@@ -14,8 +14,8 @@ import { DemoBadge, EngineBadge, ErrorNote, Segmented, Term, ValueSlider } from 
 import { probe } from '../../engine/probe';
 import { fmt } from '../../format';
 import { signal } from '../../signals';
-import { createEngine } from './engine';
-import { DATASET } from './store';
+import { createEngine } from '../../trace/engine';
+import { DATASET } from '../../trace/store';
 
 export interface Architecture {
   hidden: number[];

@@ -4,9 +4,9 @@
  * equal keys, exactly as the navigator steps, so selecting a node and stepping by its granularity land in the same
  * place. Labels are plain language. Every number in a label is read from an instruction.
  */
-import type { Instruction, TraceHeader } from '../../../core/npm/ir';
-import { type Granularity, unitKey } from '../../../core/npm/stats';
-import { fmt } from '../../format';
+import type { Instruction, TraceHeader } from '../../core/npm/ir';
+import { type Granularity, unitKey } from '../../core/npm/stats';
+import { fmt } from '../format';
 
 export interface TreeNode {
   key: string;

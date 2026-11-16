@@ -3,9 +3,9 @@
  * (src/ui/engine.worker.ts, via src/ui/engineClient.ts), so training never blocks the page. Tests substitute an
  * in-process EngineHost, which answers the same protocol with the same code.
  */
-import { EngineHost } from '../../../core/engine/host';
-import { fromWire, toWire, type Reply, type Request } from '../../../core/engine/protocol';
-import { createEngineClient, type EngineClient } from '../../../ui/engineClient';
+import { EngineHost } from '../../core/engine/host';
+import { fromWire, toWire, type Reply, type Request } from '../../core/engine/protocol';
+import { createEngineClient, type EngineClient } from '../../ui/engineClient';
 
 let factory: () => EngineClient = createEngineClient;
 
