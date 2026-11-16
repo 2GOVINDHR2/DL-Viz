@@ -279,6 +279,18 @@
     "passes": 22,
     "violations": []
   },
+  "Level 1 /#/level-2 (light)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 1 /#/level-2/experiment-01 (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 /#/level-2/experiment-02 (light)": {
+    "passes": 32,
+    "violations": []
+  },
   "Level 1 experiment 01: tour open, a wrong answer's feedback (light)": {
     "passes": 30,
     "violations": []
@@ -333,6 +345,18 @@
   },
   "Level 1 /#/level-1/assessment (dark)": {
     "passes": 22,
+    "violations": []
+  },
+  "Level 1 /#/level-2 (dark)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 1 /#/level-2/experiment-01 (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 1 /#/level-2/experiment-02 (dark)": {
+    "passes": 32,
     "violations": []
   },
   "Level 1 experiment 01: tour open, a wrong answer's feedback (dark)": {

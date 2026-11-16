@@ -733,3 +733,26 @@ Append-only. Each entry: context / options / decision / consequence.
 ## ADR-086 — 2026-11-12 — The capability inventory gains the Level 1 screens by appending
 - **Context:** `reports/capability-inventory.json` is the pre-removal baseline. 472 of its entries were removed deliberately under ADR-070 to ADR-076 and are listed in `capability-removed.json`. A full `CAPTURE=1` would drop them from the baseline and erase that record.
 - **Decision:** `CAPTURE=append` adds screens that are new to the baseline and leaves every existing entry as it was. The ten Level 1 screens (480 capabilities, including Experiment 04 after a real run at each level of detail) were added this way. Result: 2,570 capabilities over 30 screens, none lost.
+
+## ADR-087 — 2026-11-16 — Level 2 reuses Level 1's pages through a level descriptor (Level 2, Stage 2)
+- **Context:** Level 1's experiment layout, router and status were written for Level 1 alone (docs/LEVEL-2-ARCHITECTURE.md §1).
+- **Decision:**
+  - `src/learn/curriculum.ts` describes a level: its experiments, which are open, where each lives, and its status keys.
+  - `ExperimentLayout` takes a level and defaults to Level 1, so Level 1's four pages are unchanged.
+  - The router gains `#/level-2` and `#/level-2/experiment-NN`; Level 1's URLs are unchanged.
+  - Level 2's session-status keys are prefixed (`l2:01`); Level 1 keeps its plain ids.
+  - `LessonExperiment` is the shared experiment type, and `Level1Experiment` narrows its id.
+  - Level 2's content is data in `src/experiments/level2.ts`, with its own vocabulary schedule `LEVEL2_TERMS`.
+- **Opening experiments stage by stage:** an experiment not yet built is listed on the landing page as "in preparation" and is not linked. The last open experiment's "next" leads back to the Level 2 overview.
+- **Learning levels page (decision D5):** Level 2 has its own card; the workbench link remains for Level 3+ material and expert inspection.
+
+## ADR-088 — 2026-11-16 — Expressions run on the engine's tape, with no NPM record (decision D3)
+- **Decision:** `src/learn/engine/expr.ts` builds expressions on a real `Tape` from `src/core/autodiff` and reads the values back. Every value comes from a registered engine op (`sub`, `square`, `sum`, `mean`, `mseLoss`, `sigmoid`, `bceLoss`): the same code a training run executes.
+- **No trace:** such evaluations are not training runs, so they produce no NPM trace, and the screens say "computed by the engine's … operation", never "recorded run".
+- **NPM is unchanged:** it remains the record of training runs.
+- **Used by:** Experiment 02 (loss functions). Experiments 04 and 05 will use the same reader for their expression graphs, and the same tape's `backward` for gradients.
+
+## ADR-089 — 2026-11-16 — Matrices are shown in the textbook layout (decision D1)
+- **Context:** the engine computes row-wise (`u = a·W`, W of shape [inputs × neurons]; NPM-SPEC §5). The Level 2 specification writes z = W a + b.
+- **Decision:** Experiment 01's matrix view shows W one row per neuron (`textbookRows`, a transposition of the engine's weights) and says in one sentence that the engine stores it the other way round. Only the layout changes: every z and a shown is the engine's recorded value.
+- **Test:** the textbook rows times a, plus b, reproduce each recorded z (`tests/unit/level2-math.test.ts`).

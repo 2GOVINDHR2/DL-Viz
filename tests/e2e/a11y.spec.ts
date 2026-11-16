@@ -189,6 +189,9 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       '/#/level-1/experiment-03',
       '/#/level-1/experiment-04',
       '/#/level-1/assessment',
+      '/#/level-2',
+      '/#/level-2/experiment-01',
+      '/#/level-2/experiment-02',
     ];
     for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme });

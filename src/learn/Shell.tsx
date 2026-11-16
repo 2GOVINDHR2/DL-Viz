@@ -2,6 +2,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { href, type Route } from './router';
 import { level1ById } from '../experiments/level1';
+import { level2ById } from '../experiments/level2';
 
 type Theme = 'system' | 'light' | 'dark';
 const THEME_KEY = 'dl-vizlab.theme.v1';
@@ -32,20 +33,21 @@ export function crumbs(route: Route): { label: string; href?: string }[] {
   const base = [{ label: 'Home', href: href.home }];
   const levels = [...base, { label: 'Learning levels', href: href.levels }];
   const l1 = [...levels, { label: 'Level 1', href: href.level1 }];
+  const l2 = [...levels, { label: 'Level 2', href: href.level2 }];
   switch (route.page) {
     case 'home':
       return [{ label: 'Home' }];
     case 'levels':
       return [...base, { label: 'Learning levels' }];
     case 'level':
-      return [...levels, { label: 'Level 1' }];
+      return [...levels, { label: `Level ${route.level}` }];
     case 'orientation':
       return [...l1, { label: 'Orientation' }];
     case 'assessment':
       return [...l1, { label: 'Assessment' }];
     case 'experiment': {
-      const e = level1ById(route.id);
-      return [...l1, { label: e ? `Experiment ${e.id}` : 'Experiment' }];
+      const e = route.level === 2 ? level2ById(route.id) : level1ById(route.id);
+      return [...(route.level === 2 ? l2 : l1), { label: e ? `Experiment ${e.id}` : 'Experiment' }];
     }
     case 'notFound':
       return [...base, { label: 'Not found' }];
@@ -54,7 +56,9 @@ export function crumbs(route: Route): { label: string; href?: string }[] {
 
 export function Shell({ route, children }: { route: Route; children: ReactNode }) {
   const [theme, setTheme] = useTheme();
-  const section = route.page === 'home' ? 'home' : route.page === 'levels' ? 'levels' : 'level1';
+  const level2 = (route.page === 'level' || route.page === 'experiment') && route.level === 2;
+  const section =
+    route.page === 'home' ? 'home' : route.page === 'levels' ? 'levels' : level2 ? 'level2' : 'level1';
   const trail = crumbs(route);
   return (
     <div className="lv-root">
@@ -88,6 +92,9 @@ export function Shell({ route, children }: { route: Route; children: ReactNode }
             </a>
             <a href={href.level1} aria-current={section === 'level1' ? 'page' : undefined}>
               Level 1
+            </a>
+            <a href={href.level2} aria-current={section === 'level2' ? 'page' : undefined}>
+              Level 2
             </a>
             <label className="lv-small lv-row" style={{ gap: 6, marginLeft: 8 }}>
               <span className="lv-muted">Theme</span>

@@ -1,4 +1,5 @@
 import { LEVEL1 } from '../../experiments/level1';
+import { LEVEL2 } from '../../experiments/level2';
 import { href } from '../router';
 
 export function Levels() {
@@ -31,15 +32,35 @@ export function Levels() {
           </a>
         </li>
         <li className="lv-path-item">
-          <span className="lv-path-num lv-muted" aria-hidden="true">
-            2+
+          <span className="lv-path-num" aria-hidden="true">
+            2
           </span>
           <div>
-            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>Levels 2 and beyond</h2>
+            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>
+              <a href={href.level2}>{LEVEL2.title}</a>
+            </h2>
             <p className="lv-muted" style={{ marginBottom: 0 }}>
-              In preparation. Their material (forward propagation, loss functions, gradient descent,
-              backpropagation, convolutional networks and training diagnostics) is available now in the full
-              workbench, which assumes you have finished Level 1.
+              {LEVEL2.tagline}
+            </p>
+            <div className="lv-path-meta">
+              <span className="lv-chip">⏱ {LEVEL2.minutes}</span>
+              <span className="lv-chip">5 experiments</span>
+              <span className="lv-chip">Builds on Level 1</span>
+            </div>
+          </div>
+          <a className="lv-btn lv-btn-primary" href={href.level2} data-control="open-level-2">
+            Open
+          </a>
+        </li>
+        <li className="lv-path-item">
+          <span className="lv-path-num lv-muted" aria-hidden="true">
+            3+
+          </span>
+          <div>
+            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>Levels 3 and beyond</h2>
+            <p className="lv-muted" style={{ marginBottom: 0 }}>
+              In preparation. Convolutional networks and training diagnostics are available now in the full
+              workbench, which also offers expert inspection of every experiment.
             </p>
           </div>
           <a className="lv-btn" href={href.workbench} data-control="open-workbench">

@@ -61,6 +61,12 @@ export interface Question {
   options: QuestionOption[];
 }
 
+/**
+ * The shape every lesson experiment shares, whatever its level (Level 2 reuses it: ADR-087). `Level1Experiment`
+ * narrows the id to Level 1's four.
+ */
+export type LessonExperiment = Omit<Level1Experiment, 'id'> & { id: string };
+
 export interface Level1Experiment {
   id: Level1Id;
   title: string;

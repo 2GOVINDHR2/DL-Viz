@@ -261,6 +261,9 @@ test('II. Level 1: no horizontal scroll, and no element escapes or clips, at fiv
     '/#/level-1/experiment-03',
     '/#/level-1/experiment-04',
     '/#/level-1/assessment',
+    '/#/level-2',
+    '/#/level-2/experiment-01',
+    '/#/level-2/experiment-02',
   ];
   const all: Violation[] = [];
   for (const width of [1440, 1024, 768, 390, 360]) {

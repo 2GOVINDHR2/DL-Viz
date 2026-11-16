@@ -1,12 +1,13 @@
 /**
- * The common shape of every Level 1 experiment (task §6), configured from the experiment's data:
+ * The common shape of every lesson experiment, in every level (Level 1 task §6; ADR-087), configured from the
+ * experiment's data:
  * A Introduction · B Concept primer · C Guided tour (optional) · D Main visualisation · E Exploration ·
  * F Knowledge check. Experiments supply only the primer demonstration, the main visualisation and their live
  * questions.
  */
 import { useEffect, type MouseEvent, type ReactNode } from 'react';
-import { LEVEL1_EXPERIMENTS, type Level1Experiment } from '../../experiments/level1';
-import { href } from '../router';
+import type { LessonExperiment } from '../../experiments/level1';
+import { LEVEL_1, type LevelDescriptor } from '../curriculum';
 import { mark } from '../status';
 import { ConceptPrimer } from './ConceptPrimer';
 import { ExplorationChallenges } from './ExplorationChallenges';
@@ -23,24 +24,32 @@ const SECTIONS = [
 
 export function ExperimentLayout({
   exp,
+  level = LEVEL_1,
   primerDemo,
   liveQuestions = [],
   children,
 }: {
-  exp: Level1Experiment;
+  exp: LessonExperiment;
+  /** The level the experiment belongs to; Level 1 when omitted. */
+  level?: LevelDescriptor;
   primerDemo?: ReactNode;
   liveQuestions?: LiveQuestion[];
   children: ReactNode;
 }) {
-  useEffect(() => mark(exp.id, 'visited'), [exp.id]);
-  const k = LEVEL1_EXPERIMENTS.findIndex((e) => e.id === exp.id);
-  const prev = LEVEL1_EXPERIMENTS[k - 1];
-  const next = LEVEL1_EXPERIMENTS[k + 1];
+  const key = level.statusKey(exp.id);
+  useEffect(() => mark(key, 'visited'), [key]);
+  const k = level.experiments.findIndex((e) => e.id === exp.id);
+  const prev = level.experiments[k - 1];
+  const nextExp = level.experiments[k + 1];
+  // A later experiment that is not open yet is not linked; the pager leads to the level's end point instead.
+  const next = nextExp && level.open.has(nextExp.id) ? nextExp : undefined;
   const questions: LiveQuestion[] = [...exp.questions, ...liveQuestions];
   return (
     <article aria-labelledby="lv-exp-title">
       <header className="lv-exp-head" id="intro">
-        <p className="lv-exp-kicker">Level 1 · Experiment {exp.id}</p>
+        <p className="lv-exp-kicker">
+          Level {level.number} · Experiment {exp.id}
+        </p>
         <h1 id="lv-exp-title">{exp.title}</h1>
         <div className="lv-exp-meta">
           <span className="lv-chip">⏱ {exp.minutes}</span>
@@ -120,26 +129,30 @@ export function ExperimentLayout({
       <section className="lv-section" id="check" aria-labelledby="lv-check-h">
         <p className="lv-section-label">Check your understanding</p>
         <h2 id="lv-check-h">Knowledge check</h2>
-        <KnowledgeCheck questions={questions} onComplete={() => mark(exp.id, 'checked')} />
+        <KnowledgeCheck questions={questions} onComplete={() => mark(key, 'checked')} />
       </section>
 
       <nav className="lv-pager" aria-label="Experiment sequence">
         {prev ? (
-          <a className="lv-btn" href={href.experiment(prev.id)}>
+          <a className="lv-btn" href={level.experimentHref(prev.id)}>
             ← {prev.id} · {prev.title}
           </a>
         ) : (
-          <a className="lv-btn" href={href.orientation}>
-            ← Orientation
+          <a className="lv-btn" href={level.before.href}>
+            ← {level.before.label}
           </a>
         )}
         {next ? (
-          <a className="lv-btn lv-btn-primary" href={href.experiment(next.id)} data-control="next-experiment">
+          <a
+            className="lv-btn lv-btn-primary"
+            href={level.experimentHref(next.id)}
+            data-control="next-experiment"
+          >
             Next: {next.id} · {next.title} →
           </a>
         ) : (
-          <a className="lv-btn lv-btn-primary" href={href.assessment} data-control="next-experiment">
-            Level 1 assessment →
+          <a className="lv-btn lv-btn-primary" href={level.after.href} data-control="next-experiment">
+            {level.after.label} →
           </a>
         )}
       </nav>
