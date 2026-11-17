@@ -24,6 +24,12 @@ export interface TraceWording {
   updatesNote: string;
   /** Plain words for an instruction kind. */
   kind(kind: string): string;
+  /**
+   * Optional name of a batch in the tree and the position line, and of its loss. When absent, the explorer's
+   * original text is used ("Batch k of n · examples #…", "Average loss of this batch").
+   */
+  batchLabel?(batch: number, of: number | null, indices: string): string;
+  batchLoss?: string;
 }
 
 export const LEVEL1_WORDING: TraceWording = {
@@ -97,3 +103,28 @@ export const LEVEL2_WORDING: TraceWording = {
 const WordingContext = createContext<TraceWording>(LEVEL1_WORDING);
 export const TraceWordingProvider = WordingContext.Provider;
 export const useTraceWording = (): TraceWording => useContext(WordingContext);
+
+/**
+ * Level 2 with one update per example (batch size 1, Experiment 04). Nothing is averaged: each update uses that one
+ * example's gradient. LEVEL2_WORDING's "one update for the whole batch" and "average" would misdescribe it.
+ */
+export const LEVEL2_PER_EXAMPLE_WORDING: TraceWording = {
+  ...LEVEL2_WORDING,
+  phaseExplain: {
+    ...LEVEL2_WORDING.phaseExplain,
+    update:
+      'Each parameter is updated once for this example: its gradient from this example’s backward pass (g), multiplied by the learning rate (η), is subtracted: w ← w − η·g. With one example per update there is nothing to average.',
+    control: 'Bookkeeping: an epoch or an example begins or ends.',
+  },
+  updateGroup: 'Update the parameters (one update for this example)',
+  updatesCaption: 'Parameters updated after this example',
+  updatesNote:
+    'First four values of each. The step is −η·g: the learning rate times this example’s gradient, with its sign reversed so that the loss goes down.',
+  kind: (k) =>
+    k === 'GRAD_ACCUMULATE'
+      ? 'take this example’s gradient (one example per update: nothing to average)'
+      : LEVEL2_WORDING.kind(k),
+  batchLabel: (batch, of, indices) =>
+    `Example ${batch + 1}${of ? ` of ${of}` : ''}${indices ? ` (dataset ${indices}), updated on its own` : ''}`,
+  batchLoss: 'Loss of this example',
+};

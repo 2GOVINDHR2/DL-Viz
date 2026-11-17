@@ -74,7 +74,11 @@ function label(
             .map((v) => `#${v + 1}`)
             .join(', ')
         : '';
-      return { label: `Batch ${p.batch + 1} of ${batchesPerEpoch}${idx ? ` · examples ${idx}` : ''}` };
+      return {
+        label: words.batchLabel
+          ? words.batchLabel(p.batch, batchesPerEpoch, idx)
+          : `Batch ${p.batch + 1} of ${batchesPerEpoch}${idx ? ` · examples ${idx}` : ''}`,
+      };
     }
     case 'sample': {
       if (p.sample === null) {

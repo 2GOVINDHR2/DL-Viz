@@ -810,3 +810,28 @@ Append-only. Each entry: context / options / decision / consequence.
 - **The shared explorer is used unchanged,** with `LEVEL2_WORDING`.
 - **XOR convergence is not a goal** and the page says so.
 - **The probe gained `backward`,** the example's backward-phase instructions. It already read the whole trace, so the change only keeps instructions it used to skip.
+
+## ADR-093 — 2026-11-17 — Stage 4 review: Experiment 04 corrections and stronger tests
+A review of Experiment 04 as the learner meets it found six defects. The engine and NPM were not changed.
+
+1. **The hidden-layer explanation was wrong after the update.** It read w² from the current parameters. Once the example's update had been applied, that is the *new* w², so "w² × ∂L/∂z² gives ∂L/∂a¹" no longer held: at example 4 of epoch 1, 0.6471 × 0.7551 is not the 0.8606 shown. `decompose` now reads the value before the update (`updates['L2.W'].before`) once that update exists. A unit test checks the identity at every position from the end of the backward pass to the end of the example, for all 4 examples, and fails on the old code.
+2. **Experiment 04's explorer described per-example updates as batch averages.** `LEVEL2_WORDING` (Experiment 03's full batch) says "one update for the whole batch" and "average the gradients over the batch". Experiment 04 now uses `LEVEL2_PER_EXAMPLE_WORDING`:
+   - "one update for this example", "nothing to average", "Example k of 4", "Loss of this example";
+   - `TraceWording` gained two optional fields, `batchLabel` and `batchLoss`. When they are absent the explorer prints its original text, so Level 1 and Experiment 03 render exactly as before.
+3. **"Next example" from the last example of an epoch landed on the end-of-epoch check** (`EVAL_BEGIN`), where the status line still said "example 1 of 4". Next and the new **Previous example** now land on the next or previous example's `BATCH_BEGIN`, read from the record, across epoch boundaries. The status line names positions between examples, and the start of the record, as what they are.
+4. **The explorer's Start was overridden.** Part C jumped to the first example whenever the cursor was −1, so the shared explorer's "⏮ Start" bounced straight back. The jump now happens once per run.
+5. **Example bounds could come from another epoch's view.** The current example's instructions were filtered by batch number only. After a move into another epoch, the old epoch's view applied until the new one loaded. They are now taken only from a view of the cursor's own epoch.
+6. **Arriving from another experiment's trained run** (found by the full regression after fix 4): React ran Experiment 04's mount effect before the previous page's cleanup had released the shared store. Part C therefore started that experiment's run and recorded its run number. After the release, Experiment 04's own run had the same number, so it never auto-started; the page could also briefly show the other run.
+   - **Fix:** Part C shows and starts only a run of its own network configuration, and auto-starts once per trace header, which is unique per training.
+   - **Test:** an e2e test (train Experiment 03, then open Experiment 04) and a targeted mutant that reinstates the run-number logic; it is killed.
+
+Also clarified:
+- **After the update,** the diagram notes that the weights drawn are the new values, while a and the gradients are this example's pass.
+- **At `BATCH_END`** the headline says the update has been applied.
+
+**Tests strengthened (surviving no-action mutants of the inherited audit, `reports/mutation-e2e.json`).** In each case the assertion now depends on the action before it:
+- `a11y.spec` novice loop: it waits for *this* experiment's screen (`data-screen`), at cursor −1, and checks that Next moves the cursor.
+- `controls.spec` Simple/Detailed: it starts from Detailed, so choosing Simple must remove the maths.
+- `controls.spec` mode memory: after each reload, the remembered mode must show *and* be back at the start of the run, for both modes.
+
+`scripts/mutation/e2e-mutants.ts` gained `--grep` and `--out`, so an audit of some specs no longer overwrites the full report.

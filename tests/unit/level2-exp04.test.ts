@@ -16,6 +16,13 @@ import {
 import { chain, decompose, neuronBackward, sigmoidLocal } from '../../src/learn/level2/exp04/math';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
+import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
+import {
+  LEVEL1_WORDING,
+  LEVEL2_PER_EXAMPLE_WORDING,
+  LEVEL2_WORDING,
+  TraceWordingProvider,
+} from '../../src/learn/trace/wording';
 
 const sig = (z: number): number => 1 / (1 + Math.exp(-z));
 const close = (a: number, b: number, tol = 1e-12): void => expect(Math.abs(a - b)).toBeLessThan(tol);
@@ -221,5 +228,66 @@ describe('Part C: the 2-2-1 network on XOR, one update per example', () => {
     const html = renderToStaticMarkup(createElement(L2Experiment04));
     expect(html).toContain('Recorded gradient');
     expect(html).toContain('✓ the same');
+  });
+
+  it('the hidden-layer explanation stays consistent through the update: it uses the output weight the pass used', async () => {
+    await useRun.getState().train(networkConfig(), '2-2-1', { kind: 'xor' });
+    const h = useRun.getState().header!;
+    const ins = await useRun.getState().read(h.epochStarts[0], h.epochStarts[1]);
+    let checked = 0;
+    let afterOutputUpdate = 0;
+    for (let batch = 0; batch < 4; batch++) {
+      const mine = ins.filter((i) => i.path.batch === batch);
+      const lastBackward = mine.filter((i) => i.path.phase === 'backward').at(-1)!.id;
+      const end = mine.find((i) => i.kind === 'BATCH_END')!.id;
+      await useRun.getState().jump(lastBackward);
+      const usedW2 = Array.from(useRun.getState().exec!.params['L2.W'].value.data);
+      // Every position from the end of the backward pass to the end of the example, the update steps included.
+      for (let at = lastBackward; at <= end; at++) {
+        await useRun.getState().jump(at);
+        const st = useRun.getState().exec!;
+        if (st.updates['L2.W']?.after) afterOutputUpdate++;
+        for (const p of PARAMS.filter((q) => q.layer === 'L1')) {
+          const d = decompose(st, p)!;
+          expect(d.hidden!.fromOutput.weight).toBe(usedW2[p.j]);
+          close(d.hidden!.fromOutput.weight * d.hidden!.fromOutput.dLdz2, d.hidden!.dLda, 1e-15);
+          checked++;
+        }
+      }
+      // The output weight really did change at the end of the example, so the check above is not vacuous.
+      const after = Array.from(useRun.getState().exec!.params['L2.W'].value.data);
+      expect(after).not.toEqual(usedW2);
+    }
+    expect(afterOutputUpdate).toBeGreaterThan(0);
+    expect(checked).toBeGreaterThan(100);
+  });
+
+  it('per-example wording: Experiment 04’s explorer never describes its updates as batch averages', async () => {
+    await useRun.getState().train(networkConfig(), '2-2-1', { kind: 'xor' });
+    const h = useRun.getState().header!;
+    const ins = await useRun.getState().read(h.epochStarts[0], h.epochStarts[1]);
+    await useRun.getState().showEpoch(0);
+    const update = ins.find((i) => i.kind === 'GRAD_ACCUMULATE' && i.path.batch === 1)!.id;
+    await useRun.getState().jump(update);
+    renderCurrentRunState();
+    const page = renderToStaticMarkup(createElement(L2Experiment04)).replace(/<[^>]+>/g, ' ');
+    expect(page).toContain('one update for this example');
+    expect(page).toContain('nothing to average');
+    expect(page).toContain('Example 2 of 4');
+    expect(page).not.toMatch(/whole batch|average the gradients|batch’s average|Average loss of this batch/);
+    // The same position with Level 2's full-batch wording does say "whole batch": the check above can fail.
+    const full = renderToStaticMarkup(
+      createElement(
+        TraceWordingProvider,
+        { value: LEVEL2_WORDING },
+        createElement(TraceExplorer, { stale: false }),
+      ),
+    );
+    expect(full).toMatch(/whole batch/);
+    // Level 1 and Experiment 03 keep their wording.
+    expect(LEVEL1_WORDING.batchLabel).toBeUndefined();
+    expect(LEVEL2_WORDING.batchLabel).toBeUndefined();
+    expect(LEVEL2_WORDING.updateGroup).toBe('Update the parameters (one update for the whole batch)');
+    expect(LEVEL2_PER_EXAMPLE_WORDING.kind('GRAD_MATMUL_W')).toBe(LEVEL2_WORDING.kind('GRAD_MATMUL_W'));
   });
 });

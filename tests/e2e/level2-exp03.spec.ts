@@ -128,6 +128,16 @@ test('Explorer: steps forward and back, with Level 2 wording', async ({ page }) 
   await expect(
     page.getByText('Update the parameters (one update for the whole batch)').first(),
   ).toBeAttached();
+  // Inside an example's backward stage the values table names ∂L/∂z with Level 2's word, not Level 1's.
+  for (let i = 0; i < 12 && !/backward stage/.test(await where.innerText()); i++) {
+    const at = await where.innerText();
+    await page.locator('[data-control="trace:next"]').click();
+    // A step is asynchronous: wait for it to land before deciding whether to take another.
+    await expect(where).not.toHaveText(at);
+  }
+  await expect(where).toContainText('backward stage');
+  await page.getByText('Values inside the network for this example').click();
+  await expect(page.getByRole('columnheader', { name: 'Gradient ∂L/∂z' })).toBeVisible();
   await expect(page.getByText('Adjustment signal')).toHaveCount(0);
 });
 

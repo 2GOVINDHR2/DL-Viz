@@ -9,9 +9,9 @@
  *    backward pass can be stepped and replayed before its update is applied. Every value is from the reconstructed
  *    state at the cursor (navigator + state.ts, through the shared trace store).
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { TrainConfig } from '../../../core/engine/session';
-import type { Instruction } from '../../../core/npm/ir';
+import type { Instruction, TraceHeader } from '../../../core/npm/ir';
 import { L2_EXP04_DEFAULTS, level2ById } from '../../../experiments/level2';
 import { LEVEL_2 } from '../../curriculum';
 import { ExperimentLayout } from '../../components/ExperimentLayout';
@@ -22,7 +22,7 @@ import { fmt, fmtSigned } from '../../format';
 import { signal } from '../../signals';
 import { useRun } from '../../trace/store';
 import { TraceExplorer } from '../../trace/TraceExplorer';
-import { LEVEL2_WORDING, TraceWordingProvider } from '../../trace/wording';
+import { LEVEL2_PER_EXAMPLE_WORDING, TraceWordingProvider } from '../../trace/wording';
 import { BackpropDiagram } from '../viz/BackpropDiagram';
 import { chain, decompose, neuronBackward, paramLabel, type Decomposition, type ParamRef } from './math';
 
@@ -48,6 +48,8 @@ export function networkConfig(): TrainConfig {
     initialParams: D.initialParams,
   };
 }
+
+const NETWORK_KEY = JSON.stringify(networkConfig());
 
 export const PARAMS: ParamRef[] = [
   { layer: 'L1', kind: 'W', i: 0, j: 0 },
@@ -349,15 +351,49 @@ export function weightQuestion(d: Decomposition | null, p: ParamRef): LiveQuesti
   };
 }
 
-function useEpochSegments(): { batchIns: Instruction[] } {
+/**
+ * The current example's instructions, from the epoch view. The view is loaded after a move into another epoch, so
+ * until it has caught up it belongs to the previous epoch: it is then not used, and the stepping buttons that need
+ * an example's bounds stay disabled rather than act on another epoch's ids.
+ */
+function useEpochSegments(): { batchIns: Instruction[]; viewIns: Instruction[] } {
   const view = useRun((s) => s.epochView);
   const exec = useRun((s) => s.exec);
+  const epoch = exec?.path?.epoch ?? null;
   const batch = exec?.path?.batch ?? null;
-  const batchIns = useMemo(
-    () => (view && batch !== null ? view.instructions.filter((i) => i.path.batch === batch) : []),
-    [view, batch],
+  const viewIns = useMemo(
+    () => (view && epoch !== null && view.epoch === epoch ? view.instructions : []),
+    [view, epoch],
   );
-  return { batchIns };
+  const batchIns = useMemo(
+    () => (batch !== null ? viewIns.filter((i) => i.path.batch === batch) : []),
+    [viewIns, batch],
+  );
+  return { batchIns, viewIns };
+}
+
+/** Where an example of the run begins (its BATCH_BEGIN), before or after the cursor; null if there is none. */
+async function exampleStart(
+  direction: 1 | -1,
+  cursor: number,
+  epoch: number,
+  viewIns: Instruction[],
+  ownBegin: number | undefined,
+): Promise<number | null> {
+  const { header, read } = useRun.getState();
+  if (!header) return null;
+  const begins = (ins: Instruction[]) => ins.filter((i) => i.kind === 'BATCH_BEGIN').map((i) => i.id);
+  // Backwards, the reference point is the start of the current example, so "previous" never means "this one".
+  const ref = direction === -1 && ownBegin !== undefined ? ownBegin : cursor;
+  const here = begins(viewIns).filter((id) => (direction === 1 ? id > ref : id < ref));
+  if (here.length) return direction === 1 ? here[0] : here[here.length - 1];
+  const other = epoch + direction;
+  const from = header.epochStarts[other];
+  const to = header.epochStarts[other + 1];
+  if (from === undefined || to === undefined) return null;
+  const there = begins(await read(from, to));
+  if (!there.length) return null;
+  return direction === 1 ? there[0] : there[there.length - 1];
 }
 
 function Inspector({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }) {
@@ -477,7 +513,7 @@ function UpdateTable() {
 function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }) {
   const status = useRun((s) => s.status);
   const error = useRun((s) => s.error);
-  const run = useRun((s) => s.run);
+  const config = useRun((s) => s.config);
   const header = useRun((s) => s.header);
   const exec = useRun((s) => s.exec);
   const cursor = useRun((s) => s.cursor);
@@ -486,25 +522,73 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
   const jump = useRun((s) => s.jump);
   const dispose = useRun((s) => s.dispose);
   useEffect(() => () => dispose(), [dispose]);
-  const { batchIns } = useEpochSegments();
+  const { batchIns, viewIns } = useEpochSegments();
 
-  // After training, start at the first example's beginning.
+  // The run shown here must be a run of this experiment's network. The trace store is shared: on arriving from
+  // another experiment it can still hold that experiment's run until the previous page has released it.
+  const ours = header !== null && config !== null && JSON.stringify(config) === NETWORK_KEY;
+  const runNetwork = (): Promise<void> => train(networkConfig(), '2-2-1 sigmoid', { kind: 'xor' });
+  // Once per run (recognised by its trace header, unique per training; run numbers restart when the store is
+  // released), start at the first example's beginning. Only once: the explorer's own "Start" also moves to the
+  // beginning of the record, and must not be overridden.
+  const startedFor = useRef<TraceHeader | null>(null);
   useEffect(() => {
-    if (status === 'ready' && header && cursor === -1) void jump(header.epochStarts[0] + 1);
-  }, [status, header, cursor, jump]);
+    if (status === 'ready' && ours && header && startedFor.current !== header) {
+      startedFor.current = header;
+      void jump(header.epochStarts[0] + 1);
+    }
+  }, [status, ours, header, jump]);
 
   const begin = batchIns.find((i) => i.kind === 'BATCH_BEGIN')?.id;
   const lastBackward = batchIns.filter((i) => i.path.phase === 'backward').at(-1)?.id;
   const end = batchIns.find((i) => i.kind === 'BATCH_END')?.id;
   const phase = exec?.current?.path.phase ?? 'control';
   const atBackwardEnd = lastBackward !== undefined && cursor >= lastBackward;
+  const updated = exec ? Object.values(exec.updates).some((u) => u.after) : false;
   useEffect(() => {
     if (lastBackward !== undefined && cursor === lastBackward) signal('backward-done');
   }, [cursor, lastBackward]);
+
+  // Neighbouring examples, found in the record (the next epoch's first example follows the last one).
+  const epoch = exec?.path?.epoch ?? null;
+  const [neighbours, setNeighbours] = useState<{ at: number; prev: number | null; next: number | null }>({
+    at: -2,
+    prev: null,
+    next: null,
+  });
+  useEffect(() => {
+    if (epoch === null || !viewIns.length) return;
+    let live = true;
+    void Promise.all([
+      exampleStart(-1, cursor, epoch, viewIns, begin),
+      exampleStart(1, cursor, epoch, viewIns, begin),
+    ]).then(([prev, next]) => {
+      if (live) setNeighbours({ at: cursor, prev, next });
+    });
+    return () => {
+      live = false;
+    };
+  }, [cursor, epoch, viewIns, begin]);
+  const nb = neighbours.at === cursor ? neighbours : { prev: null, next: null };
+  // Inside an example, "Next example" waits for its update; between examples it is always available.
+  const nextReady = nb.next !== null && (end === undefined ? begin === undefined : cursor >= end);
+
   const s = exec?.sample;
-  const where = exec?.path
-    ? `Epoch ${(exec.path.epoch ?? 0) + 1} of ${D.epochs} · example ${(exec.path.batch ?? 0) + 1} of 4${s ? ` · x = (${Array.from(s.x.data).join(', ')}), target ${s.y.data[0]}` : ''}`
-    : '';
+  const batch = exec?.path?.batch ?? null;
+  const where =
+    exec?.path?.epoch === null || exec?.path?.epoch === undefined
+      ? 'Before the first example: the starting values'
+      : `Epoch ${exec.path.epoch + 1} of ${D.epochs} · ` +
+        (batch === null
+          ? phase === 'eval'
+            ? 'between examples: the engine checks all four examples at the end of the epoch'
+            : 'between examples'
+          : `example ${batch + 1} of 4${s ? ` · x = (${Array.from(s.x.data).join(', ')}), target ${s.y.data[0]}` : ''}`);
+  const headline = !exec?.current
+    ? 'Before the run: nothing has executed yet'
+    : exec.current.kind === 'BATCH_END'
+      ? '⇄ Update applied: the parameters now hold their new values'
+      : (PHASE_WORDS[phase] ?? phase);
   return (
     <section className="lv-part" aria-labelledby="l2-p4c">
       <p className="lv-part-kicker">Part C</p>
@@ -520,12 +604,12 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
         <button
           type="button"
           className="lv-btn lv-btn-primary"
-          onClick={() => void train(networkConfig(), '2-2-1 sigmoid', { kind: 'xor' })}
+          onClick={() => void runNetwork()}
           disabled={status === 'training'}
           data-tour="net-train"
           data-control="c:train"
         >
-          {status === 'training' ? 'Running…' : run ? 'Run again' : 'Run the network'}
+          {status === 'training' ? 'Running…' : ours ? 'Run again' : 'Run the network'}
         </button>
         <span className="lv-small lv-muted">
           {D.epochs} epochs · one update per example · learning rate {D.lr} · fixed starting weights
@@ -536,7 +620,7 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
           <p>{error}</p>
         </ErrorNote>
       )}
-      {status === 'ready' && exec && (
+      {status === 'ready' && exec && ours && (
         <div className="lv-stack">
           <div className="lv-grid-main">
             <div className="lv-viz">
@@ -547,15 +631,22 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
                 <EngineBadge text="Recorded training run" />
               </div>
               <p className="lv-callout" style={{ margin: '0 0 var(--lv-s3)' }} aria-live="polite">
-                <strong>{PHASE_WORDS[phase] ?? phase}</strong>
+                <strong>{headline}</strong>
                 {exec.current && (
                   <span className="lv-small">
                     {' '}
-                    · step #{exec.current.id}: {LEVEL2_WORDING.kind(exec.current.kind)}
+                    · step #{exec.current.id}: {LEVEL2_PER_EXAMPLE_WORDING.kind(exec.current.kind)}
                   </span>
                 )}
               </p>
               <BackpropDiagram st={exec} selected={sel} phase={phase} />
+              {updated && (
+                <p className="lv-small lv-muted" style={{ margin: 0 }} data-note="after-update">
+                  The weights and biases drawn are now the values after this example’s update. The values a
+                  and the gradients are still those of this example’s pass, which used the values before it
+                  (see the update table).
+                </p>
+              )}
               <div className="lv-stack" style={{ marginTop: 'var(--lv-s3)' }} data-tour="net-stepper">
                 <div className="lv-stepper">
                   <button
@@ -599,6 +690,15 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
                   <button
                     type="button"
                     className="lv-btn lv-btn-small"
+                    onClick={() => nb.prev !== null && void jump(nb.prev)}
+                    disabled={nb.prev === null}
+                    data-control="c:prev-example"
+                  >
+                    ◀◀ Previous example
+                  </button>
+                  <button
+                    type="button"
+                    className="lv-btn lv-btn-small"
                     onClick={() => {
                       if (end === undefined) return;
                       void jump(end);
@@ -612,17 +712,17 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
                   <button
                     type="button"
                     className="lv-btn lv-btn-small"
-                    onClick={() => end !== undefined && void jump(end + 1)}
-                    disabled={end === undefined || cursor < end || !header || end + 1 >= header.length}
+                    onClick={() => nb.next !== null && void jump(nb.next)}
+                    disabled={!nextReady}
                     data-control="c:next-example"
                   >
                     Next example ▶▶
                   </button>
                 </div>
                 <p className="lv-small lv-muted" style={{ margin: 0 }}>
-                  “Apply this example’s update” becomes available at the end of the backward pass. Replaying
-                  an example re-reads its record; nothing is recomputed differently, and nothing is updated
-                  twice.
+                  “Apply this example’s update” becomes available at the end of the backward pass, and “Next
+                  example” once the update is applied. Replaying an example, or going back to an earlier one,
+                  re-reads its record: nothing is recomputed differently, and nothing is updated twice.
                 </p>
               </div>
             </div>
@@ -631,7 +731,7 @@ function PartC({ sel, setSel }: { sel: ParamRef; setSel: (p: ParamRef) => void }
               <UpdateTable />
             </div>
           </div>
-          <TraceWordingProvider value={LEVEL2_WORDING}>
+          <TraceWordingProvider value={LEVEL2_PER_EXAMPLE_WORDING}>
             <TraceExplorer stale={false} />
           </TraceWordingProvider>
         </div>

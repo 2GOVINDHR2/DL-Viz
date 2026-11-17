@@ -399,3 +399,106 @@ Experiment 04, "Backpropagation: How Errors Travel Through a Network", in three 
   - It reported no application defect.
   - I checked the spec: it imports only `@playwright/test` and computes expected values independently.
 - **Deviation from the allocation policy:** I implemented the Experiment 04 components in this session, for the same reason as in Stage 3. They depend directly on the engine-state reading that the gate had just established.
+
+## Stage 4 review — Experiment 04 as the learner meets it (2026-11-17)
+
+**Scope:** an integration and quality review of Experiment 04 before Stage 5. The validated engine work (the gate, gradient checks, parity, determinism, reconstruction) was not modified. Details of each fix are in ADR-093.
+
+### Defects found and fixed
+
+| # | Defect | How found | Fix | Test that now catches it |
+|---|---|---|---|---|
+| 1 | After an example's update, the hidden-layer explanation multiplied the **new** w² by ∂L/∂z². At example 4 of epoch 1 it showed 0.6471 × 0.7551 "gives" 0.8606. | probing the state at `BATCH_END` | `decompose` uses `updates['L2.W'].before` once that update exists | unit: the identity at every position from the end of the backward pass to the end of each example, for all 4 examples (fails on the old code); e2e: the note is unchanged by Apply |
+| 2 | Experiment 04's explorer said "one update for the whole batch", "average the gradients over the batch" and "Average loss of this batch" for per-example updates | reading the wording against the run | `LEVEL2_PER_EXAMPLE_WORDING`, used only by Experiment 04; Level 1 and Experiment 03 wording are unchanged | unit (with a control showing the full-batch wording would fail the check); e2e |
+| 3 | "Next example" from the last example of an epoch landed on the end-of-epoch check, where the status line falsely said "example 1 of 4", 4 steps short of the next example | browser walk-through | Next and the new **Previous example** land on the neighbouring example's `BATCH_BEGIN`, across epochs; the status line names positions between examples and the start of the record | e2e: example 4 → epoch 2 example 1 → back to epoch 1 examples 4 and 3 |
+| 4 | The explorer's "⏮ Start" was immediately overridden: Part C jumped to example 1 whenever the cursor was −1 | code reading, confirmed in the browser | Part C auto-starts once per run | e2e: Start stays at −1; Part C ↔ explorer synchronisation in both directions |
+| 5 | An example's bounds were taken from the epoch view by batch number only; for one render after a move into another epoch they came from the previous epoch | code reading | used only when the view's epoch is the cursor's epoch | covered by the cross-epoch navigation test |
+| 6 | **Found by the full regression after fix 4:** arriving from Experiment 03's trained run, React ran Experiment 04's mount effect before Experiment 03's cleanup had released the shared store. Part C started *Experiment 03's* run, so its own run never auto-started. Part C could also briefly show the other run. | the a11y and layout runs, reproduced in a script | Part C shows and starts only a run of its own network configuration, recognised per training by its trace header | e2e: train Experiment 03, open Experiment 04: no run shown, then its own run starts at example 1 |
+
+**Clarified:**
+- **The callout at `BATCH_END`** says the update has been applied.
+- **After an update, the diagram** notes that it draws the new weights beside this example's pass.
+- **At the start of the record,** the headline says nothing has executed.
+
+### Verified as correct (no change needed)
+
+- **Forward pass.** Stepping shows `LOAD_INPUT`, then each layer's `MATMUL`, `ADD_BIAS` and `ACTIVATE`. Values appear on the diagram only once computed ("·" before).
+- **Order of stages.** Forward steps, then loss, then backward, in that order (e2e asserts the whole recorded sequence).
+- **Backward dependencies.** The engine records them in this order: `GRAD_INIT` → L2 `GRAD_ACTIVATE`, `GRAD_BIAS`, `GRAD_MATMUL_W`, `GRAD_MATMUL_X` → L1 `GRAD_ACTIVATE`, `GRAD_BIAS`, `GRAD_MATMUL_W`.
+  - A hidden parameter shows nothing until its gradient exists (unit test).
+- **Incoming gradient, local derivative and product.** Each is labelled separately. The recorded gradient equals incoming × local for all 9 parameters on all 4 examples, and equals an independent hand backpropagation within 10⁻¹².
+- **Update.** Before `BATCH_END` the parameters are those before the example. After it, W ← W − η·g exactly. An input of 0 gives exactly zero first-layer change.
+- **Chain rule (Part A).** The engine's dy/dx equals the product of the two local rates at six values of x.
+- **Vocabulary.** The page and its explorer, at several points of a real run, use no term scheduled after Experiment 04 (vocabulary test). The ∂ notation and "gradient" are introduced in Experiment 03.
+- **Mathematical detail is collapsed by default** and opens in place (e2e).
+- **Run again.** Values are identical and the selected parameter is kept. It is a choice of what to inspect, and it is re-read from the new run's state, so nothing stale is shown.
+
+### Not applicable to Experiment 04
+
+- **Novice/expert mode switching and Simple/Detailed** belong to the workbench, not to the Level 2 pages. Level 2 has one mode; technical detail is reached through the formula disclosures and the explorer's Stages/Layers/Operations detail (Operations shows the instruction names). The workbench's mode tests were strengthened (below).
+- **Part C exposes no parameter editing:** the starting weights are fixed by design (D4). Parts A and B have editable values, which the e2e tests drive.
+- **There are no prediction prompts inside Part C.** The live knowledge-check questions are built from the current engine values (unit-tested).
+
+### Test-quality work
+
+**The inherited workbench audit** (`reports/mutation-e2e.json`, generated before the port) had no-action survivors on four behaviours:
+- the novice screen's initial state;
+- Next progression;
+- Simple/Detailed;
+- mode memory across a reload.
+
+**Each test was rewritten** so its assertion depends on the action before it (ADR-093). In the final re-audit (`reports/mutation-e2e-stage4-workbench.json`) the assertions on those behaviours are killed by their own no-action mutants. The remaining negative assertions were killed by targeted mutants (`reports/mutation-targeted.json`), whose stale anchors were updated.
+
+**The Level 2 specs were audited for the first time** (`reports/mutation-e2e-level2.json`). Its first run found:
+- 2 hollow assertions, which checked the test's own arithmetic; they were replaced by checks of the sign the page shows;
+- a stepping loop whose assertions no mutant could reach; it was replaced by one assertion on the recorded order of stages;
+- 2 inherited negative assertions that were hollow:
+  - Experiment 03's "no 'Adjustment signal'" was checked where the column never appears;
+  - the landing page's "no link for Experiment 05" was checked against the wrong code path;
+- both now fail on a targeted mutant.
+
+### Test results (final, from a clean build)
+
+**Mutation audit** (each assertion is broken on purpose; it counts as *live* only if its test then fails at that assertion's line):
+
+| Audit | Assertions | Live (mechanical) | Live (targeted) | Hollow |
+|---|---|---|---|---|
+| Level 2 specs (`reports/mutation-e2e-level2.json`) | 111 | 104 | 7: the 6 negative or derived assertions above, plus the shared `openExperiment` helper, killed in the inherited targeted audit | **0** |
+| Strengthened workbench tests (`reports/mutation-e2e-stage4-workbench.json`) | 26 | 24 | 2 (`controls.spec:506`, `:701`) | **0** |
+
+- **Targeted mutants, new or updated in this review,** recorded in `scripts/mutation/targeted.json` and `reports/mutation-targeted.json`:
+  - Level 2: `level2-exp04.spec:111`, `:224`, `:230`, `:231` and `:286`; `level2-exp03.spec:141`; `level2.spec:25`;
+  - workbench: `controls.spec:503`, `:506` and `:701`;
+  - all killed at their own line.
+- **`level2-exp04.spec:286` reinstates defect 6** (auto-start keyed by run number) and is killed, so the arrival test would catch its return.
+- **The inherited full audit `reports/mutation-e2e.json` was not regenerated:** it covers the whole workbench suite, a multi-hour run. Its line ids refer to the original commit, as `docs/TEST-MUTATION-AUDIT.md` states.
+
+| Suite | Result |
+|---|---|
+| typecheck, lint, format | pass |
+| `test:unit` | 52 files, **647 of 647** pass (2 new) |
+| gradcheck / parity / determinism | 48 / 8 / 18, all pass |
+| Production build | passes from an empty `dist/` (`npm run build`, run by Playwright's web server; port 4173 checked free first) |
+| e2e, Chromium, 2 workers, full suite | **93 of 93 pass**, including all Level 1 specs, `perf-cnn`, `a11y` (111 screens, 0 violations) and `layout` (0 violations, Level 1 and 2 at 1440 to 360 px) |
+| Level 2 e2e | `level2.spec` 3, `level2-exp03.spec` 7, `level2-exp04.spec` 12, all pass |
+
+### Remaining limitations
+
+- **The shared explorer keeps its generic structure names in Experiment 04.** Its step-size button says "Batch" and its tree has a "Batch begins" bookkeeping node. Neither claims averaging, and the run summary states "batch size 1". The tree's example nodes and all update text are per-example.
+- **"Next example" requires the current example's update to be applied first.** This is deliberate, so the order forward → backward → update is always followed. "Previous example" and the explorer can move anywhere.
+- **On a phone, the network diagram scrolls sideways** inside its own focusable region (560 px minimum width).
+- **Firefox and WebKit were not run**; the suite is configured for Chromium.
+- **No learner has used Level 2.** Whether the explanations are *understandable* was reviewed by reading, not measured.
+
+### Files changed in this review
+
+- **App:**
+  - `src/learn/level2/exp04/{Experiment04.tsx, math.ts}`;
+  - `src/learn/trace/{wording.ts, hierarchy.ts, TraceExplorer.tsx}`: optional wording fields only; Level 1 and Experiment 03 output unchanged.
+- **Tests:**
+  - `tests/unit/level2-exp04.test.ts`;
+  - `tests/e2e/{level2-exp04, level2-exp03, a11y, controls}.spec.ts`.
+- **Tooling:** `scripts/mutation/{e2e-mutants.ts, targeted.json}` (`--grep`/`--out`; new and re-anchored mutants).
+- **Reports:** `reports/mutation-e2e-level2.json`, `reports/mutation-e2e-stage4-workbench.json`, `reports/mutation-targeted.json`.
+- **Docs:** ADR-093, this section, and refreshed `docs/screenshots/level2/exp04-*`.
+- **Not changed:** `src/core` (engine, NPM, trace format) and Level 1 content.

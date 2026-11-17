@@ -501,7 +501,11 @@ function DetailPanel({ detail }: { detail: Detail }) {
   const batches = config ? Math.ceil(header.dataset.n / config.batchSize) : null;
   const where = [
     path.epoch !== null ? `Epoch ${path.epoch + 1} of ${header.epochStarts.length - 1}` : 'Before training',
-    path.batch !== null ? `Batch ${path.batch + 1}${batches ? ` of ${batches}` : ''}` : null,
+    path.batch !== null
+      ? words.batchLabel
+        ? words.batchLabel(path.batch, batches, '')
+        : `Batch ${path.batch + 1}${batches ? ` of ${batches}` : ''}`
+      : null,
     sample ? `Example #${sample.datasetIndex + 1}` : null,
     words.phases[path.phase]?.tag ? `${words.phases[path.phase].tag} stage` : null,
     path.layer && path.layer !== 'loss' ? layerWords(header, path.layer) : null,
@@ -594,7 +598,8 @@ function DetailPanel({ detail }: { detail: Detail }) {
       )}
       {exec.batchLoss !== undefined && path.batch !== null && (
         <p className="lv-small" style={{ margin: 0 }}>
-          Average loss of this batch: <span className="lv-mono">{fmt(exec.batchLoss, 4)}</span>
+          {words.batchLoss ?? 'Average loss of this batch'}:{' '}
+          <span className="lv-mono">{fmt(exec.batchLoss, 4)}</span>
         </p>
       )}
       {detail === 'operations' && (

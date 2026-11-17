@@ -114,7 +114,8 @@ export interface Decomposition {
 
 /**
  * A parameter's gradient explained from the state at the cursor; null until its gradient has been computed. The
- * output weights are read from the state too: with one update per example they change between examples.
+ * output weights are read from the state too: with one update per example they change between examples, and within
+ * an example the value before its update is the one the backward pass used.
  */
 export function decompose(st: ExecState, p: ParamRef): Decomposition | null {
   const s = st.sample;
@@ -134,10 +135,13 @@ export function decompose(st: ExecState, p: ParamRef): Decomposition | null {
     recorded,
   };
   if (p.layer === 'L1' && L.gradA && L.z) {
+    // The output weight this example's backward pass used: once its update has been applied (APPLY_UPDATE of L2.W),
+    // the current value is the new one, so the recorded value before the update is read instead.
+    const w2 = st.updates['L2.W']?.before ?? st.params['L2.W'].value;
     d.hidden = {
       dLda: L.gradA.data[p.j],
       sigmaPrime: sigmoidLocal(Array.from(L.z.data))[p.j],
-      fromOutput: { weight: st.params['L2.W'].value.data[p.j], dLdz2: s.layers.L2.gradZ!.data[0] },
+      fromOutput: { weight: w2.data[p.j], dLdz2: s.layers.L2.gradZ!.data[0] },
     };
   }
   return d;

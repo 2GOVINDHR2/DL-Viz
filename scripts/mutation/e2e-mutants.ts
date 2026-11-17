@@ -17,7 +17,8 @@
  * Assertions on a page that should *lack* something (negative assertions) survive blanking by construction,
  * so for them only the no-action and targeted mutants count.
  *
- * Usage: npm run build; (npx vite preview --port 4173 &); npx tsx scripts/mutation/e2e-mutants.ts [--only file]
+ * Usage: npm run build; (npx vite preview --port 4173 &); npx tsx scripts/mutation/e2e-mutants.ts
+ *   [--only <file|regex>] [--grep <test-title regex>] [--out <report.json>]
  * Writes reports/mutation-e2e.json.
  */
 import { spawnSync } from 'node:child_process';
@@ -26,10 +27,17 @@ import { basename, join } from 'node:path';
 import ts from 'typescript';
 
 const DIR = 'tests/e2e';
-const OUT = 'reports/mutation-e2e.json';
+const arg = (name: string): string | null =>
+  process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : null;
+/** `--out <file>` writes elsewhere, so a partial audit never overwrites the full report. */
+const OUT = arg('--out') ?? 'reports/mutation-e2e.json';
+/** `--grep <regex>` keeps only assertions whose test title (or helper name) matches. */
+const grep = arg('--grep') ? new RegExp(arg('--grep')!) : null;
 const BATCH = Number(process.env.MUT_BATCH ?? 24);
 const WORKERS = String(process.env.MUT_WORKERS ?? 4);
-const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
+/** `--only <file|regex>`: the spec files to audit (a plain file name matches itself). */
+const onlyArg = arg('--only');
+const only = onlyArg ? new RegExp(`^(?:${onlyArg})$`) : null;
 
 const ACTIONS =
   /\.(click|dblclick|fill|press|pressSequentially|type|selectOption|check|uncheck|setChecked|hover|tap|dragTo|setInputFiles|goto|reload|dispatchEvent)\(|\b(openExperiment|scrubTo|reset|detailed|setup|consentAndDemographics|answerAll|runCondition|deeper)\(/;
@@ -356,13 +364,18 @@ function main(): void {
   for (const f of readdirSync(DIR)) if (f.startsWith('zzm-')) rmSync(join(DIR, f));
   const files = readdirSync(DIR)
     .filter((f) => f.endsWith('.ts') && !f.startsWith('zzm-') && !/^perf/.test(f))
-    .filter((f) => !only || f === only || f === 'helpers.ts')
+    .filter((f) => !only || only.test(f) || f === 'helpers.ts')
     .map((f) => join(DIR, f));
   const sources = new Map(
     files.map((f) => [f, ts.createSourceFile(f, readFileSync(f, 'utf8'), ts.ScriptTarget.Latest, true)]),
   );
-  const all = files.flatMap((f) => collect(f, sources));
-  attachHelpers(all, sources);
+  const collected = files.flatMap((f) => collect(f, sources));
+  attachHelpers(collected, sources);
+  const all = collected.filter(
+    (a) =>
+      (!grep || grep.test(a.fn)) &&
+      (!only || a.inTest || a.testAt === null || only.test(basename(a.testAt.file))),
+  );
   const resume =
     process.argv.includes('--resume') && existsSync(OUT)
       ? (JSON.parse(readFileSync(OUT, 'utf8')) as Result[])

@@ -285,5 +285,75 @@
     "mutant": "the diagram draws at least four neurons per layer",
     "outcome": "killed",
     "detail": "failed at 50: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "controls.spec:503",
+    "claim": "Simple hides the formulas",
+    "mutant": "Simple starts with the maths shown",
+    "outcome": "killed",
+    "detail": "failed at 503: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "controls.spec:506",
+    "claim": "Simple hides the symbolic form",
+    "mutant": "Simple also shows the symbolic form",
+    "outcome": "killed",
+    "detail": "failed at 506: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-exp04.spec:111",
+    "claim": "stepping shows every forward step, then every loss step, then the backward pass",
+    "mutant": "the forward and loss stages are named the other way round",
+    "outcome": "killed",
+    "detail": "failed at 111: Error: expect(received).toMatch(expected)"
+  },
+  {
+    "id": "level2-exp04.spec:224",
+    "claim": "the hidden-layer formula is hidden until asked for",
+    "mutant": "every formula note opens by default",
+    "outcome": "killed",
+    "detail": "failed at 224: Error: expect(locator).toBeHidden() failed"
+  },
+  {
+    "id": "level2-exp04.spec:230",
+    "claim": "the note's w² × ∂L/∂z² equals its ∂L/∂a¹",
+    "mutant": "the note shows a w² 10 % off",
+    "outcome": "killed",
+    "detail": "failed at 230: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level2-exp04.spec:231",
+    "claim": "the after-update note is absent before the update",
+    "mutant": "the after-update note is always shown",
+    "outcome": "killed",
+    "detail": "failed at 231: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2.spec:25",
+    "claim": "an experiment in preparation has no link",
+    "mutant": "the landing page offers a link for an experiment in preparation",
+    "outcome": "killed",
+    "detail": "failed at 25: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "controls.spec:701",
+    "claim": "after a reload in expert mode, no novice screen is shown",
+    "mutant": "the expert workbench also renders a (blank) novice screen, carrying the real cursor",
+    "outcome": "killed",
+    "detail": "failed at 701: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-exp03.spec:141",
+    "claim": "Experiment 03's explorer does not use Level 1's \"adjustment signal\"",
+    "mutant": "the explorer's ∂L/∂z explanation also uses Level 1's \"Adjustment signal\"",
+    "outcome": "killed",
+    "detail": "failed at 141: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-exp04.spec:286",
+    "claim": "arriving from Experiment 03's trained run, Part C's own run starts at example 1",
+    "mutant": "defect 6 reinstated: auto-start keyed by run number, without the own-network check",
+    "outcome": "killed",
+    "detail": "timedOut at 286: Test timeout of 60000ms exceeded."
   }
 ]

@@ -1,0 +1,366 @@
+[
+  {
+    "id": "a11y.spec:128",
+    "file": "tests/e2e/a11y.spec.ts",
+    "line": 128,
+    "fn": "every novice screen (Fix Round 2): first view, after a prediction and a step, every \"going deeper\" open, both themes",
+    "negative": false,
+    "text": "await expect(screen).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 128: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 128: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "a11y.spec:129",
+    "file": "tests/e2e/a11y.spec.ts",
+    "line": 129,
+    "fn": "every novice screen (Fix Round 2): first view, after a prediction and a step, every \"going deeper\" open, both themes",
+    "negative": false,
+    "text": "await expect(screen).toHaveAttribute('data-cursor', '-1');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 129: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 128: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "a11y.spec:130",
+    "file": "tests/e2e/a11y.spec.ts",
+    "line": 130,
+    "fn": "every novice screen (Fix Round 2): first view, after a prediction and a step, every \"going deeper\" open, both themes",
+    "negative": false,
+    "text": "await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 128: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "a11y.spec:136",
+    "file": "tests/e2e/a11y.spec.ts",
+    "line": 136,
+    "fn": "every novice screen (Fix Round 2): first view, after a prediction and a step, every \"going deeper\" open, both themes",
+    "negative": true,
+    "text": "await expect(screen).not.toHaveAttribute('data-cursor', '-1');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 136: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 136: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:500",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 500,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.kind code')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 500: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 501: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:501",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 501,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.katex').first()).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 501: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 501: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:503",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 503,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": true,
+    "text": "await expect(panel.locator('.katex')).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 505: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 503: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:505",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 505,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.kind .meaning')).toHaveCount(1);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 505: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 503: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:506",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 506,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": true,
+    "text": "await expect(panel.locator('.kind .symbolic')).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 507: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 503: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:508",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 508,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.katex')).toHaveCount(1);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 508: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 508: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:510",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 510,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.katex')).toHaveCount(2);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 510: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 510: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:512",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 512,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.katex')).toHaveCount(1);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 512: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 512: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:514",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 514,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.katex')).toHaveCount(2);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 514: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 514: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:515",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 515,
+    "fn": "explanation: Simple/Detailed and the two in-place reveals change the output",
+    "negative": false,
+    "text": "await expect(panel.locator('.kind code')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 515: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 514: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:670",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 670,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.locator('article.novice')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 670: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 87,678: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "controls.spec:671",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 671,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 671: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 87,678: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "controls.spec:681",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 681,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.locator('.controls .position')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 681: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 681: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:682",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 682,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "expect(await cursor(page)).toBe(at);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 82,682: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 681: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:684",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 684,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect.poll(() => cursor(page)).toBeGreaterThan(at);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 684: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 684: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m"
+    }
+  },
+  {
+    "id": "controls.spec:687",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 687,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.locator('article.novice')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 687: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 687: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:688",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 688,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "expect(await cursor(page)).toBe(moved);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 82,688: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 687: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:692",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 692,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.locator('article.novice')).toHaveAttribute('data-cursor', '-1', { timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 692: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 692: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:694",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 694,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.locator('.controls .position')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 694: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 694: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:696",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 696,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect.poll(() => cursor(page)).toBeGreaterThan(-1);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 696: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 696: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m"
+    }
+  },
+  {
+    "id": "controls.spec:698",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 698,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": false,
+    "text": "await expect(page.locator('.controls .position')).toHaveAttribute('data-cursor', '-1', { timeout: 60_000, });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 698: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 698: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "controls.spec:701",
+    "file": "tests/e2e/controls.spec.ts",
+    "line": 701,
+    "fn": "switching mode keeps the position, in both directions",
+    "negative": true,
+    "text": "await expect(page.locator('article.novice')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 698: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  }
+]

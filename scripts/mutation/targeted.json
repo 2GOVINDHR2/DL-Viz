@@ -172,7 +172,7 @@
     "grep": "reset experiment: an edited"
   },
   {
-    "ids": ["controls.spec:418"],
+    "ids": ["controls.spec:503"],
     "claim": "Simple hides the formulas",
     "mutant": "Simple starts with the maths shown",
     "file": "src/explain/ExplanationPanel.tsx",
@@ -190,14 +190,14 @@
     "grep": "explanation: Simple/Detailed"
   },
   {
-    "ids": ["controls.spec:419"],
-    "claim": "Simple hides the instruction name",
-    "mutant": "Simple shows the instruction name",
+    "ids": ["controls.spec:506"],
+    "claim": "Simple hides the symbolic form",
+    "mutant": "Simple also shows the symbolic form",
     "file": "src/explain/ExplanationPanel.tsx",
     "patches": [
       {
-        "find": "{detailed && (\n            <p className=\"kind\">",
-        "replace": "{(detailed || true) && (\n            <p className=\"kind\">"
+        "find": "{detailed && <span className=\"symbolic\"> {ins.symbolic}</span>}",
+        "replace": "{(detailed || true) && <span className=\"symbolic\"> {ins.symbolic}</span>}"
       }
     ],
     "spec": "tests/e2e/controls.spec.ts",
@@ -585,5 +585,129 @@
     ],
     "spec": "tests/e2e/views.spec.ts",
     "grep": "editing the architecture"
+  },
+  {
+    "ids": ["level2-exp04.spec:111"],
+    "claim": "stepping shows every forward step, then every loss step, then the backward pass",
+    "mutant": "the forward and loss stages are named the other way round",
+    "file": "src/learn/level2/exp04/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "forward: '→ Forward pass: computing the prediction',",
+        "replace": "forward: '→ Loss: comparing the prediction with the target',"
+      },
+      {
+        "find": "loss: '→ Loss: comparing the prediction with the target',",
+        "replace": "loss: '→ Forward pass: computing the prediction',"
+      }
+    ],
+    "spec": "tests/e2e/level2-exp04.spec.ts",
+    "grep": "Part C order"
+  },
+  {
+    "ids": ["level2-exp04.spec:224"],
+    "claim": "the hidden-layer formula is hidden until asked for",
+    "mutant": "every formula note opens by default",
+    "file": "src/learn/components/MathNote.tsx",
+    "patches": [
+      {
+        "find": "<Disclosure summary={summary}>",
+        "replace": "<Disclosure summary={summary} defaultOpen>"
+      }
+    ],
+    "spec": "tests/e2e/level2-exp04.spec.ts",
+    "grep": "Part C after the update"
+  },
+  {
+    "ids": ["level2-exp04.spec:230"],
+    "claim": "the note's w² × ∂L/∂z² equals its ∂L/∂a¹",
+    "mutant": "the note shows a w² 10 % off",
+    "file": "src/learn/level2/exp04/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{fmt(d.hidden.fromOutput.weight, 4)}",
+        "replace": "{fmt(d.hidden.fromOutput.weight * 1.1, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-exp04.spec.ts",
+    "grep": "Part C after the update"
+  },
+  {
+    "ids": ["level2-exp04.spec:231"],
+    "claim": "the after-update note is absent before the update",
+    "mutant": "the after-update note is always shown",
+    "file": "src/learn/level2/exp04/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{updated && (",
+        "replace": "{(updated || true) && ("
+      }
+    ],
+    "spec": "tests/e2e/level2-exp04.spec.ts",
+    "grep": "Part C after the update"
+  },
+  {
+    "ids": ["level2-exp03.spec:141"],
+    "claim": "Experiment 03's explorer does not use Level 1's \"adjustment signal\"",
+    "mutant": "the explorer's ∂L/∂z explanation also uses Level 1's \"Adjustment signal\"",
+    "file": "src/learn/level2/exp03/Training.tsx",
+    "patches": [
+      {
+        "find": "<TraceWordingProvider value={LEVEL2_WORDING}>",
+        "replace": "<TraceWordingProvider value={{ ...LEVEL2_WORDING, signalExplain: `Adjustment signal. ${LEVEL2_WORDING.signalExplain}` }}>"
+      }
+    ],
+    "spec": "tests/e2e/level2-exp03.spec.ts",
+    "grep": "Explorer: steps forward and back"
+  },
+  {
+    "ids": ["level2.spec:25"],
+    "claim": "an experiment in preparation has no link",
+    "mutant": "the landing page offers a link for an experiment in preparation",
+    "file": "src/learn/pages/Level2Landing.tsx",
+    "patches": [
+      {
+        "find": "...LEVEL2_PLANNED.map((e) => ({ ...e, open: false })),",
+        "replace": "...LEVEL2_PLANNED.map((e) => ({ ...e, open: true })),"
+      }
+    ],
+    "spec": "tests/e2e/level2.spec.ts",
+    "grep": "Level 2 is reachable"
+  },
+  {
+    "ids": ["controls.spec:701"],
+    "claim": "after a reload in expert mode, no novice screen is shown",
+    "mutant": "the expert workbench also renders a (blank) novice screen, carrying the real cursor",
+    "file": "src/ui/App.tsx",
+    "patches": [
+      {
+        "find": "        <Workbench key={`${exp.id}:${s.resets}`} exp={exp} />",
+        "replace": "        <><article className=\"novice\" data-cursor={s.cursor} /><Workbench key={`${exp.id}:${s.resets}`} exp={exp} /></>"
+      }
+    ],
+    "spec": "tests/e2e/controls.spec.ts",
+    "grep": "switching mode keeps"
+  },
+  {
+    "ids": ["level2-exp04.spec:286"],
+    "claim": "arriving from Experiment 03's trained run, Part C's own run starts at example 1",
+    "mutant": "defect 6 reinstated: auto-start keyed by run number, without the own-network check",
+    "file": "src/learn/level2/exp04/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "  const startedFor = useRef<TraceHeader | null>(null);",
+        "replace": "  const startedFor = useRef<TraceHeader | null>(null);\n  const startedRun = useRef(0);\n  const runNo = useRun((s) => s.run);"
+      },
+      {
+        "find": "    if (status === 'ready' && ours && header && startedFor.current !== header) {\n      startedFor.current = header;",
+        "replace": "    if (status === 'ready' && header && startedRun.current !== runNo) {\n      startedRun.current = runNo;\n      startedFor.current = header;"
+      },
+      {
+        "find": "  }, [status, ours, header, jump]);",
+        "replace": "  }, [status, ours, header, jump, runNo]);"
+      }
+    ],
+    "spec": "tests/e2e/level2-exp04.spec.ts",
+    "grep": "after another experiment"
   }
 ]

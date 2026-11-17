@@ -7,6 +7,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
+import { EXPERIMENTS } from '../../src/experiments/registry';
 import { openExperiment, unlockAll } from './helpers';
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
@@ -120,18 +121,19 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       await page.goto('/#/workbench');
       for (const t of titles) {
         await page.getByRole('button', { name: new RegExp(`^\\S+\\. ${t}`) }).click();
-        const screen = page.locator('article.novice');
-        if (!(await screen.count())) {
-          // Not yet rebuilt: the workbench filtered by the experiment's declared surface.
-          await expect(page.locator('.position[data-cursor="-1"]')).toBeVisible({ timeout: 90_000 });
-          await audit(page, `novice workbench (${scheme}): ${t}`);
-          continue;
-        }
+        // This experiment's own purpose-built screen (not the previous one's), at the start of its run. Every
+        // experiment has one, so a missing screen is a failure, not a fallback to the workbench.
+        const id = EXPERIMENTS.find((e) => e.title === t)!.id;
+        const screen = page.locator(`article.novice[data-screen="${id}"]`);
+        await expect(screen).toBeVisible({ timeout: 90_000 });
+        await expect(screen).toHaveAttribute('data-cursor', '-1');
         await expect(page.getByRole('button', { name: /^Next: / })).toBeEnabled({ timeout: 60_000 });
         await audit(page, `novice (${scheme}): ${t}`);
         const option = page.locator('.predict-options button').first();
         if (await option.count()) await option.click();
         await page.getByRole('button', { name: /^Next: / }).click();
+        // Next moved the run forward: the screen is no longer at its start.
+        await expect(screen).not.toHaveAttribute('data-cursor', '-1');
         const closed = page.locator('.deeper-buttons button[aria-expanded="false"]');
         while (await closed.count()) await closed.first().click();
         await audit(page, `novice (${scheme}), predicted, stepped, deeper open: ${t}`);

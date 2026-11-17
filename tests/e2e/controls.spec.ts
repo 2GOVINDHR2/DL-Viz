@@ -495,6 +495,10 @@ test.describe('control audit: expert workbench', () => {
     await openExperiment(page, 'XOR needs a hidden layer');
     await scrubTo(page, 30);
     const panel = page.locator('section.explanation');
+    // Start from Detailed, so that choosing Simple must change what is shown (Simple is the default).
+    await page.getByRole('radio', { name: 'Detailed' }).click();
+    await expect(panel.locator('.kind code')).toBeVisible();
+    await expect(panel.locator('.katex').first()).toBeVisible();
     await page.getByRole('radio', { name: 'Simple' }).click();
     await expect(panel.locator('.katex')).toHaveCount(0);
     // Simple mode: the step's meaning, without its symbolic form (ADR-062).
@@ -682,9 +686,19 @@ test.describe('control audit: curriculum, mode and declared surface', () => {
     await page.getByRole('button', { name: 'Guided path' }).click();
     await expect(page.locator('article.novice')).toBeVisible();
     expect(await cursor(page)).toBe(moved);
-    // The choice is remembered.
+    // The choice is remembered across a reload, in both directions. A reload starts the run again, so each check
+    // also needs the reload to have happened: the screen must be the remembered one and back at the start.
     await page.reload();
-    await expect(page.locator('article.novice')).toBeVisible({ timeout: 60_000 });
+    await expect(page.locator('article.novice')).toHaveAttribute('data-cursor', '-1', { timeout: 60_000 });
+    await page.getByRole('button', { name: 'Expert mode', exact: true }).click();
+    await expect(page.locator('.controls .position')).toBeVisible();
+    await page.getByRole('button', { name: 'Step ▶' }).click();
+    await expect.poll(() => cursor(page)).toBeGreaterThan(-1);
+    await page.reload();
+    await expect(page.locator('.controls .position')).toHaveAttribute('data-cursor', '-1', {
+      timeout: 60_000,
+    });
+    await expect(page.locator('article.novice')).toHaveCount(0);
   });
 
   test('no control renders that the experiment has not declared', async ({ page }) => {
