@@ -299,6 +299,10 @@
     "passes": 31,
     "violations": []
   },
+  "Level 1 /#/level-2/experiment-05 (light)": {
+    "passes": 32,
+    "violations": []
+  },
   "Level 1 experiment 01: tour open, a wrong answer's feedback (light)": {
     "passes": 30,
     "violations": []
@@ -313,6 +317,10 @@
   },
   "Level 2 experiment 04 trained, example 1 backward and update (light)": {
     "passes": 33,
+    "violations": []
+  },
+  "Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen (light)": {
+    "passes": 32,
     "violations": []
   },
   "Level 1 experiment 04 trained, stages (light)": {
@@ -383,6 +391,10 @@
     "passes": 31,
     "violations": []
   },
+  "Level 1 /#/level-2/experiment-05 (dark)": {
+    "passes": 32,
+    "violations": []
+  },
   "Level 1 experiment 01: tour open, a wrong answer's feedback (dark)": {
     "passes": 30,
     "violations": []
@@ -397,6 +409,10 @@
   },
   "Level 2 experiment 04 trained, example 1 backward and update (dark)": {
     "passes": 33,
+    "violations": []
+  },
+  "Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen (dark)": {
+    "passes": 32,
     "violations": []
   },
   "Level 1 experiment 04 trained, stages (dark)": {

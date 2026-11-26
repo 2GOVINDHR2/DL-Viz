@@ -329,13 +329,6 @@
     "detail": "failed at 231: Error: expect(locator).toHaveCount(expected) failed"
   },
   {
-    "id": "level2.spec:25",
-    "claim": "an experiment in preparation has no link",
-    "mutant": "the landing page offers a link for an experiment in preparation",
-    "outcome": "killed",
-    "detail": "failed at 25: Error: expect(locator).toHaveCount(expected) failed"
-  },
-  {
     "id": "controls.spec:701",
     "claim": "after a reload in expert mode, no novice screen is shown",
     "mutant": "the expert workbench also renders a (blank) novice screen, carrying the real cursor",
@@ -355,5 +348,12 @@
     "mutant": "defect 6 reinstated: auto-start keyed by run number, without the own-network check",
     "outcome": "killed",
     "detail": "timedOut at 286: Test timeout of 60000ms exceeded."
+  },
+  {
+    "id": "level2.spec:22",
+    "claim": "no Level 2 experiment is left in preparation",
+    "mutant": "Experiment 05 is closed again",
+    "outcome": "killed",
+    "detail": "failed at 22: Error: expect(locator).toHaveCount(expected) failed"
   }
 ]

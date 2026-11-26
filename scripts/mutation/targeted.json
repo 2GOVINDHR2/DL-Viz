@@ -661,20 +661,6 @@
     "grep": "Explorer: steps forward and back"
   },
   {
-    "ids": ["level2.spec:25"],
-    "claim": "an experiment in preparation has no link",
-    "mutant": "the landing page offers a link for an experiment in preparation",
-    "file": "src/learn/pages/Level2Landing.tsx",
-    "patches": [
-      {
-        "find": "...LEVEL2_PLANNED.map((e) => ({ ...e, open: false })),",
-        "replace": "...LEVEL2_PLANNED.map((e) => ({ ...e, open: true })),"
-      }
-    ],
-    "spec": "tests/e2e/level2.spec.ts",
-    "grep": "Level 2 is reachable"
-  },
-  {
     "ids": ["controls.spec:701"],
     "claim": "after a reload in expert mode, no novice screen is shown",
     "mutant": "the expert workbench also renders a (blank) novice screen, carrying the real cursor",
@@ -709,5 +695,19 @@
     ],
     "spec": "tests/e2e/level2-exp04.spec.ts",
     "grep": "after another experiment"
+  },
+  {
+    "ids": ["level2.spec:22"],
+    "claim": "no Level 2 experiment is left in preparation",
+    "mutant": "Experiment 05 is closed again",
+    "file": "src/learn/curriculum.ts",
+    "patches": [
+      {
+        "find": "open: new Set(['01', '02', '03', '04', '05']),",
+        "replace": "open: new Set(['01', '02', '03', '04']),"
+      }
+    ],
+    "spec": "tests/e2e/level2.spec.ts",
+    "grep": "Level 2 is reachable"
   }
 ]

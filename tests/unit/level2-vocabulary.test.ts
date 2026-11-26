@@ -12,6 +12,7 @@ import { L2Experiment02 } from '../../src/learn/level2/Experiment02';
 import { L2Experiment03 } from '../../src/learn/level2/exp03/Experiment03';
 import { NEURON_DATASET, neuronConfig } from '../../src/learn/level2/exp03/Training';
 import { L2Experiment04, networkConfig } from '../../src/learn/level2/exp04/Experiment04';
+import { L2Experiment05 } from '../../src/learn/level2/exp05/Experiment05';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
 import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
@@ -50,6 +51,7 @@ describe('Level 2 vocabulary', () => {
     ['02', L2Experiment02],
     ['03', L2Experiment03],
     ['04', L2Experiment04],
+    ['05', L2Experiment05],
   ] as const)
     it(`Experiment ${id} uses no term taught later, and marks its engine values`, () => {
       const html = renderToStaticMarkup(createElement(page));

@@ -10,6 +10,7 @@ import { L2Experiment01 } from './level2/Experiment01';
 import { L2Experiment02 } from './level2/Experiment02';
 import { L2Experiment03 } from './level2/exp03/Experiment03';
 import { L2Experiment04 } from './level2/exp04/Experiment04';
+import { L2Experiment05 } from './level2/exp05/Experiment05';
 import { LEVEL_2 } from './curriculum';
 import { Level2Landing } from './pages/Level2Landing';
 import { Assessment } from './pages/Assessment';
@@ -32,6 +33,7 @@ const L2_EXPERIMENTS: Record<string, () => ReactElement> = {
   '02': L2Experiment02,
   '03': L2Experiment03,
   '04': L2Experiment04,
+  '05': L2Experiment05,
 };
 
 function Page({ route }: { route: Route }) {

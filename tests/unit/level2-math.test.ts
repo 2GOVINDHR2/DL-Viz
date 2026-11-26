@@ -173,8 +173,8 @@ describe('Experiment 02: loss functions', () => {
 
 describe('Level 2 structure', () => {
   it('Stages 2 and 3 open Experiments 01–03; each has objectives, a primer of 2–4 terms, a tour and 3–5 questions', () => {
-    expect(LEVEL2_EXPERIMENTS.map((e) => e.id)).toEqual(['01', '02', '03', '04']);
-    expect([...LEVEL_2.open]).toEqual(['01', '02', '03', '04']);
+    expect(LEVEL2_EXPERIMENTS.map((e) => e.id)).toEqual(['01', '02', '03', '04', '05']);
+    expect([...LEVEL_2.open]).toEqual(['01', '02', '03', '04', '05']);
     for (const e of LEVEL2_EXPERIMENTS) {
       expect(e.objectives.length).toBeGreaterThan(0);
       expect(e.primer.terms.length).toBeGreaterThanOrEqual(2);

@@ -502,3 +502,136 @@ Experiment 04, "Backpropagation: How Errors Travel Through a Network", in three 
 - **Reports:** `reports/mutation-e2e-level2.json`, `reports/mutation-e2e-stage4-workbench.json`, `reports/mutation-targeted.json`.
 - **Docs:** ADR-093, this section, and refreshed `docs/screenshots/level2/exp04-*`.
 - **Not changed:** `src/core` (engine, NPM, trace format) and Level 1 content.
+
+## Stage 5 — Experiment 05: automatic differentiation (2026-11-26)
+
+### The gate (committed before any Experiment 05 page code)
+
+**Question.** Do the graph readers report exactly what the engine computes? Experiment 05 shows two kinds of computational graph: one for an expression evaluated on the engine's tape, and one for a training example as the engine recorded it.
+
+**Method.** `tests/unit/level2-graph-gate.test.ts` checks `src/learn/engine/graph.ts` against values computed independently in the test. Its results are in `reports/level2-graph-gate.json`.
+
+| | Check | Result |
+|---|---|---|
+| G1 | (x₁ + x₂)·x₃ at 4 points: nodes, forward order, values, reverse order, gradients | gradients **exactly** equal the hand derivatives and the engine's `withGradient`; worst finite-difference gap 1.5 × 10⁻¹¹ |
+| G2 | Accumulation in f = x·y + x | the two contributions to x (1 and y) sum **exactly** to `backward`'s gradient y + 1 |
+| G3 | 60 random expressions with shared values (add, sub, mul, square, sigmoid) | at 297 nodes the contributions sum exactly to `backward`'s gradient; worst relative finite-difference gap 1.1 × 10⁻⁹ |
+| G4 | One recorded training example of Experiment 04's network, all 4 examples | every edge points back in time; 13 forward and backward results per example recomputed by hand from the values at the ends of their edges; example 1 reads `INIT_PARAM`, later examples the previous `APPLY_UPDATE`; one backward pass gives 9 gradient values |
+| G5 | Refusals | a missing example, a missing source and a non-finite input are refused |
+
+**First run.** One check failed, because of the test: my running sum started from 0, and 0 + (−0) is +0, whereas `backward` stores the first contribution as it is. The test now sums the way `backward` does. **No engine or NPM change was needed.**
+
+### 1. Implemented
+
+Experiment 05, "Automatic Differentiation: Inside the Computational Graph":
+
+- **Part A, a calculation as a graph:** (x₁ + x₂)·x₃ or σ((x₁ + x₂)·x₃), with the three inputs editable, drawn from the tape's entries.
+- **Part B, forwards then in reverse:** a stepper over the forward steps, the seed ∂f/∂f = 1, and the reverse steps in the engine's order.
+  - Dashed arrows show what each reverse step sends back.
+  - A node's gradient appears only after every contribution to it has arrived.
+  - The narration states each local derivative from engine values.
+- **Part C, checking from outside:** autodiff gradients beside central finite differences, with h from 1 to 0.001.
+  - For the product the estimate is exact for any h, and the page explains why.
+  - With the sigmoid, a large h visibly drifts.
+- **Part D, a value used twice:** f = x·y + x; both contributions arriving at x, then the gradient the engine returns.
+- **Part E, forward and reverse mode:** a labelled illustration, beside engine counts for 2-2-1, 2-3-1 and 2-16-16-1. The counts are the network's parameter values and one recorded backward pass producing a gradient for every one of them.
+- **Part F, the engine's own graph:** one example of a recorded run of Experiment 04's network.
+  - It shows the parameter values the example reads, the forward steps, and the backward steps.
+  - Every edge is a recorded operand reference.
+  - Choosing a step lists what it used and what used it, navigable by mouse and keyboard.
+- **The rest of the page:** a 5-step tour, 4 challenges, 3 fixed questions, 2 live questions built from engine values, and a primer.
+- **Level 2's five experiments are now all open.** The final challenge (Stage 6) will be added to Experiment 05.
+
+### 2. Files
+
+- **New:**
+  - `src/learn/engine/graph.ts`;
+  - `src/learn/level2/exp05/{math.ts, Experiment05.tsx}`;
+  - `src/learn/level2/viz/{ExprGraphView.tsx, RecordGraphView.tsx}`;
+  - `tests/unit/{level2-graph-gate, level2-exp05}.test.ts`;
+  - `tests/e2e/level2-exp05.spec.ts`;
+  - `reports/level2-graph-gate.json`;
+  - `docs/screenshots/level2/exp05-*`.
+- **Changed:**
+  - `src/experiments/level2.ts`: Experiment 05's definition and defaults; `LEVEL2_PLANNED` is now empty.
+  - `src/learn/curriculum.ts`: 05 is open.
+  - `src/learn/LearnApp.tsx`: the route.
+  - `src/learn/learn.css`: a link-styled button and a focus ring for graph nodes.
+  - Tests: `level2-math` and `level2-vocabulary` unit tests; `level2`, `a11y` and `layout` e2e specs.
+  - Mutation tooling: `scripts/mutation/targeted.json` and `reports/mutation-targeted.json`.
+  - Docs: ADR-094 and this file.
+- **Not changed:** `src/core` (engine, NPM, trace format), the trace store and explorer, and every Level 1 file.
+
+### 3. NPM and engine integration
+
+- **Expressions (Parts A–D) are run on the engine's real `Tape`, with no NPM record** (decision D3).
+  - The graph's nodes are the tape's entries.
+  - The reverse pass is `backward`'s own `onStep` report, and the gradients are `backward`'s returned map.
+  - The page adds nothing up: it never shows partial sums, only `backward`'s final value once every contribution has arrived.
+- **Part F reads a real recorded run** (`TraceStore.generate`, one epoch of Experiment 04's network). Its graph's edges are the record's `operands[].ref`.
+- **Arithmetic done on the page,** each labelled where shown:
+  - the finite-difference division;
+  - the narration's restatement of each step (incoming × local = sent), whose result is the engine's.
+
+### 4. Mathematical validation
+
+- **The gate (above).**
+- **`tests/unit/level2-exp05.test.ts`** (13 tests):
+  - the stepper's 6 positions and its clamping;
+  - which gradients are known at each position, against hand derivatives;
+  - the sigmoid expression's gradients by hand;
+  - Part D's gradient appearing only after both contributions, and y = −1 cancelling to exactly 0;
+  - Part E's counts against hand-counted parameters (9, 13, 337);
+  - Part F's node names, and example 3 reading a W¹ that example 2's update changed;
+  - the live questions' correct answers;
+  - the page's labels.
+- **`tests/e2e/level2-exp05.spec.ts`** (8 tests): the expected values are computed in the test by hand.
+
+### 5. Test results
+
+All runs are from a clean state: port 4173 confirmed free and `dist/` deleted first.
+
+| Suite | Result |
+|---|---|
+| typecheck, lint, format | pass |
+| `test:unit` | 54 files, **666 of 666** pass (647 before; 5 gate tests, 13 for Experiment 05, 1 vocabulary test) |
+| gradcheck / parity / determinism | 48 / 8 / 18, all pass |
+| Production build | passes from an empty `dist/` |
+| e2e, Chromium, 2 workers, full suite | **101 of 101 pass**, including every Level 1 spec and `perf-cnn` |
+| Level 2 e2e | `level2.spec` 3 (landing: all five open, nothing in preparation; 04 → 05 → overview), `level2-exp03` 7, `level2-exp04` 12, `level2-exp05` 8 |
+| Accessibility (axe) | **115 screens, 0 violations**; 4 new for Experiment 05, as opened and after interaction (reverse pass done, sigmoid with h = 1, a recorded step chosen), in both themes |
+| Layout (1440 to 360 px; Experiment 05 opened and after interaction) | 0 violations |
+| Mutation audit, Level 2 e2e (`reports/mutation-e2e-level2.json`) | **160 assertions: 153 live by mechanical mutants, 7 by targeted mutants, 0 hollow** |
+
+**Mutation audit findings, fixed in the new spec:**
+- One assertion checked the test's own arithmetic. It was removed.
+- One asserted on text read into a variable earlier. It is now a locator assertion on the exact gap the page shows, computed by hand.
+- One was implied by the assertion before it. It was removed.
+
+**Targeted mutants (`scripts/mutation/targeted.json`):**
+- `level2.spec:22` (no experiment in preparation) is new; the mutant closes Experiment 05 again, and it is killed.
+- The Stage 4 mutant `level2.spec:25` was retired with its assertion.
+
+**Level 1:** every Level 1 unit and e2e test passes. No Level 1 file changed.
+
+### 6. Screenshots
+
+`docs/screenshots/level2/exp05-{a,b-reverse,c,d,e,f}-{desktop,mobile}.jpg`, at 1280 px and 390 px, at 2× scale.
+
+### 7. Known limitations
+
+- **Part F's graph keeps a 720 px minimum width** and scrolls sideways on a phone, inside its own box. Its nodes are keyboard-focusable, so focusing a node scrolls it into view.
+- **Forward mode is an illustration only.** The engine has no forward mode (decision D2); only the counts beside it are the engine's.
+- **For the product expression the finite difference is exact at every h,** because f is linear in each input. The page says so and offers the sigmoid expression to show the estimate drifting.
+- **No learner has used Level 2.**
+
+### 8. Models used
+
+- **This session (Opus):**
+  - the gate and `graph.ts`;
+  - the Experiment 05 design and implementation (helpers, both graph views, the page);
+  - the unit tests and the changes to existing tests;
+  - the review of the delegated spec;
+  - the mutation audit, screenshots and documentation.
+- **Delegated to a Sonnet agent:** `tests/e2e/level2-exp05.spec.ts` (8 tests), given selectors and hand formulas. It changed no other file and reported no application defect. I checked the spec: it imports only `@playwright/test` and computes expected values independently.
+- **Deviation from the allocation policy, as in Stages 3 and 4:** I implemented the components in this session, because they depend directly on what the gate had just established.

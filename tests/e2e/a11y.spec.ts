@@ -196,6 +196,7 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       '/#/level-2/experiment-02',
       '/#/level-2/experiment-03',
       '/#/level-2/experiment-04',
+      '/#/level-2/experiment-05',
     ];
     for (const scheme of ['light', 'dark'] as const) {
       await page.emulateMedia({ colorScheme: scheme });
@@ -237,6 +238,20 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
         document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
       );
       await audit(page, `Level 2 experiment 04 trained, example 1 backward and update (${scheme})`);
+      await page.goto('/#/level-2/experiment-05');
+      await page.locator('[data-control="b:end"]').click();
+      await page.locator('label:has([data-control="a:expr:sigmoid"])').click();
+      await page.locator('label:has([data-control="c:h:1"])').click();
+      await page.locator('label:has([data-control="f:example:2"])').click();
+      await page.locator('[data-record-node]').first().click();
+      await expect(page.locator('[data-list="used-by"]')).toBeVisible();
+      await page.evaluate(() =>
+        document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+      );
+      await audit(
+        page,
+        `Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen (${scheme})`,
+      );
       await page.goto('/#/level-1/experiment-04');
       await page.locator('[data-control="train"]').click();
       await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });

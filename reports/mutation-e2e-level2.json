@@ -1,16 +1,5 @@
 [
   {
-    "id": "helpers:32",
-    "file": "tests/e2e/helpers.ts",
-    "line": 32,
-    "fn": "openExperiment",
-    "negative": false,
-    "text": "await expect(page.locator('.position[data-cursor=\"-1\"]')).toBeVisible({ timeout: 60_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
-  },
-  {
     "id": "level2-exp03.spec:41",
     "file": "tests/e2e/level2-exp03.spec.ts",
     "line": 41,
@@ -1103,384 +1092,6 @@
     }
   },
   {
-    "id": "level2.spec:20",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 20,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText('How Neural Networks Learn');",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:22",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 22,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(items).toHaveCount(5);",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 22: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:23",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 23,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(items.nth(k).getByRole('link')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 23: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:25",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 25,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": true,
-    "text": "await expect(items.nth(k).getByRole('link')).toHaveCount(0);",
-    "blank": "elsewhere",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 26: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:26",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 26,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(items.nth(k)).toContainText('In preparation');",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 26: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:29",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 29,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Forward Propagation: From Input to Prediction', );",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:32",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 32,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.locator('.lv-exp-kicker')).toHaveText('Level 2 · Experiment 01');",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 32: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:34",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 34,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Loss Functions: Measuring Prediction Error', );",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 34: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 34: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:37",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 37,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute( 'href', '#/level-2/experiment-03', );",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 37: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 34: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:42",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 42,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Derivatives and Gradient Descent: How Parameters Learn', );",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:45",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 45,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute( 'href', '#/level-2/experiment-04', );",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 45: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:50",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 50,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Backpropagation: How Errors Travel Through a Network', );",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 50: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 50: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:54",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 54,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute('href', '#/level-2');",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 50: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:57",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 57,
-    "fn": "Level 2 is reachable from the levels page; 01–04 are open, 05 is listed as in preparation",
-    "negative": false,
-    "text": "await expect(page.locator('.lv-exp-kicker')).toHaveText('Level 1 · Experiment 01');",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 57: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 57: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:65",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 65,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText('step 1 of 5')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:67",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 67,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText('step 2 of 5')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 67: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:73",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 73,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText('Step 1 of 3')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "survived",
-    "detail": {
-      "blank": "failed at 73: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "passed at : "
-    }
-  },
-  {
-    "id": "level2.spec:75",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 75,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText('Step 2 of 3')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 75: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 75: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:77",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 77,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText(/Step \\d of 7/)).toBeVisible();",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 77: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 77: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:80",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 80,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText(`Prediction: ${f(prediction, 3)}`)).toBeVisible();",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 80: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 80: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:82",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 82,
-    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
-    "negative": false,
-    "text": "await expect(page.getByText('Row 1 is neuron 1:').first()).toBeVisible();",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 82: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 82: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:90",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 90,
-    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
-    "negative": false,
-    "text": "await expect(page.getByText(`MSE = ${f(0.37 / 4, 4)}`)).toBeVisible();",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 90: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 90: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:98",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 98,
-    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
-    "negative": false,
-    "text": "await expect(page.getByText('MSE = 0.0000')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 98: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 90: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:99",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 99,
-    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
-    "negative": false,
-    "text": "await expect(page.locator('[data-question=\"l-live-mse\"] legend')).toBeVisible();",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 90: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:104",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 104,
-    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
-    "negative": false,
-    "text": "await expect(page.locator('[data-question=\"l-live-mse\"]')).toContainText('Correct');",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 104: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 104: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:107",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 107,
-    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
-    "negative": false,
-    "text": "await expect(page.locator('[data-tour=\"logit-chain\"] [role=\"status\"]')).toContainText( 'clips probabilities', );",
-    "blank": "killed",
-    "noAction": "elsewhere",
-    "detail": {
-      "blank": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 110: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
-    "id": "level2.spec:110",
-    "file": "tests/e2e/level2.spec.ts",
-    "line": 110,
-    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
-    "negative": false,
-    "text": "await expect(page.locator('[data-tour=\"logit-chain\"]')).toContainText(f(-Math.log(1e-7), 4));",
-    "blank": "killed",
-    "noAction": "killed",
-    "detail": {
-      "blank": "failed at 110: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "failed at 110: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
-    }
-  },
-  {
     "id": "level2-exp04.spec:279",
     "file": "tests/e2e/level2-exp04.spec.ts",
     "line": 279,
@@ -1548,6 +1159,1081 @@
     "detail": {
       "blank": "failed at 287: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
       "no-action": "timedOut at 286: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2.spec:18",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 18,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText('How Neural Networks Learn');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 18: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:20",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 20,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(items).toHaveCount(5);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 20: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:22",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 22,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": true,
+    "text": "await expect(page.getByText('In preparation')).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 23: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:23",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 23,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(items.nth(k).getByRole('link')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 23: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:25",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 25,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Forward Propagation: From Input to Prediction', );",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 25: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 25: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:28",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 28,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.locator('.lv-exp-kicker')).toHaveText('Level 2 · Experiment 01');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 28: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 25: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:30",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 30,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Loss Functions: Measuring Prediction Error', );",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 30: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 30: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:33",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 33,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute( 'href', '#/level-2/experiment-03', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 33: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 30: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:38",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 38,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Derivatives and Gradient Descent: How Parameters Learn', );",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 38: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 38: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:41",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 41,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute( 'href', '#/level-2/experiment-04', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 41: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 38: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:46",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 46,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Backpropagation: How Errors Travel Through a Network', );",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:49",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 49,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute( 'href', '#/level-2/experiment-05', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 49: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:54",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 54,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.getByRole('heading', { level: 1 })).toHaveText( 'Automatic Differentiation: Inside the Computational Graph', );",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:58",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 58,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"next-experiment\"]')).toHaveAttribute('href', '#/level-2');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 58: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:61",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 61,
+    "fn": "Level 2 is reachable from the levels page, with all five experiments open",
+    "negative": false,
+    "text": "await expect(page.locator('.lv-exp-kicker')).toHaveText('Level 1 · Experiment 01');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 61: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 61: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:69",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 69,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 5')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:71",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 71,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 5')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 71: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:77",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 77,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText('Step 1 of 3')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 77: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level2.spec:79",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 79,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText('Step 2 of 3')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 79: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 79: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:81",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 81,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText(/Step \\d of 7/)).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:84",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 84,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText(`Prediction: ${f(prediction, 3)}`)).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 84: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 84: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:86",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 86,
+    "fn": "Experiment 01: the network steps forward and back, and its prediction matches the network computed by hand",
+    "negative": false,
+    "text": "await expect(page.getByText('Row 1 is neuron 1:').first()).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 86: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 86: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:94",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 94,
+    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
+    "negative": false,
+    "text": "await expect(page.getByText(`MSE = ${f(0.37 / 4, 4)}`)).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:102",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 102,
+    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
+    "negative": false,
+    "text": "await expect(page.getByText('MSE = 0.0000')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 102: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:103",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 103,
+    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
+    "negative": false,
+    "text": "await expect(page.locator('[data-question=\"l-live-mse\"] legend')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:108",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 108,
+    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
+    "negative": false,
+    "text": "await expect(page.locator('[data-question=\"l-live-mse\"]')).toContainText('Correct');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 108: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 108: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:111",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 111,
+    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
+    "negative": false,
+    "text": "await expect(page.locator('[data-tour=\"logit-chain\"] [role=\"status\"]')).toContainText( 'clips probabilities', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 111: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2.spec:114",
+    "file": "tests/e2e/level2.spec.ts",
+    "line": 114,
+    "fn": "Experiment 02: MSE, the clipping note, and the live question follow what is on screen",
+    "negative": false,
+    "text": "await expect(page.locator('[data-tour=\"logit-chain\"]')).toContainText(f(-Math.log(1e-7), 4));",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "helpers:32",
+    "file": "tests/e2e/helpers.ts",
+    "line": 32,
+    "fn": "openExperiment",
+    "negative": false,
+    "text": "await expect(page.locator('.position[data-cursor=\"-1\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level2-exp05.spec:33",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 33,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(narration(page)).toHaveText('Nothing has been computed yet: only the inputs have values.');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 33: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 33: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:34",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 34,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(b).toContainText('Position 0 of 5 · forward pass');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 34: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 33: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:36",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 36,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(narration(page)).toContainText( 'Forward step 1 of 2: the + node takes x₁ = 2.0000 and x₂ = −1.0000 and computes 1.0000.', );",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:39",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 39,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(b).toContainText('Position 1 of 5');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:42",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 42,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(b).toContainText(`Position ${p} of 5`);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:44",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 44,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(narration(page)).toContainText('The reverse pass starts at the output with ∂f/∂f = 1');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:45",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 45,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": true,
+    "text": "await expect(b).not.toContainText('∂f/∂x₃');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 45: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:47",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 47,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(b).toContainText('Position 4 of 5');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:48",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 48,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(narration(page)).toContainText('Reverse step 1 of 2');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 48: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:50",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 50,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(narration(page)).toContainText('+1.0000 × its other input (x₃, 3.0000) = +3.0000');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 50: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:51",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 51,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(narration(page)).toContainText( 'to x₃, +1.0000 × its other input (the + node’s value, 1.0000) = +1.0000', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 51: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:54",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 54,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(b).toContainText('∂f/∂x₃ = +1.000');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:56",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 56,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": false,
+    "text": "await expect(b).toContainText('Position 3 of 5');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 56: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 56: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:57",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 57,
+    "fn": "Part B: the forward pass fills values, the reverse pass fills gradients, and Back removes them",
+    "negative": true,
+    "text": "await expect(b).not.toContainText('∂f/∂x₃');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 57: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 56: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:68",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 68,
+    "fn": "Part B: with changed inputs the reverse pass gives the other input as each gradient",
+    "negative": true,
+    "text": "await expect(b).not.toContainText('∂f/∂x₁ =');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 68: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 10,64: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:70",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 70,
+    "fn": "Part B: with changed inputs the reverse pass gives the other input as each gradient",
+    "negative": false,
+    "text": "await expect(b).toContainText('Position 5 of 5');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:72",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 72,
+    "fn": "Part B: with changed inputs the reverse pass gives the other input as each gradient",
+    "negative": false,
+    "text": "await expect(b.locator('g[data-node=\"0\"]')).toContainText(`∂f/∂x₁ = ${fs(-4, 3)}`);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 72: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:73",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 73,
+    "fn": "Part B: with changed inputs the reverse pass gives the other input as each gradient",
+    "negative": false,
+    "text": "await expect(b.locator('g[data-node=\"2\"]')).toContainText(`∂f/∂x₃ = ${fs(0.5 + 0.25, 3)}`);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 73: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:74",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 74,
+    "fn": "Part B: with changed inputs the reverse pass gives the other input as each gradient",
+    "negative": false,
+    "text": "await expect(b.locator('g[data-node=\"3\"]')).toContainText(`∂f/∂(+) = ${fs(-4, 3)}`);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 74: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:81",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 81,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₁', 0)).toHaveText('+3.000000');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:82",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 82,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₁', 1)).toHaveText('+3.000000');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 82: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:83",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 83,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₃', 0)).toHaveText('+1.000000');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 83: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:84",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 84,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₃', 1)).toHaveText('+1.000000');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 84: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:85",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 85,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₁', 2)).toHaveText(/^0(\\.0)?(e[+−]?\\d+)?$|e−(1[0-9]|[7-9])$/);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 85: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:92",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 92,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₁', 0)).toHaveText(fs(grad, 6));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 93: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:93",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 93,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₁', 1)).toHaveText(fs(fd, 6));",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 93: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 93: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:95",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 95,
+    "fn": "Part C: the product expression is exact; the sigmoid with h = 1 drifts from autodiff",
+    "negative": false,
+    "text": "await expect(cell(page, 'x₁', 2)).toHaveText( Math.abs(fd - grad) .toExponential(1) .replace('-', '−'), );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 95: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 93: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:106",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 106,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "await expect(rows.nth(0).locator('td').last()).toHaveText(fs(1, 4));",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:107",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 107,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "await expect(rows.nth(1).locator('td').last()).toHaveText(fs(3, 4));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:109",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 109,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "await expect(total).toHaveText(fs(1 + 3, 4));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 109: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:111",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 111,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "await expect(rows.nth(1).locator('td').last()).toHaveText(fs(-1, 4));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 111: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:112",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 112,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "await expect(rows.nth(0).locator('td').last()).toHaveText(fs(1, 4));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:113",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 113,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "await expect(total).toHaveText(/^[+−]?0\\.0000$/);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 113: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:114",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 114,
+    "fn": "Part D: two contributions arrive at x and the engine adds them",
+    "negative": false,
+    "text": "expect(num(await total.innerText())).toBe(0);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 114: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:139",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 139,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel).toContainText('Choose a step in the graph');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 139: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 139: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:142",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 142,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel.getByRole('heading')).toHaveText('Step #42: u¹');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:143",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 143,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel.locator('[data-list=\"uses\"]')).toContainText('#29 W¹');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 143: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:144",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 144,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel.locator('[data-list=\"uses\"]')).toContainText('as its weight');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:145",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 145,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel.locator('[data-list=\"uses\"]')).toContainText('#41 x, y');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 145: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:146",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 146,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel.locator('[data-list=\"uses\"]')).toContainText('as its input');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:148",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 148,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel.getByRole('heading')).toHaveText('Step #29: W¹');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 148: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 148: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:149",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 149,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel).toContainText('Made before this example: the update after example 1 (step #29)');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 149: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 148: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:152",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 152,
+    "fn": "Part F: choosing a step shows its links, following a link moves the choice, switching example clears it",
+    "negative": false,
+    "text": "await expect(panel).toContainText('Choose a step in the graph');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 152: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 152: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:158",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 158,
+    "fn": "Part F keyboard: Enter on a focused graph node chooses that step",
+    "negative": false,
+    "text": "await expect(panel).toContainText('Choose a step in the graph');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 158: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 158: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:161",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 161,
+    "fn": "Part F keyboard: Enter on a focused graph node chooses that step",
+    "negative": false,
+    "text": "await expect(panel.getByRole('heading')).toHaveText('Step #7: u¹');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 161: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 161: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:167",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 167,
+    "fn": "Tour: changing x₁ in Part A advances from step 1 to step 2",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 5')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 167: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 167: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:169",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 169,
+    "fn": "Tour: changing x₁ in Part A advances from step 1 to step 2",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 5')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 169: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 167: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-exp05.spec:171",
+    "file": "tests/e2e/level2-exp05.spec.ts",
+    "line": 171,
+    "fn": "Tour: changing x₁ in Part A advances from step 1 to step 2",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 5')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 171: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
     }
   }
 ]

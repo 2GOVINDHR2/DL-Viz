@@ -36,7 +36,11 @@ export interface ReverseStep {
   /** ∂f/∂(this node), as it arrived: the incoming gradient. */
   incoming: number;
   /** What this step sends to each of its inputs (its local derivative × the incoming gradient). */
-  contributions: { to: number; value: number }[];
+  contributions: {
+    to: number;
+    value: number;
+    /** Which of the op's arguments it goes to (x · x has two). */ arg: number;
+  }[];
 }
 
 export interface ExprGraph {
@@ -112,7 +116,7 @@ export function expressionGraph<K extends string>(inputs: Record<K, number>, bui
       incoming: s.gradOutput.item(),
       contributions: s.entry.inputs.flatMap((v, k) => {
         const c = s.gradInputs[k];
-        return c ? [{ to: nodeOf.get(v.id)!, value: c.item() }] : [];
+        return c ? [{ to: nodeOf.get(v.id)!, value: c.item(), arg: k }] : [];
       }),
     });
   });

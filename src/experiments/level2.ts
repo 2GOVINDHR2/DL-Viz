@@ -66,6 +66,16 @@ export const L2_EXP03_DEFAULTS = {
  * every learner inspects the same gradients. The aim is to see gradient propagation; XOR convergence is not
  * guaranteed or needed. Weights are in the engine's layout: W[i][j] joins input i to neuron j, row-major.
  */
+/**
+ * Experiment 05's starting values: the expression (x₁ + x₂)·x₃ of Parts A to C, f = x·y + x of Part D (x used twice),
+ * and the finite-difference step of Part C.
+ */
+export const L2_EXP05_DEFAULTS = {
+  product: { 'x₁': 2, 'x₂': -1, 'x₃': 3 },
+  shared: { x: 2, y: 3 },
+  h: 0.001,
+};
+
 export const L2_EXP04_DEFAULTS = {
   initialParams: {
     'L1.W': [0.6, -0.4, -0.3, 0.8],
@@ -810,24 +820,204 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
       },
     ],
   },
+  {
+    id: '05',
+    title: 'Automatic Differentiation: Inside the Computational Graph',
+    short: 'How the engine computes every gradient: a graph of operations, run forwards and then in reverse.',
+    description:
+      'The engine never works out a formula for a gradient. It records every operation as a node of a computational graph while it computes the forward pass, then runs the graph in reverse, applying each operation’s local derivative. This is automatic differentiation. Here you watch it on small expressions, check it against a numerical estimate, and then open the graph the engine recorded for one real training example.',
+    minutes: '15–20 min',
+    concept: 'Automatic differentiation',
+    objectives: [
+      'Read an expression as a computational graph of operations.',
+      'Follow the forward pass through the graph, and then the reverse pass from the output back to every input.',
+      'Explain why a value used in two places receives the sum of two gradient contributions.',
+      'Check a gradient against a finite-difference estimate.',
+      'Recognise the same graph in the record of a real training example.',
+    ],
+    outcomes: [
+      'what a computational graph is',
+      'how reverse-mode automatic differentiation computes every gradient in one backward pass',
+      'why gradients add up where a value is shared',
+    ],
+    primer: {
+      intro:
+        'Experiment 04 used the chain rule by hand, layer by layer. The engine does the same thing automatically, for any arrangement of operations.',
+      terms: [
+        {
+          term: 'Computational graph',
+          meaning:
+            'The operations of a calculation drawn as connected nodes: each node takes the values on its incoming edges and produces one value.',
+          role: 'weight',
+        },
+        {
+          term: 'Automatic differentiation',
+          meaning:
+            'Computing exact derivatives by applying each operation’s own local derivative along the graph, instead of working out a formula.',
+          role: 'bias',
+        },
+        {
+          term: 'Reverse mode',
+          meaning:
+            'Automatic differentiation that starts at the output and works backwards. One pass gives the derivative of the output with respect to every input.',
+          role: 'incorrect',
+        },
+        {
+          term: 'Finite difference',
+          meaning:
+            'An estimate of a derivative from two nearby values: (f(x + h) − f(x − h)) / 2h. Useful as a check, but approximate.',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'graph-inputs',
+        title: 'A calculation as a graph',
+        text: 'Every operation is a node; its inputs arrive along edges.',
+        doThis: 'Change one of the inputs.',
+        waitFor: 'graph-changed',
+      },
+      {
+        target: 'graph-stepper',
+        title: 'Forwards, then in reverse',
+        text: 'The forward pass computes each node’s value. The reverse pass starts at the output and sends gradients back.',
+        doThis: 'Step to the end of the reverse pass.',
+        waitFor: 'reverse-done',
+      },
+      {
+        target: 'graph-shared',
+        title: 'A value used twice',
+        text: 'x feeds two operations, so two gradient contributions arrive at it.',
+        doThis: 'Change x or y.',
+        waitFor: 'shared-changed',
+      },
+      {
+        target: 'graph-modes',
+        title: 'Why the engine works backwards',
+        text: 'A loss is one number with many parameters. Working backwards gives every parameter’s gradient in one pass.',
+        doThis: 'Choose another network.',
+        waitFor: 'modes-network',
+      },
+      {
+        target: 'real-graph',
+        title: 'The engine’s own graph',
+        text: 'One training example, as the engine recorded it: every step and where its values came from.',
+        doThis: 'Pick a step of the graph.',
+        waitFor: 'real-node-picked',
+      },
+    ],
+    challenges: [
+      {
+        id: 'zero-path',
+        title: 'A closed path',
+        prompt: 'In Parts A to C, make the gradient of x₁ exactly 0 without changing x₁.',
+        notice:
+          'Set x₃ to 0. The gradient reaching x₁ passes through the multiply, whose local derivative for that input is x₃.',
+        doneOn: 'grad-x1-zero',
+      },
+      {
+        id: 'cancel',
+        title: 'Two contributions that cancel',
+        prompt: 'In Part D, make the gradient of x exactly 0 while both contributions are not 0.',
+        notice: 'With y = −1 the two contributions are +1 and −1: they still both arrive, and add up to 0.',
+        doneOn: 'shared-zero',
+      },
+      {
+        id: 'rough-estimate',
+        title: 'A rough estimate',
+        prompt: 'In Part C, with the sigmoid expression, make the finite-difference step h large.',
+        notice:
+          'The estimate drifts away from the exact gradient: a finite difference is only an approximation. Automatic differentiation has no step size.',
+        doneOn: 'fd-off',
+      },
+      {
+        id: 'updated-weight',
+        title: 'Where a weight came from',
+        prompt: 'In Part F, open example 3 and pick the weight that its first multiply uses.',
+        notice:
+          'It is not the starting weight: its edge leads to example 2’s update, which changed it. The record links each value to the step that made it.',
+        doneOn: 'source-update',
+      },
+    ],
+    questions: [
+      {
+        id: 'ad-reverse',
+        kind: 'scenario',
+        prompt:
+          'A network has 10,000 weights and one loss. Why does the engine compute gradients backwards, from the loss?',
+        options: [
+          {
+            text: 'One backward pass gives the gradient of the loss with respect to all 10,000 weights',
+            correct: true,
+            feedback:
+              'Right. Reverse mode costs about one extra pass however many inputs there are. Working forwards would need one pass per weight.',
+          },
+          {
+            text: 'Because the forward pass cannot be repeated',
+            feedback: 'It can. The reason is cost: backwards, one pass covers every weight.',
+          },
+          {
+            text: 'Because working backwards gives more exact gradients',
+            feedback:
+              'Both directions give exact derivatives. The difference is how many passes are needed: one backwards, one per weight forwards.',
+          },
+        ],
+      },
+      {
+        id: 'ad-shared',
+        kind: 'choice',
+        prompt: 'A value v is used by two operations. What is ∂f/∂v?',
+        options: [
+          {
+            text: 'The sum of the two contributions that arrive at v',
+            correct: true,
+            feedback:
+              'Right. Changing v changes f along both paths, so the effects add. The engine adds the contributions as they arrive.',
+          },
+          {
+            text: 'The larger of the two contributions',
+            feedback: 'No. Both paths carry v’s effect on f, so both count, and they add.',
+          },
+          {
+            text: 'Only the first contribution to arrive',
+            feedback: 'No. The engine keeps adding contributions until every path has been followed back.',
+          },
+        ],
+      },
+      {
+        id: 'ad-fd',
+        kind: 'choice',
+        prompt: 'Why does the engine not compute gradients with finite differences?',
+        options: [
+          {
+            text: 'They are approximate, depend on the step h, and need two extra evaluations for every single parameter',
+            correct: true,
+            feedback:
+              'Right. They make a good check, which is how they are used in the engine’s tests, but automatic differentiation is exact and far cheaper.',
+          },
+          {
+            text: 'They give the wrong sign',
+            feedback: 'No. With a small h they are close to the exact value, sign included.',
+          },
+          {
+            text: 'They only work for linear functions',
+            feedback:
+              'No. They estimate any smooth function’s derivative, but only approximately, and at a cost of two evaluations per parameter.',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
-/** Experiments of later stages: listed on the landing page, not yet open. */
+/** Experiments of later stages: listed on the landing page, not yet open. None remain since Stage 5. */
 export const LEVEL2_PLANNED: {
   id: string;
   title: string;
   short: string;
   minutes: string;
   concept: string;
-}[] = [
-  {
-    id: '05',
-    title: 'Automatic Differentiation: Inside the Computational Graph',
-    short: 'How the engine computes every gradient, and a final challenge.',
-    minutes: '15–20 min',
-    concept: 'Automatic differentiation',
-  },
-];
+}[] = [];
 
 export type Level2Id = '01' | '02' | '03' | '04' | '05';
 

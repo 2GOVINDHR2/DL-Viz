@@ -835,3 +835,29 @@ Also clarified:
 - `controls.spec` mode memory: after each reload, the remembered mode must show *and* be back at the start of the run, for both modes.
 
 `scripts/mutation/e2e-mutants.ts` gained `--grep` and `--out`, so an audit of some specs no longer overwrites the full report.
+
+## ADR-094 — 2026-11-26 — Experiment 05: automatic differentiation read from the engine (Level 2, Stage 5)
+- **Gate first.** `tests/unit/level2-graph-gate.test.ts` (report `reports/level2-graph-gate.json`) was committed before any Experiment 05 page code. It checks the two graph readers in `src/learn/engine/graph.ts` against independent values:
+  - expression gradients against hand derivatives, `withGradient` and central finite differences (worst gap 1.5 × 10⁻¹¹ on (x₁ + x₂)·x₃; 1.1 × 10⁻⁹ relative on 60 random expressions with shared values);
+  - accumulation: contributions sum to exactly `backward`'s gradient at all 297 shared and unshared nodes;
+  - a recorded example's graph: every forward and backward result is recomputed by hand from the values at the ends of its edges.
+  - No engine or NPM change was needed.
+- **`graph.ts` reads; it does not differentiate.**
+  - `expressionGraph` runs an expression on a real `Tape`. Nodes are the tape's entries.
+  - The reverse pass is `backward`'s own `onStep` report: the incoming gradient, and each input's contribution with its argument position.
+  - Final gradients are `backward`'s returned map, including its accumulation.
+  - `exampleGraph` takes one training example's instructions and links them by `operands[].ref`, following layer-end markers to the value they repeat.
+- **Parts A–C:** one expression, (x₁ + x₂)·x₃ or σ((x₁ + x₂)·x₃).
+  - The stepper shows the forward pass, the seed ∂f/∂f = 1, and the reverse steps in the engine's order.
+  - A node's gradient appears only after every contribution to it has arrived, and it is always `backward`'s value; partial sums are never shown.
+  - The narration names each local derivative from engine values: the other input for ×, 1 for +, and the sigmoid's own rule for σ.
+  - The finite difference is two engine evaluations divided here, labelled so, with h = 1 to 0.001.
+- **Part D:** f = x·y + x. Both contributions arriving at x are listed in the engine's order, then the gradient `backward` returns.
+- **Part E (decision D2):**
+  - The forward-mode column is an illustration, labelled "the engine has no forward mode".
+  - The counts are the engine's: a built model's parameter values, and the GRAD_INIT and gradient values of one probe run's backward pass, for 2-2-1, 2-3-1 and 2-16-16-1.
+- **Part F:** one epoch of Experiment 04's network, recorded on the main thread (148 instructions).
+  - Nodes are the example's steps plus the parameter values it reads, which come from `INIT_PARAM` or the previous example's `APPLY_UPDATE`.
+  - Edges are the record's operand references; a node's "Uses" and "Used by" lists navigate them.
+  - Rows are the recorded phases: forward left to right, backward right to left.
+- **Experiment 05 is open; no experiment remains in preparation.** The final challenge is Stage 6.

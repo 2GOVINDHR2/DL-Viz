@@ -33,8 +33,8 @@ export const LEVEL_1: LevelDescriptor = {
 export const LEVEL_2: LevelDescriptor = {
   number: 2,
   experiments: LEVEL2_EXPERIMENTS,
-  // Stages 2–4 of the Level 2 plan: Experiments 01–04. Experiment 05 opens when its stage is reviewed.
-  open: new Set(['01', '02', '03', '04']),
+  // Stages 2–5 of the Level 2 plan: Experiments 01–05. The final challenge (Stage 6) is added to Experiment 05.
+  open: new Set(['01', '02', '03', '04', '05']),
   experimentHref: href.level2Experiment,
   statusKey: (id) => `l2:${id}`,
   before: { label: 'Level 2 overview', href: href.level2 },
