@@ -1,5 +1,6 @@
 import { LEVEL1 } from '../../experiments/level1';
 import { LEVEL2 } from '../../experiments/level2';
+import { LEVEL3, LEVEL3_EXPERIMENTS } from '../../experiments/level3';
 import { href } from '../router';
 
 export function Levels() {
@@ -53,11 +54,32 @@ export function Levels() {
           </a>
         </li>
         <li className="lv-path-item">
-          <span className="lv-path-num lv-muted" aria-hidden="true">
-            3+
+          <span className="lv-path-num" aria-hidden="true">
+            3
           </span>
           <div>
-            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>Levels 3 and beyond</h2>
+            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>
+              <a href={href.level3}>{LEVEL3.title}</a>
+            </h2>
+            <p className="lv-muted" style={{ marginBottom: 0 }}>
+              {LEVEL3.tagline}
+            </p>
+            <div className="lv-path-meta">
+              <span className="lv-chip">⏱ {LEVEL3.minutes}</span>
+              <span className="lv-chip">{LEVEL3_EXPERIMENTS.length} experiments</span>
+              <span className="lv-chip">Builds on Level 2</span>
+            </div>
+          </div>
+          <a className="lv-btn lv-btn-primary" href={href.level3} data-control="open-level-3">
+            Open
+          </a>
+        </li>
+        <li className="lv-path-item">
+          <span className="lv-path-num lv-muted" aria-hidden="true">
+            4+
+          </span>
+          <div>
+            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>Beyond Level 3</h2>
             <p className="lv-muted" style={{ marginBottom: 0 }}>
               In preparation. Convolutional networks and training diagnostics are available now in the full
               workbench, which also offers expert inspection of every experiment.
