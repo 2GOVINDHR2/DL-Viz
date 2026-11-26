@@ -279,15 +279,20 @@ const builtins: KindSpec[] = [
     results: ['grad'],
     summary: "Average this parameter's per-example gradients over the mini-batch.",
     learnerGloss: 'Add this example’s suggested changes to the running total.',
-    symbolic: (i) => `ḡ(${paramSym(i.meta.param)}) = (1/B) Σₛ ∂ℓₛ/∂${paramSym(i.meta.param)}`,
+    symbolic: (i) =>
+      `ḡ(${paramSym(i.meta.param)}) = (1/B) Σₛ ∂ℓₛ/∂${paramSym(i.meta.param)}` +
+      (i.meta.weightDecay !== undefined ? ` + ${str(i.meta.weightDecay)}·${paramSym(i.meta.param)}` : ''),
   },
   {
     kind: 'OPTIMIZER_STATE',
     phase: 'update',
     results: ['velocity'],
-    summary: 'Update the momentum accumulator.',
+    summary: 'Update the optimiser state: the momentum accumulator, or Adam’s moment estimates (m, v, m̂, v̂).',
     learnerGloss: 'Update the optimiser’s memory of recent changes.',
-    symbolic: (i) => `v(${paramSym(i.meta.param)}) ← ${str(i.meta.momentum)}·v + ḡ`,
+    symbolic: (i) =>
+      i.meta.optimizer === 'adam'
+        ? `m ← ${str(i.meta.beta1)}·m + ${str(1 - Number(i.meta.beta1))}·ḡ, v ← ${str(i.meta.beta2)}·v + ${str(1 - Number(i.meta.beta2))}·ḡ², step ${str(i.meta.t)}`
+        : `v(${paramSym(i.meta.param)}) ← ${str(i.meta.momentum)}·v + ḡ`,
   },
   {
     kind: 'COMPUTE_UPDATE',
@@ -296,7 +301,9 @@ const builtins: KindSpec[] = [
     summary: 'Scale the (momentum-smoothed) gradient by −η to get the step.',
     learnerGloss: 'Decide how far to move each weight.',
     symbolic: (i) =>
-      `Δ${paramSym(i.meta.param)} = −${str(i.meta.lr)} · ${i.meta.optimizer === 'momentum' ? 'v' : 'ḡ'}`,
+      i.meta.optimizer === 'adam'
+        ? `Δ${paramSym(i.meta.param)} = −${str(i.meta.lr)} · m̂ / (√v̂ + ${str(i.meta.epsilon)})`
+        : `Δ${paramSym(i.meta.param)} = −${str(i.meta.lr)} · ${i.meta.optimizer === 'momentum' ? 'v' : 'ḡ'}`,
   },
   {
     kind: 'APPLY_UPDATE',

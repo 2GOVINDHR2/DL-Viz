@@ -30,7 +30,15 @@ export interface LayerState {
 
 export interface UpdateState {
   grad?: Tensor;
+  /** With weight decay: λ·w and the regularised gradient ḡ + λ·w (GRAD_ACCUMULATE, ADR-098). */
+  decay?: Tensor;
+  regularized?: Tensor;
   velocity?: Tensor;
+  /** Adam: the moment estimates and their bias-corrected forms (OPTIMIZER_STATE, ADR-098). */
+  m?: Tensor;
+  v?: Tensor;
+  mHat?: Tensor;
+  vHat?: Tensor;
   delta?: Tensor;
   before?: Tensor;
   after?: Tensor;
@@ -226,12 +234,26 @@ export function reconstructState(src: TraceSource, cursor: number): ExecState {
       case 'LOSS_REDUCE':
         state.batchLoss = i.results.loss.item();
         break;
-      case 'GRAD_ACCUMULATE':
-        (state.updates[p] ??= {}).grad = i.results.grad;
+      case 'GRAD_ACCUMULATE': {
+        const u = (state.updates[p] ??= {});
+        u.grad = i.results.grad;
+        if (i.results.decay) {
+          u.decay = i.results.decay;
+          u.regularized = i.results.regularized;
+        }
         break;
-      case 'OPTIMIZER_STATE':
-        (state.updates[p] ??= {}).velocity = i.results.velocity;
+      }
+      case 'OPTIMIZER_STATE': {
+        const u = (state.updates[p] ??= {});
+        if (i.results.velocity) u.velocity = i.results.velocity;
+        if (i.results.m) {
+          u.m = i.results.m;
+          u.v = i.results.v;
+          u.mHat = i.results.mHat;
+          u.vHat = i.results.vHat;
+        }
         break;
+      }
       case 'COMPUTE_UPDATE':
         (state.updates[p] ??= {}).delta = i.results.delta;
         break;

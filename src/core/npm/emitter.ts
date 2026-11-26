@@ -300,42 +300,77 @@ export class NpmEmitter implements SessionObserver {
     for (const u of rec.updates) {
       const layer = specs.get(u.name)!.layer;
       const sampleGrads = this.sampleGradRefs.map((g) => g.get(u.name)).filter((g): g is Operand => !!g);
-      const [acc] = this.emit(
+      // With weight decay, a weight's accumulated gradient also records the penalty λ·w and the regularised
+      // gradient the optimiser receives (ADR-098); the parameter it decays is an operand.
+      const paramRef = this.state.paramRefs.get(u.name)!;
+      const accOut = this.emit(
         'GRAD_ACCUMULATE',
         at('update', layer),
-        sampleGrads,
-        { grad: u.grad },
-        { param: u.name, batchSize: rec.indices.length },
+        u.penalty ? [...sampleGrads, { ...paramRef, role: 'parameter (weight decay)' }] : sampleGrads,
+        u.penalty ? { grad: u.grad, decay: u.penalty, regularized: u.stepGrad } : { grad: u.grad },
+        u.penalty
+          ? { param: u.name, batchSize: rec.indices.length, weightDecay: opt.weightDecay ?? 0 }
+          : { param: u.name, batchSize: rec.indices.length },
       );
-      let stepSource: Operand = { ...acc, role: 'mean gradient' };
-      if (opt.type === 'momentum' && u.state) {
+      const gradIn: Operand = u.penalty
+        ? { ...accOut[2], role: 'regularised gradient' }
+        : { ...accOut[0], role: 'mean gradient' };
+      let stepSources: Operand[] = [gradIn];
+      if (opt.type === 'momentum' && u.state instanceof Tensor) {
         const prev = this.state.optRefs.get(u.name);
-        const operands = [
-          { ...acc, role: 'mean gradient' },
-          ...(prev ? [{ ...prev, role: 'previous velocity' }] : []),
-        ];
         const [vel] = this.emit(
           'OPTIMIZER_STATE',
           at('update', layer),
-          operands,
+          [gradIn, ...(prev ? [{ ...prev, role: 'previous velocity' }] : [])],
           { velocity: u.state },
           { param: u.name, momentum: opt.momentum },
         );
         this.state.optRefs.set(u.name, vel);
-        stepSource = { ...vel, role: 'velocity' };
+        stepSources = [{ ...vel, role: 'velocity' }];
+      } else if (opt.type === 'adam' && u.state && !(u.state instanceof Tensor) && u.corrected) {
+        const prev = this.state.optRefs.get(u.name);
+        const out = this.emit(
+          'OPTIMIZER_STATE',
+          at('update', layer),
+          [
+            gradIn,
+            ...(prev
+              ? [
+                  { ...prev, slot: 'm', role: 'previous first moment' },
+                  { ...prev, slot: 'v', role: 'previous second moment' },
+                ]
+              : []),
+          ],
+          { m: u.state.m, v: u.state.v, mHat: u.corrected.mHat, vHat: u.corrected.vHat },
+          {
+            param: u.name,
+            optimizer: 'adam',
+            beta1: opt.beta1,
+            beta2: opt.beta2,
+            epsilon: opt.epsilon,
+            t: u.state.t,
+          },
+        );
+        this.state.optRefs.set(u.name, { ...out[0], role: '' });
+        stepSources = [
+          { ...out[2], role: 'corrected first moment' },
+          { ...out[3], role: 'corrected second moment' },
+        ];
       }
       const [delta] = this.emit(
         'COMPUTE_UPDATE',
         at('update', layer),
-        [stepSource],
+        stepSources,
         { delta: u.delta },
-        { param: u.name, lr: opt.lr, optimizer: opt.type },
+        opt.type === 'adam'
+          ? { param: u.name, lr: opt.lr, optimizer: opt.type, epsilon: opt.epsilon }
+          : { param: u.name, lr: opt.lr, optimizer: opt.type },
       );
       const [value] = this.emit(
         'APPLY_UPDATE',
         at('update', layer),
         [
-          { ...this.state.paramRefs.get(u.name)!, role: 'parameter' },
+          { ...paramRef, role: 'parameter' },
           { ...delta, role: 'step' },
         ],
         { value: u.after },

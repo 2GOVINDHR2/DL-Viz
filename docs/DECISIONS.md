@@ -903,3 +903,35 @@ Also clarified:
 - **Tests:**
   - The Stage 6 gate checks that every example has exactly the six forward steps, that the last one's value is the prediction, and that the hidden weighted sum equals the hand calculation.
   - A new e2e test checks the six listed steps and that the last value is the ŷ shown.
+
+## ADR-097 — 2026-11-26 — Level 3 curriculum: Training Strategies and Generalization
+- **Four experiments:** learning rate, momentum, Adam, and overfitting with L2 regularisation, in the order the update rule grows. See `docs/LEVEL-3-ARCHITECTURE.md`.
+- **Experiments 01–03 share one task, network and set of starting weights,** so every difference shown comes from the training strategy.
+- **Left out:**
+  - learning-rate schedules: the engine has one constant η, and no experiment needs one;
+  - dropout, batch normalisation, augmentation, and automated early stopping: not supported and not needed. Experiment 04 marks where early stopping would stop by reading the recorded curves.
+- **The interface reuses** the level descriptor, layout, explorer and component patterns of Levels 1 and 2. Level 3 has its own vocabulary schedule.
+
+## ADR-098 — 2026-11-26 — Engine extensions for Level 3: Adam, L2 weight decay, held-out split
+- **Adam** (`optim.ts`):
+  - The rule is m ← β₁m + (1−β₁)g, v ← β₂v + (1−β₂)g², m̂ = m/(1−β₁ᵗ), v̂ = v/(1−β₂ᵗ), Δ = −η·m̂/(√v̂ + ε).
+  - The optimiser state becomes `Tensor | AdamState | null`; checkpoints carry it, and the store's byte count includes m and v.
+  - It is recorded in `OPTIMIZER_STATE` (results m, v, mHat, vHat; meta optimizer, β₁, β₂, ε, t; operands: the incoming gradient and the previous m and v). `COMPUTE_UPDATE` reads mHat and vHat.
+- **L2 weight decay** (`optimizer.weightDecay`):
+  - The penalty (λ/2)·‖W‖² adds λ·w to each weight's mean gradient, never to a bias. The optimiser receives ḡ + λ·w.
+  - It is recorded in `GRAD_ACCUMULATE` (extra results `decay`, `regularized`; the parameter as an operand with role "parameter (weight decay)"; meta `weightDecay`).
+- **Held-out split** for the synthetic datasets (`test: { n, seed }`): it must use a different seed from the training data. `compareRuns` returns `testLosses`.
+- **`validateOptimizer`:** η ≥ 0 (probes use 0), λ ≥ 0, μ, β₁, β₂ ∈ [0, 1), ε > 0.
+- **Why no new kind:** `OPTIMIZER_STATE` already means "the optimiser's state for this parameter", and the regularised gradient is a property of the accumulated gradient. The grammar and every existing trace are unchanged.
+  - The workbench's explainers and views still describe only SGD and momentum. The workbench offers no Adam configuration.
+- **Gate** (`tests/unit/level3-optim-gate.test.ts`, `reports/level3-optim-gate.json`):
+
+  | Check | Result |
+  |---|---|
+  | Adam vs a hand loop with its own gradients, 12 updates | 6.7 × 10⁻¹⁶ |
+  | Adam vs TF.js `tf.train.adam`, 30 updates | 8.7 × 10⁻⁶ (TF.js computes in float32) |
+  | Momentum, 12 updates | 2.8 × 10⁻¹⁶ |
+  | Weight decay, 12 updates by hand; regularised gradient vs finite difference of the penalised loss | 1.7 × 10⁻¹⁰; biases untouched |
+  | Replay, including segments rebuilt from Adam checkpoints | identical |
+  | Held-out loss vs hand evaluation of the final parameters | 10⁻⁹; `compareRuns` equals the record |
+  | Grammar | conforms for every new configuration |

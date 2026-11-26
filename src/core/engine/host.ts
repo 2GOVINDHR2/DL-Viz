@@ -24,6 +24,16 @@ export function registerAsset(name: string, load: AssetLoader): void {
 }
 
 export function resolveDataset(spec: DatasetSpec): Dataset {
+  if ('test' in spec && spec.test) {
+    const { test, ...rest } = spec;
+    if (!(Number.isInteger(test.n) && test.n > 0))
+      throw new Error('a held-out split needs a positive whole number of points');
+    if (test.seed === rest.seed)
+      throw new Error('a held-out split needs a different seed from the training data');
+    const train = resolveDataset(rest as DatasetSpec);
+    const held = resolveDataset({ ...rest, n: test.n, seed: test.seed } as DatasetSpec);
+    return { ...train, test: { xs: held.xs, ys: held.ys } };
+  }
   switch (spec.kind) {
     case 'asset': {
       const load = assets.get(spec.name);
@@ -134,19 +144,28 @@ export class EngineHost {
         const runs = req.configs.map((c) => {
           const s = new TrainingSession(c, data);
           const losses: number[] = [];
+          const testLosses: number[] = [];
           const weights: number[] = [];
           const first = s.model.params[0].name;
           let diverged = false;
           while (!s.done) {
-            const l = s.runEpoch().eval.loss;
+            const ev = s.runEpoch().eval;
+            const l = ev.loss;
             losses.push(l);
+            if (ev.test) testLosses.push(ev.test.loss);
             weights.push(s.parameters().get(first)!.data[0]);
             if (!Number.isFinite(l) || l > 1e6) {
               diverged = true;
               break;
             }
           }
-          return { lr: c.optimizer.lr, losses, weights, diverged };
+          return {
+            lr: c.optimizer.lr,
+            losses,
+            weights,
+            diverged,
+            ...(testLosses.length ? { testLosses } : {}),
+          };
         });
         return { op: 'compareRuns', runs };
       }

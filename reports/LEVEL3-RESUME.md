@@ -8,7 +8,7 @@
 |---|---|---|
 | 1 | Baseline audit (`reports/LEVEL3-BASELINE.md`) | done |
 | 2 | Level 2 Stage 6: forward steps in the challenge | done (`reports/LEVEL2-STAGE6-COMPLETION.md`) |
-| 3 | Level 3 plan (`docs/LEVEL-3-ARCHITECTURE.md`) and engine gates (Adam, weight decay, held-out split) | pending |
+| 3 | Level 3 plan (`docs/LEVEL-3-ARCHITECTURE.md`) and engine gates (Adam, weight decay, held-out split) | done (ADR-097, ADR-098; `reports/level3-optim-gate.json`) |
 | 4 | Level 3 Experiment 01: learning rate | pending |
 | 5 | Level 3 Experiment 02: momentum | pending |
 | 6 | Level 3 Experiment 03: Adam | pending |
@@ -17,4 +17,6 @@
 
 ## Next action
 
-Stage 3: write `docs/LEVEL-3-ARCHITECTURE.md` (plan and ADR-097), then the engine gates: Adam in `src/core/optim/optim.ts` and the emitter; L2 weight decay with SGD; a held-out split for synthetic datasets. Each with an independent test first.
+Stage 4: Level 3 infrastructure, then Experiment 01.
+- Infrastructure: `LevelDescriptor` number 3; routes `#/level-3`; `src/experiments/level3.ts`; the landing page; the levels card.
+- Experiment 01: learning rate; `compareRuns` curves plus recorded runs.

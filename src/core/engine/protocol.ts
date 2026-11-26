@@ -13,13 +13,21 @@ import type { EpochSummary, ExecState } from '../npm/state';
 import type { Instruction, TraceHeader } from '../npm/ir';
 import type { TrainConfig } from './session';
 
+/**
+ * A held-out split for a synthetic dataset (Level 3, ADR-098): n more points drawn from the same generator with
+ * another seed. The engine evaluates it after every epoch (EVAL_END's testLoss and testAccuracy) and never trains on it.
+ */
+export interface HeldOut {
+  test?: { n: number; seed: number };
+}
+
 export type DatasetSpec =
   | { kind: 'xor' }
-  | { kind: 'xorClusters'; n: number; seed: number; noise?: number }
-  | { kind: 'gaussians'; n: number; seed: number; separation?: number }
-  | { kind: 'circles'; n: number; seed: number }
-  | { kind: 'spiral'; n: number; classes: number; seed: number }
-  | { kind: 'line'; n: number; seed: number }
+  | ({ kind: 'xorClusters'; n: number; seed: number; noise?: number } & HeldOut)
+  | ({ kind: 'gaussians'; n: number; seed: number; separation?: number } & HeldOut)
+  | ({ kind: 'circles'; n: number; seed: number } & HeldOut)
+  | ({ kind: 'spiral'; n: number; classes: number; seed: number } & HeldOut)
+  | ({ kind: 'line'; n: number; seed: number } & HeldOut)
   | { kind: 'bars'; n: number; size: number; seed: number }
   | { kind: 'points'; xs: number[][]; ys: number[][]; name: string }
   /** A dataset the host was given in advance (large bundled assets, loaded lazily by the worker). */
@@ -71,6 +79,8 @@ export interface ComparedRun {
   /** First element of the first parameter after each epoch (shows overshooting). */
   weights: number[];
   diverged: boolean;
+  /** Held-out loss after each epoch, when the dataset has a held-out split (ADR-098). */
+  testLosses?: number[];
 }
 
 /**

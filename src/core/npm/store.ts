@@ -13,7 +13,7 @@
 import type { Dataset } from '../engine/data';
 import { type Checkpoint, type TrainConfig, TrainingSession } from '../engine/session';
 import { layerActivation } from '../layers/model';
-import type { Tensor } from '../tensor/tensor';
+import { Tensor } from '../tensor/tensor';
 import { type EmitterState, NpmEmitter } from './emitter';
 import { type Instruction, NPM_VERSION, type Trace, type TraceHeader } from './ir';
 
@@ -224,7 +224,10 @@ export class TraceStore {
     let checkpointBytes = 0;
     for (const s of this.segments) {
       if (!s.checkpoint) continue;
-      for (const t of [...s.checkpoint.params.values(), ...s.checkpoint.optState.values()]) {
+      const opt = [...s.checkpoint.optState.values()].flatMap((o) =>
+        o === null ? [] : o instanceof Tensor ? [o] : [o.m, o.v],
+      );
+      for (const t of [...s.checkpoint.params.values(), ...opt]) {
         if (t && !live.has(t)) {
           live.add(t);
           checkpointBytes += t.size * 8;

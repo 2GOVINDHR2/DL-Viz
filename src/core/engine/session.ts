@@ -14,7 +14,7 @@
 import { Tape, backward, type BackwardStep, type Var } from '../autodiff';
 import { buildModel, forward, layerActivation, type Model, type ModelConfig } from '../layers/model';
 import { applyLoss, fusesSoftmax, validatePairing, type LossName } from '../losses/losses';
-import { computeUpdate, type OptimizerConfig } from '../optim/optim';
+import { computeUpdate, validateOptimizer, type OptimizerConfig, type OptState } from '../optim/optim';
 import { initialize } from '../rng/init';
 import { Rng, type RngState } from '../rng/rng';
 import { add, scale } from '../tensor/ops';
@@ -53,7 +53,7 @@ export interface Checkpoint {
   /** Index of the epoch about to start. */
   epoch: number;
   params: ReadonlyMap<string, Tensor>;
-  optState: ReadonlyMap<string, Tensor | null>;
+  optState: ReadonlyMap<string, OptState>;
   rng: RngState;
   /** Present when the checkpoint was taken between batches of an epoch. */
   inEpoch: EpochProgress | null;
@@ -78,7 +78,12 @@ export interface ParamUpdate {
   name: string;
   /** Mean of the per-sample gradients in the batch. */
   grad: Tensor;
-  state: Tensor | null;
+  /** With weight decay, for a weight: λ·w (the gradient of (λ/2)·‖w‖²) and the gradient the optimiser received. */
+  penalty?: Tensor;
+  stepGrad: Tensor;
+  state: OptState;
+  /** Adam only: the bias-corrected moments used for this step. */
+  corrected?: { mHat: Tensor; vHat: Tensor };
   delta: Tensor;
   before: Tensor;
   after: Tensor;
@@ -130,7 +135,7 @@ export class TrainingSession {
   readonly data: Dataset;
   readonly model: Model;
   private params = new Map<string, Tensor>();
-  private optState = new Map<string, Tensor | null>();
+  private optState = new Map<string, OptState>();
   private rng: Rng;
   private epochIndex = 0;
   private current: {
@@ -151,6 +156,7 @@ export class TrainingSession {
     validateDataset(data, config.model.inputShape, this.model.outputShape[0]);
     if (config.batchSize < 1 || !Number.isInteger(config.batchSize))
       throw new Error('batchSize must be a positive integer');
+    validateOptimizer(config.optimizer);
     if (from) {
       this.rng = Rng.fromState(from.rng);
       this.params = new Map(from.params);
@@ -297,13 +303,21 @@ export class TrainingSession {
     const batchLoss = samples.reduce((acc, s) => acc + s.loss.value.item(), 0) / indices.length;
     cur.lossSum += batchLoss * indices.length;
     cur.batchLosses.push(batchLoss);
+    const wd = this.config.optimizer.weightDecay ?? 0;
     const updates: ParamUpdate[] = this.model.params.map((p) => {
       const sum = gradSum.get(p.name)!;
       const grad = scale(Tensor.adopt(sum.shape, sum.data), 1 / indices.length);
-      const { state, delta } = computeUpdate(this.config.optimizer, grad, this.optState.get(p.name) ?? null);
       const before = this.params.get(p.name)!;
+      // L2 weight decay: the penalty (λ/2)·‖w‖² adds λ·w to a weight's gradient; biases are not decayed.
+      const penalty = wd > 0 && p.role === 'weight' ? scale(before, wd) : undefined;
+      const stepGrad = penalty ? add(grad, penalty) : grad;
+      const { state, delta, corrected } = computeUpdate(
+        this.config.optimizer,
+        stepGrad,
+        this.optState.get(p.name) ?? null,
+      );
       const after = add(before, delta);
-      return { name: p.name, grad, state, delta, before, after };
+      return { name: p.name, grad, penalty, stepGrad, state, corrected, delta, before, after };
     });
     for (const u of updates) {
       this.params.set(u.name, u.after);

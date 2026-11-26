@@ -1,0 +1,42 @@
+{
+  "G1": {
+    "updates": 12,
+    "worstAbsoluteGap": 6.661338147750939e-16
+  },
+  "G2": {
+    "updates": 30,
+    "engine": [
+      -0.07957214014031538,
+      -0.17854985028351733
+    ],
+    "tfjs": [
+      -0.0795808732509613,
+      -0.1785472333431244
+    ],
+    "gap": [
+      0.000008733110645919862,
+      0.000002616940392941025
+    ]
+  },
+  "G3": {
+    "updates": 12,
+    "worstAbsoluteGap": 2.7755575615628914e-16
+  },
+  "G4": {
+    "updates": 12,
+    "lambda": 0.5,
+    "worstFiniteDifferenceGap": 1.66688884917221e-10
+  },
+  "G5": {
+    "instructions": 5284,
+    "identical": true
+  },
+  "G6": {
+    "heldOut": 60,
+    "finalHeldOutLoss": 0.49944283729906885
+  },
+  "G7": {
+    "configurations": 4,
+    "conform": true
+  }
+}

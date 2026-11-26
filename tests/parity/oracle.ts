@@ -146,6 +146,8 @@ export function runParity(config: TrainConfig, data: Dataset): ParityResult {
         const g = grads[name];
         let step: tf.Tensor;
         if (opt.type === 'sgd') step = g;
+        else if (opt.type === 'adam')
+          throw new Error('the parity oracle does not model Adam (see level3-optim-gate)');
         else {
           const a = tf.add(tf.mul(accum.get(name) ?? tf.zerosLike(g), opt.momentum), g);
           const kept = tf.keep(a);
