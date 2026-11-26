@@ -1,0 +1,66 @@
+{
+  "G1": {
+    "points": 4,
+    "worstAbsoluteFiniteDifferenceGap": 1.4772183476452483e-11
+  },
+  "G2": [
+    {
+      "x": 2,
+      "y": 3,
+      "contributions": [
+        1,
+        3
+      ],
+      "gradient": 4
+    },
+    {
+      "x": -1.5,
+      "y": 0.25,
+      "contributions": [
+        1,
+        0.25
+      ],
+      "gradient": 1.25
+    },
+    {
+      "x": 0,
+      "y": -2,
+      "contributions": [
+        1,
+        -2
+      ],
+      "gradient": -1
+    }
+  ],
+  "G3": {
+    "expressions": 60,
+    "nodesChecked": 297,
+    "worstRelativeFiniteDifferenceGap": 1.1365515421163375e-9
+  },
+  "G4": [
+    {
+      "example": 1,
+      "steps": 16,
+      "edges": 29,
+      "resultsRecomputed": 13
+    },
+    {
+      "example": 2,
+      "steps": 16,
+      "edges": 29,
+      "resultsRecomputed": 13
+    },
+    {
+      "example": 3,
+      "steps": 16,
+      "edges": 29,
+      "resultsRecomputed": 13
+    },
+    {
+      "example": 4,
+      "steps": 16,
+      "edges": 29,
+      "resultsRecomputed": 13
+    }
+  ]
+}
