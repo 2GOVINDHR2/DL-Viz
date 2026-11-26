@@ -15,13 +15,14 @@ export const LEVEL2 = {
   title: 'Level 2 — How Neural Networks Learn',
   tagline:
     'Follow a prediction through a network, measure how wrong it is, and see how gradients tell every weight which way to move.',
-  minutes: '85–110 minutes',
+  minutes: '95–125 minutes',
   understand: [
     'how a prediction is computed, layer by layer (forward propagation)',
     'how a loss function measures prediction error',
     'how derivatives and gradients say which way each parameter should change',
     'how backpropagation sends gradients back through a network',
     'how automatic differentiation computes those gradients',
+    'how one training update follows from all of these, on a network you train yourself',
   ],
 };
 
@@ -823,10 +824,11 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
   {
     id: '05',
     title: 'Automatic Differentiation: Inside the Computational Graph',
-    short: 'How the engine computes every gradient: a graph of operations, run forwards and then in reverse.',
+    short:
+      'How the engine computes every gradient, and a final challenge: train a network and account for every number of one update.',
     description:
-      'The engine never works out a formula for a gradient. It records every operation as a node of a computational graph while it computes the forward pass, then runs the graph in reverse, applying each operation’s local derivative. This is automatic differentiation. Here you watch it on small expressions, check it against a numerical estimate, and then open the graph the engine recorded for one real training example.',
-    minutes: '15–20 min',
+      'The engine never works out a formula for a gradient. It records every operation as a node of a computational graph while it computes the forward pass, then runs the graph in reverse, applying each operation’s local derivative. This is automatic differentiation. Here you watch it on small expressions, check it against a numerical estimate, and open the graph the engine recorded for one real training example. The final challenge brings Level 2 together: train a small network and take one of its updates apart.',
+    minutes: '25–35 min',
     concept: 'Automatic differentiation',
     objectives: [
       'Read an expression as a computational graph of operations.',
@@ -834,11 +836,13 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
       'Explain why a value used in two places receives the sum of two gradient contributions.',
       'Check a gradient against a finite-difference estimate.',
       'Recognise the same graph in the record of a real training example.',
+      'Train a small network and account for one update: prediction, loss, backward pass, gradients and the change to every parameter.',
     ],
     outcomes: [
       'what a computational graph is',
       'how reverse-mode automatic differentiation computes every gradient in one backward pass',
       'why gradients add up where a value is shared',
+      'how one training update follows from one forward and one backward pass',
     ],
     primer: {
       intro:
@@ -938,6 +942,31 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
           'It is not the starting weight: its edge leads to example 2’s update, which changed it. The record links each value to the step that made it.',
         doneOn: 'source-update',
       },
+      {
+        id: 'final-follow',
+        title: 'Final challenge: follow one update',
+        prompt:
+          'In Part G, train a network, then open each of the five stages of one update in the record: prediction, loss, backpropagation, gradients and update.',
+        notice:
+          'One update is one forward pass and one backward pass per example, then one change to every weight and bias. Every number came from the record.',
+        doneOn: 'ch-complete',
+      },
+      {
+        id: 'final-mean',
+        title: 'Final challenge: a batch’s average',
+        prompt: 'In Part G, with batch size 8, open the gradients of an update.',
+        notice:
+          'Each of the 8 examples has its own gradient; the update uses their mean ḡ. The check beside it recomputes that mean from the 8 recorded gradients.',
+        doneOn: 'ch-mean',
+      },
+      {
+        id: 'final-compare',
+        title: 'Final challenge: before and after',
+        prompt: 'In Part G, compare the decision after epoch 1 with the decision after a later epoch.',
+        notice:
+          'The boundary moves as the updates accumulate. Try η = 0.05 with batch size 40: with few, small updates the network may still be far from separating the clusters after 20 epochs.',
+        doneOn: 'ch-compare',
+      },
     ],
     questions: [
       {
@@ -981,6 +1010,28 @@ export const LEVEL2_EXPERIMENTS: LessonExperiment[] = [
           {
             text: 'Only the first contribution to arrive',
             feedback: 'No. The engine keeps adding contributions until every path has been followed back.',
+          },
+        ],
+      },
+      {
+        id: 'ad-update',
+        kind: 'choice',
+        prompt:
+          'With batch size 8, how does the engine turn the 8 examples’ gradients into one change of a weight w?',
+        options: [
+          {
+            text: 'It averages them into ḡ, then w ← w − η·ḡ',
+            correct: true,
+            feedback: 'Right. One update per batch, using the mean of the batch’s gradients.',
+          },
+          {
+            text: 'It applies the 8 gradients one after another',
+            feedback:
+              'That is training with batch size 1. With batch size 8 there is one update, using their mean.',
+          },
+          {
+            text: 'It uses the largest of the 8 gradients',
+            feedback: 'No. Every example counts equally: the update uses their mean.',
           },
         ],
       },

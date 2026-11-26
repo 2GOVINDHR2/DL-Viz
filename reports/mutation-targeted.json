@@ -355,5 +355,152 @@
     "mutant": "Experiment 05 is closed again",
     "outcome": "killed",
     "detail": "failed at 22: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-challenge.spec:29",
+    "claim": "the prediction line has the form the relations read",
+    "mutant": "ŷ is written another way",
+    "outcome": "killed",
+    "detail": "failed at 29,75: Error: dataset #14: x = (−0.093, 0.588) → y-hat = 0.4435 → answer 0 · target 1"
+  },
+  {
+    "id": "level2-challenge.spec:33",
+    "claim": "the answer is 1 exactly when ŷ ≥ 0.5",
+    "mutant": "the answer is inverted",
+    "outcome": "killed",
+    "detail": "failed at 33,75: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level2-challenge.spec:36",
+    "claim": "the loss shown is the example’s BCE",
+    "mutant": "the batch’s mean loss is shown as the example’s",
+    "outcome": "killed",
+    "detail": "failed at 36,75: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:38",
+    "claim": "the backward pass starts with the loss’s gradient",
+    "mutant": "the backward list skips its first step",
+    "outcome": "killed",
+    "detail": "failed at 38,75: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level2-challenge.spec:41",
+    "claim": "the first backward value is ∂ℓ/∂ŷ of the shown example",
+    "mutant": "the backward list always shows the batch’s first example",
+    "outcome": "killed",
+    "detail": "failed at 41,86: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:48",
+    "claim": "the before/after paragraph has the form the test reads",
+    "mutant": "the paragraph is worded differently",
+    "outcome": "killed",
+    "detail": "failed at 48,146: Error: Loss after each epoch"
+  },
+  {
+    "id": "level2-challenge.spec:67",
+    "claim": "the five stages link to steps in recorded order",
+    "mutant": "the loss stage links to the prediction’s step",
+    "outcome": "killed",
+    "detail": "failed at 67: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:83",
+    "claim": "the stages show the example chosen in the selector",
+    "mutant": "the stages always show the batch’s first example",
+    "outcome": "killed",
+    "detail": "failed at 83: Error: expect(locator).toContainText(expected) failed"
+  },
+  {
+    "id": "level2-challenge.spec:100",
+    "claim": "the gradients table shows ḡ",
+    "mutant": "ḡ is not shown",
+    "outcome": "killed",
+    "detail": "failed at 100: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level2-challenge.spec:105",
+    "claim": "after = before + Δ",
+    "mutant": "after is shown 1 too high",
+    "outcome": "killed",
+    "detail": "failed at 105: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:106",
+    "claim": "Δ has the opposite sign to ḡ",
+    "mutant": "Δ and after are shown as if the step went uphill",
+    "outcome": "killed",
+    "detail": "failed at 106: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level2-challenge.spec:107",
+    "claim": "|Δ| = η·|ḡ|",
+    "mutant": "Δ and after are shown as if η were doubled",
+    "outcome": "killed",
+    "detail": "failed at 107: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:120",
+    "claim": "batch size 1 has no example selector",
+    "mutant": "the example selector also shows for one example",
+    "outcome": "killed",
+    "detail": "failed at 120: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-challenge.spec:129",
+    "claim": "no settings note right after training",
+    "mutant": "the note shows whenever a run exists",
+    "outcome": "killed",
+    "detail": "failed at 129: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-challenge.spec:147",
+    "claim": "the loss after epoch 20 is below the loss after epoch 1",
+    "mutant": "the paragraph repeats epoch 1’s loss for epoch 20",
+    "outcome": "killed",
+    "detail": "failed at 147: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:148",
+    "claim": "the default run ends below 0.05",
+    "mutant": "the last loss is shown 10 times too large",
+    "outcome": "killed",
+    "detail": "failed at 148: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:165",
+    "claim": "η = 0.05, batch 40 is still above 0.3 after 20 epochs",
+    "mutant": "the last loss is shown 10 times too small",
+    "outcome": "killed",
+    "detail": "failed at 165: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:166",
+    "claim": "the slow run’s loss does not rise",
+    "mutant": "the first loss is shown 10 times too small",
+    "outcome": "killed",
+    "detail": "failed at 166: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level2-challenge.spec:155",
+    "claim": "the compare selector replaces the second panel",
+    "mutant": "after the comparison moves, epoch 20 stays as a third panel",
+    "outcome": "killed",
+    "detail": "failed at 155: Error: expect(locator).toHaveCount(expected) failed"
+  },
+  {
+    "id": "level2-challenge.spec:180",
+    "claim": "after the challenge, Level 1's Experiment 04 opens and trains",
+    "mutant": "leaving a page no longer releases the shared record before the next page renders",
+    "outcome": "killed",
+    "detail": "timedOut at 180: Test timeout of 60000ms exceeded."
+  },
+  {
+    "id": "level2-challenge.spec:181",
+    "claim": "no page error on the way from the challenge to Level 1",
+    "mutant": "a page error is thrown before the assertion",
+    "outcome": "killed",
+    "detail": "failed at 181: Error: expect(received).toEqual(expected) // deep equality"
   }
 ]

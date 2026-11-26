@@ -7,6 +7,15 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { L2_EXP05_DEFAULTS } from '../../src/experiments/level2';
 import { exampleGraph, expressionGraph } from '../../src/learn/engine/graph';
+import { updateQuestion } from '../../src/learn/level2/exp05/Challenge';
+import {
+  CHALLENGE_DATASET,
+  CHALLENGE_DEFAULTS,
+  challengeConfig,
+  readBatch,
+} from '../../src/learn/level2/exp05/challenge';
+import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
+import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
 import { gradQuestion, L2Experiment05, sharedQuestion } from '../../src/learn/level2/exp05/Experiment05';
 import {
   EXPRESSIONS,
@@ -162,5 +171,57 @@ describe('the page', () => {
     expect(html).toContain('Illustration · the engine has no forward mode');
     expect(html).toContain('Read from a recorded training run');
     expect(html).toContain('Computed by the engine’s automatic differentiation');
+  });
+});
+
+describe('Part G: the final challenge', () => {
+  it('maps every setting into the engine configuration, and nothing else changes', () => {
+    const c = challengeConfig({ units: 4, activation: 'relu', lr: 2, batchSize: 1 });
+    expect(c.model.layers).toEqual([
+      { type: 'dense', units: 4, activation: 'relu' },
+      { type: 'dense', units: 1, activation: 'sigmoid' },
+    ]);
+    expect(c.optimizer).toEqual({ type: 'sgd', lr: 2 });
+    expect(c.batchSize).toBe(1);
+    expect([c.seed, c.epochs, c.loss, c.shuffle, c.boundaryGrid]).toEqual([5, 20, 'bce', true, 24]);
+  });
+
+  it('with a real run of its network: the page shows it, and the live question asks for the recorded update', async () => {
+    const restore = setEngineFactory(inProcessEngine);
+    try {
+      await useRun.getState().train(challengeConfig(CHALLENGE_DEFAULTS), 'g', CHALLENGE_DATASET);
+      renderCurrentRunState();
+      const html = renderToStaticMarkup(createElement(L2Experiment05)).replace(/<[^>]+>/g, ' ');
+      expect(html).toContain('Loss after each epoch');
+      expect(html).toContain('One update, taken apart');
+      expect(html).toContain('The record of run');
+      const h = useRun.getState().header!;
+      const ins = await useRun.getState().read(h.epochStarts[2], h.epochStarts[3]);
+      const v = await readBatch(ins, 2, 1, 'L2', async (id) => (await useRun.getState().read(id, id + 1))[0]);
+      const q = updateQuestion(v);
+      const u = v.updates.find((x) => x.param === 'L2.b')!;
+      expect(q.options.find((o) => o.correct)!.text).toBe(u.after[0].toFixed(4).replace('-', '−'));
+      expect(u.after[0]).toBeCloseTo(u.before[0] - CHALLENGE_DEFAULTS.lr * u.mean[0], 15);
+      expect(updateQuestion(null).unavailable).toBeTruthy();
+    } finally {
+      useRun.getState().dispose();
+      setEngineFactory(restore);
+    }
+  });
+
+  it('a run of another network (another experiment’s) is not shown as the challenge’s', async () => {
+    const restore = setEngineFactory(inProcessEngine);
+    try {
+      await useRun
+        .getState()
+        .train(challengeConfig({ ...CHALLENGE_DEFAULTS, units: 2 }), 'not the default', CHALLENGE_DATASET);
+      renderCurrentRunState();
+      const html = renderToStaticMarkup(createElement(L2Experiment05));
+      expect(html).not.toContain('One update, taken apart');
+      expect(html).toContain('Train the network');
+    } finally {
+      useRun.getState().dispose();
+      setEngineFactory(restore);
+    }
   });
 });

@@ -138,6 +138,49 @@ async function level1(page: Page): Promise<Capability[]> {
   return caps;
 }
 
+/** Level 2 (ADR-095): every page as opened, and Experiments 03, 04 and 05 after real runs. */
+const LEVEL2_PAGES: [string, string][] = [
+  ['learn: level 2', '/#/level-2'],
+  ['learn: L2 experiment 01', '/#/level-2/experiment-01'],
+  ['learn: L2 experiment 02', '/#/level-2/experiment-02'],
+  ['learn: L2 experiment 03', '/#/level-2/experiment-03'],
+  ['learn: L2 experiment 04', '/#/level-2/experiment-04'],
+  ['learn: L2 experiment 05', '/#/level-2/experiment-05'],
+];
+
+async function level2(page: Page): Promise<Capability[]> {
+  const caps: Capability[] = [];
+  const take = async (name: string): Promise<void> => {
+    await openAll(page);
+    for (const c of await read(page)) caps.push({ screen: name, ...c });
+  };
+  for (const [name, url] of LEVEL2_PAGES) {
+    await page.goto(url);
+    await expect(page.locator('main h1').first()).toBeVisible();
+    await take(name);
+    if (name === 'learn: L2 experiment 03') {
+      await page.locator('[data-control="e:train"]').click();
+      await expect(page.getByText('The first update, read from the record')).toBeVisible({ timeout: 60_000 });
+      await take(`${name} (trained)`);
+    } else if (name === 'learn: L2 experiment 04') {
+      await page.locator('[data-control="c:train"]').click();
+      await expect(page.locator('.lv-where').first()).toContainText('example 1 of 4', { timeout: 60_000 });
+      await page.locator('[data-control="c:to-backward-end"]').click();
+      await page.locator('[data-control="c:apply"]').click();
+      await expect(page.locator('[data-note="after-update"]')).toBeVisible();
+      await take(`${name} (trained)`);
+    } else if (name === 'learn: L2 experiment 05') {
+      await page.locator('[data-control="b:end"]').click();
+      await page.locator('[data-record-node]').first().click();
+      await page.locator('[data-control="g:train"]').click();
+      await expect(page.locator('[data-update="1-1"]')).toBeVisible({ timeout: 60_000 });
+      await page.locator('[data-control="g:show:update"]').click();
+      await take(`${name} (trained)`);
+    }
+  }
+  return caps;
+}
+
 test('capability inventory: nothing in the baseline disappears without an ADR', async ({ page }) => {
   test.setTimeout(900_000);
   await page.setViewportSize({ width: 1280, height: 720 });
@@ -148,6 +191,7 @@ test('capability inventory: nothing in the baseline disappears without an ADR', 
     for (const e of EXPERIMENTS) all.push(...(await screen(page, mode, e.id, e.number)));
   }
   all.push(...(await level1(page)));
+  all.push(...(await level2(page)));
   const unique = [...new Map(all.map((c) => [key(c), c])).values()].sort((a, b) =>
     key(a).localeCompare(key(b)),
   );

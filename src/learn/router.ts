@@ -3,7 +3,7 @@
  * existing entry points keep their URLs: the workbench (`?mode=novice|expert` or `#/workbench`) and Study Mode
  * (`#study`).
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export type Route =
   | { page: 'home' }
@@ -40,17 +40,27 @@ export const href = {
   workbench: '?mode=novice',
 };
 
-export function useRoute(): Route {
+/**
+ * The current route. `onLeave` runs when the route is about to change, before the new page renders, so a page can
+ * release shared state that the next page must not see (ADR-095).
+ */
+export function useRoute(onLeave?: (from: Route, to: Route) => void): Route {
   const [route, setRoute] = useState(() => {
     const h = globalThis.location?.hash ?? '';
     return parseRoute(h.startsWith('#/') ? h : '');
   });
+  const current = useRef(route);
+  const leave = useRef(onLeave);
+  leave.current = onLeave;
   useEffect(() => {
     const f = (): void => {
       const h = window.location.hash;
       // In-page anchors (`#primer`) are not routes: the page stays where it is.
       if (h && !h.startsWith('#/')) return;
-      setRoute(parseRoute(h));
+      const next = parseRoute(h);
+      leave.current?.(current.current, next);
+      current.current = next;
+      setRoute(next);
       window.scrollTo({ top: 0 });
     };
     window.addEventListener('hashchange', f);

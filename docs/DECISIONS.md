@@ -861,3 +861,36 @@ Also clarified:
   - Edges are the record's operand references; a node's "Uses" and "Used by" lists navigate them.
   - Rows are the recorded phases: forward left to right, backward right to left.
 - **Experiment 05 is open; no experiment remains in preparation.** The final challenge is Stage 6.
+
+## ADR-095 — 2026-11-26 — The final challenge, and the review of Level 2 as a whole (Level 2, Stage 6)
+- **Scope, as instructed:** the integrated final challenge inside Experiment 05. Configure a small MLP, run real training, and inspect prediction, loss, backpropagation, gradients and parameter updates through the engine and its record.
+  - The Level 2 assessment page (`#/level-2/assessment`) in the Stage 1 plan was not built. It is reported as open in the Level 2 review.
+- **Gate first** (`tests/unit/level2-challenge-gate.test.ts`, `reports/level2-challenge-gate.json`, committed before the page):
+  - all 81 offered configurations train with finite values, and every epoch stays within the explorer's read limit (largest 1,404 of 6,000);
+  - for batch sizes 1, 8 and 40, at the start, middle and end of the run, `readBatch` matches a forward pass, loss, backpropagation, batch mean and update computed by hand from the recorded starting values (worst gap 4.4 × 10⁻¹⁶).
+  - No engine or NPM change.
+- **The network (decision D4):** 2-h-1 on registry experiment 3's two Gaussian clusters (40 points), with seed 5, 20 epochs, BCE and SGD.
+  - The learner chooses h ∈ {2, 3, 4}, a tanh, sigmoid or ReLU hidden layer, η ∈ {0.05, 0.5, 2} and batch size ∈ {1, 8, 40}.
+  - The default is 2-3-1, tanh, η = 0.5, batch 8. It is trained in the worker through the shared store.
+- **Only its own run is shown.** Part G shows a run only if its configuration is the one trained there (see ADR-093, defect 6). Changing a setting after training says so, and does not relabel the old run.
+- **"One update, taken apart"** reads the record (`readBatch`):
+  1. the prediction (the example's last ACTIVATE), with its dataset number;
+  2. the loss (COMPUTE_LOSS) and the batch's mean loss;
+  3. the backward steps;
+  4. this example's gradient beside the batch mean ḡ (GRAD_ACCUMULATE);
+  5. the update: before (read through the APPLY_UPDATE operand, from INIT_PARAM or the previous update), Δ (COMPUTE_UPDATE) and after.
+  - Each stage links to its instruction in the shared explorer.
+  - Two checks are computed on the page and labelled "checked here": the mean of the recorded example gradients equals ḡ, and before + Δ equals after.
+- **Before and after:** each epoch's recorded check (EVAL_END) gives the loss per epoch, and the decision maps of epoch 1 and a chosen later epoch over the recorded dataset.
+- **Review of Level 2 as a whole: found and fixed.**
+  - The stated time (85–110 min) no longer matched the experiments (95–125 min).
+  - The challenge said "1 updates per epoch".
+  - Part F's ℓ is now tied to the L used elsewhere.
+  - The engine's weight order in update tables is now explained.
+  - A test exposed that the example selector's effect was invisible in the values, so the prediction card now names its dataset example.
+  - The capability inventory now covers Level 2 (763 capabilities, ADR-086 append).
+- **A crash in Level 1, caused by the shared store, found by the full regression and fixed at its source.**
+  - **What happened:** after the challenge's run (40 examples), opening Level 1's Experiment 04 crashed it (`EpochsAndBatches`: "Cannot read properties of undefined"). React renders the next page before the previous page's cleanup releases the shared trace store, so Level 1 rendered once against the challenge's run and read a first-epoch order with example indices up to 39, where Level 1 has 4 examples.
+  - **Why it was not seen before:** Experiments 03 and 04 have 4 examples, so the same one-render window did no harm.
+  - **Fix:** `useRoute` takes an `onLeave` callback that runs in the `hashchange` handler before the new route is set. `LearnApp` uses it to release the store when leaving an experiment page. No Level 1 file changed, and Level 1 behaves as before: its page already released the store on unmount, and now that happens before the next page renders rather than after.
+  - **Test:** an e2e test (challenge, then Level 1's Experiment 04 trains: "The record of run 1", no page error), killed by a targeted mutant that disables the release.

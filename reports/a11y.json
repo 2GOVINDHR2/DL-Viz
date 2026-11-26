@@ -319,8 +319,8 @@
     "passes": 33,
     "violations": []
   },
-  "Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen (light)": {
-    "passes": 32,
+  "Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen, final challenge trained (light)": {
+    "passes": 34,
     "violations": []
   },
   "Level 1 experiment 04 trained, stages (light)": {
@@ -411,8 +411,8 @@
     "passes": 33,
     "violations": []
   },
-  "Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen (dark)": {
-    "passes": 32,
+  "Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen, final challenge trained (dark)": {
+    "passes": 34,
     "violations": []
   },
   "Level 1 experiment 04 trained, stages (dark)": {

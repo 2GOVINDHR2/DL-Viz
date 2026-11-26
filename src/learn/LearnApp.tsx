@@ -19,6 +19,7 @@ import { Level1Landing } from './pages/Level1Landing';
 import { Levels } from './pages/Levels';
 import { Orientation } from './pages/Orientation';
 import { href, useRoute, type Route } from './router';
+import { useRun } from './trace/store';
 import { crumbs, Shell } from './Shell';
 import './learn.css';
 
@@ -75,8 +76,17 @@ function NotFound() {
   );
 }
 
+/**
+ * Leaving an experiment page releases the shared trace store before the next page renders. Each page also releases it
+ * when it unmounts, but React renders the next page first, so without this the next page would see, for one render,
+ * the run of the page being left (a 40-example run once crashed Level 1's Experiment 04, which has 4 examples).
+ */
+function releaseRun(from: Route, to: Route): void {
+  if (from.page === 'experiment' && JSON.stringify(from) !== JSON.stringify(to)) useRun.getState().dispose();
+}
+
 export function LearnApp() {
-  const route = useRoute();
+  const route = useRoute(releaseRun);
   useEffect(() => {
     const last = crumbs(route).at(-1)?.label ?? '';
     const e =

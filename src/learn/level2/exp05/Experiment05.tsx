@@ -24,6 +24,8 @@ import { LEVEL2_PER_EXAMPLE_WORDING } from '../../trace/wording';
 import { sigmoidLocal } from '../exp04/math';
 import { ExprGraphView } from '../viz/ExprGraphView';
 import { RecordGraphView } from '../viz/RecordGraphView';
+import { FinalChallenge, updateQuestion } from './Challenge';
+import type { BatchView } from './challenge';
 import {
   EXPRESSIONS,
   MODE_NETWORKS,
@@ -637,7 +639,8 @@ function PartF() {
         For a real network the engine does exactly the same. Here is Experiment 04’s 2-2-1 network learning
         one XOR example, from the engine’s record. Each box is a recorded step; each line is a value the step
         used, traced to the step that produced it. The reverse pass reuses values from the forward pass, which
-        is why the engine keeps them.
+        is why the engine keeps them. The record names one example’s loss ℓ; it is the L of the earlier
+        experiments.
       </p>
       <div className="lv-row" style={{ marginBottom: 'var(--lv-s3)' }}>
         <Segmented
@@ -735,13 +738,18 @@ export function L2Experiment05() {
   const [x, setX] = useState<Record<X3, number>>(D.product);
   const [expr, setExpr] = useState<ExprId>('product');
   const [v, setV] = useState(D.shared);
-  const live = useMemo(() => [gradQuestion(x, expr), sharedQuestion(v)], [x, expr, v]);
+  const [batchView, setBatchView] = useState<BatchView | null>(null);
+  const live = useMemo(
+    () => [gradQuestion(x, expr), sharedQuestion(v), updateQuestion(batchView)],
+    [x, expr, v, batchView],
+  );
   return (
     <ExperimentLayout exp={EXP} level={LEVEL_2} liveQuestions={live}>
       <PartsAC x={x} setX={setX} expr={expr} setExpr={setExpr} />
       <PartD v={v} setV={setV} />
       <PartE />
       <PartF />
+      <FinalChallenge onBatch={setBatchView} />
     </ExperimentLayout>
   );
 }

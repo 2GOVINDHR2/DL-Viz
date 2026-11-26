@@ -13,6 +13,11 @@ import { L2Experiment03 } from '../../src/learn/level2/exp03/Experiment03';
 import { NEURON_DATASET, neuronConfig } from '../../src/learn/level2/exp03/Training';
 import { L2Experiment04, networkConfig } from '../../src/learn/level2/exp04/Experiment04';
 import { L2Experiment05 } from '../../src/learn/level2/exp05/Experiment05';
+import {
+  CHALLENGE_DATASET,
+  CHALLENGE_DEFAULTS,
+  challengeConfig,
+} from '../../src/learn/level2/exp05/challenge';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
 import { TraceExplorer } from '../../src/learn/trace/TraceExplorer';
@@ -95,6 +100,25 @@ describe('Level 2 vocabulary', () => {
         const html = renderToStaticMarkup(createElement(L2Experiment04));
         expect(html).toContain('The record of run');
         expect(violations('04', text(html)), `at ${at}`).toEqual([]);
+      }
+    } finally {
+      useRun.getState().dispose();
+      setEngineFactory(restore);
+    }
+  });
+
+  it('Experiment 05 with the final challenge trained, its explorer included, uses only Level 2 terms', async () => {
+    const restore = setEngineFactory(inProcessEngine);
+    try {
+      await useRun.getState().train(challengeConfig(CHALLENGE_DEFAULTS), 'v', CHALLENGE_DATASET);
+      await useRun.getState().showEpoch(0);
+      renderCurrentRunState();
+      const h = useRun.getState().header!;
+      for (const at of [h.epochStarts[0] + 10, h.epochStarts[0] + 170, h.length - 1]) {
+        await useRun.getState().jump(at);
+        const html = renderToStaticMarkup(createElement(L2Experiment05));
+        expect(html).toContain('One update, taken apart');
+        expect(violations('05', text(html)), `at ${at}`).toEqual([]);
       }
     } finally {
       useRun.getState().dispose();

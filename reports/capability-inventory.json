@@ -7315,6 +7315,3781 @@
     "text": "h3: Real computation"
   },
   {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:act:linear (radio): Linear"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:act:relu (radio): ReLU"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:act:sigmoid (radio): Sigmoid"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:act:tanh (radio): Tanh"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:b (range): Bias b"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:b:exact (input): Bias b, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:w1 (range): Weight w₁"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:w1:exact (input): Weight w₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:w2 (range): Weight w₂"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:w2:exact (input): Weight w₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:w3 (range): Weight w₃"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:w3:exact (input): Weight w₃, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:x1 (range): Input x₁"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:x1:exact (input): Input x₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:x2 (range): Input x₂"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:x2:exact (input): Input x₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:x3 (range): Input x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "a:x3:exact (input): Input x₃, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:b1 (range): Bias"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:b1:exact (input): Bias, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:b2 (range): Bias"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:b2:exact (input): Bias, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w11 (range): Weight from x₁"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w11:exact (input): Weight from x₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w12 (range): Weight from x₁"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w12:exact (input): Weight from x₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w21 (range): Weight from x₂"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w21:exact (input): Weight from x₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w22 (range): Weight from x₂"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "b:w22:exact (input): Weight from x₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:act:relu (radio): ReLU"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:act:sigmoid (radio): Sigmoid"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:act:tanh (radio): Tanh"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:back (button): ◀ Previous step"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:detail:layer (radio): Layer"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:detail:operation (radio): Operation"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:end (button): Prediction ⏭"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:next (button): Next step ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:start (button): ⏮ Start"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:v1 (range): Output weight from hidden #"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:v1:exact (input): Output weight from hidden # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:v2 (range): Output weight from hidden #"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:v2:exact (input): Output weight from hidden # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:vb (range): Output bias"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:vb:exact (input): Output bias, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:x1 (range): Input x₁"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:x1:exact (input): Input x₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:x2 (range): Input x₂"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "c:x2:exact (input): Input x₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-input:0 (radio): The activations of the layer before it"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-input:1 (radio): The final prediction"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-input:2 (radio): The target"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-live:0 (radio): Hidden neuron #"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-live:1 (radio): Hidden neuron #"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-matrix:0 (radio): # rows × # columns: one row per neuron, one column per input"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-matrix:1 (radio): # rows × # columns"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-matrix:2 (radio): # rows × # columns"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-twins:0 (radio): Only when their weights, biases and activation functions are the same"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-twins:1 (radio): Always, because they receive the same inputs"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "check:f-twins:2 (radio): Never, because neurons in a layer must differ"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Loss Functions: Measuring Prediction Error →"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "disclosure",
+    "text": "Change the network’s inputs and weights"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "disclosure",
+    "text": "See the engine’s record of this forward pass"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "disclosure",
+    "text": "Show the matrix form"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "caption: Steps in the engine’s record"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "figcaption: The ### network at this step. “·” marks a value not computed yet at this step."
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "figcaption: Two neurons, the same two inputs. “·” marks a value not computed yet at this step."
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: A single neuron with several inputs"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: A small network, step by step"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: Check one row"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: From neuron to layer"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: Identical neurons"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: Switch an input off"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: The same computation as matrices"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h3: Who decides the prediction?"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h4: Layer # (hidden)"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h4: Layer # (output)"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h4: Neuron #"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "h4: What feeds the output neuron"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: Activation function"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: Hidden activation"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceA layer has # neurons and # inputs. In z = W a + b, what shape is W?"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceIn forward propagation, what does a hidden layer receive as its input?"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith the network’s current settings, which hidden neuron contributes more"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: ScenarioTwo neurons in the same layer receive the same inputs. When do they compute the same activation?"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "information",
+    "text": "legend: Step by"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "panel",
+    "text": "Contributions to the prediction"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "panel",
+    "text": "Layer controls"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "panel",
+    "text": "Neuron controls"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "panel",
+    "text": "This step"
+  },
+  {
+    "screen": "learn: L2 experiment 01",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "a:prediction (range): Prediction ŷ"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "a:prediction:exact (input): Prediction ŷ, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "a:target (range): Target y"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "a:target:exact (input): Target y, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p1 (range): ŷ of example #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p1:exact (input): ŷ of example # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p2 (range): ŷ of example #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p2:exact (input): ŷ of example # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p3 (range): ŷ of example #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p3:exact (input): ŷ of example # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p4 (range): ŷ of example #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "b:p4:exact (input): ŷ of example # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "c:p (range): Probability p of class #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "c:p:exact (input): Probability p of class # exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "c:y:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "c:y:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-bce:0 (radio): B, because it gives the right answer a higher probability"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-bce:1 (radio): A, because # is less extreme"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-bce:2 (radio): They are equal"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-live-mse:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-live-mse:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-live-mse:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-logit:0 (radio): The network’s raw output before the sigmoid: any real number"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-logit:1 (radio): A probability between # and #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-logit:2 (radio): The loss of one example"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-square:0 (radio): So that positive and negative errors cannot cancel out, and large errors count more"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-square:1 (radio): To make the loss smaller"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "check:l-square:2 (radio): Because predictions are probabilities"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "d:p (range): Probability p"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "d:p:exact (input): Probability p, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "d:y:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "d:y:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "e:y:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "e:y:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "e:z (range): Logit z"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "e:z:exact (input): Logit z, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Derivatives and Gradient Descent: How Parameters Learn →"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "disclosure",
+    "text": "Show the formula"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "caption: Each row is one example"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "figcaption: Binary cross-entropy for target # against the predicted probability The vertical axis stops at # for readability only: c"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "figcaption: Both losses for target # The vertical axis stops at # for readability only: cross-entropy itself has no upper limit."
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: A perfect score"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: Binary cross-entropy"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: Comparing the two"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: Confident and wrong"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: From logit to probability to loss"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: Mean squared error"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: One bad prediction"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: Prediction against target"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "h3: The edge of the scale"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is a logit?"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy does MSE square each error before averaging?"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsFor the four predictions in Part B (as they are set now), what is the mea"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "legend: ScenarioThe target is #. Network A predicts # and network B predicts #. Which has the lower binary cross-entropy?"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "information",
+    "text": "legend: Target y"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 02",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "a:x (range): Point x"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "a:x:exact (input): Point x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "c:lr:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "c:lr:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "c:lr:10 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "c:reset (button): Back to the start"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "c:step (button): Take one step"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:full-batch:0 (radio): Once: the four examples’ gradients are averaged into one update"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:full-batch:1 (radio): Four times, once per example"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:full-batch:2 (radio): It depends on the learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-live-run:0 (radio): Up"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-live-run:1 (radio): Down"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-live-slope:0 (radio): Move x to the right (increase x)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-live-slope:1 (radio): Move x to the left (decrease x)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-live-slope:2 (radio): Neither: the curve is flat here"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-vs-u:0 (radio): The update is −η times the gradient: the gradient gives the direction uphill, and the update steps the other way, scaled"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-vs-u:1 (radio): They are the same number"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:g-vs-u:2 (radio): The update is the gradient plus the learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:too-large:0 (radio): Each step moves so far that it passes the minimum and lands on the other side, often higher"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:too-large:1 (radio): The gradient points the wrong way"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:too-large:2 (radio): A large learning rate always converges faster"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "d:lr:0 (radio): Small (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "d:lr:1 (radio): Suitable (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "d:lr:2 (radio): Large (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "d:lr:3 (radio): Too large (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:batch1 (button): Run one epoch with batch size #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:lr:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:lr:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:lr:10 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:reveal (button): Show the next stage"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:reveal-all (button): Show all"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "e:train (button): Train again with these settings"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Backpropagation: How Errors Travel Through a Network →"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ##"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Show the formula"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "The update rule"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "caption: One row per example (hover a value for the recorded step it came from)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "caption: Step a little to the right (a run of h), see how much f rises, and divide. The smaller the step, the closer this comes t"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "figcaption: f(x) = (x − #)² + # with the tangent at the point (dashed)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "figcaption: Run #: the loss on all four examples after each epoch, from the record"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "figcaption: Steps with η = # (numbered; steps off the chart are listed in the table)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "figcaption: The neuron’s loss L(w, b) over the four examples"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Derivatives, partial derivatives and the gradient"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Find the flat spot"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Gradient descent: step against the gradient"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: One update or four?"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Real training: one neuron, four examples"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Slope: which way is downhill?"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Small, suitable and too-large learning rates"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Too big a step"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Train with learning rate #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Walk downhill"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Compare: update after every example (batch size #)"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: The first update, read from the record"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: The next step, in order"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Zooming in on the slope at x = #"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Learning rate η"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is the difference between the gradient ∂L/∂w and the update applied to w?"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part A the point is at x = #, where the engine’s derivative is f′(x) ="
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn run # the first update averaged the gradient to ∂L/∂w = # with η = #. "
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioA neuron is trained with full-batch gradient descent on # examples. How many times are its parameters updated in"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioWith a very large learning rate, the loss jumps up and down and never settles. Why?"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "One gradient descent step"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Point controls"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L2 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "a:x (range): Point x"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "a:x:exact (input): Point x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "c:lr:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "c:lr:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "c:lr:10 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "c:reset (button): Back to the start"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "c:step (button): Take one step"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:full-batch:0 (radio): Once: the four examples’ gradients are averaged into one update"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:full-batch:1 (radio): Four times, once per example"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:full-batch:2 (radio): It depends on the learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-live-run:0 (radio): Up"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-live-run:1 (radio): Down"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-live-slope:0 (radio): Move x to the right (increase x)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-live-slope:1 (radio): Move x to the left (decrease x)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-live-slope:2 (radio): Neither: the curve is flat here"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-vs-u:0 (radio): The update is −η times the gradient: the gradient gives the direction uphill, and the update steps the other way, scaled"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-vs-u:1 (radio): They are the same number"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:g-vs-u:2 (radio): The update is the gradient plus the learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:too-large:0 (radio): Each step moves so far that it passes the minimum and lands on the other side, often higher"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:too-large:1 (radio): The gradient points the wrong way"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "check:too-large:2 (radio): A large learning rate always converges faster"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "d:lr:0 (radio): Small (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "d:lr:1 (radio): Suitable (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "d:lr:2 (radio): Large (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "d:lr:3 (radio): Too large (#)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "e:lr:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "e:lr:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "e:lr:10 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "e:train (button): Train the neuron"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Backpropagation: How Errors Travel Through a Network →"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "disclosure",
+    "text": "Show the formula"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "disclosure",
+    "text": "The update rule"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "caption: Step a little to the right (a run of h), see how much f rises, and divide. The smaller the step, the closer this comes t"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "figcaption: f(x) = (x − #)² + # with the tangent at the point (dashed)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "figcaption: Steps with η = # (numbered; steps off the chart are listed in the table)"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "figcaption: The neuron’s loss L(w, b) over the four examples"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Derivatives, partial derivatives and the gradient"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Find the flat spot"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Gradient descent: step against the gradient"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: One update or four?"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Real training: one neuron, four examples"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Slope: which way is downhill?"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Small, suitable and too-large learning rates"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Too big a step"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Train with learning rate #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h3: Walk downhill"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h4: The next step, in order"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "h4: Zooming in on the slope at x = #"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: Learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: Learning rate η"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is the difference between the gradient ∂L/∂w and the update applied to w?"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part A the point is at x = #, where the engine’s derivative is f′(x) ="
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn your training run’s first update, did the weight w go up or down?"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: ScenarioA neuron is trained with full-batch gradient descent on # examples. How many times are its parameters updated in"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "information",
+    "text": "legend: ScenarioWith a very large learning rate, the loss jumps up and down and never settles. Why?"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "panel",
+    "text": "Learning rate"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "panel",
+    "text": "One gradient descent step"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "panel",
+    "text": "Point controls"
+  },
+  {
+    "screen": "learn: L2 experiment 03",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:x (range): x"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:x:exact (input): x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:b (range): Bias b"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:b:exact (input): Bias b, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:w (range): Weight w"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:w:exact (input): Weight w, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:x (range): Input x"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:x:exact (input): Input x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:y:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:y:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:apply (button): Apply this example’s update"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:back (button): ◀ Step back"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:next-example (button): Next example ▶▶"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:param (select): Parameterweight x₁ → hidden #weight x₂ → hidden #weight x₁ → hidden #weight x₂ → hidden #bias of hidden neuron #bias of "
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:prev-example (button): ◀◀ Previous example"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:replay (button): ⏮ Replay this example"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:step (button): Step ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:to-backward-end (button): To the end of the backward pass"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:train (button): Run again"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-chain:0 (radio): f′(g(x)) × g′(x): the rate of f at g, times the rate of g"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-chain:1 (radio): f′(x) + g′(x)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-chain:2 (radio): f′(x) × g′(x)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-live-chain:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-live-chain:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-live-chain:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-live-weight:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-live-weight:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-order:0 (radio): The output layer’s, because the hidden layer’s gradients need the gradient arriving from the output layer"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-order:1 (radio): The hidden layer’s, because it comes first in the network"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-order:2 (radio): All at the same time"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-weight:0 (radio): aᵢ × ∂L/∂zⱼ: the weight’s input times the gradient arriving at neuron j"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-weight:1 (radio): w × ∂L/∂zⱼ"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:b-weight:2 (radio): The same for every weight of the layer"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Automatic Differentiation: Inside the Computational Graph →"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:history (button): Show how L#.W changed up to here"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Example # of # (dataset ##), updated on its own"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Example # of # (dataset ##), updated on its own(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Bookkeepingcontrol(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Loss: compare the prediction with the targetloss(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Update: w ← w − η·gupdate(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Batch beginscontrol(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Example ##: inputs (# #), target #(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Update the parameters (one update for this example)update(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:param (select): ParameterWeights of hidden layer # (l#)Biases of hidden layer # (l#)Weights of output layer (l#)Biases of output layer ("
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:pin (button): 📌 Pin these values to compare"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Inspect and compare parameters"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Show the formula"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Where the hidden neuron’s incoming gradient came from"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: L#.W now"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: Parameters updated after this example"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: This example’s update: one per example"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: A broken link"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: A silent input"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Backpropagation through a ### network"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Backpropagation through one neuron"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Nothing to learn"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Replay before updating"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The chain rule"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Where a parameter’s gradient comes from"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceA weight connects input aᵢ to neuron j. What is its gradient ∂L/∂w?"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceFor y = f(g(x)), what does the chain rule say dy/dx is?"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part A, at x = #: dg/dx = # and dy/dg = #. What is dy/dx?"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part C, for the weight x₁ → hidden #: the incoming gradient is ∂L/∂z ="
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioIn the backward pass of a ### network, which gradients are computed first?"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Target"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Chain controls"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Neuron controls"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Where a parameter’s gradient comes from"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "a:x (range): x"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "a:x:exact (input): x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:b (range): Bias b"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:b:exact (input): Bias b, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:w (range): Weight w"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:w:exact (input): Weight w, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:x (range): Input x"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:x:exact (input): Input x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:y:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "b:y:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "c:train (button): Run the network"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-chain:0 (radio): f′(g(x)) × g′(x): the rate of f at g, times the rate of g"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-chain:1 (radio): f′(x) + g′(x)"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-chain:2 (radio): f′(x) × g′(x)"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-live-chain:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-live-chain:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-live-chain:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-live-weight:0 (radio): —"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-order:0 (radio): The output layer’s, because the hidden layer’s gradients need the gradient arriving from the output layer"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-order:1 (radio): The hidden layer’s, because it comes first in the network"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-order:2 (radio): All at the same time"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-weight:0 (radio): aᵢ × ∂L/∂zⱼ: the weight’s input times the gradient arriving at neuron j"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-weight:1 (radio): w × ∂L/∂zⱼ"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "check:b-weight:2 (radio): The same for every weight of the layer"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Automatic Differentiation: Inside the Computational Graph →"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "disclosure",
+    "text": "Show the formula"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: A broken link"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: A silent input"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: Backpropagation through a ### network"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: Backpropagation through one neuron"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: Nothing to learn"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: Replay before updating"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "h3: The chain rule"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceA weight connects input aᵢ to neuron j. What is its gradient ∂L/∂w?"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceFor y = f(g(x)), what does the chain rule say dy/dx is?"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part A, at x = #: dg/dx = # and dy/dg = #. What is dy/dx?"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsPick a parameter in Part C and step through an example’s backward pass. W"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "legend: ScenarioIn the backward pass of a ### network, which gradients are computed first?"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "information",
+    "text": "legend: Target"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "panel",
+    "text": "Chain controls"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "panel",
+    "text": "Neuron controls"
+  },
+  {
+    "screen": "learn: L2 experiment 04",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:expr:product (radio): (x₁ + x₂) · x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:expr:sigmoid (radio): σ((x₁ + x₂) · x₃)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:x1 (range): x₁"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:x1:exact (input): x₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:x2 (range): x₂"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:x2:exact (input): x₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:x3 (range): x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:x3:exact (input): x₃, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "b:back (button): ◀ Step back"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "b:end (button): To the end of the reverse pass"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "b:start (button): ⏮ Start"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "b:step (button): Step ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "c:h:0.001 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "c:h:0.01 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "c:h:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "c:h:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-fd:0 (radio): They are approximate, depend on the step h, and need two extra evaluations for every single parameter"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-fd:1 (radio): They give the wrong sign"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-fd:2 (radio): They only work for linear functions"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-grad:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-grad:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-shared:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-shared:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-shared:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-update:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-update:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-live-update:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-reverse:0 (radio): One backward pass gives the gradient of the loss with respect to all # weights"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-reverse:1 (radio): Because the forward pass cannot be repeated"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-reverse:2 (radio): Because working backwards gives more exact gradients"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-shared:0 (radio): The sum of the two contributions that arrive at v"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-shared:1 (radio): The larger of the two contributions"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-shared:2 (radio): Only the first contribution to arrive"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-update:0 (radio): It averages them into ḡ, then w ← w − η·ḡ"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-update:1 (radio): It applies the # gradients one after another"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:ad-update:2 (radio): It uses the largest of the # gradients"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:x (range): x"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:x:exact (input): x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:y (range): y"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:y:exact (input): y, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "e:net:2-16-16-1 (radio): ####"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "e:net:2-2-1 (radio): ### (Experiment #)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "e:net:2-3-1 (radio): ###"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "f:example:0 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "f:example:1 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "f:example:2 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "f:example:3 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:activation:relu (radio): relu"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:activation:sigmoid (radio): sigmoid"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:activation:tanh (radio): tanh"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:batch (select): Update (batch)# of # of # of # of # of #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:batchSize:1 (radio): # (one example)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:batchSize:40 (radio): # (all)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:batchSize:8 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:compare (select): Compare epoch # with epoch#"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:epoch (select): Epoch#"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:example (select): Example in this batch# of # (dataset ##)# of # (dataset ##)# of # (dataset ##)# of # (dataset ##)# of # (dataset ##)# of"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:lr:0.05 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:lr:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:lr:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:show:backward (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:show:gradients (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:show:loss (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:show:prediction (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:show:update (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:train (button): Train again with these settings"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:units:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:units:3 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "g:units:4 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Level # overview →"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:history (button): Show how L#.W changed up to here"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Bookkeepingcontrol(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Loss: compare the prediction with the targetloss(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:phase (button): Update: w ← w − η·gupdate(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Batch beginscontrol(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Example ##: inputs (# #), target #(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Example ##: inputs (#, #), target #(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:sample (button): Update the parameters (one update for the whole batch)update(done)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:param (select): ParameterWeights of hidden layer # (l#)Biases of hidden layer # (l#)Weights of output layer (l#)Biases of output layer ("
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:pin (button): 📌 Pin these values to compare"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "disclosure",
+    "text": "Inspect and compare parameters"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: Every gradient of f = (x₁ + x₂) · x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: Every gradient of one example’s loss, ### (Experiment #)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: L#.W now"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: Parameters updated in this batch"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: What arrives at x in the reverse pass"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "figcaption: After epoch #: shaded where the network answers # (output ≥ #)."
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: A calculation as a graph"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: A closed path"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: A rough estimate"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: A value used twice"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Checking the gradients from outside"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Final challenge: a batch’s average"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Final challenge: before and after"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Final challenge: follow one update"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Forward mode and reverse mode"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Forwards, then in reverse"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: The engine’s own graph"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Train a network and take one update apart"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Two contributions that cancel"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Where a weight came from"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Loss after each epoch"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: One update, taken apart"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Step ##: W¹"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: The decision, after epoch # and after a later epoch"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Batch size"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Example"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Expression"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Hidden activation"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Hidden neurons"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Learning rate η"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceA value v is used by two operations. What is ∂f/∂v?"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy does the engine not compute gradients with finite differences?"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWith batch size # how does the engine turn the # examples’ gradients into one change of a weight w?"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Network"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part D, f = x · y + x with x = # and y = #. What is ∂f/∂x?"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Parts A to C, f = (x₁ + x₂) · x₃ at x₁ = #, x₂ = #, x₃ = #. What is ∂f"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn the final challenge’s update (epoch # batch #), the output bias was #,"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioA network has # weights and one loss. Why does the engine compute gradients backwards, from the loss?"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Step h"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "#. Backpropagation"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "#. Gradients"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "#. Loss"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "#. Prediction (forward pass)"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "#. Update"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Before and after training"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Finite-difference step"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Graph inputs"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Network for the count"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "One update, taken apart"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Shared-value inputs"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "The chosen step"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L2 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:expr:product (radio): (x₁ + x₂) · x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:expr:sigmoid (radio): σ((x₁ + x₂) · x₃)"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:x1 (range): x₁"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:x1:exact (input): x₁, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:x2 (range): x₂"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:x2:exact (input): x₂, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:x3 (range): x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "a:x3:exact (input): x₃, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "b:back (button): ◀ Step back"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "b:end (button): To the end of the reverse pass"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "b:start (button): ⏮ Start"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "b:step (button): Step ▶"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "c:h:0.001 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "c:h:0.01 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "c:h:0.1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "c:h:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-fd:0 (radio): They are approximate, depend on the step h, and need two extra evaluations for every single parameter"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-fd:1 (radio): They give the wrong sign"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-fd:2 (radio): They only work for linear functions"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-live-grad:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-live-grad:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-live-shared:0 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-live-shared:1 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-live-shared:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-live-update:0 (radio): —"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-reverse:0 (radio): One backward pass gives the gradient of the loss with respect to all # weights"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-reverse:1 (radio): Because the forward pass cannot be repeated"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-reverse:2 (radio): Because working backwards gives more exact gradients"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-shared:0 (radio): The sum of the two contributions that arrive at v"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-shared:1 (radio): The larger of the two contributions"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-shared:2 (radio): Only the first contribution to arrive"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-update:0 (radio): It averages them into ḡ, then w ← w − η·ḡ"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-update:1 (radio): It applies the # gradients one after another"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "check:ad-update:2 (radio): It uses the largest of the # gradients"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "d:x (range): x"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "d:x:exact (input): x, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "d:y (range): y"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "d:y:exact (input): y, exact value"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "e:net:2-16-16-1 (radio): ####"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "e:net:2-2-1 (radio): ### (Experiment #)"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "e:net:2-3-1 (radio): ###"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "f:example:0 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "f:example:1 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "f:example:2 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "f:example:3 (radio): Example #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:activation:relu (radio): relu"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:activation:sigmoid (radio): sigmoid"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:activation:tanh (radio): tanh"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:batchSize:1 (radio): # (one example)"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:batchSize:40 (radio): # (all)"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:batchSize:8 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:lr:0.05 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:lr:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:lr:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:train (button): Train the network"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:units:2 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:units:3 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "g:units:4 (radio): #"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "next-experiment (a): Level # overview →"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "caption: Every gradient of f = (x₁ + x₂) · x₃"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "caption: Every gradient of one example’s loss, ### (Experiment #)"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "caption: What arrives at x in the reverse pass"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: A calculation as a graph"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: A closed path"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: A rough estimate"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: A value used twice"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Checking the gradients from outside"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Final challenge: a batch’s average"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Final challenge: before and after"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Final challenge: follow one update"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Forward mode and reverse mode"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Forwards, then in reverse"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: The engine’s own graph"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Train a network and take one update apart"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Two contributions that cancel"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "h3: Where a weight came from"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Batch size"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Example"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Expression"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Hidden activation"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Hidden neurons"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Learning rate η"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Multiple choiceA value v is used by two operations. What is ∂f/∂v?"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy does the engine not compute gradients with finite differences?"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Multiple choiceWith batch size # how does the engine turn the # examples’ gradients into one change of a weight w?"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Network"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part D, f = x · y + x with x = # and y = #. What is ∂f/∂x?"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Parts A to C, f = (x₁ + x₂) · x₃ at x₁ = #, x₂ = #, x₃ = #. What is ∂f"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn the final challenge, what is a parameter’s value after an update?"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: ScenarioA network has # weights and one loss. Why does the engine compute gradients backwards, from the loss?"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "information",
+    "text": "legend: Step h"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "Finite-difference step"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "Graph inputs"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "Network for the count"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "Shared-value inputs"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "The chosen step"
+  },
+  {
+    "screen": "learn: L2 experiment 05",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
     "screen": "learn: level 1",
     "kind": "control",
     "text": "start-level (a): Start learning →"
@@ -7358,6 +11133,46 @@
     "screen": "learn: level 1",
     "kind": "information",
     "text": "h3: Orientation: AI, ML and DL"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "control",
+    "text": "start-level-2 (a): Start Level # →"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h2: By the end you will understand"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h2: Your path"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h3: Experiment #: Automatic Differentiation: Inside the Computational Graph"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h3: Experiment #: Backpropagation: How Errors Travel Through a Network"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h3: Experiment #: Derivatives and Gradient Descent: How Parameters Learn"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h3: Experiment #: Forward Propagation: From Input to Prediction"
+  },
+  {
+    "screen": "learn: level 2",
+    "kind": "information",
+    "text": "h3: Experiment #: Loss Functions: Measuring Prediction Error"
   },
   {
     "screen": "learn: levels",

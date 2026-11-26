@@ -245,12 +245,15 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
       await page.locator('label:has([data-control="f:example:2"])').click();
       await page.locator('[data-record-node]').first().click();
       await expect(page.locator('[data-list="used-by"]')).toBeVisible();
+      await page.locator('[data-control="g:train"]').click();
+      await expect(page.locator('[data-update="1-1"]')).toBeVisible({ timeout: 60_000 });
+      await page.locator('[data-control="g:show:gradients"]').click();
       await page.evaluate(() =>
         document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
       );
       await audit(
         page,
-        `Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen (${scheme})`,
+        `Level 2 experiment 05: reverse pass done, sigmoid with h = 1, a recorded step chosen, final challenge trained (${scheme})`,
       );
       await page.goto('/#/level-1/experiment-04');
       await page.locator('[data-control="train"]').click();

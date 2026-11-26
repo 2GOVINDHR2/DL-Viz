@@ -2235,5 +2235,545 @@
       "blank": "passed at : ",
       "no-action": "failed at 171: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
     }
+  },
+  {
+    "id": "level2-challenge.spec:22",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 22,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(update(page, '1-1')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 22,57: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 22,57: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:29",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 29,
+    "fn": "checkRelations",
+    "negative": true,
+    "text": "expect(m, prediction).not.toBeNull();",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "timedOut at 34,75: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:33",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 33,
+    "fn": "checkRelations",
+    "negative": false,
+    "text": "expect(answer).toBe(yhat >= 0.5 ? 1 : 0);",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "timedOut at 34,75: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:36",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 36,
+    "fn": "checkRelations",
+    "negative": false,
+    "text": "expect(Math.abs(loss - expectedLoss)).toBeLessThanOrEqual(0.0002);",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "timedOut at 37,75: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:38",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 38,
+    "fn": "checkRelations",
+    "negative": false,
+    "text": "expect(first).toContain('start the backward pass: the gradient of the loss with respect to the output:');",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "timedOut at 76: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:41",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 41,
+    "fn": "checkRelations",
+    "negative": false,
+    "text": "expect(Math.abs(v - expectedV)).toBeLessThanOrEqual(Math.max(0.001, Math.abs(expectedV) * 0.002));",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "timedOut at 76: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:48",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 48,
+    "fn": "parseCompare",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "failed at 150: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:56",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 56,
+    "fn": "Part G: default training gives 5 updates per epoch and the Show buttons move the explorer in order",
+    "negative": false,
+    "text": "await expect(sectionG(page)).toContainText('5 updates per epoch');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 56: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 56: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:65",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 65,
+    "fn": "Part G: default training gives 5 updates per epoch and the Show buttons move the explorer in order",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"trace:position\"]')).toHaveValue(String(id));",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:67",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 67,
+    "fn": "Part G: default training gives 5 updates per epoch and the Show buttons move the explorer in order",
+    "negative": false,
+    "text": "expect(ids[i]).toBeGreaterThan(ids[i - 1]);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:79",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 79,
+    "fn": "Part G: prediction, loss and first backward value are consistent, also after choosing another example",
+    "negative": false,
+    "text": "await expect(update(page, '20-3')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 79: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level2-challenge.spec:83",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 83,
+    "fn": "Part G: prediction, loss and first backward value are consistent, also after choosing another example",
+    "negative": false,
+    "text": "await expect(stage(page, '20-3', 'prediction').locator('[data-value=\"prediction\"]')).toContainText( `dataset #${n}:`, );",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 83: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level2-challenge.spec:100",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 100,
+    "fn": "Part G: the update card applies After = Before + Δ against the opposite of the mean gradient",
+    "negative": true,
+    "text": "expect(Number.isNaN(gbar)).toBe(false);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 8,102: TypeError: Cannot read properties of undefined (reading 'replace')",
+      "no-action": "timedOut at 21,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:105",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 105,
+    "fn": "Part G: the update card applies After = Before + Δ against the opposite of the mean gradient",
+    "negative": false,
+    "text": "expect(Math.abs(after - (before + delta))).toBeLessThanOrEqual(0.0001);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 109: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:106",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 106,
+    "fn": "Part G: the update card applies After = Before + Δ against the opposite of the mean gradient",
+    "negative": false,
+    "text": "expect(Math.sign(delta)).toBe(-Math.sign(gbar));",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 109: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:107",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 107,
+    "fn": "Part G: the update card applies After = Before + Δ against the opposite of the mean gradient",
+    "negative": false,
+    "text": "expect(Math.abs(Math.abs(delta) - 0.5 * Math.abs(gbar))).toBeLessThanOrEqual(0.0002);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 109: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:109",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 109,
+    "fn": "Part G: the update card applies After = Before + Δ against the opposite of the mean gradient",
+    "negative": false,
+    "text": "await expect(checks).toHaveCount(4);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 109: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:111",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 111,
+    "fn": "Part G: the update card applies After = Before + Δ against the opposite of the mean gradient",
+    "negative": false,
+    "text": "await expect(updChecks).toHaveCount(4);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 111: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:117",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 117,
+    "fn": "Part G: batch size 1 gives 40 updates per epoch and no example selector",
+    "negative": false,
+    "text": "await expect(sectionG(page)).toContainText('40 updates per epoch');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:119",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 119,
+    "fn": "Part G: batch size 1 gives 40 updates per epoch and no example selector",
+    "negative": false,
+    "text": "await expect(select(page, 'g:batch').locator('option')).toHaveCount(40);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 119: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:120",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 120,
+    "fn": "Part G: batch size 1 gives 40 updates per epoch and no example selector",
+    "negative": true,
+    "text": "await expect(select(page, 'g:example')).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:121",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 121,
+    "fn": "Part G: batch size 1 gives 40 updates per epoch and no example selector",
+    "negative": false,
+    "text": "await expect(stage(page, '1-1', 'gradients')).toContainText('✓ mean of the 1 recorded');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:129",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 129,
+    "fn": "Part G: changing settings after training shows a note and training again removes it",
+    "negative": true,
+    "text": "await expect(status(page)).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 130: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,128: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:131",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 131,
+    "fn": "Part G: changing settings after training shows a note and training again removes it",
+    "negative": false,
+    "text": "await expect(status(page)).toContainText('The settings have changed since this run');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 131: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 131: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:132",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 132,
+    "fn": "Part G: changing settings after training shows a note and training again removes it",
+    "negative": false,
+    "text": "await expect(status(page)).toContainText('Train again to use them.');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 132: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 131: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:134",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 134,
+    "fn": "Part G: changing settings after training shows a note and training again removes it",
+    "negative": false,
+    "text": "await expect(status(page)).toHaveCount(0, { timeout: 60_000 });",
+    "blank": "elsewhere",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 135: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:135",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 135,
+    "fn": "Part G: changing settings after training shows a note and training again removes it",
+    "negative": false,
+    "text": "await expect(update(page, '1-1')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 135: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 134: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:136",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 136,
+    "fn": "Part G: changing settings after training shows a note and training again removes it",
+    "negative": false,
+    "text": "await expect(sectionG(page).locator('[data-control=\"g:train\"]')).toContainText( 'Train again with these settings', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 136: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 134: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:147",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 147,
+    "fn": "Part G: before and after training, the loss falls and the compare selector moves the second panel",
+    "negative": false,
+    "text": "expect(last).toBeLessThan(first);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 150: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,145: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:148",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 148,
+    "fn": "Part G: before and after training, the loss falls and the compare selector moves the second panel",
+    "negative": false,
+    "text": "expect(last).toBeLessThan(0.05);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 150: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,145: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:150",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 150,
+    "fn": "Part G: before and after training, the loss falls and the compare selector moves the second panel",
+    "negative": false,
+    "text": "await expect(before.locator('[data-check-epoch=\"20\"]')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 150: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,145: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:153",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 153,
+    "fn": "Part G: before and after training, the loss falls and the compare selector moves the second panel",
+    "negative": false,
+    "text": "await expect(panel).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:154",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 154,
+    "fn": "Part G: before and after training, the loss falls and the compare selector moves the second panel",
+    "negative": false,
+    "text": "await expect(panel).toContainText('After epoch 5:');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:155",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 155,
+    "fn": "Part G: before and after training, the loss falls and the compare selector moves the second panel",
+    "negative": true,
+    "text": "await expect(before.locator('[data-check-epoch=\"20\"]')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:162",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 162,
+    "fn": "Part G: a small learning rate with one batch per epoch learns slowly",
+    "negative": false,
+    "text": "await expect(sectionG(page)).toContainText('1 update per epoch');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 162: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 162: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:165",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 165,
+    "fn": "Part G: a small learning rate with one batch per epoch learns slowly",
+    "negative": false,
+    "text": "expect(last).toBeGreaterThan(0.3);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 162: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:166",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 166,
+    "fn": "Part G: a small learning rate with one batch per epoch learns slowly",
+    "negative": false,
+    "text": "expect(last).toBeLessThanOrEqual(first);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 162: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:180",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 180,
+    "fn": "after the challenge’s 40-example run, Level 1’s Experiment 04 (4 examples) opens and trains without an error",
+    "negative": false,
+    "text": "await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 180: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 180: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:181",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 181,
+    "fn": "after the challenge’s 40-example run, Level 1’s Experiment 04 (4 examples) opens and trains without an error",
+    "negative": true,
+    "text": "expect(errors).toEqual([]);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 180: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
   }
 ]

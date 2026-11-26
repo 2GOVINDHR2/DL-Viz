@@ -285,6 +285,8 @@ test('II. Level 1: no horizontal scroll, and no element escapes or clips, at fiv
           await page.locator('label:has([data-control="f:example:2"])').click();
           await page.locator('[data-record-node]').first().click();
           await expect(page.locator('[data-list="used-by"]')).toBeVisible();
+          await page.locator('[data-control="g:train"]').click();
+          await expect(page.locator('[data-update="1-1"]')).toBeVisible({ timeout: 60_000 });
         } else if (state === 'trained' && l2e4) {
           await page.locator('[data-control="c:train"]').click();
           await expect(page.locator('.lv-where').first()).toContainText('example 1 of 4', {

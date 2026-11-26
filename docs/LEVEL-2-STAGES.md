@@ -635,3 +635,140 @@ All runs are from a clean state: port 4173 confirmed free and `dist/` deleted fi
   - the mutation audit, screenshots and documentation.
 - **Delegated to a Sonnet agent:** `tests/e2e/level2-exp05.spec.ts` (8 tests), given selectors and hand formulas. It changed no other file and reported no application defect. I checked the spec: it imports only `@playwright/test` and computes expected values independently.
 - **Deviation from the allocation policy, as in Stages 3 and 4:** I implemented the components in this session, because they depend directly on what the gate had just established.
+
+## Stage 6 — The final challenge (2026-11-26)
+
+**Scope, as instructed:** the integrated final challenge inside Experiment 05. Configure a small MLP, run real training, and inspect prediction, loss, backpropagation, gradients and parameter updates through the engine and its record. ADR-095 has the design.
+
+### The gate (committed before the page)
+
+`tests/unit/level2-challenge-gate.test.ts` writes its results to `reports/level2-challenge-gate.json`.
+
+| | Check | Result |
+|---|---|---|
+| G1 | All 81 offered configurations: h ∈ {2, 3, 4} × {tanh, sigmoid, ReLU} × η ∈ {0.05, 0.5, 2} × batch ∈ {1, 8, 40}, 20 epochs | all train with finite values; largest epoch 1,404 instructions, against the explorer's read limit of 6,000 |
+| G2 | `readBatch` against a hand forward pass, BCE, backpropagation, batch mean and update, from the recorded starting values; batch sizes 1, 8 and 40, at the start, middle and end of the run | 196 examples; worst gap 4.4 × 10⁻¹⁶. The first update reads `INIT_PARAM`, and each later one reads the previous `APPLY_UPDATE`. |
+| G3 | Refusals | a missing batch or epoch is refused |
+
+**Learning outcomes, from the gate's records:**
+- The default network (2-3-1, tanh, η = 0.5, batch 8) goes from loss 0.161 after epoch 1 to 0.0088 after epoch 20.
+- Only η = 0.05 with few updates per epoch falls short in 20 epochs; the worst case is 2-3-1, sigmoid, batch 40, at 50 % correct.
+- The page says so, and one challenge asks the learner to try it.
+
+**No engine or NPM change.**
+
+### Implemented: Part G of Experiment 05
+
+- **Configure and train:** four segmented choices, then the engine trains the network in the worker. The page shows only a run of the configuration trained there. Changing a setting afterwards says so and does not relabel the run.
+- **Before and after:**
+  - the loss after each epoch, from the engine's checks;
+  - the decision after epoch 1 beside a chosen later epoch, drawn from the recorded check grids over the recorded dataset, with loss and % correct.
+- **One update, taken apart.** Choose an epoch, an update (batch) and an example; five stages are read from the record:
+  1. the prediction (with the example's dataset number);
+  2. the loss, and the batch's mean loss;
+  3. the 8 backward steps with their values;
+  4. this example's gradient beside the batch mean ḡ, with "checked here" (the mean of the recorded example gradients);
+  5. the update: before, Δ = −η·ḡ and after, with "checked here" (before + Δ).
+  - Each stage links to its instruction in the shared explorer, which is embedded with the wording for the batch size.
+- **Integration with the rest of the page:**
+  - 3 more challenges: follow one update, a batch's average, before and after;
+  - 1 more fixed question on how a batch becomes one update;
+  - 1 more live question, the inspected update's output bias, from the record.
+
+### Files
+
+- **New:**
+  - `src/learn/level2/exp05/{challenge.ts, Challenge.tsx}`;
+  - `tests/unit/level2-challenge-gate.test.ts`;
+  - `tests/e2e/level2-challenge.spec.ts`;
+  - `reports/level2-challenge-gate.json`;
+  - `docs/screenshots/level2/exp05-g-*`.
+- **Changed:**
+  - `src/learn/level2/exp05/Experiment05.tsx`: Part G and the live question, plus the ℓ note in Part F.
+  - `src/experiments/level2.ts`: Experiment 05's text, challenges and question, and the level's time.
+  - `src/learn/router.ts` and `src/learn/LearnApp.tsx`: the shared store is released on route change (the crash fix).
+  - Tests: `level2-exp05` and `level2-vocabulary` unit tests; `a11y`, `layout` and `capabilities` e2e specs.
+  - Reports and docs: `reports/capability-inventory.json` and `docs/CAPABILITY-INVENTORY.md` (Level 2 appended); mutation reports and targeted mutants; ADR-095; this file.
+- **Not changed:** `src/core`, the trace store and explorer, and every Level 1 file.
+
+### Tests
+
+- **Unit:** 5 gate tests; 3 Part G tests in `level2-exp05`, covering the configuration mapping, the page with a real run and the live question against the record, and another network's run not being shown; 1 vocabulary test, the challenge trained with the explorer at three positions.
+- **e2e:** `tests/e2e/level2-challenge.spec.ts` has 7 tests, delegated to a Sonnet agent and reviewed. It imports only Playwright and checks the page's values against each other by hand:
+  - ŷ → answer;
+  - loss = −ln ŷ or −ln(1 − ŷ);
+  - ∂ℓ/∂ŷ = −1/ŷ or 1/(1 − ŷ);
+  - after = before + Δ, with Δ opposite to ḡ and |Δ| = η·|ḡ|.
+- **Mutation audit:**
+  - The first audit of the new spec found 2 assertions that no mutant could reach. They compared two values read from the page, so they could not tell whether the example selector worked at all.
+  - They were replaced by a check that the stages show the chosen example's dataset number, which the page now displays.
+  - 20 targeted mutants were written for the spec's relational assertions, each breaking exactly one relation in the app; all are killed.
+
+### Results (final, from a clean state: port 4173 free, `dist/` deleted)
+
+| Suite | Result |
+|---|---|
+| typecheck, lint, format | pass |
+| `test:unit` | 55 files, **675 of 675** pass (666 before) |
+| gradcheck / parity / determinism | 48 / 8 / 18, all pass |
+| Production build | passes from an empty `dist/` |
+| e2e, Chromium, 2 workers, full suite | **109 of 109 pass**, including every Level 1 spec, `perf-cnn`, `capabilities` (now with Level 2) and `level2-challenge` (8) |
+| Accessibility (axe) | **115 screens, 0 violations**; Experiment 05's interacted state now includes the trained challenge, in both themes |
+| Layout (1440 to 360 px) | 0 violations; Experiment 05 includes the trained challenge |
+| Capability inventory | 3,333 capabilities, 763 of them Level 2; none missing |
+| Mutation audit, Level 2 e2e (`reports/mutation-e2e-level2.json`) | **199 assertions: 173 live by mechanical mutants, 26 by targeted mutants, 0 hollow** |
+| Level 1 | every unit and e2e test passes. Level 1 files are unchanged; the route-change release (ADR-095) is in the shared `LearnApp` and router. |
+
+## Level 2 — review of the level as a whole (2026-11-26)
+
+### What Level 2 is
+
+Five experiments, one path from a prediction to automatic differentiation. Every number comes from the engine.
+
+| Experiment | Teaches | Engine source | Gate |
+|---|---|---|---|
+| 01 Forward propagation | a neuron, a layer as a matrix (D1: textbook layout), a 2-2-1 network step by step | probes: recorded runs at η = 0 | Stage 2 math tests |
+| 02 Loss functions | error, MSE, BCE (clipping explained), logit → p → loss | engine ops on the tape (D3) | Stage 2 math tests |
+| 03 Derivatives and gradient descent | slope, derivative, gradient, the update rule, learning rates, a real neuron trained full batch | tape and `backward`; real recorded training | displayed = trace; Δ = −η·g |
+| 04 Backpropagation | the chain rule, one neuron backwards, a 2-2-1 network on XOR, one update per example | probe; real recorded training | Stage 4 gate: hand backpropagation and finite differences, 9 × 10⁻¹⁰ |
+| 05 Automatic differentiation | graphs, forward and reverse pass, accumulation, finite differences, forward vs reverse mode (D2, illustration), the engine's own graph, **final challenge** | tape and `backward`; recorded runs; the record's operand links | Stage 5 and Stage 6 gates |
+
+### Review checks (this stage)
+
+- **Every page, at 1280 and 390 px:**
+  - no page errors;
+  - no "NaN", "undefined" or "[object" in the text;
+  - no horizontal overflow;
+  - the pager chain is landing → 01 → 02 → 03 → 04 → 05 → landing.
+- **The shared trace store across the four pages that train in it** (Level 1 Exp 04; Level 2 Exp 03, 04, 05 G): for all 12 ordered pairs, page B shows no run before its own training and its own run afterwards. This was the class of defect 6 in Stage 4.
+- **Vocabulary:** every Level 2 page, and the explorers of Experiments 03–05 at several points of real runs, use no term scheduled later.
+- **Capability inventory:** now covers Level 2 (763 capabilities: the landing page, five pages as opened, and Experiments 03–05 after real runs). A Level 2 feature that disappears now fails a test.
+- **Notation across experiments:**
+  - Experiment 01 draws W the textbook way (D1); Experiments 04 and 05 list W in the engine's order, now stated where the values are listed.
+  - The record's ℓ (one example's loss) is now tied to the L of Experiments 02–04.
+
+### Found and fixed in the review
+
+1. The level's stated time (85–110 min) did not match its experiments' estimates (95–125 min). It now matches; neither figure is measured.
+2. "1 updates per epoch" in the challenge (found by the e2e agent).
+3. ℓ and L were not connected for the learner.
+4. Update tables did not say which order a weight matrix's values are in.
+5. The example selector's effect was not visible in the values the stages show. The prediction card now names the dataset example, and a test checks it.
+6. **A crash of Level 1's Experiment 04 after the challenge.**
+   - **How it was found:** the full regression run caught it, not my 12-pair check, which looked only for the text "The record of run".
+   - **Cause:** the next page rendered once against the shared store before the previous page released it (ADR-095), and Level 1 read the challenge's example indices 0–39.
+   - **Fix:** the store is now released on route change, before the next page renders.
+   - **Re-check:** the 12-pair check was rerun with "run 1", page errors and the stage buttons. It is clean, and a permanent e2e test guards this route.
+
+### Remaining, and recommendations
+
+- **The Level 2 assessment page (`#/level-2/assessment`)** is in the Stage 1 plan but was not built, as this stage was bounded to the challenge. Level 2 has per-experiment knowledge checks (16 fixed and 9 live questions) but no end-of-level assessment like Level 1's. **Recommended as the next piece of work if a level assessment is wanted.**
+- **No learner has used Level 2.** The explanations were reviewed by reading, and the time estimates are not measured.
+- **Firefox and WebKit were not run.** The suite is configured for Chromium.
+- **Experiment 05's guided tour covers Parts A–F.** The final challenge is reached by its own challenge tasks.
+- **On a phone,** the network diagram (Exp 04) and Part F's graph (Exp 05) scroll sideways inside their own focusable boxes.
+- **The inherited workbench mutation report** (`reports/mutation-e2e.json`) was not regenerated, because it is a multi-hour run. The Level 2 specs and the strengthened workbench tests have their own reports.
+
+### Recommendation
+
+**Level 2 is complete as specified for Stages 1–6, apart from the assessment page,** which is listed above for your decision.

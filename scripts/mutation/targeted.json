@@ -709,5 +709,307 @@
     ],
     "spec": "tests/e2e/level2.spec.ts",
     "grep": "Level 2 is reachable"
+  },
+  {
+    "ids": ["level2-challenge.spec:29"],
+    "claim": "the prediction line has the form the relations read",
+    "mutant": "ŷ is written another way",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "→ ŷ = {fmt(ex.prediction, 4)}",
+        "replace": "→ y-hat = {fmt(ex.prediction, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "prediction, loss and first backward"
+  },
+  {
+    "ids": ["level2-challenge.spec:33"],
+    "claim": "the answer is 1 exactly when ŷ ≥ 0.5",
+    "mutant": "the answer is inverted",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "answer {ex.prediction >= 0.5 ? 1 : 0}",
+        "replace": "answer {ex.prediction >= 0.5 ? 0 : 1}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "prediction, loss and first backward"
+  },
+  {
+    "ids": ["level2-challenge.spec:36"],
+    "claim": "the loss shown is the example’s BCE",
+    "mutant": "the batch’s mean loss is shown as the example’s",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{fmt(ex.loss, 4)}",
+        "replace": "{fmt(view.loss, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "prediction, loss and first backward"
+  },
+  {
+    "ids": ["level2-challenge.spec:38"],
+    "claim": "the backward pass starts with the loss’s gradient",
+    "mutant": "the backward list skips its first step",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{ex.backward.map(",
+        "replace": "{ex.backward.slice(1).map("
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "prediction, loss and first backward"
+  },
+  {
+    "ids": ["level2-challenge.spec:41"],
+    "claim": "the first backward value is ∂ℓ/∂ŷ of the shown example",
+    "mutant": "the backward list always shows the batch’s first example",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{ex.backward.map(",
+        "replace": "{view.examples[0].backward.map("
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "prediction, loss and first backward"
+  },
+  {
+    "ids": ["level2-challenge.spec:48"],
+    "claim": "the before/after paragraph has the form the test reads",
+    "mutant": "the paragraph is worded differently",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "gives loss {fmt(epochs[0]?.evalLoss, 4)}",
+        "replace": "gives a loss of {fmt(epochs[0]?.evalLoss, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "before and after training"
+  },
+  {
+    "ids": ["level2-challenge.spec:67"],
+    "claim": "the five stages link to steps in recorded order",
+    "mutant": "the loss stage links to the prediction’s step",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "at={ex.ids.loss}",
+        "replace": "at={ex.ids.prediction}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "default training gives"
+  },
+  {
+    "ids": ["level2-challenge.spec:83"],
+    "claim": "the stages show the example chosen in the selector",
+    "mutant": "the stages always show the batch’s first example",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "const ex = view?.examples[Math.min(example, (view?.examples.length ?? 1) - 1)];",
+        "replace": "const ex = view?.examples[0];"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "prediction, loss and first backward"
+  },
+  {
+    "ids": ["level2-challenge.spec:100"],
+    "claim": "the gradients table shows ḡ",
+    "mutant": "ḡ is not shown",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{show(u.mean)}</td>",
+        "replace": "<td className=\"num\">—</td>"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "the update card applies"
+  },
+  {
+    "ids": ["level2-challenge.spec:105"],
+    "claim": "after = before + Δ",
+    "mutant": "after is shown 1 too high",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{show(u.after)}</td>",
+        "replace": "<td className=\"num\">{show(u.after.map((a) => a + 1))}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "the update card applies"
+  },
+  {
+    "ids": ["level2-challenge.spec:106"],
+    "claim": "Δ has the opposite sign to ḡ",
+    "mutant": "Δ and after are shown as if the step went uphill",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{show(u.delta)}</td>",
+        "replace": "<td className=\"num\">{show(u.delta.map((d) => -d))}</td>"
+      },
+      {
+        "find": "<td className=\"num\">{show(u.after)}</td>",
+        "replace": "<td className=\"num\">{show(u.before.map((b, k) => b - u.delta[k]))}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "the update card applies"
+  },
+  {
+    "ids": ["level2-challenge.spec:107"],
+    "claim": "|Δ| = η·|ḡ|",
+    "mutant": "Δ and after are shown as if η were doubled",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{show(u.delta)}</td>",
+        "replace": "<td className=\"num\">{show(u.delta.map((d) => 2 * d))}</td>"
+      },
+      {
+        "find": "<td className=\"num\">{show(u.after)}</td>",
+        "replace": "<td className=\"num\">{show(u.before.map((b, k) => b + 2 * u.delta[k]))}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "the update card applies"
+  },
+  {
+    "ids": ["level2-challenge.spec:120"],
+    "claim": "batch size 1 has no example selector",
+    "mutant": "the example selector also shows for one example",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{view && view.examples.length > 1 && (",
+        "replace": "{view && view.examples.length >= 1 && ("
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "batch size 1"
+  },
+  {
+    "ids": ["level2-challenge.spec:129"],
+    "claim": "no settings note right after training",
+    "mutant": "the note shows whenever a run exists",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "const changed = trained !== null && JSON.stringify(trained) !== JSON.stringify(settings);",
+        "replace": "const changed = trained !== null;"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "changing settings"
+  },
+  {
+    "ids": ["level2-challenge.spec:147"],
+    "claim": "the loss after epoch 20 is below the loss after epoch 1",
+    "mutant": "the paragraph repeats epoch 1’s loss for epoch 20",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{epochs.length} gives {fmt(epochs.at(-1)?.evalLoss, 4)}",
+        "replace": "{epochs.length} gives {fmt(epochs[0]?.evalLoss, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "before and after training"
+  },
+  {
+    "ids": ["level2-challenge.spec:148"],
+    "claim": "the default run ends below 0.05",
+    "mutant": "the last loss is shown 10 times too large",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{epochs.length} gives {fmt(epochs.at(-1)?.evalLoss, 4)}",
+        "replace": "{epochs.length} gives {fmt((epochs.at(-1)?.evalLoss ?? 0) * 10, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "before and after training"
+  },
+  {
+    "ids": ["level2-challenge.spec:155"],
+    "claim": "the compare selector replaces the second panel",
+    "mutant": "after the comparison moves, epoch 20 stays as a third panel",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{[0, compare].map(",
+        "replace": "{(compare === 19 ? [0, compare] : [0, compare, 19]).map("
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "before and after training"
+  },
+  {
+    "ids": ["level2-challenge.spec:165"],
+    "claim": "η = 0.05, batch 40 is still above 0.3 after 20 epochs",
+    "mutant": "the last loss is shown 10 times too small",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "{epochs.length} gives {fmt(epochs.at(-1)?.evalLoss, 4)}",
+        "replace": "{epochs.length} gives {fmt((epochs.at(-1)?.evalLoss ?? 0) / 10, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "learns slowly"
+  },
+  {
+    "ids": ["level2-challenge.spec:166"],
+    "claim": "the slow run’s loss does not rise",
+    "mutant": "the first loss is shown 10 times too small",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "gives loss {fmt(epochs[0]?.evalLoss, 4)}",
+        "replace": "gives loss {fmt((epochs[0]?.evalLoss ?? 0) / 10, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "learns slowly"
+  },
+  {
+    "ids": ["level2-challenge.spec:180"],
+    "claim": "after the challenge, Level 1's Experiment 04 opens and trains",
+    "mutant": "leaving a page no longer releases the shared record before the next page renders",
+    "file": "src/learn/LearnApp.tsx",
+    "patches": [
+      {
+        "find": "  if (from.page === 'experiment' && JSON.stringify(from) !== JSON.stringify(to)) useRun.getState().dispose();",
+        "replace": "  void from;\n  void to;\n  void useRun;"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "Level 1’s Experiment 04"
+  },
+  {
+    "ids": ["level2-challenge.spec:181"],
+    "claim": "no page error on the way from the challenge to Level 1",
+    "mutant": "a page error is thrown before the assertion",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "patches": [
+      {
+        "find": "  expect(errors).toEqual([]);\n});",
+        "replace": "  $PAGE_ERRORexpect(errors).toEqual([]);\n});"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "Level 1’s Experiment 04"
   }
 ]

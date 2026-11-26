@@ -12,7 +12,7 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 
 **How it protects the baseline.** Without `CAPTURE`, the same test fails if any baseline capability is missing from the current build, unless `reports/capability-removed.json` lists it with the ADR that removed it. A capability can be removed deliberately; it cannot disappear silently.
 
-**Totals:** 2570 capabilities over 30 screens.
+**Totals:** 3333 capabilities over 39 screens.
 
 **What it does not cover.** States that appear only after a particular interaction (a revealed prediction, a pinned comparison) are not captured here. They are covered by the e2e tests named in PROGRESS, Fix Round 5.
 
@@ -1702,6 +1702,870 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - h3: Look back at every step
 - h3: Real computation
 
+## learn: L2 experiment 01
+
+**Panels** (6)
+
+- Contributions to the prediction
+- Layer controls
+- Learning objectives
+- Neuron controls
+- This step
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (63)
+
+- a:act:linear (radio): Linear
+- a:act:relu (radio): ReLU
+- a:act:sigmoid (radio): Sigmoid
+- a:act:tanh (radio): Tanh
+- a:b (range): Bias b
+- a:b:exact (input): Bias b, exact value
+- a:w1 (range): Weight w₁
+- a:w1:exact (input): Weight w₁, exact value
+- a:w2 (range): Weight w₂
+- a:w2:exact (input): Weight w₂, exact value
+- a:w3 (range): Weight w₃
+- a:w3:exact (input): Weight w₃, exact value
+- a:x1 (range): Input x₁
+- a:x1:exact (input): Input x₁, exact value
+- a:x2 (range): Input x₂
+- a:x2:exact (input): Input x₂, exact value
+- a:x3 (range): Input x₃
+- a:x3:exact (input): Input x₃, exact value
+- b:b1 (range): Bias
+- b:b1:exact (input): Bias, exact value
+- b:b2 (range): Bias
+- b:b2:exact (input): Bias, exact value
+- b:w11 (range): Weight from x₁
+- b:w11:exact (input): Weight from x₁, exact value
+- b:w12 (range): Weight from x₁
+- b:w12:exact (input): Weight from x₁, exact value
+- b:w21 (range): Weight from x₂
+- b:w21:exact (input): Weight from x₂, exact value
+- b:w22 (range): Weight from x₂
+- b:w22:exact (input): Weight from x₂, exact value
+- begin (a): Begin ↓
+- c:act:relu (radio): ReLU
+- c:act:sigmoid (radio): Sigmoid
+- c:act:tanh (radio): Tanh
+- c:back (button): ◀ Previous step
+- c:detail:layer (radio): Layer
+- c:detail:operation (radio): Operation
+- c:end (button): Prediction ⏭
+- c:next (button): Next step ▶
+- c:start (button): ⏮ Start
+- c:v1 (range): Output weight from hidden #
+- c:v1:exact (input): Output weight from hidden # exact value
+- c:v2 (range): Output weight from hidden #
+- c:v2:exact (input): Output weight from hidden # exact value
+- c:vb (range): Output bias
+- c:vb:exact (input): Output bias, exact value
+- c:x1 (range): Input x₁
+- c:x1:exact (input): Input x₁, exact value
+- c:x2 (range): Input x₂
+- c:x2:exact (input): Input x₂, exact value
+- check:f-input:0 (radio): The activations of the layer before it
+- check:f-input:1 (radio): The final prediction
+- check:f-input:2 (radio): The target
+- check:f-live:0 (radio): Hidden neuron #
+- check:f-live:1 (radio): Hidden neuron #
+- check:f-matrix:0 (radio): # rows × # columns: one row per neuron, one column per input
+- check:f-matrix:1 (radio): # rows × # columns
+- check:f-matrix:2 (radio): # rows × # columns
+- check:f-twins:0 (radio): Only when their weights, biases and activation functions are the same
+- check:f-twins:1 (radio): Always, because they receive the same inputs
+- check:f-twins:2 (radio): Never, because neurons in a layer must differ
+- next-experiment (a): Next: # · Loss Functions: Measuring Prediction Error →
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (3)
+
+- Change the network’s inputs and weights
+- See the engine’s record of this forward pass
+- Show the matrix form
+
+**Information shown (headings, captions, legends)** (28)
+
+- caption: Steps in the engine’s record
+- figcaption: The ### network at this step. “·” marks a value not computed yet at this step.
+- figcaption: Two neurons, the same two inputs. “·” marks a value not computed yet at this step.
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A single neuron with several inputs
+- h3: A small network, step by step
+- h3: Check one row
+- h3: From neuron to layer
+- h3: Identical neurons
+- h3: Switch an input off
+- h3: The same computation as matrices
+- h3: Who decides the prediction?
+- h4: Layer # (hidden)
+- h4: Layer # (output)
+- h4: Neuron #
+- h4: What feeds the output neuron
+- legend: Activation function
+- legend: Hidden activation
+- legend: Multiple choiceA layer has # neurons and # inputs. In z = W a + b, what shape is W?
+- legend: Multiple choiceIn forward propagation, what does a hidden layer receive as its input?
+- legend: Predict the output · uses your current settingsWith the network’s current settings, which hidden neuron contributes more
+- legend: ScenarioTwo neurons in the same layer receive the same inputs. When do they compute the same activation?
+- legend: Step by
+
+## learn: L2 experiment 02
+
+**Panels** (2)
+
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (39)
+
+- a:prediction (range): Prediction ŷ
+- a:prediction:exact (input): Prediction ŷ, exact value
+- a:target (range): Target y
+- a:target:exact (input): Target y, exact value
+- b:p1 (range): ŷ of example #
+- b:p1:exact (input): ŷ of example # exact value
+- b:p2 (range): ŷ of example #
+- b:p2:exact (input): ŷ of example # exact value
+- b:p3 (range): ŷ of example #
+- b:p3:exact (input): ŷ of example # exact value
+- b:p4 (range): ŷ of example #
+- b:p4:exact (input): ŷ of example # exact value
+- begin (a): Begin ↓
+- c:p (range): Probability p of class #
+- c:p:exact (input): Probability p of class # exact value
+- c:y:0 (radio): #
+- c:y:1 (radio): #
+- check:l-bce:0 (radio): B, because it gives the right answer a higher probability
+- check:l-bce:1 (radio): A, because # is less extreme
+- check:l-bce:2 (radio): They are equal
+- check:l-live-mse:0 (radio): #
+- check:l-live-mse:1 (radio): #
+- check:l-live-mse:2 (radio): #
+- check:l-logit:0 (radio): The network’s raw output before the sigmoid: any real number
+- check:l-logit:1 (radio): A probability between # and #
+- check:l-logit:2 (radio): The loss of one example
+- check:l-square:0 (radio): So that positive and negative errors cannot cancel out, and large errors count more
+- check:l-square:1 (radio): To make the loss smaller
+- check:l-square:2 (radio): Because predictions are probabilities
+- d:p (range): Probability p
+- d:p:exact (input): Probability p, exact value
+- d:y:0 (radio): #
+- d:y:1 (radio): #
+- e:y:0 (radio): #
+- e:y:1 (radio): #
+- e:z (range): Logit z
+- e:z:exact (input): Logit z, exact value
+- next-experiment (a): Next: # · Derivatives and Gradient Descent: How Parameters Learn →
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (1)
+
+- Show the formula
+
+**Information shown (headings, captions, legends)** (23)
+
+- caption: Each row is one example
+- figcaption: Binary cross-entropy for target # against the predicted probability The vertical axis stops at # for readability only: c
+- figcaption: Both losses for target # The vertical axis stops at # for readability only: cross-entropy itself has no upper limit.
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A perfect score
+- h3: Binary cross-entropy
+- h3: Comparing the two
+- h3: Confident and wrong
+- h3: From logit to probability to loss
+- h3: Mean squared error
+- h3: One bad prediction
+- h3: Prediction against target
+- h3: The edge of the scale
+- legend: Multiple choiceWhat is a logit?
+- legend: Multiple choiceWhy does MSE square each error before averaging?
+- legend: Predict the output · uses your current settingsFor the four predictions in Part B (as they are set now), what is the mea
+- legend: ScenarioThe target is #. Network A predicts # and network B predicts #. Which has the lower binary cross-entropy?
+- legend: Target y
+
+## learn: L2 experiment 03 (trained)
+
+**Panels** (6)
+
+- Learning objectives
+- Learning rate
+- One gradient descent step
+- Point controls
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (52)
+
+- a:x (range): Point x
+- a:x:exact (input): Point x, exact value
+- begin (a): Begin ↓
+- c:lr:0.1 (radio): #
+- c:lr:1 (radio): #
+- c:lr:10 (radio): #
+- c:reset (button): Back to the start
+- c:step (button): Take one step
+- check:full-batch:0 (radio): Once: the four examples’ gradients are averaged into one update
+- check:full-batch:1 (radio): Four times, once per example
+- check:full-batch:2 (radio): It depends on the learning rate
+- check:g-live-run:0 (radio): Up
+- check:g-live-run:1 (radio): Down
+- check:g-live-slope:0 (radio): Move x to the right (increase x)
+- check:g-live-slope:1 (radio): Move x to the left (decrease x)
+- check:g-live-slope:2 (radio): Neither: the curve is flat here
+- check:g-vs-u:0 (radio): The update is −η times the gradient: the gradient gives the direction uphill, and the update steps the other way, scaled
+- check:g-vs-u:1 (radio): They are the same number
+- check:g-vs-u:2 (radio): The update is the gradient plus the learning rate
+- check:too-large:0 (radio): Each step moves so far that it passes the minimum and lands on the other side, often higher
+- check:too-large:1 (radio): The gradient points the wrong way
+- check:too-large:2 (radio): A large learning rate always converges faster
+- d:lr:0 (radio): Small (#)
+- d:lr:1 (radio): Suitable (#)
+- d:lr:2 (radio): Large (#)
+- d:lr:3 (radio): Too large (#)
+- e:batch1 (button): Run one epoch with batch size #
+- e:lr:0.1 (radio): #
+- e:lr:1 (radio): #
+- e:lr:10 (radio): #
+- e:reveal (button): Show the next stage
+- e:reveal-all (button): Show all
+- e:train (button): Train again with these settings
+- next-experiment (a): Next: # · Backpropagation: How Errors Travel Through a Network →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (2)
+
+- Show the formula
+- The update rule
+
+**Information shown (headings, captions, legends)** (39)
+
+- caption: One row per example (hover a value for the recorded step it came from)
+- caption: Step a little to the right (a run of h), see how much f rises, and divide. The smaller the step, the closer this comes t
+- figcaption: f(x) = (x − #)² + # with the tangent at the point (dashed)
+- figcaption: Run #: the loss on all four examples after each epoch, from the record
+- figcaption: Steps with η = # (numbered; steps off the chart are listed in the table)
+- figcaption: The neuron’s loss L(w, b) over the four examples
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Derivatives, partial derivatives and the gradient
+- h3: Find the flat spot
+- h3: Gradient descent: step against the gradient
+- h3: One update or four?
+- h3: Real training: one neuron, four examples
+- h3: Slope: which way is downhill?
+- h3: Small, suitable and too-large learning rates
+- h3: The record of run #
+- h3: Too big a step
+- h3: Train with learning rate #
+- h3: Walk downhill
+- h4: Before the run
+- h4: Compare: update after every example (batch size #)
+- h4: Epochs
+- h4: Inside epoch # of #
+- h4: The first update, read from the record
+- h4: The next step, in order
+- h4: Zooming in on the slope at x = #
+- legend: Detail
+- legend: Learning rate
+- legend: Learning rate η
+- legend: Multiple choiceWhat is the difference between the gradient ∂L/∂w and the update applied to w?
+- legend: Predict the output · uses your current settingsIn Part A the point is at x = #, where the engine’s derivative is f′(x) =
+- legend: Predict the output · uses your current settingsIn run # the first update averaged the gradient to ∂L/∂w = # with η = #. 
+- legend: ScenarioA neuron is trained with full-batch gradient descent on # examples. How many times are its parameters updated in
+- legend: ScenarioWith a very large learning rate, the loss jumps up and down and never settles. Why?
+- legend: Step size
+
+## learn: L2 experiment 03
+
+**Panels** (5)
+
+- Learning objectives
+- Learning rate
+- One gradient descent step
+- Point controls
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (32)
+
+- a:x (range): Point x
+- a:x:exact (input): Point x, exact value
+- begin (a): Begin ↓
+- c:lr:0.1 (radio): #
+- c:lr:1 (radio): #
+- c:lr:10 (radio): #
+- c:reset (button): Back to the start
+- c:step (button): Take one step
+- check:full-batch:0 (radio): Once: the four examples’ gradients are averaged into one update
+- check:full-batch:1 (radio): Four times, once per example
+- check:full-batch:2 (radio): It depends on the learning rate
+- check:g-live-run:0 (radio): Up
+- check:g-live-run:1 (radio): Down
+- check:g-live-slope:0 (radio): Move x to the right (increase x)
+- check:g-live-slope:1 (radio): Move x to the left (decrease x)
+- check:g-live-slope:2 (radio): Neither: the curve is flat here
+- check:g-vs-u:0 (radio): The update is −η times the gradient: the gradient gives the direction uphill, and the update steps the other way, scaled
+- check:g-vs-u:1 (radio): They are the same number
+- check:g-vs-u:2 (radio): The update is the gradient plus the learning rate
+- check:too-large:0 (radio): Each step moves so far that it passes the minimum and lands on the other side, often higher
+- check:too-large:1 (radio): The gradient points the wrong way
+- check:too-large:2 (radio): A large learning rate always converges faster
+- d:lr:0 (radio): Small (#)
+- d:lr:1 (radio): Suitable (#)
+- d:lr:2 (radio): Large (#)
+- d:lr:3 (radio): Too large (#)
+- e:lr:0.1 (radio): #
+- e:lr:1 (radio): #
+- e:lr:10 (radio): #
+- e:train (button): Train the neuron
+- next-experiment (a): Next: # · Backpropagation: How Errors Travel Through a Network →
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (2)
+
+- Show the formula
+- The update rule
+
+**Information shown (headings, captions, legends)** (29)
+
+- caption: Step a little to the right (a run of h), see how much f rises, and divide. The smaller the step, the closer this comes t
+- figcaption: f(x) = (x − #)² + # with the tangent at the point (dashed)
+- figcaption: Steps with η = # (numbered; steps off the chart are listed in the table)
+- figcaption: The neuron’s loss L(w, b) over the four examples
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Derivatives, partial derivatives and the gradient
+- h3: Find the flat spot
+- h3: Gradient descent: step against the gradient
+- h3: One update or four?
+- h3: Real training: one neuron, four examples
+- h3: Slope: which way is downhill?
+- h3: Small, suitable and too-large learning rates
+- h3: Too big a step
+- h3: Train with learning rate #
+- h3: Walk downhill
+- h4: The next step, in order
+- h4: Zooming in on the slope at x = #
+- legend: Learning rate
+- legend: Learning rate η
+- legend: Multiple choiceWhat is the difference between the gradient ∂L/∂w and the update applied to w?
+- legend: Predict the output · uses your current settingsIn Part A the point is at x = #, where the engine’s derivative is f′(x) =
+- legend: Predict the output · uses your current settingsIn your training run’s first update, did the weight w go up or down?
+- legend: ScenarioA neuron is trained with full-batch gradient descent on # examples. How many times are its parameters updated in
+- legend: ScenarioWith a very large learning rate, the loss jumps up and down and never settles. Why?
+
+## learn: L2 experiment 04 (trained)
+
+**Panels** (6)
+
+- Chain controls
+- Learning objectives
+- Neuron controls
+- Trace explorer
+- What you will understand
+- Where a parameter’s gradient comes from
+
+**Controls (data-control id, element, accessible name)** (63)
+
+- a:x (range): x
+- a:x:exact (input): x, exact value
+- b:b (range): Bias b
+- b:b:exact (input): Bias b, exact value
+- b:w (range): Weight w
+- b:w:exact (input): Weight w, exact value
+- b:x (range): Input x
+- b:x:exact (input): Input x, exact value
+- b:y:0 (radio): #
+- b:y:1 (radio): #
+- begin (a): Begin ↓
+- c:apply (button): Apply this example’s update
+- c:back (button): ◀ Step back
+- c:next-example (button): Next example ▶▶
+- c:param (select): Parameterweight x₁ → hidden #weight x₂ → hidden #weight x₁ → hidden #weight x₂ → hidden #bias of hidden neuron #bias of 
+- c:prev-example (button): ◀◀ Previous example
+- c:replay (button): ⏮ Replay this example
+- c:step (button): Step ▶
+- c:to-backward-end (button): To the end of the backward pass
+- c:train (button): Run again
+- check:b-chain:0 (radio): f′(g(x)) × g′(x): the rate of f at g, times the rate of g
+- check:b-chain:1 (radio): f′(x) + g′(x)
+- check:b-chain:2 (radio): f′(x) × g′(x)
+- check:b-live-chain:0 (radio): #
+- check:b-live-chain:1 (radio): #
+- check:b-live-chain:2 (radio): #
+- check:b-live-weight:0 (radio): #
+- check:b-live-weight:1 (radio): #
+- check:b-order:0 (radio): The output layer’s, because the hidden layer’s gradients need the gradient arriving from the output layer
+- check:b-order:1 (radio): The hidden layer’s, because it comes first in the network
+- check:b-order:2 (radio): All at the same time
+- check:b-weight:0 (radio): aᵢ × ∂L/∂zⱼ: the weight’s input times the gradient arriving at neuron j
+- check:b-weight:1 (radio): w × ∂L/∂zⱼ
+- check:b-weight:2 (radio): The same for every weight of the layer
+- next-experiment (a): Next: # · Automatic Differentiation: Inside the Computational Graph →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:history (button): Show how L#.W changed up to here
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Example # of # (dataset ##), updated on its own
+- trace:node:batch (button): Example # of # (dataset ##), updated on its own(done)
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol(done)
+- trace:node:phase (button): Bookkeepingcontrol(done)
+- trace:node:phase (button): Loss: compare the prediction with the targetloss(done)
+- trace:node:phase (button): Update: w ← w − η·gupdate(done)
+- trace:node:sample (button): Batch beginscontrol(done)
+- trace:node:sample (button): Example ##: inputs (# #), target #(done)
+- trace:node:sample (button): Update the parameters (one update for this example)update(done)
+- trace:param (select): ParameterWeights of hidden layer # (l#)Biases of hidden layer # (l#)Weights of output layer (l#)Biases of output layer (
+- trace:pin (button): 📌 Pin these values to compare
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (3)
+
+- Inspect and compare parameters
+- Show the formula
+- Where the hidden neuron’s incoming gradient came from
+
+**Information shown (headings, captions, legends)** (28)
+
+- caption: L#.W now
+- caption: Parameters updated after this example
+- caption: This example’s update: one per example
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A broken link
+- h3: A silent input
+- h3: Backpropagation through a ### network
+- h3: Backpropagation through one neuron
+- h3: Nothing to learn
+- h3: Replay before updating
+- h3: The chain rule
+- h3: The record of run #
+- h4: Epochs
+- h4: Inside epoch # of #
+- h4: Where a parameter’s gradient comes from
+- legend: Detail
+- legend: Multiple choiceA weight connects input aᵢ to neuron j. What is its gradient ∂L/∂w?
+- legend: Multiple choiceFor y = f(g(x)), what does the chain rule say dy/dx is?
+- legend: Predict the output · uses your current settingsIn Part A, at x = #: dg/dx = # and dy/dg = #. What is dy/dx?
+- legend: Predict the output · uses your current settingsIn Part C, for the weight x₁ → hidden #: the incoming gradient is ∂L/∂z =
+- legend: ScenarioIn the backward pass of a ### network, which gradients are computed first?
+- legend: Step size
+- legend: Target
+
+## learn: L2 experiment 04
+
+**Panels** (4)
+
+- Chain controls
+- Learning objectives
+- Neuron controls
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (27)
+
+- a:x (range): x
+- a:x:exact (input): x, exact value
+- b:b (range): Bias b
+- b:b:exact (input): Bias b, exact value
+- b:w (range): Weight w
+- b:w:exact (input): Weight w, exact value
+- b:x (range): Input x
+- b:x:exact (input): Input x, exact value
+- b:y:0 (radio): #
+- b:y:1 (radio): #
+- begin (a): Begin ↓
+- c:train (button): Run the network
+- check:b-chain:0 (radio): f′(g(x)) × g′(x): the rate of f at g, times the rate of g
+- check:b-chain:1 (radio): f′(x) + g′(x)
+- check:b-chain:2 (radio): f′(x) × g′(x)
+- check:b-live-chain:0 (radio): #
+- check:b-live-chain:1 (radio): #
+- check:b-live-chain:2 (radio): #
+- check:b-live-weight:0 (radio): —
+- check:b-order:0 (radio): The output layer’s, because the hidden layer’s gradients need the gradient arriving from the output layer
+- check:b-order:1 (radio): The hidden layer’s, because it comes first in the network
+- check:b-order:2 (radio): All at the same time
+- check:b-weight:0 (radio): aᵢ × ∂L/∂zⱼ: the weight’s input times the gradient arriving at neuron j
+- check:b-weight:1 (radio): w × ∂L/∂zⱼ
+- check:b-weight:2 (radio): The same for every weight of the layer
+- next-experiment (a): Next: # · Automatic Differentiation: Inside the Computational Graph →
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (1)
+
+- Show the formula
+
+**Information shown (headings, captions, legends)** (19)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A broken link
+- h3: A silent input
+- h3: Backpropagation through a ### network
+- h3: Backpropagation through one neuron
+- h3: Nothing to learn
+- h3: Replay before updating
+- h3: The chain rule
+- legend: Multiple choiceA weight connects input aᵢ to neuron j. What is its gradient ∂L/∂w?
+- legend: Multiple choiceFor y = f(g(x)), what does the chain rule say dy/dx is?
+- legend: Predict the output · uses your current settingsIn Part A, at x = #: dg/dx = # and dy/dg = #. What is dy/dx?
+- legend: Predict the output · uses your current settingsPick a parameter in Part C and step through an example’s backward pass. W
+- legend: ScenarioIn the backward pass of a ### network, which gradients are computed first?
+- legend: Target
+
+## learn: L2 experiment 05 (trained)
+
+**Panels** (15)
+
+- #. Backpropagation
+- #. Gradients
+- #. Loss
+- #. Prediction (forward pass)
+- #. Update
+- Before and after training
+- Finite-difference step
+- Graph inputs
+- Learning objectives
+- Network for the count
+- One update, taken apart
+- Shared-value inputs
+- The chosen step
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (100)
+
+- a:expr:product (radio): (x₁ + x₂) · x₃
+- a:expr:sigmoid (radio): σ((x₁ + x₂) · x₃)
+- a:x1 (range): x₁
+- a:x1:exact (input): x₁, exact value
+- a:x2 (range): x₂
+- a:x2:exact (input): x₂, exact value
+- a:x3 (range): x₃
+- a:x3:exact (input): x₃, exact value
+- b:back (button): ◀ Step back
+- b:end (button): To the end of the reverse pass
+- b:start (button): ⏮ Start
+- b:step (button): Step ▶
+- begin (a): Begin ↓
+- c:h:0.001 (radio): #
+- c:h:0.01 (radio): #
+- c:h:0.1 (radio): #
+- c:h:1 (radio): #
+- check:ad-fd:0 (radio): They are approximate, depend on the step h, and need two extra evaluations for every single parameter
+- check:ad-fd:1 (radio): They give the wrong sign
+- check:ad-fd:2 (radio): They only work for linear functions
+- check:ad-live-grad:0 (radio): #
+- check:ad-live-grad:1 (radio): #
+- check:ad-live-shared:0 (radio): #
+- check:ad-live-shared:1 (radio): #
+- check:ad-live-shared:2 (radio): #
+- check:ad-live-update:0 (radio): #
+- check:ad-live-update:1 (radio): #
+- check:ad-live-update:2 (radio): #
+- check:ad-reverse:0 (radio): One backward pass gives the gradient of the loss with respect to all # weights
+- check:ad-reverse:1 (radio): Because the forward pass cannot be repeated
+- check:ad-reverse:2 (radio): Because working backwards gives more exact gradients
+- check:ad-shared:0 (radio): The sum of the two contributions that arrive at v
+- check:ad-shared:1 (radio): The larger of the two contributions
+- check:ad-shared:2 (radio): Only the first contribution to arrive
+- check:ad-update:0 (radio): It averages them into ḡ, then w ← w − η·ḡ
+- check:ad-update:1 (radio): It applies the # gradients one after another
+- check:ad-update:2 (radio): It uses the largest of the # gradients
+- d:x (range): x
+- d:x:exact (input): x, exact value
+- d:y (range): y
+- d:y:exact (input): y, exact value
+- e:net:2-16-16-1 (radio): ####
+- e:net:2-2-1 (radio): ### (Experiment #)
+- e:net:2-3-1 (radio): ###
+- f:example:0 (radio): Example #
+- f:example:1 (radio): Example #
+- f:example:2 (radio): Example #
+- f:example:3 (radio): Example #
+- g:activation:relu (radio): relu
+- g:activation:sigmoid (radio): sigmoid
+- g:activation:tanh (radio): tanh
+- g:batch (select): Update (batch)# of # of # of # of # of #
+- g:batchSize:1 (radio): # (one example)
+- g:batchSize:40 (radio): # (all)
+- g:batchSize:8 (radio): #
+- g:compare (select): Compare epoch # with epoch#
+- g:epoch (select): Epoch#
+- g:example (select): Example in this batch# of # (dataset ##)# of # (dataset ##)# of # (dataset ##)# of # (dataset ##)# of # (dataset ##)# of
+- g:lr:0.05 (radio): #
+- g:lr:0.5 (radio): #
+- g:lr:2 (radio): #
+- g:show:backward (button): Show step ## in the record
+- g:show:gradients (button): Show step ## in the record
+- g:show:loss (button): Show step ## in the record
+- g:show:prediction (button): Show step ## in the record
+- g:show:update (button): Show step ## in the record
+- g:train (button): Train again with these settings
+- g:units:2 (radio): #
+- g:units:3 (radio): #
+- g:units:4 (radio): #
+- next-experiment (a): Level # overview →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:history (button): Show how L#.W changed up to here
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##(done)
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol(done)
+- trace:node:phase (button): Bookkeepingcontrol(done)
+- trace:node:phase (button): Loss: compare the prediction with the targetloss(done)
+- trace:node:phase (button): Update: w ← w − η·gupdate(done)
+- trace:node:sample (button): Batch beginscontrol(done)
+- trace:node:sample (button): Example ##: inputs (# #), target #(done)
+- trace:node:sample (button): Example ##: inputs (#, #), target #(done)
+- trace:node:sample (button): Update the parameters (one update for the whole batch)update(done)
+- trace:param (select): ParameterWeights of hidden layer # (l#)Biases of hidden layer # (l#)Weights of output layer (l#)Biases of output layer (
+- trace:pin (button): 📌 Pin these values to compare
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (1)
+
+- Inspect and compare parameters
+
+**Information shown (headings, captions, legends)** (50)
+
+- caption: Every gradient of f = (x₁ + x₂) · x₃
+- caption: Every gradient of one example’s loss, ### (Experiment #)
+- caption: L#.W now
+- caption: Parameters updated in this batch
+- caption: What arrives at x in the reverse pass
+- figcaption: After epoch #: shaded where the network answers # (output ≥ #).
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A calculation as a graph
+- h3: A closed path
+- h3: A rough estimate
+- h3: A value used twice
+- h3: Checking the gradients from outside
+- h3: Final challenge: a batch’s average
+- h3: Final challenge: before and after
+- h3: Final challenge: follow one update
+- h3: Forward mode and reverse mode
+- h3: Forwards, then in reverse
+- h3: The engine’s own graph
+- h3: The record of run #
+- h3: Train a network and take one update apart
+- h3: Two contributions that cancel
+- h3: Where a weight came from
+- h4: Epochs
+- h4: Inside epoch # of #
+- h4: Loss after each epoch
+- h4: One update, taken apart
+- h4: Step ##: W¹
+- h4: The decision, after epoch # and after a later epoch
+- legend: Batch size
+- legend: Detail
+- legend: Example
+- legend: Expression
+- legend: Hidden activation
+- legend: Hidden neurons
+- legend: Learning rate η
+- legend: Multiple choiceA value v is used by two operations. What is ∂f/∂v?
+- legend: Multiple choiceWhy does the engine not compute gradients with finite differences?
+- legend: Multiple choiceWith batch size # how does the engine turn the # examples’ gradients into one change of a weight w?
+- legend: Network
+- legend: Predict the output · uses your current settingsIn Part D, f = x · y + x with x = # and y = #. What is ∂f/∂x?
+- legend: Predict the output · uses your current settingsIn Parts A to C, f = (x₁ + x₂) · x₃ at x₁ = #, x₂ = #, x₃ = #. What is ∂f
+- legend: Predict the output · uses your current settingsIn the final challenge’s update (epoch # batch #), the output bias was #,
+- legend: ScenarioA network has # weights and one loss. Why does the engine compute gradients backwards, from the loss?
+- legend: Step h
+- legend: Step size
+
+## learn: L2 experiment 05
+
+**Panels** (7)
+
+- Finite-difference step
+- Graph inputs
+- Learning objectives
+- Network for the count
+- Shared-value inputs
+- The chosen step
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (61)
+
+- a:expr:product (radio): (x₁ + x₂) · x₃
+- a:expr:sigmoid (radio): σ((x₁ + x₂) · x₃)
+- a:x1 (range): x₁
+- a:x1:exact (input): x₁, exact value
+- a:x2 (range): x₂
+- a:x2:exact (input): x₂, exact value
+- a:x3 (range): x₃
+- a:x3:exact (input): x₃, exact value
+- b:back (button): ◀ Step back
+- b:end (button): To the end of the reverse pass
+- b:start (button): ⏮ Start
+- b:step (button): Step ▶
+- begin (a): Begin ↓
+- c:h:0.001 (radio): #
+- c:h:0.01 (radio): #
+- c:h:0.1 (radio): #
+- c:h:1 (radio): #
+- check:ad-fd:0 (radio): They are approximate, depend on the step h, and need two extra evaluations for every single parameter
+- check:ad-fd:1 (radio): They give the wrong sign
+- check:ad-fd:2 (radio): They only work for linear functions
+- check:ad-live-grad:0 (radio): #
+- check:ad-live-grad:1 (radio): #
+- check:ad-live-shared:0 (radio): #
+- check:ad-live-shared:1 (radio): #
+- check:ad-live-shared:2 (radio): #
+- check:ad-live-update:0 (radio): —
+- check:ad-reverse:0 (radio): One backward pass gives the gradient of the loss with respect to all # weights
+- check:ad-reverse:1 (radio): Because the forward pass cannot be repeated
+- check:ad-reverse:2 (radio): Because working backwards gives more exact gradients
+- check:ad-shared:0 (radio): The sum of the two contributions that arrive at v
+- check:ad-shared:1 (radio): The larger of the two contributions
+- check:ad-shared:2 (radio): Only the first contribution to arrive
+- check:ad-update:0 (radio): It averages them into ḡ, then w ← w − η·ḡ
+- check:ad-update:1 (radio): It applies the # gradients one after another
+- check:ad-update:2 (radio): It uses the largest of the # gradients
+- d:x (range): x
+- d:x:exact (input): x, exact value
+- d:y (range): y
+- d:y:exact (input): y, exact value
+- e:net:2-16-16-1 (radio): ####
+- e:net:2-2-1 (radio): ### (Experiment #)
+- e:net:2-3-1 (radio): ###
+- f:example:0 (radio): Example #
+- f:example:1 (radio): Example #
+- f:example:2 (radio): Example #
+- f:example:3 (radio): Example #
+- g:activation:relu (radio): relu
+- g:activation:sigmoid (radio): sigmoid
+- g:activation:tanh (radio): tanh
+- g:batchSize:1 (radio): # (one example)
+- g:batchSize:40 (radio): # (all)
+- g:batchSize:8 (radio): #
+- g:lr:0.05 (radio): #
+- g:lr:0.5 (radio): #
+- g:lr:2 (radio): #
+- g:train (button): Train the network
+- g:units:2 (radio): #
+- g:units:3 (radio): #
+- g:units:4 (radio): #
+- next-experiment (a): Level # overview →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (38)
+
+- caption: Every gradient of f = (x₁ + x₂) · x₃
+- caption: Every gradient of one example’s loss, ### (Experiment #)
+- caption: What arrives at x in the reverse pass
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A calculation as a graph
+- h3: A closed path
+- h3: A rough estimate
+- h3: A value used twice
+- h3: Checking the gradients from outside
+- h3: Final challenge: a batch’s average
+- h3: Final challenge: before and after
+- h3: Final challenge: follow one update
+- h3: Forward mode and reverse mode
+- h3: Forwards, then in reverse
+- h3: The engine’s own graph
+- h3: Train a network and take one update apart
+- h3: Two contributions that cancel
+- h3: Where a weight came from
+- legend: Batch size
+- legend: Example
+- legend: Expression
+- legend: Hidden activation
+- legend: Hidden neurons
+- legend: Learning rate η
+- legend: Multiple choiceA value v is used by two operations. What is ∂f/∂v?
+- legend: Multiple choiceWhy does the engine not compute gradients with finite differences?
+- legend: Multiple choiceWith batch size # how does the engine turn the # examples’ gradients into one change of a weight w?
+- legend: Network
+- legend: Predict the output · uses your current settingsIn Part D, f = x · y + x with x = # and y = #. What is ∂f/∂x?
+- legend: Predict the output · uses your current settingsIn Parts A to C, f = (x₁ + x₂) · x₃ at x₁ = #, x₂ = #, x₃ = #. What is ∂f
+- legend: Predict the output · uses your current settingsIn the final challenge, what is a parameter’s value after an update?
+- legend: ScenarioA network has # weights and one loss. Why does the engine compute gradients backwards, from the loss?
+- legend: Step h
+
 ## learn: level 1
 
 **Controls (data-control id, element, accessible name)** (1)
@@ -1718,6 +2582,22 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - h3: Experiment #: Perceptrons and Logic Gates
 - h3: Level # assessment
 - h3: Orientation: AI, ML and DL
+
+## learn: level 2
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- start-level-2 (a): Start Level # →
+
+**Information shown (headings, captions, legends)** (7)
+
+- h2: By the end you will understand
+- h2: Your path
+- h3: Experiment #: Automatic Differentiation: Inside the Computational Graph
+- h3: Experiment #: Backpropagation: How Errors Travel Through a Network
+- h3: Experiment #: Derivatives and Gradient Descent: How Parameters Learn
+- h3: Experiment #: Forward Propagation: From Input to Prediction
+- h3: Experiment #: Loss Functions: Measuring Prediction Error
 
 ## learn: levels
 
