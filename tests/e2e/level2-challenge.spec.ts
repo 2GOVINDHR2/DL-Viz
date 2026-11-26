@@ -180,3 +180,19 @@ test('after the challenge’s 40-example run, Level 1’s Experiment 04 (4 examp
   await expect(page.getByText('The record of run 1')).toBeVisible({ timeout: 60_000 });
   expect(errors).toEqual([]);
 });
+
+test('Part G: the forward pass is listed step by step, and its last value is the prediction', async ({
+  page,
+}) => {
+  await page.goto(URL);
+  await train(page);
+  const card = stage(page, '1-1', 'prediction');
+  const steps = card.locator('[data-list="forward"] li');
+  // Two layers, each: weighted sum, bias, activation.
+  await expect(steps).toHaveCount(6);
+  await expect(steps.nth(0)).toContainText('u¹ = a⁰ · W¹');
+  await expect(steps.nth(5)).toContainText('a² = σ(z²)');
+  const last = num((await steps.nth(5).innerText()).split(':').pop()!.trim());
+  const m = /ŷ = ([−\d.]+)/.exec(await card.locator('[data-value="prediction"]').innerText());
+  expect(Math.abs(last - num(m![1]))).toBeLessThanOrEqual(0.0001);
+});

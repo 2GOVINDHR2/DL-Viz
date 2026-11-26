@@ -894,3 +894,12 @@ Also clarified:
   - **Why it was not seen before:** Experiments 03 and 04 have 4 examples, so the same one-render window did no harm.
   - **Fix:** `useRoute` takes an `onLeave` callback that runs in the `hashchange` handler before the new route is set. `LearnApp` uses it to release the store when leaving an experiment page. No Level 1 file changed, and Level 1 behaves as before: its page already released the store on unmount, and now that happens before the next page renders rather than after.
   - **Test:** an e2e test (challenge, then Level 1's Experiment 04 trains: "The record of run 1", no page error), killed by a targeted mutant that disables the release.
+
+## ADR-096 — 2026-11-26 — Level 2 Stage 6 completed: forward propagation in the final challenge
+- **The gap.** The overnight brief lists forward propagation as its own item. Part G's first stage showed only x → ŷ.
+- **The change.** The stage, renamed "Forward pass and prediction", now lists the example's recorded forward steps, each with its instruction id, symbolic form and values: weighted sum, bias and activation for each layer. The prediction follows.
+  - The values are the recorded results (`readBatch` now also returns `forward`).
+- **The rename** is recorded in `reports/capability-removed.json` under this ADR.
+- **Tests:**
+  - The Stage 6 gate checks that every example has exactly the six forward steps, that the last one's value is the prediction, and that the hidden weighted sum equals the hand calculation.
+  - A new e2e test checks the six listed steps and that the last value is the ŷ shown.

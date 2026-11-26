@@ -1011,5 +1011,19 @@
     ],
     "spec": "tests/e2e/level2-challenge.spec.ts",
     "grep": "Level 1’s Experiment 04"
+  },
+  {
+    "ids": ["level2-challenge.spec:197"],
+    "claim": "the last forward step's value is the prediction shown",
+    "mutant": "the forward list shows values shifted by 0.5",
+    "file": "src/learn/level2/exp05/Challenge.tsx",
+    "patches": [
+      {
+        "find": "<span className=\"lv-mono\">{show(Array.from(i.results.out.data))}</span>",
+        "replace": "<span className=\"lv-mono\">{show(Array.from(i.results.out.data).map((q) => q + 0.5))}</span>"
+      }
+    ],
+    "spec": "tests/e2e/level2-challenge.spec.ts",
+    "grep": "forward pass is listed"
   }
 ]

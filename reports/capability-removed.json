@@ -2358,5 +2358,10 @@
     "key": "xor-mlp (novice)|panel|Try it",
     "adr": "ADR-073",
     "why": "novice workbench replaced by the guided screen; still in expert mode"
+  },
+  {
+    "key": "learn: L2 experiment 05 (trained)|panel|#. Prediction (forward pass)",
+    "adr": "ADR-096",
+    "why": "renamed \"Forward pass and prediction\": the stage now lists the recorded forward steps before the prediction"
   }
 ]

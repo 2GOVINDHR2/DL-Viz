@@ -150,6 +150,25 @@ describe('Stage 6 gate: one update taken apart from the record, against the hand
           expect(e.x).toEqual(X(e.datasetIndex));
           expect(e.target).toBe(Y(e.datasetIndex));
           const h = byHand(e.x, e.target, p, s.units, s.activation);
+          // The forward steps: each layer's weighted sum, bias and activation; the last is the prediction.
+          expect(e.forward.map((i) => `${i.kind}:${i.path.layer}`)).toEqual([
+            'MATMUL:L1',
+            'ADD_BIAS:L1',
+            'ACTIVATE:L1',
+            'MATMUL:L2',
+            'ADD_BIAS:L2',
+            'ACTIVATE:L2',
+          ]);
+          expect(e.forward.at(-1)!.results.out.data[0]).toBe(e.prediction);
+          const u1 = Array.from(e.forward[0].results.out.data);
+          worst = Math.max(
+            worst,
+            close(
+              u1,
+              u1.map((_, j) => e.x[0] * p['L1.W'][j] + e.x[1] * p['L1.W'][s.units + j]),
+              1e-12,
+            ),
+          );
           worst = Math.max(worst, close([e.prediction], [h.prediction], 1e-12));
           worst = Math.max(worst, close([e.loss], [h.loss], 1e-9));
           for (const k of Object.keys(h.grads)) {

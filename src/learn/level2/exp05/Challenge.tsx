@@ -497,12 +497,22 @@ export function FinalChallenge({ onBatch }: { onBatch: (v: BatchView | null) => 
                 </p>
                 <StageCard
                   n={1}
-                  title="Prediction (forward pass)"
+                  title="Forward pass and prediction"
                   name="prediction"
                   at={ex.ids.prediction}
                   jump={jump}
                   visit={visit}
                 >
+                  <ol className="lv-small" style={{ margin: '0 0 var(--lv-s2)' }} data-list="forward">
+                    {ex.forward.map((i) => (
+                      <li key={i.id}>
+                        <span className="lv-mono">#{i.id}</span> <span className="lv-mono">{i.symbolic}</span>
+                        {i.path.layer
+                          ? ` (${i.path.layer === 'L1' ? 'hidden layer' : 'output layer'})`
+                          : ''}: <span className="lv-mono">{show(Array.from(i.results.out.data))}</span>
+                      </li>
+                    ))}
+                  </ol>
                   <p className="lv-small lv-mono" style={{ margin: 0 }} data-value="prediction">
                     dataset #{ex.datasetIndex + 1}: x = ({show(ex.x, 3)}) → ŷ = {fmt(ex.prediction, 4)} →
                     answer {ex.prediction >= 0.5 ? 1 : 0} · target {ex.target}

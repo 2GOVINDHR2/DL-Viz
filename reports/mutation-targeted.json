@@ -502,5 +502,12 @@
     "mutant": "a page error is thrown before the assertion",
     "outcome": "killed",
     "detail": "failed at 181: Error: expect(received).toEqual(expected) // deep equality"
+  },
+  {
+    "id": "level2-challenge.spec:197",
+    "claim": "the last forward step's value is the prediction shown",
+    "mutant": "the forward list shows values shifted by 0.5",
+    "outcome": "killed",
+    "detail": "failed at 197: Error: expect(received).toBeLessThanOrEqual(expected)"
   }
 ]

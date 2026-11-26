@@ -2775,5 +2775,61 @@
       "blank": "passed at : ",
       "no-action": "timedOut at 180: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
     }
+  },
+  {
+    "id": "level2-challenge.spec:192",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 192,
+    "fn": "Part G: the forward pass is listed step by step, and its last value is the prediction",
+    "negative": false,
+    "text": "await expect(steps).toHaveCount(6);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 192: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,188: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:193",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 193,
+    "fn": "Part G: the forward pass is listed step by step, and its last value is the prediction",
+    "negative": false,
+    "text": "await expect(steps.nth(0)).toContainText('u¹ = a⁰ · W¹');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 193: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,188: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:194",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 194,
+    "fn": "Part G: the forward pass is listed step by step, and its last value is the prediction",
+    "negative": false,
+    "text": "await expect(steps.nth(5)).toContainText('a² = σ(z²)');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 194: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,188: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level2-challenge.spec:197",
+    "file": "tests/e2e/level2-challenge.spec.ts",
+    "line": 197,
+    "fn": "Part G: the forward pass is listed step by step, and its last value is the prediction",
+    "negative": false,
+    "text": "expect(Math.abs(last - num(m![1]))).toBeLessThanOrEqual(0.0001);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 21,188: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
   }
 ]

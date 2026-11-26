@@ -65,6 +65,8 @@ export interface ExampleView {
   prediction: number;
   loss: number;
   ids: { load: number; prediction: number; loss: number; backwardStart: number; backwardEnd: number };
+  /** The example's forward steps after loading it (each layer's MATMUL, ADD_BIAS, ACTIVATE), in recorded order. */
+  forward: Instruction[];
   /** The example's backward steps, in recorded order (layer-end markers left out). */
   backward: Instruction[];
   /** This example's own gradient of each parameter (GRAD_MATMUL_W / GRAD_BIAS), keyed "L1.W" etc. */
@@ -114,6 +116,9 @@ export async function readBatch(
     const load = mine.find((i) => i.kind === 'LOAD_INPUT')!;
     const pred = mine.filter((i) => i.kind === 'ACTIVATE' && i.path.layer === lastLayer).at(-1)!;
     const loss = mine.find((i) => i.kind === 'COMPUTE_LOSS')!;
+    const forward = mine.filter(
+      (i) => i.path.phase === 'forward' && i.kind !== 'LOAD_INPUT' && i.kind !== 'FORWARD_LAYER_END',
+    );
     const backward = mine.filter((i) => i.path.phase === 'backward' && i.kind !== 'BACKWARD_LAYER_END');
     const grads: ExampleView['grads'] = {};
     for (const g of backward)
@@ -136,6 +141,7 @@ export async function readBatch(
         backwardStart: backward[0].id,
         backwardEnd: backward.at(-1)!.id,
       },
+      forward,
       backward,
       grads,
     };
