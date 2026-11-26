@@ -9,10 +9,14 @@ import { describe, expect, it } from 'vitest';
 import { LEVEL3_TERMS, type Level3Id } from '../../src/experiments/level3';
 import { LEVEL_3 } from '../../src/learn/curriculum';
 import { L3Experiment01 } from '../../src/learn/level3/Experiment01';
+import { L3Experiment02 } from '../../src/learn/level3/Experiment02';
 import { Level3Landing } from '../../src/learn/pages/Level3Landing';
 
 const ORDER: Level3Id[] = ['01', '02', '03', '04'];
-const PAGES: Partial<Record<Level3Id, () => ReactElement>> = { '01': L3Experiment01 };
+const PAGES: Partial<Record<Level3Id, () => ReactElement>> = {
+  '01': L3Experiment01,
+  '02': L3Experiment02,
+};
 
 const text = (html: string): string =>
   html

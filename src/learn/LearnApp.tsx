@@ -16,6 +16,7 @@ import { LEVEL_2, LEVEL_3 } from './curriculum';
 import { Level2Landing } from './pages/Level2Landing';
 import { Level3Landing } from './pages/Level3Landing';
 import { L3Experiment01 } from './level3/Experiment01';
+import { L3Experiment02 } from './level3/Experiment02';
 import { Assessment } from './pages/Assessment';
 import { Home } from './pages/Home';
 import { Level1Landing } from './pages/Level1Landing';
@@ -33,7 +34,10 @@ const EXPERIMENTS = {
   '04': Experiment04,
 } as const;
 /** Level 3's experiments, added as each is built. */
-const L3_EXPERIMENTS: Record<string, () => ReactElement> = { '01': L3Experiment01 };
+const L3_EXPERIMENTS: Record<string, () => ReactElement> = {
+  '01': L3Experiment01,
+  '02': L3Experiment02,
+};
 const L2_EXPERIMENTS: Record<string, () => ReactElement> = {
   '01': L2Experiment01,
   '02': L2Experiment02,

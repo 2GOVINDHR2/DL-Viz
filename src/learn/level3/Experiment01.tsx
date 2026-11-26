@@ -257,6 +257,7 @@ function PartB({ onUpdate }: { onUpdate: (u: UpdateRecord | null) => void }) {
       />
       <RecordedRun
         prefix="b"
+        signals="lr"
         config={config}
         label={`η = ${lr} · plain gradient descent · ${L3_TASK.epochs} updates`}
         dataset={L3_TASK.dataset}

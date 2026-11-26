@@ -28,6 +28,7 @@ export interface RunContext {
 
 export function RecordedRun({
   prefix,
+  signals,
   config,
   label,
   dataset,
@@ -40,6 +41,8 @@ export function RecordedRun({
 }: {
   /** Control-id prefix, e.g. "b" gives b:train, b:param, b:update. */
   prefix: string;
+  /** Signal prefix for the tour and challenges, e.g. "lr" gives lr-param-picked and lr-update-picked. */
+  signals: string;
   config: TrainConfig;
   label: string;
   dataset: DatasetSpec;
@@ -112,7 +115,7 @@ export function RecordedRun({
               value={choice}
               onChange={(e) => {
                 setChoice(Number(e.target.value));
-                signal(`${prefix}-param-picked`);
+                signal(`${signals}-param-picked`);
               }}
               data-control={`${prefix}:param`}
             >
@@ -164,7 +167,7 @@ export function RecordedRun({
                     value={n + 1}
                     onChange={(e) => {
                       setN(Number(e.target.value) - 1);
-                      signal(`${prefix}-update-picked`);
+                      signal(`${signals}-update-picked`);
                     }}
                     aria-label="Update number"
                     data-control={`${prefix}:update`}
