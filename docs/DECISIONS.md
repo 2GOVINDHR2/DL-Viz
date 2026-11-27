@@ -996,3 +996,15 @@ Also clarified:
   - window 1 gives exactly the last-step contribution;
   - identical regeneration and checkpoint replay, and grammar conformance.
   - Gradcheck also covers whole RNN, LSTM and GRU layers.
+
+## ADR-103 — 2026-11-27 — Level 4 Experiments 03–06: recurrent, BPTT, gated and autoencoder pages
+- **Readers, not recomputation.** `rnnRecord` (forward and backward steps), `gatedRecord` (LSTM and GRU steps), `aeRecord` (latent codes) and `bpttProbes` (gradient sizes and truncation reach) read values from recorded instructions by `meta.step`, `meta.gate`, kind and operand references.
+  - A page recomputes a relation only to show "checked here" beside the recorded value. Examples: hₜ = tanh(zₜ), ∂ℓ/∂zₜ = ∂ℓ/∂hₜ ⊙ (1 − hₜ²), cₜ = f ⊙ cₜ₋₁ + i ⊙ g, U's sum, and MSE.
+- **Experiment 04's Part E uses engine probes** with U = s·I. The page reports what the record shows: vanishing for small U or saturated tanh, explosion for a large U with small inputs. It does not claim either always happens.
+  - **Gradient clipping is not implemented in the engine,** and the page says so rather than imitating it.
+- **Experiment 05.** One record exists at a time (the shared store), so Part C retrains as a GRU and says so. Part D offers three seeds because the ranking changes with the seed, and no architecture is declared better.
+- **Experiment 06.** The latent space is plotted with the classes marked "for you". Distances within and between classes are measured on the page, not assumed. A larger code was not always better (4 numbers 0.051 against 3 numbers 0.029), so the text says so.
+- **Determinism across JavaScript engines.** The engine is deterministic within one runtime: same seed, same trace, checked by the determinism and replay tests. However, `Math.tanh`, `Math.exp` and `Math.log` differ in the last bit between Node's V8 (12.4) and Chromium's V8 (153).
+  - A training run near an unstable point amplifies the difference. Experiment 05's plain recurrent comparison ends at 0.120 in Node and 0.869 in Chromium.
+  - Tests therefore assert such runs only in the runtime that produced them, or not at all, and the page claims no fixed outcome.
+- **The explorer's parameter picker names recurrent roles:** input weights W, recurrent weights U, biases b, and the gate for LSTM and GRU.
