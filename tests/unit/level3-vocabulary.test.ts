@@ -11,6 +11,7 @@ import { LEVEL_3 } from '../../src/learn/curriculum';
 import { L3Experiment01 } from '../../src/learn/level3/Experiment01';
 import { L3Experiment02 } from '../../src/learn/level3/Experiment02';
 import { L3Experiment03 } from '../../src/learn/level3/Experiment03';
+import { L3Experiment04 } from '../../src/learn/level3/Experiment04';
 import { Level3Landing } from '../../src/learn/pages/Level3Landing';
 
 const ORDER: Level3Id[] = ['01', '02', '03', '04'];
@@ -18,6 +19,7 @@ const PAGES: Partial<Record<Level3Id, () => ReactElement>> = {
   '01': L3Experiment01,
   '02': L3Experiment02,
   '03': L3Experiment03,
+  '04': L3Experiment04,
 };
 
 const text = (html: string): string =>

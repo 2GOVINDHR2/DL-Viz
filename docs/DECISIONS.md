@@ -935,3 +935,15 @@ Also clarified:
   | Replay, including segments rebuilt from Adam checkpoints | identical |
   | Held-out loss vs hand evaluation of the final parameters | 10⁻⁹; `compareRuns` equals the record |
   | Grammar | conforms for every new configuration |
+
+## ADR-099 — 2026-11-27 — Level 3 interface: four experiments on the shared learning shell
+- **Structure.** Level 3 is a third `LevelDescriptor` (`LEVEL_3`, status key `l3:`). It has its own routes (`#/level-3`, `#/level-3/experiment-NN`), landing page and Levels-page card. Every experiment uses `ExperimentLayout` (primer, tour, challenges, knowledge check), as Levels 1 and 2 do.
+- **Shared pieces** (`src/learn/level3/common`):
+  - `readUpdateSeries` reads one parameter value's updates from a record, including weight-decay and optimiser-state results.
+  - `useCompare` runs `compareRuns` in its own engine client.
+  - `RunsChart` draws several loss curves with a table for each.
+  - `useOwnRun`: a page shows the shared trace store's run only if its configuration is one the page itself trains.
+  - `RecordedRun` and `level3Wording` adapt the explorer wording to the optimiser.
+- **Engine values only.** Every number shown is recorded, trained by the engine (`compareRuns`), or labelled as derived. A "checked here" mark is a recomputation from recorded values, not a replacement for them.
+- **Navigating away releases the store** (`useRoute(onLeave)`), so a large Level 3 record does not stay in memory.
+- **Vocabulary.** `LEVEL3_TERMS` schedules terms by experiment; `tests/unit/level3-vocabulary.test.ts` renders every open page.
