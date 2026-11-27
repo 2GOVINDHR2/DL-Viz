@@ -61,3 +61,60 @@ export const LEVEL3_PAGES = [
   '/#/level-3/experiment-03',
   '/#/level-3/experiment-04',
 ];
+
+/**
+ * Level 4 (ADR-101–103): brings Experiment `n` (1–6) of `#/level-4/experiment-0n` to its explored or trained state:
+ * Experiment 01 (engine probes, nothing to train) is stepped and reconfigured; the others train and record, and run
+ * their comparison where the page has one.
+ */
+export async function trainLevel4(page: Page, n: number): Promise<void> {
+  const sec = (p: string) => page.locator(`section[aria-labelledby="l4-${n}${p}"]`);
+  const T = { timeout: 120_000 };
+  switch (n) {
+    case 1:
+      await page.locator('[data-control="a:next"]').click();
+      await page.locator('label:has([data-control="b:padding:1"])').click();
+      await page.locator('label:has([data-control="d:pattern:corner"])').click();
+      await expect(page.locator('[data-value="shape"]')).toHaveText('6×6');
+      return;
+    case 2:
+      await page.locator('[data-control="a:train"]').click();
+      await expect(page.locator('[data-value="prediction"]')).toBeVisible(T);
+      await expect(page.locator('[data-value="delta"]')).toBeVisible(T);
+      return;
+    case 3:
+      await page.locator('[data-control="a:train"]').click();
+      await expect(page.locator('tr[data-row="h"]')).toBeVisible(T);
+      await expect(page.locator('[data-prediction]')).toBeVisible(T);
+      return;
+    case 4:
+      await page.locator('[data-control="a:train"]').click();
+      await expect(page.locator('[data-value="dh"]')).toBeVisible(T);
+      await sec('d').locator('[data-control="d:compare"]').click();
+      await expect(page.locator('tr[data-window]')).toHaveCount(4, T);
+      return;
+    case 5:
+      await page.locator('[data-control="a:train"]').click();
+      await expect(page.locator('[data-lstm-step]')).toBeVisible(T);
+      await sec('d').locator('[data-control="d:compare"]').click();
+      await expect(page.locator('tr[data-kind="gru"] td').nth(1)).not.toHaveText('—', T);
+      return;
+    case 6:
+      await page.locator('[data-control="a:train"]').click();
+      await expect(page.locator('[data-value="distances"]')).toBeVisible(T);
+      await expect(page.locator('[data-value="loss"]')).toBeVisible(T);
+      await sec('e').locator('[data-control="e:compare"]').click();
+      await expect(page.locator('tr[data-latent]')).toHaveCount(4, T);
+      return;
+  }
+}
+
+export const LEVEL4_PAGES = [
+  '/#/level-4',
+  '/#/level-4/experiment-01',
+  '/#/level-4/experiment-02',
+  '/#/level-4/experiment-03',
+  '/#/level-4/experiment-04',
+  '/#/level-4/experiment-05',
+  '/#/level-4/experiment-06',
+];

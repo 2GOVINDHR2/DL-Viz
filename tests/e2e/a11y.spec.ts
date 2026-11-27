@@ -8,7 +8,7 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
 import { EXPERIMENTS } from '../../src/experiments/registry';
-import { LEVEL3_PAGES, openExperiment, trainLevel3, unlockAll } from './helpers';
+import { LEVEL3_PAGES, LEVEL4_PAGES, openExperiment, trainLevel3, trainLevel4, unlockAll } from './helpers';
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 const results: Record<
@@ -295,6 +295,35 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
           document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
         );
         await audit(page, `Level 3 experiment 0${n} trained (${scheme})`);
+      }
+    }
+  });
+
+  test('every Level 4 page, both themes: as opened with every disclosure open, the guided tour, and each experiment explored or trained', async ({
+    page,
+  }) => {
+    test.setTimeout(900_000);
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
+      for (const url of LEVEL4_PAGES) {
+        await page.goto(url);
+        await expect(page.locator('main h1').first()).toBeVisible();
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await audit(page, `Level 4 ${url} (${scheme})`);
+        const n = url.match(/experiment-0(\d)/)?.[1];
+        if (!n) continue;
+        if (n === '1') {
+          await page.locator('[data-control="tour:start"]').click();
+          await audit(page, `Level 4 experiment 01: tour open (${scheme})`);
+          await page.getByRole('button', { name: 'Skip tour' }).click();
+        }
+        await trainLevel4(page, Number(n));
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await audit(page, `Level 4 experiment 0${n} explored or trained (${scheme})`);
       }
     }
   });

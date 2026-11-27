@@ -83,8 +83,14 @@ export function LatentPlot({
       </svg>
       <figcaption className="lv-small lv-muted">
         {classes.map((c, k) => (
-          <span key={c} style={{ marginRight: 12 }}>
-            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <span key={c} style={{ marginRight: 12, whiteSpace: 'nowrap' }}>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              aria-hidden="true"
+              style={{ display: 'inline-block', verticalAlign: 'middle' }}
+            >
               <g fill={COLORS[k]} stroke="var(--lv-text)" strokeWidth={0.5}>
                 {mark(k, 7, 7, 5)}
               </g>
