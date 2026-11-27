@@ -13,6 +13,8 @@ import { describe, expect, it } from 'vitest';
 import type { DatasetSpec } from '../../src/core/engine/protocol';
 import type { TrainConfig } from '../../src/core/engine/session';
 import {
+  L4_BPTT,
+  l4BpttConfig,
   L4_CNN,
   l4CnnConfig,
   L4_RNN,
@@ -27,6 +29,7 @@ import { level4Wording, RNN_KINDS } from '../../src/learn/level4/common/wording'
 import { L4Experiment01 } from '../../src/learn/level4/Experiment01';
 import { L4Experiment02 } from '../../src/learn/level4/Experiment02';
 import { L4Experiment03 } from '../../src/learn/level4/Experiment03';
+import { L4Experiment04 } from '../../src/learn/level4/Experiment04';
 import { Level4Landing } from '../../src/learn/pages/Level4Landing';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
@@ -36,6 +39,7 @@ const PAGES: Partial<Record<Level4Id, () => ReactElement>> = {
   '01': L4Experiment01,
   '02': L4Experiment02,
   '03': L4Experiment03,
+  '04': L4Experiment04,
 };
 
 const text = (html: string): string =>
@@ -115,6 +119,25 @@ describe('Level 4 vocabulary', () => {
         'GRAD_SUM',
         'GRAD_ACCUMULATE',
         'OPTIMIZER_STATE',
+        'COMPUTE_UPDATE',
+        'APPLY_UPDATE',
+      ],
+      level4Wording(RNN_KINDS, level3Wording({ optimizer: 'adam', decay: false })),
+    ],
+    [
+      '04',
+      l4BpttConfig(),
+      L4_BPTT.dataset,
+      [
+        'SELECT_STEP',
+        'ADD',
+        'COMPUTE_LOSS',
+        'GRAD_INIT',
+        'GRAD_ACTIVATE',
+        'GRAD_MATMUL_W',
+        'GRAD_MATMUL_X',
+        'GRAD_SUM',
+        'GRAD_ACCUMULATE',
         'COMPUTE_UPDATE',
         'APPLY_UPDATE',
       ],

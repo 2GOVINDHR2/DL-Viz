@@ -89,6 +89,44 @@ export function l4RnnConfig(epochs = L4_RNN.epochs): TrainConfig {
   };
 }
 
+/**
+ * Experiment 04's task: is the FIRST of five values positive? The answer is at the start, the prediction at the end,
+ * so the gradient must travel back through every time step. Full BPTT learns it; truncated windows learn less
+ * (sweep: final loss 0.001 full, 0.504 window 1, 0.160 window 2, 0.079 window 3).
+ */
+export const L4_BPTT = {
+  dataset: { kind: 'sequence', task: 'first', n: 32, steps: 5, seed: 2 } as DatasetSpec,
+  steps: 5,
+  hidden: 4,
+  epochs: 60,
+  lr: 0.05,
+  batchSize: 8,
+  windows: [0, 1, 2, 3],
+};
+
+export function l4BpttConfig(window = 0, epochs = L4_BPTT.epochs): TrainConfig {
+  return {
+    seed: 1,
+    epochs,
+    batchSize: L4_BPTT.batchSize,
+    shuffle: false,
+    loss: 'bce',
+    optimizer: { type: 'adam', lr: L4_BPTT.lr, beta1: 0.9, beta2: 0.999, epsilon: 1e-8 },
+    boundaryGrid: 0,
+    model: {
+      inputShape: [L4_BPTT.steps, 1],
+      layers: [
+        {
+          type: 'extension',
+          kind: 'rnn',
+          options: window ? { hidden: L4_BPTT.hidden, window } : { hidden: L4_BPTT.hidden },
+        },
+        { type: 'dense', units: 1, activation: 'sigmoid' },
+      ],
+    },
+  };
+}
+
 const later = (
   id: string,
   title: string,
@@ -525,7 +563,10 @@ export const LEVEL4_EXPERIMENTS: LessonExperiment[] = [
             feedback: 'Right. h₃ = tanh(x₃·W + h₂·U + b), and h₂ already summarises x₁ and x₂.',
           },
           { text: 'Only x₃', feedback: 'That would be a dense layer applied to each step separately.' },
-          { text: 'x₁, x₂, x₃ through separate weights each', feedback: 'There are no separate weights per step.' },
+          {
+            text: 'x₁, x₂, x₃ through separate weights each',
+            feedback: 'There are no separate weights per step.',
+          },
         ],
       },
       {
@@ -550,18 +591,178 @@ export const LEVEL4_EXPERIMENTS: LessonExperiment[] = [
             feedback: 'Right. The recurrent connection forces the order h₁, h₂, h₃, …',
           },
           { text: 'The engine is slow', feedback: 'It is the computation itself that needs the order.' },
-          { text: 'The inputs arrive one per second', feedback: 'The whole sequence is available; hₜ still needs hₜ₋₁.' },
+          {
+            text: 'The inputs arrive one per second',
+            feedback: 'The whole sequence is available; hₜ still needs hₜ₋₁.',
+          },
         ],
       },
     ],
   },
-  later(
-    '04',
-    'Backpropagation Through Time: How Recurrent Networks Learn',
-    'Unroll the network over time and follow the gradient backward, step by step.',
-    '25–30 min',
-    'BPTT',
-  ),
+  {
+    id: '04',
+    title: 'Backpropagation Through Time: How Recurrent Networks Learn',
+    short: 'Unroll the network over time and follow the gradient backward, step by step.',
+    description:
+      'To train a recurrent network, the engine unrolls it over the time steps of a sequence and runs backpropagation through that unrolled network: backpropagation through time (BPTT). Here the network must remember the first of five numbers until the end. You follow the gradient backward from the loss through each time step, watch the shared weight U collect a contribution at every step, cut the backward pass short with truncation, and see when gradients shrink or grow on their way back.',
+    minutes: '25–30 min',
+    concept: 'BPTT',
+    objectives: [
+      'Explain why training a recurrent network needs the unrolled computation.',
+      'Follow the gradient backward through the time steps of one recorded example.',
+      'Show that the shared weight U receives one contribution per time step, and that they are added up.',
+      'Compare full backpropagation through time with truncated windows.',
+      'Recognise vanishing and exploding gradients in recorded gradient sizes.',
+    ],
+    outcomes: [
+      'how the gradient travels back through time',
+      'why a shared weight’s gradient is a sum over time steps',
+      'what truncation leaves out, and why gradients can vanish or explode',
+    ],
+    primer: {
+      intro:
+        'Backpropagation needs the graph of the computation. For a recurrent network that graph is the unrolled network: one copy of the layer per time step, all sharing the same weights.',
+      terms: [
+        {
+          term: 'Backpropagation through time (BPTT)',
+          meaning:
+            'Ordinary backpropagation applied to the unrolled network, from the last time step back to the first.',
+          role: 'weight',
+        },
+        {
+          term: 'Gradient of a hidden state',
+          meaning:
+            'How the loss changes when hₜ changes. It arrives from the next time step (and, at the last step, from the output layer).',
+        },
+        {
+          term: 'Shared-weight accumulation',
+          meaning: 'U is used at every time step, so its gradient is the sum of one contribution per step.',
+          role: 'correct',
+        },
+        {
+          term: 'Truncated BPTT',
+          meaning:
+            'Sending the gradient back through only the last k time steps. Cheaper, but dependencies longer than k steps are not learned directly.',
+        },
+        {
+          term: 'Vanishing and exploding gradients',
+          meaning:
+            'Each step back multiplies the gradient by U and by tanh’s slope. Repeated, that can shrink it towards 0 or blow it up.',
+          role: 'incorrect',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'bp-forward',
+        title: 'Forward, unrolled',
+        text: 'The forward pass computes h₁ … h₅. The answer depends on x₁, but the prediction comes after h₅.',
+        doThis: 'Train and record.',
+        waitFor: 'trained',
+      },
+      {
+        target: 'bp-backward',
+        title: 'Backward through time',
+        text: 'The gradient starts at the loss and moves back one time step at a time.',
+        doThis: 'Step back to an earlier time step.',
+        waitFor: 'bp-step-moved',
+      },
+      {
+        target: 'bp-accumulate',
+        title: 'One U, several contributions',
+        text: 'Each time step adds its own contribution to U’s gradient; the record adds them up.',
+        doThis: 'Choose another entry of U.',
+        waitFor: 'bp-entry-picked',
+      },
+      {
+        target: 'bp-truncate',
+        title: 'Truncation',
+        text: 'A window of k time steps cuts the backward pass after k steps.',
+        doThis: 'Train the comparison.',
+        waitFor: 'bp-compared',
+      },
+    ],
+    challenges: [
+      {
+        id: 'bp-first',
+        title: 'Back to the start',
+        prompt: 'In Part B, step back to time step 1 and compare its gradient size with time step 5.',
+        notice: 'The gradient that reaches x₁’s step is the one that teaches the network to remember it.',
+        doneOn: 'bp-first-reached',
+      },
+      {
+        id: 'bp-explode',
+        title: 'Make it explode',
+        prompt: 'In Part E, find settings where the gradient grows on its way back.',
+        notice:
+          'With a large U and small inputs, tanh stays in its steep middle, and each step back multiplies by more than 1.',
+        doneOn: 'bp-explode-found',
+      },
+      {
+        id: 'bp-vanish',
+        title: 'Make it vanish',
+        prompt:
+          'In Part E, find settings where the gradient at step 1 is less than a hundredth of the one at step 8.',
+        notice: 'A small U, or a saturated tanh, multiplies the gradient by less than 1 at every step back.',
+        doneOn: 'bp-vanish-found',
+      },
+    ],
+    questions: [
+      {
+        id: 'bp-sum',
+        kind: 'choice',
+        prompt: 'U is used at time steps 2, 3, 4 and 5 of an example. What is U’s gradient for that example?',
+        options: [
+          {
+            text: 'The sum of the four contributions, one per time step',
+            correct: true,
+            feedback: 'Right. A value used several times collects the sum of its contributions.',
+          },
+          {
+            text: 'Only the last time step’s contribution',
+            feedback: 'That is what truncation to one step would give.',
+          },
+          {
+            text: 'Their average',
+            feedback: 'They are added, not averaged (the batch average comes later).',
+          },
+        ],
+      },
+      {
+        id: 'bp-trunc',
+        kind: 'scenario',
+        prompt:
+          'With truncated BPTT over the last 2 time steps, the label depends on x₁ of a 5-step sequence. What is the problem?',
+        options: [
+          {
+            text: 'No gradient reaches time step 1, so the weights are never directly taught to keep x₁',
+            correct: true,
+            feedback: 'Right. Part D shows the truncated runs learning this task far less well.',
+          },
+          { text: 'The forward pass skips x₁', feedback: 'Truncation changes only the backward pass.' },
+          {
+            text: 'Nothing: truncation only makes training faster',
+            feedback: 'It also leaves out long dependencies.',
+          },
+        ],
+      },
+      {
+        id: 'bp-factor',
+        kind: 'choice',
+        prompt:
+          'Going back one time step multiplies the gradient roughly by 0.5. After 10 steps back it is about…',
+        options: [
+          {
+            text: '0.001 of its size (0.5¹⁰)',
+            correct: true,
+            feedback: 'Right. That is a vanishing gradient.',
+          },
+          { text: 'half its size', feedback: 'The factor applies at every step: 0.5¹⁰ ≈ 0.001.' },
+          { text: '5 times its size', feedback: 'A factor below 1 shrinks it at every step.' },
+        ],
+      },
+    ],
+  },
   later(
     '05',
     'LSTM and GRU: Gated Recurrent Architectures',

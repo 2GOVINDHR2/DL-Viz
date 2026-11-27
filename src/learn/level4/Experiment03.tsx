@@ -241,8 +241,8 @@ function PartB({ steps, jump }: { steps: RnnStep[] | null; jump: (n: number) => 
       <p className="lv-part-kicker">Part B</p>
       <h3 id="l4-3b">One time step</h3>
       <p className="lv-muted">
-        hₜ = tanh(xₜ·W + hₜ₋₁·U + b): the current input and the previous hidden state, each through
-        its own weights.
+        hₜ = tanh(xₜ·W + hₜ₋₁·U + b): the current input and the previous hidden state, each through its own
+        weights.
       </p>
       <div className="lv-viz" data-tour="rn-step" data-step={s.t}>
         <div className="lv-row" style={{ gap: 'var(--lv-s2)' }}>

@@ -20,6 +20,7 @@ import { Level4Landing } from './pages/Level4Landing';
 import { L4Experiment01 } from './level4/Experiment01';
 import { L4Experiment02 } from './level4/Experiment02';
 import { L4Experiment03 } from './level4/Experiment03';
+import { L4Experiment04 } from './level4/Experiment04';
 import { L3Experiment01 } from './level3/Experiment01';
 import { L3Experiment02 } from './level3/Experiment02';
 import { L3Experiment03 } from './level3/Experiment03';
@@ -51,6 +52,7 @@ const L4_EXPERIMENTS: Record<string, () => ReactElement> = {
   '01': L4Experiment01,
   '02': L4Experiment02,
   '03': L4Experiment03,
+  '04': L4Experiment04,
 };
 const L2_EXPERIMENTS: Record<string, () => ReactElement> = {
   '01': L2Experiment01,
