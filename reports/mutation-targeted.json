@@ -797,5 +797,68 @@
     "mutant": "the weight after is shown 0.01 higher",
     "outcome": "killed",
     "detail": "failed at 107: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp01.spec:33",
+    "claim": "the engine value shown equals the worked sum",
+    "mutant": "the engine value is shown off by one",
+    "outcome": "killed",
+    "detail": "failed at 33: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp01.spec:34",
+    "claim": "the value at position 3 is the known feature-map value",
+    "mutant": "both the sum and the engine value are shown off by one",
+    "outcome": "killed",
+    "detail": "failed at 34: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp01.spec:48",
+    "claim": "every position's engine value is the feature-map value",
+    "mutant": "the engine value is shown off by one",
+    "outcome": "killed",
+    "detail": "failed at 48: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp01.spec:49",
+    "claim": "each position shows the check mark",
+    "mutant": "the check is inverted",
+    "outcome": "killed",
+    "detail": "failed at 49: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level4-exp01.spec:67",
+    "claim": "the formula's size matches the feature map",
+    "mutant": "the formula result is shown off by one",
+    "outcome": "killed",
+    "detail": "failed at 67: Error: ⌊(6 + 2·0 − 3)/1⌋ + 1 = 5"
+  },
+  {
+    "id": "level4-exp01.spec:84",
+    "claim": "each pooled cell is checked",
+    "mutant": "the pooling check is inverted",
+    "outcome": "killed",
+    "detail": "failed at 84: Error: max 0"
+  },
+  {
+    "id": "level4-exp02.spec:54",
+    "claim": "the final loss is below 0.1",
+    "mutant": "the final loss is shown 1 higher",
+    "outcome": "killed",
+    "detail": "failed at 54: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:55",
+    "claim": "the final accuracy is 100 %",
+    "mutant": "the final accuracy is shown at 90 %",
+    "outcome": "killed",
+    "detail": "failed at 55: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp02.spec:56",
+    "claim": "the loss fell from epoch 1",
+    "mutant": "epoch 1 shows the final loss",
+    "outcome": "killed",
+    "detail": "failed at 56: Error: expect(received).toBeGreaterThan(expected)"
   }
 ]
