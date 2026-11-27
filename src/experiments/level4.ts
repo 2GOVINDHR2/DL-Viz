@@ -127,6 +127,51 @@ export function l4BpttConfig(window = 0, epochs = L4_BPTT.epochs): TrainConfig {
   };
 }
 
+/** Experiment 05: recorded LSTM and GRU runs on the first-value task (6 steps), and a comparison on 10 steps. */
+export const L4_GATED = {
+  dataset: { kind: 'sequence', task: 'first', n: 16, steps: 6, seed: 2 } as DatasetSpec,
+  steps: 6,
+  hidden: 3,
+  epochs: 40,
+  lr: 0.05,
+  batchSize: 8,
+  compare: {
+    dataset: { kind: 'sequence', task: 'first', n: 32, steps: 10, seed: 2 } as DatasetSpec,
+    steps: 10,
+    hidden: 4,
+    epochs: 80,
+    seeds: [1, 2, 3],
+  },
+};
+
+const sequenceConfig = (
+  kind: string,
+  hidden: number,
+  steps: number,
+  epochs: number,
+  seed: number,
+): TrainConfig => ({
+  seed,
+  epochs,
+  batchSize: 8,
+  shuffle: false,
+  loss: 'bce',
+  optimizer: { type: 'adam', lr: 0.05, beta1: 0.9, beta2: 0.999, epsilon: 1e-8 },
+  boundaryGrid: 0,
+  model: {
+    inputShape: [steps, 1],
+    layers: [
+      { type: 'extension', kind, options: { hidden } },
+      { type: 'dense', units: 1, activation: 'sigmoid' },
+    ],
+  },
+});
+
+export const l4GatedConfig = (kind: 'lstm' | 'gru'): TrainConfig =>
+  sequenceConfig(kind, L4_GATED.hidden, L4_GATED.steps, L4_GATED.epochs, 1);
+export const l4GatedCompareConfig = (kind: 'rnn' | 'lstm' | 'gru', seed: number): TrainConfig =>
+  sequenceConfig(kind, L4_GATED.compare.hidden, L4_GATED.compare.steps, L4_GATED.compare.epochs, seed);
+
 const later = (
   id: string,
   title: string,
@@ -763,13 +808,161 @@ export const LEVEL4_EXPERIMENTS: LessonExperiment[] = [
       },
     ],
   },
-  later(
-    '05',
-    'LSTM and GRU: Gated Recurrent Architectures',
-    'Gates that decide what to keep, what to forget and what to output.',
-    '25–30 min',
-    'Gated recurrence',
-  ),
+  {
+    id: '05',
+    title: 'LSTM and GRU: Gated Recurrent Architectures',
+    short: 'Gates that decide what to keep, what to forget and what to output.',
+    description:
+      'A plain recurrent layer rewrites its whole hidden state at every time step, and its gradient is squeezed by tanh and U at every step back. Gated layers add small sigmoid “gates”, numbers between 0 and 1 that decide, value by value, what to keep, what to write and what to show. Here you look inside an LSTM cell and a GRU cell, step by step, in real recorded runs, and compare them with a plain recurrent layer on a task that needs memory.',
+    minutes: '25–30 min',
+    concept: 'Gated recurrence',
+    objectives: [
+      'Read an LSTM step from the record: forget, input and output gates, the candidate, the cell state and the hidden state.',
+      'Explain how the forget and input gates decide what the cell state keeps and what it adds.',
+      'Read a GRU step: update and reset gates, the candidate and the new hidden state.',
+      'Explain why an LSTM has a separate cell state and a GRU does not.',
+      'Compare LSTM, GRU and a plain recurrent layer by parameters and training, without declaring a universal winner.',
+    ],
+    outcomes: [
+      'what each gate controls',
+      'how a cell state can carry information (and gradient) across many steps',
+      'how LSTM and GRU differ',
+    ],
+    primer: {
+      intro:
+        'A gate is a vector of sigmoid outputs between 0 and 1, multiplied element by element with another vector: 1 lets a value through, 0 blocks it.',
+      terms: [
+        {
+          term: 'LSTM (long short-term memory)',
+          meaning:
+            'A recurrent cell with two states: the cell state c, a memory that is changed only by gated addition, and the hidden state h it shows to the rest of the network.',
+          role: 'weight',
+        },
+        {
+          term: 'Forget gate f and input gate i',
+          meaning:
+            'cₜ = f ⊙ cₜ₋₁ + i ⊙ g: f decides how much of the old memory to keep, i how much of the candidate g to write.',
+          role: 'correct',
+        },
+        {
+          term: 'Output gate o',
+          meaning: 'hₜ = o ⊙ tanh(cₜ): how much of the memory to show as the hidden state.',
+        },
+        {
+          term: 'GRU (gated recurrent unit)',
+          meaning:
+            'A simpler gated cell with no separate cell state: hₜ = (1 − z) ⊙ n + z ⊙ hₜ₋₁, where the update gate z decides how much of the old state to keep.',
+          role: 'bias',
+        },
+        {
+          term: 'Reset gate r',
+          meaning: 'In a GRU, how much of the previous hidden state the candidate n may use.',
+          role: 'input',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'gt-lstm',
+        title: 'An LSTM step',
+        text: 'Each gate is a sigmoid of the input and the previous hidden state; together they update the cell state.',
+        doThis: 'Train and record the LSTM.',
+        waitFor: 'trained',
+      },
+      {
+        target: 'gt-gates',
+        title: 'What the gates do',
+        text: 'Where f is near 1 the memory is kept; where i is near 1 the candidate is written.',
+        doThis: 'Move to another time step.',
+        waitFor: 'gt-step-moved',
+      },
+      {
+        target: 'gt-gru',
+        title: 'A GRU step',
+        text: 'One state only: the update gate mixes the old hidden state with a new candidate.',
+        doThis: 'Train and record the GRU.',
+        waitFor: 'gt-gru-trained',
+      },
+      {
+        target: 'gt-compare',
+        title: 'Three layers compared',
+        text: 'The same task, ten time steps, three kinds of recurrent layer.',
+        doThis: 'Train the comparison.',
+        waitFor: 'gt-compared',
+      },
+    ],
+    challenges: [
+      {
+        id: 'gt-keep',
+        title: 'Keep it',
+        prompt: 'In Part B, find a time step and a unit whose forget gate is above 0.9.',
+        notice: 'There the cell state passes almost unchanged to the next step: memory kept.',
+        doneOn: 'gt-keep-found',
+      },
+      {
+        id: 'gt-seed',
+        title: 'No universal winner',
+        prompt: 'In Part D, compare the three layers for two different seeds.',
+        notice: 'The ranking can change with the starting weights; one run proves little.',
+        doneOn: 'gt-seed-changed',
+      },
+      {
+        id: 'gt-count',
+        title: 'The cost of gates',
+        prompt: 'In Part D, compare the parameter counts.',
+        notice: 'An LSTM has four sets of W, U and b; a GRU three; a plain recurrent layer one.',
+        doneOn: 'gt-compared',
+      },
+    ],
+    questions: [
+      {
+        id: 'gt-forget',
+        kind: 'predict',
+        prompt:
+          'An LSTM unit has cₜ₋₁ = 2, forget gate f = 0.5, input gate i = 1 and candidate g = −0.4. What is cₜ?',
+        options: [
+          { text: '0.6', correct: true, feedback: 'Right. cₜ = 0.5 × 2 + 1 × (−0.4) = 0.6.' },
+          { text: '1.6', feedback: 'The old value is multiplied by f first: 0.5 × 2 = 1.' },
+          { text: '−0.4', feedback: 'That forgets everything (f = 0); here f = 0.5.' },
+        ],
+      },
+      {
+        id: 'gt-gru-state',
+        kind: 'choice',
+        prompt: 'What does a GRU not have that an LSTM has?',
+        options: [
+          {
+            text: 'A separate cell state',
+            correct: true,
+            feedback: 'Right. A GRU keeps only the hidden state and mixes it with the candidate.',
+          },
+          { text: 'Gates', feedback: 'It has two: update and reset.' },
+          { text: 'Shared weights across time', feedback: 'Both share their weights across time steps.' },
+        ],
+      },
+      {
+        id: 'gt-gradient',
+        kind: 'scenario',
+        prompt:
+          'Why can an LSTM carry a gradient across many time steps more easily than a plain recurrent layer?',
+        options: [
+          {
+            text: 'Along the cell state the gradient is only multiplied by the forget gate, which can stay near 1',
+            correct: true,
+            feedback: 'Right. No tanh slope and no U on that path, unless the network learns to forget.',
+          },
+          {
+            text: 'It has more parameters',
+            feedback: 'More parameters alone do not change how the gradient flows.',
+          },
+          {
+            text: 'It uses a larger learning rate',
+            feedback: 'The learning rate is the same; the path is different.',
+          },
+        ],
+      },
+    ],
+  },
   later(
     '06',
     'Autoencoders: Learning Latent Representations',

@@ -16,6 +16,8 @@ import {
   L4_BPTT,
   l4BpttConfig,
   L4_CNN,
+  L4_GATED,
+  l4GatedConfig,
   l4CnnConfig,
   L4_RNN,
   l4RnnConfig,
@@ -30,6 +32,7 @@ import { L4Experiment01 } from '../../src/learn/level4/Experiment01';
 import { L4Experiment02 } from '../../src/learn/level4/Experiment02';
 import { L4Experiment03 } from '../../src/learn/level4/Experiment03';
 import { L4Experiment04 } from '../../src/learn/level4/Experiment04';
+import { GATED_KINDS, L4Experiment05 } from '../../src/learn/level4/Experiment05';
 import { Level4Landing } from '../../src/learn/pages/Level4Landing';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
@@ -40,6 +43,7 @@ const PAGES: Partial<Record<Level4Id, () => ReactElement>> = {
   '02': L4Experiment02,
   '03': L4Experiment03,
   '04': L4Experiment04,
+  '05': L4Experiment05,
 };
 
 const text = (html: string): string =>
@@ -142,6 +146,24 @@ describe('Level 4 vocabulary', () => {
         'APPLY_UPDATE',
       ],
       level4Wording(RNN_KINDS, level3Wording({ optimizer: 'adam', decay: false })),
+    ],
+    [
+      '05',
+      l4GatedConfig('lstm'),
+      L4_GATED.dataset,
+      [
+        'SELECT_STEP',
+        'MULTIPLY',
+        'ADD',
+        'ACTIVATE',
+        'COMPUTE_LOSS',
+        'GRAD_MULTIPLY',
+        'GRAD_ACTIVATE',
+        'GRAD_SUM',
+        'GRAD_ACCUMULATE',
+        'APPLY_UPDATE',
+      ],
+      level4Wording(GATED_KINDS, level3Wording({ optimizer: 'adam', decay: false })),
     ],
   ];
   for (const [id, config, dataset, kinds, words = level4Wording()] of RECORDED)
