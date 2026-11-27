@@ -1517,5 +1517,723 @@
     ],
     "spec": "tests/e2e/level3-exp04.spec.ts",
     "grep": "Part C"
+  },
+  {
+    "ids": ["level4-exp01.spec:33"],
+    "claim": "the engine value shown equals the worked sum",
+    "mutant": "the engine value is shown off by one",
+    "file": "src/learn/level4/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{fmt(engine, 0)}{' '}",
+        "replace": "{fmt(engine + 1, 0)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp01.spec.ts",
+    "grep": "stepping to position 3"
+  },
+  {
+    "ids": ["level4-exp01.spec:34"],
+    "claim": "the value at position 3 is the known feature-map value",
+    "mutant": "both the sum and the engine value are shown off by one",
+    "file": "src/learn/level4/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{fmt(engine, 0)}{' '}",
+        "replace": "{fmt(engine + 1, 0)}{' '}"
+      },
+      {
+        "find": "= {fmt(sum, 0)}",
+        "replace": "= {fmt(sum + 1, 0)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp01.spec.ts",
+    "grep": "stepping to position 3"
+  },
+  {
+    "ids": ["level4-exp01.spec:48"],
+    "claim": "every position's engine value is the feature-map value",
+    "mutant": "the engine value is shown off by one",
+    "file": "src/learn/level4/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{fmt(engine, 0)}{' '}",
+        "replace": "{fmt(engine + 1, 0)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp01.spec.ts",
+    "grep": "every position matches"
+  },
+  {
+    "ids": ["level4-exp01.spec:49"],
+    "claim": "each position shows the check mark",
+    "mutant": "the check is inverted",
+    "file": "src/learn/level4/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{close(sum, engine) ? '✓ equals the sum'",
+        "replace": "{!close(sum, engine) ? '✓ equals the sum'"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp01.spec.ts",
+    "grep": "every position matches"
+  },
+  {
+    "ids": ["level4-exp01.spec:67"],
+    "claim": "the formula's size matches the feature map",
+    "mutant": "the formula result is shown off by one",
+    "file": "src/learn/level4/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "= {formula}",
+        "replace": "= {formula + 1}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp01.spec.ts",
+    "grep": "stride and padding"
+  },
+  {
+    "ids": ["level4-exp01.spec:84"],
+    "claim": "each pooled cell is checked",
+    "mutant": "the pooling check is inverted",
+    "file": "src/learn/level4/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{close(worked, pool.out[cell]) ? '✓' : '✕ differs'}",
+        "replace": "{!close(worked, pool.out[cell]) ? '✓' : '✕ differs'}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp01.spec.ts",
+    "grep": "max and average pooling"
+  },
+  {
+    "ids": ["level4-exp02.spec:54"],
+    "claim": "the final loss is below 0.1",
+    "mutant": "the final loss is shown 1 higher",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "loss {fmt(epochs.at(-1)!.evalLoss, 3)}",
+        "replace": "loss {fmt(epochs.at(-1)!.evalLoss + 1, 3)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "training reaches a low loss"
+  },
+  {
+    "ids": ["level4-exp02.spec:55"],
+    "claim": "the final accuracy is 100 %",
+    "mutant": "the final accuracy is shown at 90 %",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{pct(epochs.at(-1)!.evalAccuracy)}{' '}",
+        "replace": "{pct(epochs.at(-1)!.evalAccuracy * 0.9)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "training reaches a low loss"
+  },
+  {
+    "ids": ["level4-exp02.spec:56"],
+    "claim": "the loss fell from epoch 1",
+    "mutant": "epoch 1 shows the final loss",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "loss {fmt(epochs[0].evalLoss, 3)}",
+        "replace": "loss {fmt(epochs.at(-1)!.evalLoss, 3)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "training reaches a low loss"
+  },
+  {
+    "ids": ["level4-exp02.spec:75"],
+    "claim": "the correct class is marked",
+    "mutant": "the correct-class marker is removed",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{i === truth ? ' (correct class)' : ''}",
+        "replace": "{i === -1 ? ' (correct class)' : ''}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "probabilities, loss and prediction agree"
+  },
+  {
+    "ids": ["level4-exp02.spec:76"],
+    "claim": "the probabilities sum to 1",
+    "mutant": "the probabilities are shown scaled by 0.9",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(ex.probs[i], 3)}</td>",
+        "replace": "<td className=\"num\">{fmt(ex.probs[i] * 0.9, 3)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "probabilities, loss and prediction agree"
+  },
+  {
+    "ids": ["level4-exp02.spec:78"],
+    "claim": "the loss is −ln(probability of the correct class)",
+    "mutant": "the loss is shown 0.1 higher",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{fmt(ex.loss, 4)}{' '}",
+        "replace": "{fmt(ex.loss + 0.1, 4)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "probabilities, loss and prediction agree"
+  },
+  {
+    "ids": ["level4-exp02.spec:83"],
+    "claim": "the prediction is the class with the largest probability",
+    "mutant": "the next class is named",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{L4_CNN.classes[pred]} {pred === truth",
+        "replace": "{L4_CNN.classes[(pred + 1) % 3]} {pred === truth"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "probabilities, loss and prediction agree"
+  },
+  {
+    "ids": ["level4-exp02.spec:85"],
+    "claim": "the first images are predicted correctly",
+    "mutant": "the correct/wrong mark is inverted",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{pred === truth ? '✓ correct' : '✕ wrong'}",
+        "replace": "{pred !== truth ? '✓ correct' : '✕ wrong'}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "probabilities, loss and prediction agree"
+  },
+  {
+    "ids": ["level4-exp02.spec:114"],
+    "claim": "the step is checked as −η·ḡ",
+    "mutant": "the check is inverted",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{close(-u.lr * u.grad, u.delta) ? '✓ −η·ḡ, checked here'",
+        "replace": "{!close(-u.lr * u.grad, u.delta) ? '✓ −η·ḡ, checked here'"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "the recorded step is -eta"
+  },
+  {
+    "ids": ["level4-exp02.spec:116"],
+    "claim": "the step equals −η·ḡ",
+    "mutant": "the step is shown doubled",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(u.delta, 6)}{' '}",
+        "replace": "{fmtSigned(u.delta * 2, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "the recorded step is -eta"
+  },
+  {
+    "ids": ["level4-exp02.spec:118"],
+    "claim": "before + step = after",
+    "mutant": "the after value is shown 0.01 higher",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{fmt(u.before, 4)} → {fmt(u.after, 4)}",
+        "replace": "{fmt(u.before, 4)} → {fmt(u.after + 0.01, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "the recorded step is -eta"
+  },
+  {
+    "ids": ["level4-exp02.spec:124"],
+    "claim": "the next update starts where the previous ended",
+    "mutant": "before and after are shifted by an amount that grows with the update number",
+    "file": "src/learn/level4/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{fmt(u.before, 4)} → {fmt(u.after, 4)}",
+        "replace": "{fmt(u.before + u.n * 0.01, 4)} → {fmt(u.after + u.n * 0.01, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp02.spec.ts",
+    "grep": "the recorded step is -eta"
+  },
+  {
+    "ids": ["level4-exp03.spec:73"],
+    "claim": "the inputs lie in [−1, 1]",
+    "mutant": "the inputs are shown 2 higher",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(s.x[0], 2)}",
+        "replace": "{fmtSigned(s.x[0] + 2, 2)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "the unrolled table shows five inputs"
+  },
+  {
+    "ids": ["level4-exp03.spec:78"],
+    "claim": "each hidden state has four values",
+    "mutant": "one value of each hidden state is dropped",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{values(s.h)\n                          .map((v) => fmt(v, 2))",
+        "replace": "{values(s.h)\n                          .slice(1).map((v) => fmt(v, 2))"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "the unrolled table shows five inputs"
+  },
+  {
+    "ids": ["level4-exp03.spec:80"],
+    "claim": "the hidden-state values are numbers",
+    "mutant": "positive values are shown as text",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{values(s.h)\n                          .map((v) => fmt(v, 2))",
+        "replace": "{values(s.h)\n                          .map((v) => (v > 0 ? 'x' : fmt(v, 2)))"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "the unrolled table shows five inputs"
+  },
+  {
+    "ids": ["level4-exp03.spec:81"],
+    "claim": "the hidden-state values are at least −1",
+    "mutant": "the values are shown 3 lower",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{values(s.h)\n                          .map((v) => fmt(v, 2))",
+        "replace": "{values(s.h)\n                          .map((v) => fmt(v - 3, 2))"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "the unrolled table shows five inputs"
+  },
+  {
+    "ids": ["level4-exp03.spec:82"],
+    "claim": "the hidden-state values are at most 1",
+    "mutant": "the values are shown 3 higher",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{values(s.h)\n                          .map((v) => fmt(v, 2))",
+        "replace": "{values(s.h)\n                          .map((v) => fmt(v + 3, 2))"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "the unrolled table shows five inputs"
+  },
+  {
+    "ids": ["level4-exp03.spec:106"],
+    "claim": "hₜ₋₁ has four values",
+    "mutant": "one value of hₜ₋₁ is dropped",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{s.hPrev ? vec(s.hPrev, 4)",
+        "replace": "{s.hPrev ? vec(Array.from(s.hPrev).slice(1), 4)"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "one time step is taken apart"
+  },
+  {
+    "ids": ["level4-exp03.spec:158"],
+    "claim": "the label follows the sign of the sum",
+    "mutant": "the label is inverted",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(sum, 2)} → label {target}",
+        "replace": "{fmtSigned(sum, 2)} → label {1 - (target ?? 0)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "label, prediction and loss agree"
+  },
+  {
+    "ids": ["level4-exp03.spec:162"],
+    "claim": "the loss is checked",
+    "mutant": "the check is inverted",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "Math.abs(bce - loss) < 1e-9 ? '✓ checked here'",
+        "replace": "Math.abs(bce - loss) > 1e-9 ? '✓ checked here'"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "label, prediction and loss agree"
+  },
+  {
+    "ids": ["level4-exp03.spec:164"],
+    "claim": "the loss is the binary cross-entropy of p",
+    "mutant": "the loss is shown 0.1 higher",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{fmt(loss, 4)}{' '}",
+        "replace": "{fmt(loss! + 0.1, 4)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "label, prediction and loss agree"
+  },
+  {
+    "ids": ["level4-exp03.spec:178"],
+    "claim": "the loss at epoch 1 is larger than at epoch 40",
+    "mutant": "the epoch-1 loss is shown as 0",
+    "file": "src/learn/level4/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{fmt(loss, 4)}{' '}",
+        "replace": "{fmt(ex.epoch === 0 ? 0 : loss, 4)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp03.spec.ts",
+    "grep": "label, prediction and loss agree"
+  },
+  {
+    "ids": ["level4-exp04.spec:51"],
+    "claim": "what step t sends back arrives at step t − 1",
+    "mutant": "the gradient sent back is shown 0.01 higher",
+    "file": "src/learn/level4/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{b.dhPrev ? vec(values(b.dhPrev))",
+        "replace": "{b.dhPrev ? vec(values(b.dhPrev).map((v) => v + 0.01))"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp04.spec.ts",
+    "grep": "the backward pass starts at t = 5"
+  },
+  {
+    "ids": ["level4-exp04.spec:92"],
+    "claim": "full BPTT ends below 0.01",
+    "mutant": "every final loss is shown 0.01 higher",
+    "file": "src/learn/level4/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.run.losses.at(-1)! + 0.01, 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp04.spec.ts",
+    "grep": "full BPTT beats every window"
+  },
+  {
+    "ids": ["level4-exp04.spec:93"],
+    "claim": "full BPTT ends below every window",
+    "mutant": "window 3's loss is shown as 0.0001",
+    "file": "src/learn/level4/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(L4_BPTT.windows[i] === 3 ? 0.0001 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp04.spec.ts",
+    "grep": "full BPTT beats every window"
+  },
+  {
+    "ids": ["level4-exp04.spec:94"],
+    "claim": "window 1 ends above window 2",
+    "mutant": "window 2's loss is shown as 9",
+    "file": "src/learn/level4/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(L4_BPTT.windows[i] === 2 ? 9 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp04.spec.ts",
+    "grep": "full BPTT beats every window"
+  },
+  {
+    "ids": ["level4-exp04.spec:95"],
+    "claim": "window 2 ends above window 3",
+    "mutant": "window 3's loss is shown as 9",
+    "file": "src/learn/level4/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(L4_BPTT.windows[i] === 3 ? 9 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp04.spec.ts",
+    "grep": "full BPTT beats every window"
+  },
+  {
+    "ids": ["level4-exp05.spec:59"],
+    "claim": "kept + written = cₜ in the gate table",
+    "mutant": "the written part is shown doubled",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmtSigned(s.i[j] * s.g[j], 3)}</td>",
+        "replace": "<td className=\"num\">{fmtSigned(2 * s.i[j] * s.g[j], 3)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:60"],
+    "claim": "the table's cₜ is the step's cₜ",
+    "mutant": "the step's cₜ is shown 0.01 higher",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "{vec(s.c)} <span className=\"lv-small\">{cOk",
+        "replace": "{vec(Array.from(s.c).map((v) => v + 0.01))} <span className=\"lv-small\">{cOk"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:71"],
+    "claim": "the forget gate has three values",
+    "mutant": "one forget-gate value is dropped",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "data-value=\"f\">\n        {vec(s.f)}",
+        "replace": "data-value=\"f\">\n        {vec(Array.from(s.f).slice(1))}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:73"],
+    "claim": "the gate values are above 0",
+    "mutant": "the forget gate is shown 1 lower",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "data-value=\"f\">\n        {vec(s.f)}",
+        "replace": "data-value=\"f\">\n        {vec(Array.from(s.f).map((v) => v - 1))}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:74"],
+    "claim": "the gate values are below 1",
+    "mutant": "the forget gate is shown 1 higher",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "data-value=\"f\">\n        {vec(s.f)}",
+        "replace": "data-value=\"f\">\n        {vec(Array.from(s.f).map((v) => v + 1))}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:78"],
+    "claim": "the candidate has three values",
+    "mutant": "one candidate value is dropped",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "data-value=\"g\">\n        {vec(s.g)}",
+        "replace": "data-value=\"g\">\n        {vec(Array.from(s.g).slice(1))}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:80"],
+    "claim": "the candidate is above −1",
+    "mutant": "the candidate is shown 2 lower",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "data-value=\"g\">\n        {vec(s.g)}",
+        "replace": "data-value=\"g\">\n        {vec(Array.from(s.g).map((v) => v - 2))}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:81"],
+    "claim": "the candidate is below 1",
+    "mutant": "the candidate is shown 2 higher",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "data-value=\"g\">\n        {vec(s.g)}",
+        "replace": "data-value=\"g\">\n        {vec(Array.from(s.g).map((v) => v + 2))}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "LSTM: overview, gates"
+  },
+  {
+    "ids": ["level4-exp05.spec:127"],
+    "claim": "the LSTM learns the 10-step task",
+    "mutant": "the LSTM's loss is shown 1 higher",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "{runs ? fmt(runs[i].run.losses.at(-1), 4) : '—'}",
+        "replace": "{runs ? fmt(runs[i].run.losses.at(-1)! + (k === 'lstm' ? 1 : 0), 4) : '—'}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "parameter counts and the comparison"
+  },
+  {
+    "ids": ["level4-exp05.spec:128"],
+    "claim": "the GRU learns the 10-step task",
+    "mutant": "the GRU's loss is shown 1 higher",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "{runs ? fmt(runs[i].run.losses.at(-1), 4) : '—'}",
+        "replace": "{runs ? fmt(runs[i].run.losses.at(-1)! + (k === 'gru' ? 1 : 0), 4) : '—'}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "parameter counts and the comparison"
+  },
+  {
+    "ids": ["level4-exp05.spec:166"],
+    "claim": "an option is the recorded cₜ",
+    "mutant": "the right option is shown 0.01 off",
+    "file": "src/learn/level4/Experiment05.tsx",
+    "patches": [
+      {
+        "find": "{ t: fmtSigned(c, 4), ok: true }",
+        "replace": "{ t: fmtSigned(c + 0.01, 4), ok: true }"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp05.spec.ts",
+    "grep": "live question accepts the recorded cell"
+  },
+  {
+    "ids": ["level4-exp06.spec:65"],
+    "claim": "the within-class distance is measured (above 0)",
+    "mutant": "the within-class distance is shown as 0",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "{fmt(d.within, 3)} apart",
+        "replace": "{fmt(0, 3)} apart"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "latent table and the measured distances"
+  },
+  {
+    "ids": ["level4-exp06.spec:66"],
+    "claim": "the between-class distance is measured (above 0)",
+    "mutant": "the between-class distance is shown as 0",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "{fmt(d.between, 3)} apart",
+        "replace": "{fmt(0, 3)} apart"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "latent table and the measured distances"
+  },
+  {
+    "ids": ["level4-exp06.spec:83"],
+    "claim": "the reconstruction is at least 0",
+    "mutant": "the reconstruction is shown 1 lower",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "<Image v={act(ex, 'L4')}",
+        "replace": "<Image v={act(ex, 'L4').map((v) => v - 1)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "reconstruction grid is 25 values"
+  },
+  {
+    "ids": ["level4-exp06.spec:84"],
+    "claim": "the reconstruction is at most 1",
+    "mutant": "the reconstruction is shown 1 higher",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "<Image v={act(ex, 'L4')}",
+        "replace": "<Image v={act(ex, 'L4').map((v) => v + 1)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "reconstruction grid is 25 values"
+  },
+  {
+    "ids": ["level4-exp06.spec:102"],
+    "claim": "the largest loss is at least the shown image's loss",
+    "mutant": "the smallest loss is shown as the largest",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "{fmt(Math.max(...all.map((p) => p.loss)), 5)}",
+        "replace": "{fmt(Math.min(...all.map((p) => p.loss)), 5)}"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "worst image has the largest loss"
+  },
+  {
+    "ids": ["level4-exp06.spec:135"],
+    "claim": "the 1-number code reconstructs worst",
+    "mutant": "the 1-number code's loss is shown as 0",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(L4_AE.latents[i] === 1 ? 0 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "three epochs of one image"
+  },
+  {
+    "ids": ["level4-exp06.spec:164"],
+    "claim": "an option is the recorded loss",
+    "mutant": "the right option is shown 0.01 off",
+    "file": "src/learn/level4/Experiment06.tsx",
+    "patches": [
+      {
+        "find": "{ t: fmt(ex.loss, 4), ok: true }",
+        "replace": "{ t: fmt(ex.loss + 0.01, 4), ok: true }"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp06.spec.ts",
+    "grep": "live question accepts the reconstruction loss"
   }
 ]

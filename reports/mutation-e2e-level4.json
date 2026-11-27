@@ -1,0 +1,3479 @@
+[
+  {
+    "id": "helpers:32",
+    "file": "tests/e2e/helpers.ts",
+    "line": 32,
+    "fn": "openExperiment",
+    "negative": false,
+    "text": "await expect(page.locator('.position[data-cursor=\"-1\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:46",
+    "file": "tests/e2e/helpers.ts",
+    "line": 46,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(page.locator('[data-value=\"regularized\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:48",
+    "file": "tests/e2e/helpers.ts",
+    "line": 48,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(b.locator('tr[data-lambda]')).toHaveCount(4, { timeout: 120_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:51",
+    "file": "tests/e2e/helpers.ts",
+    "line": 51,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(a.locator('tr[data-lr], tr[data-run]').first()).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:53",
+    "file": "tests/e2e/helpers.ts",
+    "line": 53,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(b.locator('[data-control=\"b:update\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:73",
+    "file": "tests/e2e/helpers.ts",
+    "line": 73,
+    "fn": "trainLevel4",
+    "negative": true,
+    "text": "switch (n) { case 1: await page.locator('[data-control=\"a:next\"]').click(); await page.locator('label:has([data-control=\"b:padding:1\"])').click(); await page.lo",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp01.spec:29",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 29,
+    "fn": "Part A: stepping to position 3 shows a sum equal to the engine value",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-tour=\"cv-step\"]')).toHaveAttribute('data-position', '3');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:33",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 33,
+    "fn": "Part A: stepping to position 3 shows a sum equal to the engine value",
+    "negative": false,
+    "text": "expect(num(engine.split(/\\s/)[0])).toBe(sumValue);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 35: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:34",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 34,
+    "fn": "Part A: stepping to position 3 shows a sum equal to the engine value",
+    "negative": false,
+    "text": "expect(sumValue).toBe(FEATURE_MAP[3]);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 35: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:35",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 35,
+    "fn": "Part A: stepping to position 3 shows a sum equal to the engine value",
+    "negative": false,
+    "text": "await expect(sectionA(page).getByText('✓ equals the sum')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 35: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 29: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:44",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 44,
+    "fn": "Part A: every position matches the feature map and the buttons disable at the ends",
+    "negative": false,
+    "text": "await expect(prev).toBeDisabled();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:46",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 46,
+    "fn": "Part A: every position matches the feature map and the buttons disable at the ends",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-tour=\"cv-step\"]')).toHaveAttribute('data-position', String(k));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:48",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 48,
+    "fn": "Part A: every position matches the feature map and the buttons disable at the ends",
+    "negative": false,
+    "text": "expect(num(engine.split(/\\s/)[0])).toBe(FEATURE_MAP[k]);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 50: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:49",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 49,
+    "fn": "Part A: every position matches the feature map and the buttons disable at the ends",
+    "negative": false,
+    "text": "expect(engine).toContain('✓ equals the sum');",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 50: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:52",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 52,
+    "fn": "Part A: every position matches the feature map and the buttons disable at the ends",
+    "negative": false,
+    "text": "await expect(next).toBeDisabled();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 52: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:65",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 65,
+    "fn": "Part B: stride and padding give the expected output size and the formula agrees",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-value=\"shape\"]')).toHaveText(`${n}×${n}`);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,64: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:67",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 67,
+    "fn": "Part B: stride and padding give the expected output size and the formula agrees",
+    "negative": false,
+    "text": "expect(num(formula.split('=').pop()!.trim()), formula).toBe(n);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,64: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,64: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:84",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 84,
+    "fn": "Part C: max and average pooling give the expected values, each checked by the engine",
+    "negative": false,
+    "text": "expect(explain, `${mode} ${k}`).toMatch(/✓$/);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 82: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 87: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:86",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 86,
+    "fn": "Part C: max and average pooling give the expected values, each checked by the engine",
+    "negative": true,
+    "text": "expect(m, explain).not.toBeNull();",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 82: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 87: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:87",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 87,
+    "fn": "Part C: max and average pooling give the expected values, each checked by the engine",
+    "negative": false,
+    "text": "expect(num(m![1])).toBe(values[k]);",
+    "blank": "elsewhere",
+    "noAction": "killed",
+    "detail": {
+      "blank": "timedOut at 82: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 87: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:103",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 103,
+    "fn": "Part D: each pattern gives the expected strongest responses",
+    "negative": false,
+    "text": "await expect.poll(() => strongest('vertical')).toBe(v);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 103: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:104",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 104,
+    "fn": "Part D: each pattern gives the expected strongest responses",
+    "negative": false,
+    "text": "expect(await strongest('horizontal')).toBe(h);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 95,104: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:107",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 107,
+    "fn": "Part D: each pattern gives the expected strongest responses",
+    "negative": false,
+    "text": "await expect.poll(() => strongest('vertical')).toBeGreaterThan(0);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 107: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:108",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 108,
+    "fn": "Part D: each pattern gives the expected strongest responses",
+    "negative": false,
+    "text": "expect(await strongest('horizontal')).toBeGreaterThan(0);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 95,108: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:114",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 114,
+    "fn": "Tour: stepping advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:116",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 116,
+    "fn": "Tour: stepping advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 116: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 116: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:118",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 118,
+    "fn": "Tour: stepping advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 118: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:119",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 119,
+    "fn": "Tour: stepping advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 118: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:127",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 127,
+    "fn": "Check: the live size question accepts the engine row count for stride 2, padding 1",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-value=\"shape\"]')).toHaveText('3×3');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 127: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,126: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:129",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 129,
+    "fn": "Check: the live size question accepts the engine row count for stride 2, padding 1",
+    "negative": false,
+    "text": "await expect(q).toContainText('stride 2, padding 1');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 129: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,126: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp01.spec:131",
+    "file": "tests/e2e/level4-exp01.spec.ts",
+    "line": 131,
+    "fn": "Check: the live size question accepts the engine row count for stride 2, padding 1",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 131: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 131: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:17",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 17,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-value=\"final\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 17,47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 17,47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:27",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 27,
+    "fn": "showExample",
+    "negative": false,
+    "text": "await expect(box).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 27,65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 27,65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:34",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 34,
+    "fn": "setUpdate",
+    "negative": false,
+    "text": "await expect(box).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 34,111: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 34,121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:41",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 41,
+    "fn": "beforeAfter",
+    "negative": true,
+    "text": "expect(m, t).not.toBeNull();",
+    "blank": "killed",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "failed at 41,117: ReferenceError: page is not defined"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:53",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 53,
+    "fn": "Part A: training reaches a low loss and full accuracy",
+    "negative": true,
+    "text": "expect(m, final).not.toBeNull();",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,47: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:54",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 54,
+    "fn": "Part A: training reaches a low loss and full accuracy",
+    "negative": false,
+    "text": "expect(num(m![3])).toBeLessThan(0.1);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,47: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:55",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 55,
+    "fn": "Part A: training reaches a low loss and full accuracy",
+    "negative": false,
+    "text": "expect(num(m![4])).toBe(100);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,47: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:56",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 56,
+    "fn": "Part A: training reaches a low loss and full accuracy",
+    "negative": false,
+    "text": "expect(num(m![1])).toBeGreaterThan(num(m![3]));",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,47: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:67",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 67,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "await expect(rows).toHaveCount(3);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 67: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:75",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 75,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(correctIndex).toBeGreaterThanOrEqual(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,77: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:76",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 76,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(Math.abs(probs.reduce((a, b) => a + b, 0) - 1)).toBeLessThanOrEqual(0.002);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,77: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:78",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 78,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(Math.abs(loss - -Math.log(probs[correctIndex]))).toBeLessThanOrEqual(0.002);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,79: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:79",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 79,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(await value(box, 'loss')).toContain('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,79: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:83",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 83,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(prediction.startsWith(`${className} `), prediction).toBe(true);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 24,65: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:85",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 85,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(prediction).toContain('✓ correct');",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 24,65: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:86",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 86,
+    "fn": "Part B: probabilities, loss and prediction agree, and the first images are right at epoch 30",
+    "negative": false,
+    "text": "expect(loss).toBeLessThan(0.2);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 24,65: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,63: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:97",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 97,
+    "fn": "Part C: kernels change during training and the slider moves the shown epoch",
+    "negative": false,
+    "text": "await expect(box).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 97: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp02.spec:99",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 99,
+    "fn": "Part C: kernels change during training and the slider moves the shown epoch",
+    "negative": false,
+    "text": "await expect(grids).toHaveCount(2);",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp02.spec:102",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 102,
+    "fn": "Part C: kernels change during training and the slider moves the shown epoch",
+    "negative": true,
+    "text": "expect(end).not.toBe(start);",
+    "blank": "elsewhere",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp02.spec:103",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 103,
+    "fn": "Part C: kernels change during training and the slider moves the shown epoch",
+    "negative": false,
+    "text": "await expect(sectionC(page).locator('[data-kernel]')).toHaveCount(4);",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp02.spec:105",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 105,
+    "fn": "Part C: kernels change during training and the slider moves the shown epoch",
+    "negative": false,
+    "text": "await expect(sectionC(page).locator('[data-kernels-epoch=\"1\"]')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 105: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 105: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:114",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 114,
+    "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(deltaText).toContain('✓ −η·ḡ, checked here');",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,115: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:116",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 116,
+    "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(Math.abs(delta - -0.1 * grad)).toBeLessThanOrEqual(1e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 21,39,117: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:118",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 118,
+    "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(Math.abs(one.before + delta - one.after)).toBeLessThanOrEqual(0.0002);",
+    "blank": "elsewhere",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "failed at 119: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:119",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 119,
+    "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "await expect(sectionD(page).locator('[data-value=\"update-number\"]')).toHaveText(/^1 of 180$/);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:122",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 122,
+    "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "await expect(sectionD(page).locator('[data-value=\"update-number\"]')).toHaveText('2 of 180');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:124",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 124,
+    "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(two.before).toBe(one.after);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:130",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 130,
+    "fn": "Trace explorer appears after training",
+    "negative": false,
+    "text": "await expect(page.getByText('The record of run')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:131",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 131,
+    "fn": "Trace explorer appears after training",
+    "negative": false,
+    "text": "await expect(page.getByText('Network 1×8×8 → convolution 4 × 3×3 (relu)').first()).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:137",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 137,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:139",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 139,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:141",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 141,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp02.spec:142",
+    "file": "tests/e2e/level4-exp02.spec.ts",
+    "line": 142,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:17",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 17,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-control=\"a:example\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:18",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 18,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('table[data-unrolled]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:27",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 27,
+    "fn": "vector",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:36",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 36,
+    "fn": "showExample",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator(`table[data-unrolled=\"${index}\"]`)).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 36,153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39,173,177: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:38",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 38,
+    "fn": "showExample",
+    "negative": false,
+    "text": "await expect(box).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 38,153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39,173,177: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:39",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 39,
+    "fn": "showExample",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('table[data-unrolled] caption')).toContainText(`epoch ${epoch}:`);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 39,153: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39,173,177: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:60",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 60,
+    "fn": "step",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-step', String(n));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 60,214: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 57,214: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:70",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 70,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "await expect(table.locator('tr[data-row=\"x\"] td')).toHaveCount(5);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:71",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 71,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "await expect(table.locator('tr[data-row=\"h\"] td')).toHaveCount(5);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 71: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:73",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 73,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "expect(Math.abs(num(t.trim()))).toBeLessThanOrEqual(1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 76: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoHaveLength\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:76",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 76,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "expect(h).toHaveLength(5);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:78",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 78,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "expect(col).toHaveLength(4);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:80",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 80,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": true,
+    "text": "expect(Number.isNaN(v)).toBe(false);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:81",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 81,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "expect(v).toBeGreaterThanOrEqual(-1);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:82",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 82,
+    "fn": "Part A: the unrolled table shows five inputs and five hidden states of four values in [-1, 1]",
+    "negative": false,
+    "text": "expect(v).toBeLessThanOrEqual(1);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,68: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:95",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 95,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-step', '1');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 95: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,89: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:96",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 96,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "expect(await value(box, 'hprev')).toMatch(/^h₀ = 0/);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,96: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,89: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:97",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 97,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": true,
+    "text": "await expect(box.locator('[data-value=\"hu\"]')).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,89: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:98",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 98,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": true,
+    "text": "await expect(box.locator('[data-value=\"sum\"]')).toHaveCount(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,89: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:99",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 99,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:prev\"]')).toBeDisabled();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,89: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:100",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 100,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "expect(Math.abs(num(await value(box, 'x')) - x[0])).toBeLessThanOrEqual(0.006);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,100: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,89: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:103",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 103,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-step', '2');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:104",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 104,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "expect(Math.abs(num(await value(box, 'x')) - x[1])).toBeLessThanOrEqual(0.006);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,104: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:106",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 106,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "expect(hprev).toHaveLength(4);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,108: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:116",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 116,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"sum\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 116: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:117",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 117,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"h\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:121",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 121,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-step', String(n));",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:123",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 123,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:next\"]')).toBeDisabled();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:125",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 125,
+    "fn": "Part B: one time step is taken apart consistently, and stepping works",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-step', '4');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 125: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 125: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:136",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 136,
+    "fn": "Part C: every time step uses the same W and the same U",
+    "negative": true,
+    "text": "expect(m, shared).not.toBeNull();",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 137: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,130: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:139",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 139,
+    "fn": "Part C: every time step uses the same W and the same U",
+    "negative": false,
+    "text": "await expect(rows).toHaveCount(5);",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 139: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp03.spec:142",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 142,
+    "fn": "Part C: every time step uses the same W and the same U",
+    "negative": false,
+    "text": "await expect(cells.nth(0)).toHaveText(`#${m![1]}`);",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp03.spec:143",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 143,
+    "fn": "Part C: every time step uses the same W and the same U",
+    "negative": false,
+    "text": "await expect(cells.nth(1)).toContainText('h₀ = 0');",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 143: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp03.spec:144",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 144,
+    "fn": "Part C: every time step uses the same W and the same U",
+    "negative": false,
+    "text": "await expect(cells.nth(1)).toHaveText(`#${m![2]}`);",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp03.spec:155",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 155,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": true,
+    "text": "expect(m).not.toBeNull();",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,159: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:158",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 158,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "expect(label).toBe(sum > 0 ? 1 : 0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,159: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:160",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 160,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "expect(await value(box, 'prediction')).toBe(`${label} ✓ correct`);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 22,160: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:162",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 162,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "expect(lossText).toContain('✓ checked here');",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 34,153: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:164",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 164,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "expect(Math.abs(num(lossText.split(/\\s/)[0]) - expected)).toBeLessThanOrEqual(2e-3);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 34,153: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:166",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 166,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "await expect(sectionD(page).locator('[data-value=\"accuracy\"]')).toContainText( 'After epoch 40: 100 % of the sequences correct.', );",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 166: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:170",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 170,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "expect(late).toBeGreaterThanOrEqual(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 34,173,176: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:178",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 178,
+    "fn": "Part D: label, prediction and loss agree for the first sequences at epoch 40",
+    "negative": false,
+    "text": "expect(start).toBeGreaterThan(end);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,151: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:188",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 188,
+    "fn": "Show in the record moves the trace explorer to the same instruction",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"trace:position\"]')).toHaveValue(id);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 188: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 188: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:194",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 194,
+    "fn": "Trace explorer appears after training",
+    "negative": false,
+    "text": "await expect(page.getByText('The record of run')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 194: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,193: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:195",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 195,
+    "fn": "Trace explorer appears after training",
+    "negative": false,
+    "text": "await expect(page.getByText('Network 5×1 → recurrent layer (4 hidden units)').first()).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 195: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 16,193: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:201",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 201,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 201: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 201: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:203",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 203,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 203: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 201: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:205",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 205,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 205: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:206",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 206,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 205: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:212",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 212,
+    "fn": "Check: the live memory question accepts the recorded hidden state",
+    "negative": false,
+    "text": "await expect(q.getByText('Train the network in Part A first.')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 212: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 212: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:217",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 217,
+    "fn": "Check: the live memory question accepts the recorded hidden state",
+    "negative": false,
+    "text": "await expect(q.getByText('In Part B, step 2 of the sequence shown')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 217: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 212: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:223",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 223,
+    "fn": "Check: the live memory question accepts the recorded hidden state",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp03.spec:224",
+    "file": "tests/e2e/level4-exp03.spec.ts",
+    "line": 224,
+    "fn": "Check: the live memory question accepts the recorded hidden state",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('as recorded');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:18",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 18,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-control=\"a:example\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:19",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 19,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('table[data-unrolled]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:28",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 28,
+    "fn": "vector",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:39",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 39,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-back-step', '5', { timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:40",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 40,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "expect(await value(box, 'back-step')).toBe('t = 5 (step 1 of the backward pass)');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:41",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 41,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(box.locator('table.lv-mgrid')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:42",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 42,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"dz\"]')).toContainText('✓ checked here');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:43",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 43,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "expect(vector(await value(box, 'dh'))).toHaveLength(4);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:45",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 45,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "expect(dhPrev5).toHaveLength(4);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:46",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 46,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:later\"]')).toBeDisabled();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:49",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 49,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-back-step', '4');",
+    "blank": "n/a",
+    "noAction": "killed",
+    "detail": {
+      "blank": "no result",
+      "no-action": "failed at 49: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:51",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 51,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "expect(dh4.map((v) => v.toFixed(4))).toEqual(dhPrev5.map((v) => v.toFixed(4)));",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 54: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 49: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:55",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 55,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-back-step', String(n));",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 55: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 55: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:57",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 57,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "expect(await value(box, 'du')).toMatch(/^none/);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,57: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 55: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:58",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 58,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "expect(await value(box, 'dhprev')).toBe('— (first time step)');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,58: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 55: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:59",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 59,
+    "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:earlier\"]')).toBeDisabled();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 59: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 55: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:77",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 77,
+    "fn": "Part C: the running sum ends at the recorded sum, for two entries",
+    "negative": false,
+    "text": "await expect(rows.first()).toBeVisible({ timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 77: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 17,65: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:88",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 88,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "await expect(rows).toHaveCount(4, { timeout: 90_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 88: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 88: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:92",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 92,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "expect(full).toBeLessThan(0.01);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 98: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 88: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:93",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 93,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "expect(full).toBeLessThan(l);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 98: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 88: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:94",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 94,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "expect(l1).toBeGreaterThan(l2);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 98: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 88: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:95",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 95,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "expect(l2).toBeGreaterThan(l3);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 98: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m",
+      "no-action": "failed at 88: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:99",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 99,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "await expect(reach).toContainText('time steps 8.');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 99: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:101",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 101,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "await expect(reach).toContainText('6, 7, 8');",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 101: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp04.spec:103",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 103,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "await expect(reach).toContainText('2, 3, 4, 5, 6, 7, 8');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:104",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 104,
+    "fn": "Part D: full BPTT beats every window, and shorter windows do worse",
+    "negative": false,
+    "text": "await expect(reach).toContainText('Nothing was cut.');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 104: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:116",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 116,
+    "fn": "Part E: vanishing, roughly constant and exploding gradients",
+    "negative": false,
+    "text": "await expect(ratio).toContainText('it has vanished');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 116: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: ReferenceError: pick is not defined"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:117",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 117,
+    "fn": "Part E: vanishing, roughly constant and exploding gradients",
+    "negative": false,
+    "text": "await expect(sectionE(page).locator('table[data-sizes] thead th')).toHaveCount(9);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: ReferenceError: pick is not defined"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:118",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 118,
+    "fn": "Part E: vanishing, roughly constant and exploding gradients",
+    "negative": false,
+    "text": "await expect(sectionE(page).locator('table[data-sizes] tbody td')).toHaveCount(8);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 118: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: ReferenceError: pick is not defined"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:120",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 120,
+    "fn": "Part E: vanishing, roughly constant and exploding gradients",
+    "negative": false,
+    "text": "await expect(ratio).toContainText('it exploded');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 120: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: ReferenceError: pick is not defined"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:122",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 122,
+    "fn": "Part E: vanishing, roughly constant and exploding gradients",
+    "negative": false,
+    "text": "await expect(ratio).toContainText('it has vanished');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 122: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: ReferenceError: pick is not defined"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:124",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 124,
+    "fn": "Part E: vanishing, roughly constant and exploding gradients",
+    "negative": false,
+    "text": "await expect(ratio).toContainText('roughly kept its size');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 124: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: ReferenceError: pick is not defined"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:130",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 130,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:132",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 132,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 132: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:134",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 134,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:135",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 135,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:142",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 142,
+    "fn": "Check: the live question accepts the recorded sum for U",
+    "negative": false,
+    "text": "await expect(q.getByText('Train the network in Part A first.')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:144",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 144,
+    "fn": "Check: the live question accepts the recorded sum for U",
+    "negative": false,
+    "text": "await expect(sectionC(page).locator('[data-value=\"usum\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:145",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 145,
+    "fn": "Check: the live question accepts the recorded sum for U",
+    "negative": false,
+    "text": "await expect(q.getByText('What is its gradient for this example?')).toBeVisible({ timeout: 60_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:153",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 153,
+    "fn": "Check: the live question accepts the recorded sum for U",
+    "negative": false,
+    "text": "expect(Math.abs(num(texts[best].trim()) - total)).toBeLessThanOrEqual(6e-6);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp04.spec:155",
+    "file": "tests/e2e/level4-exp04.spec.ts",
+    "line": 155,
+    "fn": "Check: the live question accepts the recorded sum for U",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:18",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 18,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-control=\"a:example\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:19",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 19,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('table[data-lstm-overview]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:28",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 28,
+    "fn": "vector",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:39",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 39,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(sectionB(page).getByText('Train and record the LSTM in Part A first.')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:41",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 41,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('table[data-lstm-overview] tbody tr')).toHaveCount(6);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:43",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 43,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator(`table[data-lstm-overview] tr[data-t=\"${t}\"]`)).toHaveCount(1);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:47",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 47,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-lstm-step', '2', { timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 47: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:48",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 48,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"c\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 48: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:49",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 49,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"h\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 49: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:52",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 52,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(rows).toHaveCount(3);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 52: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:59",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 59,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(Math.abs(kept + written - cell)).toBeLessThanOrEqual(0.002);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 56: TypeError: Cannot read properties of undefined (reading 'trim')",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:60",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 60,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(Math.abs(cell - c[j])).toBeLessThanOrEqual(0.002);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 56: TypeError: Cannot read properties of undefined (reading 'trim')",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:64",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 64,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-lstm-step', '1');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 64: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:65",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 65,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"c\"]')).toContainText('c₀ = 0');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:68",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 68,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-lstm-step', String(t));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 68: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:71",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 71,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(v).toHaveLength(3);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,70: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:73",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 73,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(x).toBeGreaterThan(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,70: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:74",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 74,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(x).toBeLessThan(1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,70: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:78",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 78,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(g).toHaveLength(3);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,67: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:80",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 80,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(x).toBeGreaterThan(-1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,67: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:81",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 81,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "expect(x).toBeLessThan(1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,67: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:84",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 84,
+    "fn": "LSTM: overview, gates and the cell state add up",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('table[data-cell-path] tbody tr')).toHaveCount(5);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 84: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:92",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 92,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(box).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:94",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 94,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-gru-step', '1');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:95",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 95,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "expect(await value(box, 'r')).toMatch(/^—/);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,95: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:96",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 96,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"gh\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 96: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:98",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 98,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-gru-step', '4');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 98: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:99",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 99,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "expect(vector(await value(box, 'r'))).toHaveLength(3);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 23,99: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:100",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 100,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"gh\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 100: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:101",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 101,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"no-cell\"]')).toContainText('none: a GRU carries everything in hₜ');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 101: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:103",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 103,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(summary).toContainText('GRU');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 103: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:104",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 104,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(summary).toContainText('49 parameters');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 104: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:105",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 105,
+    "fn": "GRU: gates, no cell state, and the LSTM record is replaced",
+    "negative": false,
+    "text": "await expect(sectionB(page).getByText('Train and record the LSTM in Part A first.')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 105: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:112",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 112,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "await expect(cells('rnn').first()).toHaveText('29');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:113",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 113,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "await expect(cells('lstm').first()).toHaveText('101');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 113: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:114",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 114,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "await expect(cells('gru').first()).toHaveText('77');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:123",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 123,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": true,
+    "text": "await expect(cells('lstm').last()).not.toHaveText('—', { timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:124",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 124,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": true,
+    "text": "await expect(cells('gru').last()).not.toHaveText('—', { timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 124: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:125",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 125,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": true,
+    "text": "await expect(cells('rnn').last()).not.toHaveText('—', { timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 125: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:127",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 127,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "expect(num(first[1])).toBeLessThan(0.1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 130: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:128",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 128,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "expect(num(first[2])).toBeLessThan(0.1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 130: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:132",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 132,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "await expect .poll(async () => (await lossText()).some((t, k) => t !== first[k]), { timeout: 120_000 }) .toBe(true);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 134: Error: Timeout 4000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:135",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 135,
+    "fn": "Part D: parameter counts and the comparison across seeds",
+    "negative": false,
+    "text": "await expect(cells('lstm').first()).toHaveText('101');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 135: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:142",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 142,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:144",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 144,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:146",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 146,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:147",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 147,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:154",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 154,
+    "fn": "Check: the live question accepts the recorded cell state",
+    "negative": false,
+    "text": "await expect(q.getByText('Train and record the LSTM in Part A', { exact: false })).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:157",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 157,
+    "fn": "Check: the live question accepts the recorded cell state",
+    "negative": false,
+    "text": "await expect(box).toHaveAttribute('data-lstm-step', '2', { timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 157: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:159",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 159,
+    "fn": "Check: the live question accepts the recorded cell state",
+    "negative": false,
+    "text": "await expect(q.getByText('time step 2, first unit')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 159: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:166",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 166,
+    "fn": "Check: the live question accepts the recorded cell state",
+    "negative": false,
+    "text": "expect(Math.abs(num(texts[best].trim()) - c0)).toBeLessThanOrEqual(0.0006);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 167: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp05.spec:168",
+    "file": "tests/e2e/level4-exp05.spec.ts",
+    "line": 168,
+    "fn": "Check: the live question accepts the recorded cell state",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 168: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 168: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:18",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 18,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-control=\"a:example\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:19",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 19,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-value=\"code\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 19,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:20",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 20,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionD(page).locator('[data-value=\"worst\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:29",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 29,
+    "fn": "vector",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:38",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 38,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-encoder=\"0\"]')).toHaveCount(1);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:40",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 40,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "expect(vector(before)).toHaveLength(2);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:41",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 41,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "expect(vector(await value(sectionA(page), 'enc'))).toHaveLength(8);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:43",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 43,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-encoder=\"7\"]')).toHaveCount(1);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:44",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 44,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": true,
+    "text": "await expect.poll(async () => value(sectionA(page), 'code')).not.toBe(before);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:46",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 46,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "expect(vector(after)).toHaveLength(2);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:54",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 54,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "await expect(b.locator('svg[role=\"img\"]').first()).toHaveAttribute( 'aria-label', /Latent codes of the 24 images during epoch 150/, );",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:59",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 59,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "await expect(b.locator('details table tbody tr')).toHaveCount(24);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:64",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 64,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:65",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 65,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "expect(num(m![1])).toBeGreaterThan(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:66",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 66,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "expect(num(m![2])).toBeGreaterThan(0);",
+    "blank": "n/a",
+    "noAction": "survived",
+    "detail": {
+      "blank": "no result",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level4-exp06.spec:69",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 69,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "await expect(b.locator('svg[role=\"img\"]').first()).toHaveAttribute('aria-label', /during epoch 1$/);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:70",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 70,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": true,
+    "text": "await expect.poll(read).not.toBe(text);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 70: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:79",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 79,
+    "fn": "Part C: the reconstruction grid is 25 values between 0 and 1",
+    "negative": false,
+    "text": "await expect(cells).toHaveCount(25);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 79: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 17,76: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:83",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 83,
+    "fn": "Part C: the reconstruction grid is 25 values between 0 and 1",
+    "negative": false,
+    "text": "expect(v).toBeGreaterThanOrEqual(0);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 24,86: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 17,76: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:84",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 84,
+    "fn": "Part C: the reconstruction grid is 25 values between 0 and 1",
+    "negative": false,
+    "text": "expect(v).toBeLessThanOrEqual(1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 24,86: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 17,76: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:86",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 86,
+    "fn": "Part C: the reconstruction grid is 25 values between 0 and 1",
+    "negative": false,
+    "text": "expect(vector(await value(sectionC(page), 'dec'))).toHaveLength(8);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 24,86: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 17,76: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:94",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 94,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": false,
+    "text": "await expect(d.getByText('checked here')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 17,92: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:95",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 95,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": false,
+    "text": "await expect(d.locator('table.lv-mgrid')).toHaveCount(3);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 95: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 17,92: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:99",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 99,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": true,
+    "text": "expect(wm, worstText).not.toBeNull();",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 106: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 17,92: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:102",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 102,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": false,
+    "text": "expect(worst).toBeGreaterThanOrEqual(loss);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 106: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 17,92: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:107",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 107,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator(`[data-encoder=\"${worstImage - 1}\"]`)).toHaveCount(1);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:108",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 108,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": false,
+    "text": "await expect.poll(async () => num(await value(d, 'loss'))).toBe(worst);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 108: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:109",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 109,
+    "fn": "Part D: the loss is checked and the worst image has the largest loss",
+    "negative": false,
+    "text": "await expect(d.getByText('checked here')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 109: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 107: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:119",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 119,
+    "fn": "Part E: three epochs of one image and the comparison of code sizes",
+    "negative": false,
+    "text": "await expect(grids).toHaveCount(4);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 119: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 123,126: Error: |||"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:126",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 126,
+    "fn": "Part E: three epochs of one image and the comparison of code sizes",
+    "negative": false,
+    "text": "expect(loss(1)).toBeGreaterThan(loss(150));",
+    "blank": "elsewhere",
+    "noAction": "killed",
+    "detail": {
+      "blank": "timedOut at 128: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 123,126: Error: |||"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:130",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 130,
+    "fn": "Part E: three epochs of one image and the comparison of code sizes",
+    "negative": false,
+    "text": "await expect(rows).toHaveCount(4, { timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:135",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 135,
+    "fn": "Part E: three epochs of one image and the comparison of code sizes",
+    "negative": false,
+    "text": "expect(losses[0]).toBeGreaterThan(l);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:142",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 142,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:144",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 144,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:146",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 146,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:147",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 147,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:154",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 154,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "await expect(q.getByText('Train the autoencoder in Part A first.')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:158",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 158,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "await expect(options.first()).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 158: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:164",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 164,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "expect(Math.abs(num(texts[best].trim()) - loss)).toBeLessThanOrEqual(0.00006);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 165: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:166",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 166,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 166: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 166: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  }
+]
