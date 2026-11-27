@@ -23,7 +23,7 @@ export const LEVEL3 = {
   understand: [
     'how the learning rate decides whether training crawls, learns or falls apart',
     'how momentum gives the update a memory of earlier gradients',
-    'how Adam adapts the step of every parameter separately',
+    'how Adam sizes the step of every parameter separately',
     'why a low training loss does not guarantee good predictions on new data, and how weight decay helps',
   ],
 };
@@ -387,7 +387,7 @@ export const LEVEL3_EXPERIMENTS: LessonExperiment[] = [
     title: 'Adam: Adaptive Optimization',
     short: 'Two running averages and a step sized for each parameter separately.',
     description:
-      'Adam keeps two running averages for every parameter: m, of the gradient (like momentum), and v, of the squared gradient (how large gradients have been). It corrects both for starting at zero, then divides: each parameter’s step is about η in size, whatever the scale of its own gradient. Here every one of those numbers is read from the engine’s record.',
+      'Adam keeps two running averages for every parameter: m, of the gradient (like momentum), and v, of the squared gradient (how large gradients have been). It corrects both for starting at zero, then divides one by the square root of the other: a parameter’s step no longer grows with the size of its gradient, and stays at most about η. Here every one of those numbers is read from the engine’s record.',
     minutes: '20–25 min',
     concept: 'Adam',
     objectives: [
@@ -420,7 +420,7 @@ export const LEVEL3_EXPERIMENTS: LessonExperiment[] = [
         {
           term: 'Adaptive step',
           meaning:
-            'Δ = −η·m̂/(√v̂ + ε): the gradient is divided by its own typical size, so every parameter moves by about η.',
+            'Δ = −η·m̂/(√v̂ + ε): the average gradient is divided by its own typical size, so a step is at most about η, whatever the scale of the gradient, and smaller when the gradient keeps changing sign.',
         },
       ],
     },
@@ -449,7 +449,7 @@ export const LEVEL3_EXPERIMENTS: LessonExperiment[] = [
       {
         target: 'ad-adaptive',
         title: 'A step for each parameter',
-        text: 'Small and large gradients get steps of similar size.',
+        text: 'Steps do not follow the size of the gradient: a tiny gradient can get as large a step as a big one.',
         doThis: 'Choose another update.',
         waitFor: 'ad-update-picked',
       },
@@ -500,9 +500,10 @@ export const LEVEL3_EXPERIMENTS: LessonExperiment[] = [
           'One weight always has gradients near 0.001, another near 1. With Adam, how do their steps compare?',
         options: [
           {
-            text: 'About the same size, roughly η, because each gradient is divided by its own typical size',
+            text: 'Both at most about η: each gradient is divided by its own typical size, so the step does not grow with the gradient',
             correct: true,
-            feedback: 'Right. Plain gradient descent would move the second one 1000 times further.',
+            feedback:
+              'Right. Plain gradient descent would move the second one 1000 times further; with Adam both steps are bounded by about η.',
           },
           { text: 'The second moves 1000 times further', feedback: 'That is plain gradient descent.' },
           {

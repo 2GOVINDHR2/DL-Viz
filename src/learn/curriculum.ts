@@ -46,7 +46,7 @@ export const LEVEL_3: LevelDescriptor = {
   number: 3,
   experiments: LEVEL3_EXPERIMENTS,
   // Opened as each experiment is built (the overnight Level 3 run; reports/LEVEL3-RESUME.md).
-  open: new Set<string>(['01', '02']),
+  open: new Set<string>(['01', '02', '03']),
   experimentHref: href.level3Experiment,
   statusKey: (id) => `l3:${id}`,
   before: { label: 'Level 3 overview', href: href.level3 },
