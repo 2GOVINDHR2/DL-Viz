@@ -947,3 +947,24 @@ Also clarified:
 - **Engine values only.** Every number shown is recorded, trained by the engine (`compareRuns`), or labelled as derived. A "checked here" mark is a recomputation from recorded values, not a replacement for them.
 - **Navigating away releases the store** (`useRoute(onLeave)`), so a large Level 3 record does not stay in memory.
 - **Vocabulary.** `LEVEL3_TERMS` schedules terms by experiment; `tests/unit/level3-vocabulary.test.ts` renders every open page.
+
+## ADR-100 — 2026-11-27 — Level 4 curriculum and engine plan: Deep Learning Architectures
+- **Six experiments,** in the brief's order: convolution, CNN training, vanilla RNN, BPTT, LSTM and GRU, autoencoder. Level 5 and Transformers are out of scope. Audit and plan: `reports/LEVEL4-AUDIT.md`.
+- **CNN experiments use the existing engine:** `conv2d`, pooling and flatten, the `bars` dataset, and engine probes. The only engine change for them is an optional `shape` on the `points` dataset, so a probe can run a convolution on an image.
+- **Recurrent experiments are built from existing ops as extension layers** (`registerLayer`). The new engine pieces are each gated before any screen uses them:
+  - a time-step selector, `oneMinus` and `stopGradient`;
+  - NPM mappings for elementwise add and multiply;
+  - an explicit `GRAD_SUM` instruction wherever a value's gradient is the sum of several contributions (a shared weight across time steps, a hidden state feeding several gates);
+  - `step` and `gate` metadata on every recurrent instruction.
+- **Existing traces stay byte-identical.** `GRAD_SUM` appears only when a value is used more than once, which never happens in a feed-forward network.
+
+## ADR-101 — 2026-11-27 — Level 4 interface, Experiments 01–02, and the explorer for CNNs
+- **Structure.** `LEVEL_4` (status key `l4:`), routes `#/level-4` and `#/level-4/experiment-NN`, a landing page and a Levels-page card. The old "Beyond Level 3" card is now a plain link to the workbench. Pages use `ExperimentLayout` as Levels 1–3 do.
+- **Experiment 01 trains nothing.** Every feature map and pooled map is an engine probe (`src/learn/level4/common/probes.ts`), read from the recorded `CONV2D` / `POOL`. The kernels are chosen by hand and labelled so. The products, their sum, the size formula and the pooling explanation are labelled "worked out here" and checked against the engine's value.
+- **Experiment 02 trains a two-convolution CNN on 36 bar images** with plain gradient descent. One image's forward pass, the kernels at an epoch, and a kernel weight's updates are read from the record (`cnnRecord.ts`, and `readUpdateSeries` from Level 3).
+- **`MatrixGrid`** (class `lv-mgrid`) is an accessible table of numbers, shaded by sign and size. It was first written with the class name `lv-matrix`, which the explorer and Level 2 already use; it was renamed before any commit, so no Level 1–3 style changed.
+- **Explorer fixes for non-dense networks.** Dense networks keep their exact text.
+  - The network summary had read "1 → ? → ? → … (hidden)"; it now describes the layers.
+  - An image example's label listed all 64 pixel values; it now gives a count.
+  - The parameter inspector had called a 4×1×3×3 kernel tensor "rows: inputs (4), columns: neurons (1)". It now describes kernels and shows one k-wide row per kernel row.
+- **Level 4 wording.** `level4Wording()` adds plain descriptions of `CONV2D`, `POOL`, `FLATTEN` and their gradients; the explorer had shown the raw kind names.

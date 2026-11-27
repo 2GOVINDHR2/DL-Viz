@@ -91,7 +91,14 @@ export function runProbe(spec: ProbeSpec): ProbeResult {
     if (row.some((x) => !Number.isFinite(x))) throw new ProbeError('every input must be a finite number');
   const outSize = model.outputShape[0];
   const ys = spec.ys ?? spec.xs.map(() => Array.from({ length: outSize }, () => 0));
-  const data = resolveDataset({ kind: 'points', name: 'probe', xs: spec.xs, ys });
+  const shape = spec.model.inputShape;
+  const data = resolveDataset({
+    kind: 'points',
+    name: 'probe',
+    xs: spec.xs,
+    ys,
+    ...(shape.length > 1 ? { shape } : {}),
+  });
   const { store } = TraceStore.generate(configOf(spec), data, { embedDatasetLimit: 0 });
   const src = storeSource(store);
   const all = src.range(0, src.length);

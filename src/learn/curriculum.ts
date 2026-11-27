@@ -6,10 +6,11 @@
 import { LEVEL1_EXPERIMENTS, type LessonExperiment } from '../experiments/level1';
 import { LEVEL2_EXPERIMENTS } from '../experiments/level2';
 import { LEVEL3_EXPERIMENTS } from '../experiments/level3';
+import { LEVEL4_EXPERIMENTS } from '../experiments/level4';
 import { href } from './router';
 
 export interface LevelDescriptor {
-  number: 1 | 2 | 3;
+  number: 1 | 2 | 3 | 4;
   experiments: LessonExperiment[];
   /** Experiments that can be opened; the rest are listed as in preparation. */
   open: ReadonlySet<string>;
@@ -53,4 +54,16 @@ export const LEVEL_3: LevelDescriptor = {
   after: { label: 'Level 3 overview', href: href.level3 },
 };
 
-export const levelOf = (n: 1 | 2 | 3): LevelDescriptor => (n === 1 ? LEVEL_1 : n === 2 ? LEVEL_2 : LEVEL_3);
+export const LEVEL_4: LevelDescriptor = {
+  number: 4,
+  experiments: LEVEL4_EXPERIMENTS,
+  // Opened as each experiment is built (reports/LEVEL4-RESUME.md).
+  open: new Set<string>(['01', '02']),
+  experimentHref: href.level4Experiment,
+  statusKey: (id) => `l4:${id}`,
+  before: { label: 'Level 4 overview', href: href.level4 },
+  after: { label: 'Level 4 overview', href: href.level4 },
+};
+
+export const levelOf = (n: 1 | 2 | 3 | 4): LevelDescriptor =>
+  n === 1 ? LEVEL_1 : n === 2 ? LEVEL_2 : n === 3 ? LEVEL_3 : LEVEL_4;

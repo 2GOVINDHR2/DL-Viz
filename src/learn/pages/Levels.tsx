@@ -1,6 +1,7 @@
 import { LEVEL1 } from '../../experiments/level1';
 import { LEVEL2 } from '../../experiments/level2';
 import { LEVEL3, LEVEL3_EXPERIMENTS } from '../../experiments/level3';
+import { LEVEL4, LEVEL4_EXPERIMENTS } from '../../experiments/level4';
 import { href } from '../router';
 
 export function Levels() {
@@ -75,14 +76,35 @@ export function Levels() {
           </a>
         </li>
         <li className="lv-path-item">
-          <span className="lv-path-num lv-muted" aria-hidden="true">
-            4+
+          <span className="lv-path-num" aria-hidden="true">
+            4
           </span>
           <div>
-            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>Beyond Level 3</h2>
+            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>
+              <a href={href.level4}>{LEVEL4.title}</a>
+            </h2>
             <p className="lv-muted" style={{ marginBottom: 0 }}>
-              In preparation. Convolutional networks and training diagnostics are available now in the full
-              workbench, which also offers expert inspection of every experiment.
+              {LEVEL4.tagline}
+            </p>
+            <div className="lv-path-meta">
+              <span className="lv-chip">⏱ {LEVEL4.minutes}</span>
+              <span className="lv-chip">{LEVEL4_EXPERIMENTS.length} experiments</span>
+              <span className="lv-chip">Builds on Levels 2 and 3</span>
+            </div>
+          </div>
+          <a className="lv-btn lv-btn-primary" href={href.level4} data-control="open-level-4">
+            Open
+          </a>
+        </li>
+        <li className="lv-path-item">
+          <span className="lv-path-num lv-muted" aria-hidden="true">
+            ⋯
+          </span>
+          <div>
+            <h2 style={{ fontSize: '1.15rem', marginBottom: 4 }}>The full workbench</h2>
+            <p className="lv-muted" style={{ marginBottom: 0 }}>
+              Every experiment of the curriculum with expert inspection, including a larger CNN on handwritten
+              digits and training diagnostics.
             </p>
           </div>
           <a className="lv-btn" href={href.workbench} data-control="open-workbench">

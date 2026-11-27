@@ -88,9 +88,13 @@ function label(
       }
       const load = ins.find((i) => i.kind === 'LOAD_INPUT');
       if (!load) return { label: `Example ${p.sample + 1}` };
-      const x = Array.from(load.results.x.data)
-        .map((v) => fmt(v, 0))
-        .join(', ');
+      // An image's pixels are too many to list; dense examples (8 inputs or fewer) are shown in full.
+      const x =
+        load.results.x.size > 8
+          ? `${load.results.x.size} values`
+          : Array.from(load.results.x.data)
+              .map((v) => fmt(v, 0))
+              .join(', ');
       const y = Array.from(load.results.y.data)
         .map((v) => fmt(v, 0))
         .join(', ');

@@ -262,8 +262,19 @@ function Hierarchy({ detail }: { detail: Detail }) {
   );
 }
 
+/**
+ * Rows × columns to show a parameter as: a matrix as it is; a convolution's kernels [filters, channels, k, k] as one
+ * k-wide row per kernel row (Level 4, ADR-101); anything else as one row.
+ */
+const grid2d = (shape: readonly number[]): [number, number] =>
+  shape.length === 2
+    ? [shape[0], shape[1]]
+    : shape.length === 4
+      ? [shape[0] * shape[1] * shape[2], shape[3]]
+      : [1, shape.reduce((a, b) => a * b, 1)];
+
 function Matrix({ t, label }: { t: Tensor; label: string }) {
-  const [r, c] = t.shape.length === 2 ? t.shape : [1, t.size];
+  const [r, c] = grid2d(t.shape);
   return (
     <table className="lv-matrix">
       <caption className="lv-visually-hidden">{label}</caption>
@@ -393,9 +404,11 @@ function ParameterInspector() {
       {cur ? (
         <>
           <p className="lv-small lv-muted" style={{ margin: 0 }}>
-            {p.role === 'weight'
-              ? `Rows: inputs to the layer (${p.shape[0]}); columns: its neurons (${p.shape[1]}).`
-              : `One per neuron (${p.shape[0]}).`}{' '}
+            {p.role === 'weight' && p.shape.length === 4
+              ? `${p.shape[0]} kernels of ${p.shape[1]} channel${p.shape[1] > 1 ? 's' : ''}, each ${p.shape[2]}×${p.shape[3]}: one ${p.shape[3]}-wide row per kernel row.`
+              : p.role === 'weight'
+                ? `Rows: inputs to the layer (${p.shape[0]}); columns: its neurons (${p.shape[1]}).`
+                : `One per neuron (${p.shape[0]}).`}{' '}
             Set by instruction #{cur.producedBy}.
           </p>
           <div className="lv-row" style={{ alignItems: 'flex-start' }}>
@@ -419,8 +432,8 @@ function ParameterInspector() {
                   </p>
                   <table className="lv-matrix">
                     <tbody>
-                      {Array.from({ length: p.shape.length === 2 ? p.shape[0] : 1 }, (_, i) => {
-                        const c = p.shape.length === 2 ? p.shape[1] : p.shape[0];
+                      {Array.from({ length: grid2d(p.shape)[0] }, (_, i) => {
+                        const c = grid2d(p.shape)[1];
                         return (
                           <tr key={i}>
                             {Array.from({ length: c }, (_, j) => {
@@ -528,7 +541,9 @@ function DetailPanel({ detail }: { detail: Detail }) {
       {sample && (
         <dl className="lv-kv">
           <dt>Inputs</dt>
-          <dd>({vec(sample.x, 0)})</dd>
+          <dd>
+            {sample.x.size > 8 ? `${sample.x.size} values: ` : ''}({vec(sample.x, 0, 8)})
+          </dd>
           <dt>Target</dt>
           <dd>{vec(sample.y, 0)}</dd>
           <dt>Prediction</dt>
@@ -646,8 +661,23 @@ export function TraceExplorer({ stale }: { stale: boolean }) {
   const exec = useRun((s) => s.exec);
   const [detail, setDetail] = useState<Detail>('stages');
   if (!header || !config) return null;
+  const dense = config.model.layers.every((l) => l.type === 'dense');
   const arch = config.model.layers.map((l) => (l.type === 'dense' ? l.units : '?')).join(' → ');
   const act = config.model.layers[0].type === 'dense' ? config.model.layers[0].activation : '';
+  // Networks with other layers (Level 4) are described layer by layer; dense networks keep their short form.
+  const layered = config.model.layers
+    .map((l) =>
+      l.type === 'dense'
+        ? `dense ${l.units} (${l.activation})`
+        : l.type === 'conv2d'
+          ? `convolution ${l.filters} × ${l.kernel}×${l.kernel} (${l.activation})`
+          : l.type === 'pool'
+            ? `${l.mode === 'max' ? 'max' : 'average'} pooling ${l.size}×${l.size}`
+            : l.type === 'flatten'
+              ? 'flatten'
+              : String(l.kind),
+    )
+    .join(' → ');
   return (
     <section aria-label="Trace explorer" className="lv-stack">
       <div className="lv-viz-title">
@@ -655,10 +685,19 @@ export function TraceExplorer({ stale }: { stale: boolean }) {
         <EngineBadge instructions={header.length} text="A real recorded run" />
       </div>
       <p className="lv-small lv-muted" style={{ marginTop: 0 }}>
-        Network {header.model.inputShape[0]} → {arch} ({act}{' '}
-        {config.model.layers.length > 1 ? 'hidden' : 'output'}) · learning rate {config.optimizer.lr} · batch
-        size {config.batchSize} · {config.epochs} epochs · seed {config.seed} · recorded in{' '}
-        {fmt(generationMs, 0)} ms. Every operation the engine performed is in this record, with its values.
+        {dense ? (
+          <>
+            Network {header.model.inputShape[0]} → {arch} ({act}{' '}
+            {config.model.layers.length > 1 ? 'hidden' : 'output'})
+          </>
+        ) : (
+          <>
+            Network {header.model.inputShape.join('×')} → {layered}
+          </>
+        )}{' '}
+        · learning rate {config.optimizer.lr} · batch size {config.batchSize} · {config.epochs} epochs · seed{' '}
+        {config.seed} · recorded in {fmt(generationMs, 0)} ms. Every operation the engine performed is in this
+        record, with its values.
       </p>
       {stale && (
         <div className="lv-callout" role="status">

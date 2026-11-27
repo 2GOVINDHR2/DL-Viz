@@ -3,6 +3,7 @@ import { useEffect, type ReactElement } from 'react';
 import { level1ById } from '../experiments/level1';
 import { level2ById } from '../experiments/level2';
 import { level3ById } from '../experiments/level3';
+import { level4ById } from '../experiments/level4';
 import { Experiment01 } from './level1/Experiment01';
 import { Experiment02 } from './level1/Experiment02';
 import { Experiment03 } from './level1/Experiment03';
@@ -12,9 +13,12 @@ import { L2Experiment02 } from './level2/Experiment02';
 import { L2Experiment03 } from './level2/exp03/Experiment03';
 import { L2Experiment04 } from './level2/exp04/Experiment04';
 import { L2Experiment05 } from './level2/exp05/Experiment05';
-import { LEVEL_2, LEVEL_3 } from './curriculum';
+import { LEVEL_2, LEVEL_3, LEVEL_4 } from './curriculum';
 import { Level2Landing } from './pages/Level2Landing';
 import { Level3Landing } from './pages/Level3Landing';
+import { Level4Landing } from './pages/Level4Landing';
+import { L4Experiment01 } from './level4/Experiment01';
+import { L4Experiment02 } from './level4/Experiment02';
 import { L3Experiment01 } from './level3/Experiment01';
 import { L3Experiment02 } from './level3/Experiment02';
 import { L3Experiment03 } from './level3/Experiment03';
@@ -42,6 +46,10 @@ const L3_EXPERIMENTS: Record<string, () => ReactElement> = {
   '03': L3Experiment03,
   '04': L3Experiment04,
 };
+const L4_EXPERIMENTS: Record<string, () => ReactElement> = {
+  '01': L4Experiment01,
+  '02': L4Experiment02,
+};
 const L2_EXPERIMENTS: Record<string, () => ReactElement> = {
   '01': L2Experiment01,
   '02': L2Experiment02,
@@ -57,7 +65,9 @@ function Page({ route }: { route: Route }) {
     case 'levels':
       return <Levels />;
     case 'level':
-      return route.level === 3 ? (
+      return route.level === 4 ? (
+        <Level4Landing />
+      ) : route.level === 3 ? (
         <Level3Landing />
       ) : route.level === 2 ? (
         <Level2Landing />
@@ -69,6 +79,11 @@ function Page({ route }: { route: Route }) {
     case 'assessment':
       return <Assessment />;
     case 'experiment': {
+      if (route.level === 4) {
+        const C4 = L4_EXPERIMENTS[route.id];
+        if (C4 && LEVEL_4.open.has(route.id)) return <C4 key={`l4-${route.id}`} />;
+        return <NotFound />;
+      }
       if (route.level === 3) {
         const C3 = L3_EXPERIMENTS[route.id];
         if (C3 && LEVEL_3.open.has(route.id)) return <C3 key={`l3-${route.id}`} />;
@@ -115,11 +130,13 @@ export function LearnApp() {
     const last = crumbs(route).at(-1)?.label ?? '';
     const e =
       route.page === 'experiment'
-        ? route.level === 3
-          ? level3ById(route.id)
-          : route.level === 2
-            ? level2ById(route.id)
-            : level1ById(route.id)
+        ? route.level === 4
+          ? level4ById(route.id)
+          : route.level === 3
+            ? level3ById(route.id)
+            : route.level === 2
+              ? level2ById(route.id)
+              : level1ById(route.id)
         : undefined;
     document.title = e ? `${e.id} ${e.title} · DL-VizLab` : `${last === 'Home' ? 'Learn' : last} · DL-VizLab`;
   }, [route]);

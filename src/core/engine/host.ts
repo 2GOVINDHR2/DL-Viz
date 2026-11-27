@@ -57,7 +57,7 @@ export function resolveDataset(spec: DatasetSpec): Dataset {
     case 'points':
       return {
         name: spec.name,
-        xs: Tensor.from([spec.xs.length, spec.xs[0].length], spec.xs.flat()),
+        xs: Tensor.from([spec.xs.length, ...(spec.shape ?? [spec.xs[0].length])], spec.xs.flat()),
         ys: Tensor.from([spec.ys.length, spec.ys[0].length], spec.ys.flat()),
       };
   }
