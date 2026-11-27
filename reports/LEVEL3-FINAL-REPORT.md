@@ -154,3 +154,39 @@ Two items left open in the first version of this report were completed:
 2. **A full regression was run after all fixes, from a clean `dist` build.** typecheck, lint and format are clean. Unit tests pass 721 of 721, gradcheck 48, parity 8, determinism 18. The **full Chromium e2e suite passed 133 of 134.**
    - **The single failure is `perf-cnn`'s memory guard:** peak renderer memory was 791 MB against a 700 MB guard in the existing workbench CNN, not Level 3 code. It ran after ~125 other tests in the same browser.
    - **Run on its own immediately afterwards, it passes.** It also failed the same way in the first full run, so it depends on suite order and the machine. It has not been fixed and is left for a decision: raise the guard, or run perf specs in a fresh browser.
+
+## 12. The `perf-cnn` memory failure: diagnosis and fix (2026-11-27)
+
+**Symptom.** In the full Chromium suite, `perf-cnn` failed its peak-memory guard twice, at 734 MB and 791 MB against a 700 MB limit. Run on its own, it passed.
+
+**Diagnosis.** The cause was the measurement, not the CNN page.
+- **The probe measured the whole machine.** It read the largest `--type=renderer` resident set from `ps` across the whole machine, not just this test's tab.
+- **Other tests run in parallel.** The suite uses 2 Playwright workers. While `perf-cnn` ran (test 125 of 134), the other worker was running the Level 3 layout test, which trains every Level 3 experiment, Experiment 04's 300-epoch record included.
+- **That tab is large enough on its own.** Measured with nothing else running, it peaks at **679 MB**, and in the suite it runs after many other tests in the same worker.
+- **The worker's browser was shared.** `perf-cnn` also ran in a browser process shared with the earlier tests of its worker. Anything those tests left in that browser counted towards its peak too.
+- **Controlled reproduction.** `perf-cnn` and the Level 3 layout test were run together with 2 workers, twice. This test's own renderers peaked at 561 and 533 MB, while the largest renderer on the machine was 619 and 554 MB.
+- **The original 791 MB process can't be named now.** The old probe recorded no process ids. Both possible causes, another worker's renderer and accumulation in the shared browser, are removed by the change below.
+
+**Change** (`tests/e2e/perf-cnn.spec.ts`, commit `19ab16f`):
+1. **The test launches its own browser process,** with the project's launch options, base URL and viewport. Nothing an earlier test did is in it, and it is closed at the end.
+2. **Peak memory counts only this browser's renderer processes.** Their ids come from the DevTools protocol (`SystemInfo.getProcessInfo`) and are refreshed every 250 ms.
+3. **Each sample is one `ps` snapshot.** A first version used two separate calls, which caught different spikes.
+4. **The machine-wide peak is still recorded** (`peakAnyRendererRssMB`, an annotation and a log line), for diagnostics only. It is never asserted.
+
+**The guard is unchanged.** It is still `peakRendererRssMB < 700`, alongside the worker's live heap + array buffers after GC (< 500 MB) and the worst frame during generation (< 250 ms). The measurements below show the threshold is valid: the isolated peak sits at 529–580 MB, 120–170 MB under the guard.
+
+**Isolated runs** (`--repeat-each=10 --workers=1`, a fresh browser each time): **10 of 10 pass.**
+
+| Run | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Own renderer peak (MB) | 553 | 540 | 545 | 529 | 571 | 563 | 532 | 580 | 564 | 551 |
+
+Min 529, max 580, mean 553 MB. The three single runs while the probe was being finalised gave 554, 528 and 548 MB.
+
+**Final full-suite result.** After a clean `dist` build, `npx playwright test --project=chromium` gave **134 passed, 0 failed (8.8 min, 2 workers).** `perf-cnn` ran as test 125 with an own-renderer peak of 577 MB.
+
+**Final status of Level 3 regression:**
+- typecheck, lint and format: clean;
+- unit: 721 of 721;
+- gradcheck, parity and determinism: 48, 8 and 18;
+- full Chromium e2e: **134 of 134.**
