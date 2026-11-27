@@ -229,9 +229,10 @@
     "negative": true,
     "text": "expect(m, text).not.toBeNull();",
     "blank": "elsewhere",
-    "noAction": "n/a",
+    "noAction": "survived",
     "detail": {
-      "blank": "timedOut at 68: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+      "blank": "timedOut at 68: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "passed at : "
     }
   },
   {
@@ -241,9 +242,12 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": false,
     "text": "expect(num(m![1])).toBeGreaterThan(0);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "elsewhere",
+    "noAction": "survived",
+    "detail": {
+      "blank": "timedOut at 68: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "passed at : "
+    }
   },
   {
     "id": "level4-exp06.spec:66",
@@ -252,9 +256,12 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": false,
     "text": "expect(num(m![2])).toBeGreaterThan(0);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "elsewhere",
+    "noAction": "survived",
+    "detail": {
+      "blank": "timedOut at 68: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "passed at : "
+    }
   },
   {
     "id": "level4-exp06.spec:69",
@@ -263,9 +270,12 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": false,
     "text": "await expect(b.locator('svg[role=\"img\"]').first()).toHaveAttribute('aria-label', /during epoch 1$/);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:70",
@@ -274,9 +284,12 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": true,
     "text": "await expect.poll(read).not.toBe(text);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 70: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:142",
@@ -285,9 +298,12 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": false,
     "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:144",
@@ -296,9 +312,12 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": false,
     "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:146",
@@ -307,9 +326,12 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": true,
     "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:147",
@@ -318,9 +340,12 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": true,
     "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 146: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:154",
@@ -329,9 +354,12 @@
     "fn": "Check: the live question accepts the reconstruction loss of Part D",
     "negative": false,
     "text": "await expect(q.getByText('Train the autoencoder in Part A first.')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:158",
@@ -340,9 +368,12 @@
     "fn": "Check: the live question accepts the reconstruction loss of Part D",
     "negative": false,
     "text": "await expect(options.first()).toBeVisible({ timeout: 60_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 158: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:164",
@@ -351,9 +382,12 @@
     "fn": "Check: the live question accepts the reconstruction loss of Part D",
     "negative": false,
     "text": "expect(Math.abs(num(texts[best].trim()) - loss)).toBeLessThanOrEqual(0.00006);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 165: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+      "no-action": "failed at 154: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:166",
@@ -362,8 +396,11 @@
     "fn": "Check: the live question accepts the reconstruction loss of Part D",
     "negative": false,
     "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 166: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 166: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   }
 ]
