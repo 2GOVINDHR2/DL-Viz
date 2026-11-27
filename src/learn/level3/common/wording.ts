@@ -16,6 +16,17 @@ export function level3Wording(o: { optimizer: 'sgd' | 'momentum' | 'adam'; decay
   if (o.optimizer === 'adam')
     kinds.OPTIMIZER_STATE = 'update Adam’s moment estimates m, v and their corrections m̂, v̂';
   if (o.decay) kinds.GRAD_ACCUMULATE = 'average the gradients over the batch, then add λ·w (weight decay)';
+  // Level 2's "w ← w − η·g" describes plain gradient descent only; with momentum, Adam or weight decay the step is
+  // something else, so the label, the table note and APPLY_UPDATE name the step Δ instead.
+  const plain = o.optimizer === 'sgd' && !o.decay;
+  if (!plain) kinds.APPLY_UPDATE = 'apply the step: new value = old value + Δ';
+  const g = o.decay ? '(ḡ + λ·w)' : 'ḡ';
+  const step =
+    o.optimizer === 'momentum'
+      ? `The step is Δ = −η·v, where the velocity v ← μ·v + ${g}.`
+      : o.optimizer === 'adam'
+        ? `The step is Δ = −η·m̂/(√v̂ + ε), from Adam’s moment estimates of ${g}.`
+        : `The step is Δ = −η·${g}, the learning rate times the gradient, with its sign reversed.`;
   const extra =
     o.optimizer === 'momentum'
       ? ' The optimiser first updates its velocity, and the step uses the velocity.'
@@ -24,6 +35,12 @@ export function level3Wording(o: { optimizer: 'sgd' | 'momentum' | 'adam'; decay
         : '';
   return {
     ...LEVEL2_WORDING,
+    ...(plain
+      ? {}
+      : {
+          phases: { ...LEVEL2_WORDING.phases, update: { tag: 'update', label: 'Update: w ← w + Δ' } },
+          updatesNote: `First four values of each. ${step}`,
+        }),
     phaseExplain: {
       ...LEVEL2_WORDING.phaseExplain,
       update:
