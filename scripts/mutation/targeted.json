@@ -1025,5 +1025,495 @@
     ],
     "spec": "tests/e2e/level2-challenge.spec.ts",
     "grep": "forward pass is listed"
+  },
+  {
+    "ids": ["level3-exp01.spec:59"],
+    "claim": "the comparison row has four value cells",
+    "mutant": "the rises column is dropped",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{rises(r.run.losses)}</td>",
+        "replace": ""
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "each learning rate gets its verdict"
+  },
+  {
+    "ids": ["level3-exp01.spec:60"],
+    "claim": "η = 2 has no rising epoch",
+    "mutant": "the rises column shows one more",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{rises(r.run.losses)}</td>",
+        "replace": "<td className=\"num\">{rises(r.run.losses) + 1}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "each learning rate gets its verdict"
+  },
+  {
+    "ids": ["level3-exp01.spec:61"],
+    "claim": "η = 8 rises at least five times",
+    "mutant": "the rises column is capped at 1",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{rises(r.run.losses)}</td>",
+        "replace": "<td className=\"num\">{Math.min(1, rises(r.run.losses))}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "each learning rate gets its verdict"
+  },
+  {
+    "ids": ["level3-exp01.spec:63"],
+    "claim": "η = 2 ends lower than η = 0.05",
+    "mutant": "η = 2 shows a final loss of 9",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.run.lr === 2 ? 9 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "each learning rate gets its verdict"
+  },
+  {
+    "ids": ["level3-exp01.spec:64"],
+    "claim": "η = 2 ends lower than η = 8",
+    "mutant": "η = 8 shows a final loss of 0",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.run.lr === 8 ? 0 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "each learning rate gets its verdict"
+  },
+  {
+    "ids": ["level3-exp01.spec:85", "level3-exp01.spec:87"],
+    "claim": "the recorded step is −η·ḡ, checked here",
+    "mutant": "the step read from the record is scaled by 1.5",
+    "file": "src/learn/level3/common/updates.ts",
+    "patches": [
+      {
+        "find": "delta: compute.results.delta.data[k],",
+        "replace": "delta: compute.results.delta.data[k] * 1.5,"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "Part B with eta 2"
+  },
+  {
+    "ids": ["level3-exp01.spec:89"],
+    "claim": "before + Δ = after",
+    "mutant": "the value after is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{fmt(u.before, 4)} → {fmt(u.after, 4)}",
+        "replace": "{fmt(u.before, 4)} → {fmt(u.after + 0.01, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "Part B with eta 2"
+  },
+  {
+    "ids": ["level3-exp01.spec:96"],
+    "claim": "update 10's value before is update 9's value after",
+    "mutant": "update 10's value before is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{fmt(u.before, 4)} → {fmt(u.after, 4)}",
+        "replace": "{fmt(u.n === 10 ? u.before + 0.01 : u.before, 4)} → {fmt(u.after, 4)}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "Part B with eta 2"
+  },
+  {
+    "ids": ["level3-exp01.spec:104"],
+    "claim": "η = 8 overshoots at update 1",
+    "mutant": "the rise is never reported",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{rose ? '↑ the loss rose: this step overshot' : '↓ the loss fell'}",
+        "replace": "{false ? '↑ the loss rose: this step overshot' : '↓ the loss fell'}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "eta 8 overshoots"
+  },
+  {
+    "ids": ["level3-exp01.spec:109"],
+    "claim": "the loss after is higher than before",
+    "mutant": "the loss after is shown 10 lower",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "{next ? fmt(next.loss, 4) : '— (last update)'}",
+        "replace": "{next ? fmt(next.loss - 10, 4) : '— (last update)'}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "eta 8 overshoots"
+  },
+  {
+    "ids": ["level3-exp01.spec:117"],
+    "claim": "η = 0.05 takes a step under 0.01",
+    "mutant": "η = 0.05 steps are shown 100× larger",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "          {fmtSigned(u.delta, 6)}{' '}",
+        "replace": "          {fmtSigned(u.lr === 0.05 ? u.delta * 100 : u.delta, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "eta 8 overshoots"
+  },
+  {
+    "ids": ["level3-exp01.spec:118"],
+    "claim": "η = 8's step is larger than η = 0.05's",
+    "mutant": "η = 8's step is shown as 0",
+    "file": "src/learn/level3/Experiment01.tsx",
+    "patches": [
+      {
+        "find": "          {fmtSigned(u.delta, 6)}{' '}",
+        "replace": "          {fmtSigned(u.lr === 8 ? 0 : u.delta, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp01.spec.ts",
+    "grep": "eta 8 overshoots"
+  },
+  {
+    "ids": ["level3-exp02.spec:44", "level3-exp02.spec:46"],
+    "claim": "μ = 0.9 ends lowest, below 0.1",
+    "mutant": "μ = 0.9 shows a final loss of 1",
+    "file": "src/learn/level3/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.label.includes('0.9') ? 1 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp02.spec.ts",
+    "grep": "momentum reaches a lower epoch-60 loss"
+  },
+  {
+    "ids": ["level3-exp02.spec:45"],
+    "claim": "μ = 0.5 ends below plain descent",
+    "mutant": "plain descent shows a final loss of 0.01",
+    "file": "src/learn/level3/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.label.includes('plain') ? 0.01 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp02.spec.ts",
+    "grep": "momentum reaches a lower epoch-60 loss"
+  },
+  {
+    "ids": ["level3-exp02.spec:59", "level3-exp02.spec:64"],
+    "claim": "v = μ·v + ḡ from the recorded values",
+    "mutant": "the velocity is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "          {fmtSigned(v, 6)}{' '}",
+        "replace": "          {fmtSigned(v + 0.01, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp02.spec.ts",
+    "grep": "velocity chains"
+  },
+  {
+    "ids": ["level3-exp02.spec:66"],
+    "claim": "Δ = −η·v",
+    "mutant": "the step is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "          {fmtSigned(u.delta, 6)}{' '}",
+        "replace": "          {fmtSigned(u.delta + 0.01, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp02.spec.ts",
+    "grep": "velocity chains"
+  },
+  {
+    "ids": ["level3-exp02.spec:68"],
+    "claim": "the plain step is −η·ḡ",
+    "mutant": "the plain step is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(plain, 6)} <span",
+        "replace": "{fmtSigned(plain + 0.01, 6)} <span"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp02.spec.ts",
+    "grep": "velocity chains"
+  },
+  {
+    "ids": ["level3-exp02.spec:95"],
+    "claim": "some momentum step is more than twice the plain step",
+    "mutant": "the ratio is capped at 1.5",
+    "file": "src/learn/level3/Experiment02.tsx",
+    "patches": [
+      {
+        "find": "{Number.isFinite(ratio) ? `${fmt(ratio, 2)}×` : '—'}",
+        "replace": "{Number.isFinite(ratio) ? `${fmt(Math.min(ratio, 1.5), 2)}×` : '—'}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp02.spec.ts",
+    "grep": "more than twice the plain step"
+  },
+  {
+    "ids": ["level3-exp03.spec:46", "level3-exp03.spec:48"],
+    "claim": "Adam ends lowest, below 0.15",
+    "mutant": "Adam shows a final loss of 1",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.label === 'Adam' ? 1 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Adam reaches a lower epoch-60 loss"
+  },
+  {
+    "ids": ["level3-exp03.spec:47"],
+    "claim": "momentum ends below plain descent",
+    "mutant": "plain descent shows a final loss of 0.01",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(r.label.includes('plain') ? 0.01 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Adam reaches a lower epoch-60 loss"
+  },
+  {
+    "ids": ["level3-exp03.spec:60"],
+    "claim": "the first step is η in size",
+    "mutant": "the step ratio is shown 0.9×",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "|Δ| = {fmt(Math.abs(u.delta) / u.lr, 3)} × η",
+        "replace": "|Δ| = {fmt((0.9 * Math.abs(u.delta)) / u.lr, 3)} × η"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part B update 1"
+  },
+  {
+    "ids": ["level3-exp03.spec:61"],
+    "claim": "the first step is η in size",
+    "mutant": "the step ratio is shown 1.1×",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "|Δ| = {fmt(Math.abs(u.delta) / u.lr, 3)} × η",
+        "replace": "|Δ| = {fmt((1.1 * Math.abs(u.delta)) / u.lr, 3)} × η"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part B update 1"
+  },
+  {
+    "ids": ["level3-exp03.spec:63"],
+    "claim": "Δ = −η·sign(ḡ) at update 1",
+    "mutant": "the step is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "          {fmtSigned(u.delta, 6)}\n",
+        "replace": "          {fmtSigned(u.delta + 0.01, 6)}\n"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part B update 1"
+  },
+  {
+    "ids": ["level3-exp03.spec:77"],
+    "claim": "m₂ = 0.9·m₁ + 0.1·ḡ₂",
+    "mutant": "m is shown 0.01 higher from update 2",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(u.m!, 6)}",
+        "replace": "{fmtSigned(u.n > 1 ? u.m! + 0.01 : u.m!, 6)}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part B update 2"
+  },
+  {
+    "ids": ["level3-exp03.spec:79"],
+    "claim": "m̂₂ = m₂ / 0.19",
+    "mutant": "m̂ is shown 0.01 higher from update 2",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(u.mHat!, 6)}",
+        "replace": "{fmtSigned(u.n > 1 ? u.mHat! + 0.01 : u.mHat!, 6)}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part B update 2"
+  },
+  {
+    "ids": ["level3-exp03.spec:107", "level3-exp03.spec:114"],
+    "claim": "no step larger than about η",
+    "mutant": "the largest step is shown 1.6× larger",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "than {fmt(maxStep, 2)}·η",
+        "replace": "than {fmt(maxStep * 1.6, 2)}·η"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part C"
+  },
+  {
+    "ids": ["level3-exp03.spec:108"],
+    "claim": "at least one pair with gradients >10× apart and steps <3× apart",
+    "mutant": "the pair count is shown as 0",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "{pairs} pairs of parameters",
+        "replace": "{0} pairs of parameters"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part C"
+  },
+  {
+    "ids": ["level3-exp03.spec:109"],
+    "claim": "gradients more than 10× apart",
+    "mutant": "the gradient spread is shown as 5",
+    "file": "src/learn/level3/Experiment03.tsx",
+    "patches": [
+      {
+        "find": "the largest gradient is {fmt(gRatio, 1)}×",
+        "replace": "the largest gradient is {fmt(5, 1)}×"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp03.spec.ts",
+    "grep": "Part C"
+  },
+  {
+    "ids": ["level3-exp04.spec:61"],
+    "claim": "held-out loss at epoch 300 is more than twice its lowest",
+    "mutant": "held-out loss is shown at a third",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{fmt(e.testLoss, 4)} · ",
+        "replace": "{fmt(k === best ? e.testLoss : e.testLoss! / 3, 4)} · "
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part A with lambda 0"
+  },
+  {
+    "ids": ["level3-exp04.spec:62"],
+    "claim": "training loss at epoch 300 is below 0.05",
+    "mutant": "training loss is shown 0.1 higher",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{fmt(e.evalLoss, 4)} · ",
+        "replace": "{fmt(e.evalLoss + 0.1, 4)} · "
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part A with lambda 0"
+  },
+  {
+    "ids": ["level3-exp04.spec:83"],
+    "claim": "training loss at the end rises with λ",
+    "mutant": "λ = 0.03 shows a training loss of 0",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "<td className=\"num\">{fmt(r.run.losses.at(-1), 4)}</td>",
+        "replace": "<td className=\"num\">{fmt(L3_OVERFIT.decays[i] === 0.03 ? 0 : r.run.losses.at(-1), 4)}</td>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part B: weight decay"
+  },
+  {
+    "ids": ["level3-exp04.spec:85", "level3-exp04.spec:86"],
+    "claim": "the comparison's λ = 0 lowest held-out is Part A's",
+    "mutant": "the lowest epoch is shown one later",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "(epoch {b + 1})",
+        "replace": "(epoch {b + 2})"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part B: weight decay"
+  },
+  {
+    "ids": ["level3-exp04.spec:105"],
+    "claim": "λ·w is the decay shown",
+    "mutant": "the decay is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(u.decay!, 6)}{' '}",
+        "replace": "{fmtSigned(u.decay! + 0.01, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part C"
+  },
+  {
+    "ids": ["level3-exp04.spec:106"],
+    "claim": "the optimiser receives ḡ + λ·w",
+    "mutant": "the regularised gradient is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{fmtSigned(u.regularized!, 6)}{' '}",
+        "replace": "{fmtSigned(u.regularized! + 0.01, 6)}{' '}"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part C"
+  },
+  {
+    "ids": ["level3-exp04.spec:107"],
+    "claim": "w after = w + Δ",
+    "mutant": "the weight after is shown 0.01 higher",
+    "file": "src/learn/level3/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "<dd className=\"lv-mono\">{fmtSigned(u.after, 6)}</dd>",
+        "replace": "<dd className=\"lv-mono\">{fmtSigned(u.after + 0.01, 6)}</dd>"
+      }
+    ],
+    "spec": "tests/e2e/level3-exp04.spec.ts",
+    "grep": "Part C"
   }
 ]
