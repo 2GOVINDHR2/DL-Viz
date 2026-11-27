@@ -18,7 +18,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { EXPERIMENTS } from '../../src/experiments/registry';
-import { unlockAll } from './helpers';
+import { LEVEL3_PAGES, trainLevel3, unlockAll } from './helpers';
 
 type Kind = 'panel' | 'control' | 'disclosure' | 'information';
 export interface Capability {
@@ -181,6 +181,26 @@ async function level2(page: Page): Promise<Capability[]> {
   return caps;
 }
 
+/** Level 3 (ADR-099): every page as opened, and each experiment after its comparison and a recorded run. */
+async function level3(page: Page): Promise<Capability[]> {
+  const caps: Capability[] = [];
+  const take = async (name: string): Promise<void> => {
+    await openAll(page);
+    for (const c of await read(page)) caps.push({ screen: name, ...c });
+  };
+  for (const url of LEVEL3_PAGES) {
+    const n = url.match(/experiment-0(\d)/)?.[1];
+    const name = n ? `learn: L3 experiment 0${n}` : 'learn: level 3';
+    await page.goto(url);
+    await expect(page.locator('main h1').first()).toBeVisible();
+    await take(name);
+    if (!n) continue;
+    await trainLevel3(page, Number(n));
+    await take(`${name} (trained)`);
+  }
+  return caps;
+}
+
 test('capability inventory: nothing in the baseline disappears without an ADR', async ({ page }) => {
   test.setTimeout(900_000);
   await page.setViewportSize({ width: 1280, height: 720 });
@@ -192,6 +212,7 @@ test('capability inventory: nothing in the baseline disappears without an ADR', 
   }
   all.push(...(await level1(page)));
   all.push(...(await level2(page)));
+  all.push(...(await level3(page)));
   const unique = [...new Map(all.map((c) => [key(c), c])).values()].sort((a, b) =>
     key(a).localeCompare(key(b)),
   );

@@ -873,7 +873,8 @@ body:has(.lv-root) {
 }
 .lv-kv {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  /* The label column is capped at half the width, so a long label cannot squeeze the value to nothing on a phone. */
+  grid-template-columns: fit-content(50%) minmax(0, 1fr);
   gap: var(--lv-s1) var(--lv-s4);
   margin: 0;
 }

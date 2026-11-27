@@ -2363,5 +2363,10 @@
     "key": "learn: L2 experiment 05 (trained)|panel|#. Prediction (forward pass)",
     "adr": "ADR-096",
     "why": "renamed \"Forward pass and prediction\": the stage now lists the recorded forward steps before the prediction"
+  },
+  {
+    "key": "learn: levels|information|h2: Levels # and beyond",
+    "adr": "ADR-099",
+    "why": "Level 3 now has its own card; the placeholder card is renamed \"Beyond Level 3\""
   }
 ]

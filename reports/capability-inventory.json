@@ -11090,6 +11090,2226 @@
     "text": "What you will understand"
   },
   {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:compare (button): Train these learning rates"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:lr:0.05 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:lr:0.5 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:lr:2 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:lr:30 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:lr:8 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:lr:0.05 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:lr:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:lr:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:lr:30 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:lr:8 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:param (select): Parameterhidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hid"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:show (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:update (range): Update number"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-step:0 (radio): +#"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-step:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-step:2 (radio): +#"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-double:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-double:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-double:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-rise:0 (radio): The learning rate is too large: steps overshoot the lower ground"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-rise:1 (radio): The learning rate is too small"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-rise:2 (radio): The network has too few neurons"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-why-small:0 (radio): Training would need far more updates to get anywhere"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-why-small:1 (radio): Tiny learning rates make the gradient wrong"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:lr-why-small:2 (radio): Tiny learning rates always diverge"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Momentum: Smoothing the Update →"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## "
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "disclosure",
+    "text": "Loss after each epoch, for each learning rate: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "disclosure",
+    "text": "Loss of the batch before each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "disclosure",
+    "text": "Value of the hidden bias of neuron # after each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Catch an overshoot"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Inside one run"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Same network, different learning rates"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: The useful middle"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Too careful"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Learning rate η for the recorded run"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Learning rates"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceAt one update the mean gradient of a weight is ḡ = #. With η = # the step is #. What is it with η = #?"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy not always use a tiny learning rate to be safe?"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, update #: the mean gradient is ḡ = # and η = #. What is the st"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioA loss curve goes down, then up, then down again in big jumps. What is the most likely cause?"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "Learning rates to compare"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "One recorded update"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L3 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "a:compare (button): Train these learning rates"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "a:lr:0.05 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "a:lr:0.5 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "a:lr:2 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "a:lr:30 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "a:lr:8 (checkbox): η = #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "b:lr:0.05 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "b:lr:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "b:lr:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "b:lr:30 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "b:lr:8 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "b:train (button): Train and record this run"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:l3-live-step:0 (radio): —"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-double:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-double:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-double:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-rise:0 (radio): The learning rate is too large: steps overshoot the lower ground"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-rise:1 (radio): The learning rate is too small"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-rise:2 (radio): The network has too few neurons"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-why-small:0 (radio): Training would need far more updates to get anywhere"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-why-small:1 (radio): Tiny learning rates make the gradient wrong"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "check:lr-why-small:2 (radio): Tiny learning rates always diverge"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Momentum: Smoothing the Update →"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h3: Catch an overshoot"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h3: Inside one run"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h3: Same network, different learning rates"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h3: The useful middle"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "h3: Too careful"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "legend: Learning rate η for the recorded run"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "legend: Learning rates"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceAt one update the mean gradient of a weight is ḡ = #. With η = # the step is #. What is it with η = #?"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy not always use a tiny learning rate to be safe?"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, what is the step of an update?"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "information",
+    "text": "legend: ScenarioA loss curve goes down, then up, then down again in big jumps. What is the most likely cause?"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "panel",
+    "text": "Learning rates to compare"
+  },
+  {
+    "screen": "learn: L3 experiment 01",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "a:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:mu:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:mu:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:mu:0.9 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:param (select): Parameterhidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hid"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:show (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:update (range): Update number"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-velocity:0 (radio): +#"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-velocity:1 (radio): +#"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-velocity:2 (radio): +#"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-rule:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-rule:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-rule:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-state:0 (radio): One velocity for every parameter"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-state:1 (radio): A second learning rate"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-state:2 (radio): A copy of the training data"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-wobble:0 (radio): Makes them smaller: the opposite signs partly cancel in the velocity"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-wobble:1 (radio): Makes them larger"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:mo-wobble:2 (radio): Nothing: momentum only changes the learning rate"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Adam: Adaptive Optimization →"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## "
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "disclosure",
+    "text": "Loss after each epoch, with and without momentum: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "disclosure",
+    "text": "Loss of the batch before each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "disclosure",
+    "text": "Mean gradient ḡ and velocity v at each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "disclosure",
+    "text": "Value of the output weight h₁ → output after each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Momentum without memory"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Plain steps against momentum"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Same η, better result"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Speed builds up"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: The velocity, update by update"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Momentum coefficient μ"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat extra does momentum keep between updates, compared with plain gradient descent?"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWith μ = #, the previous velocity is v = # and the new mean gradient is ḡ = #. What is the new velocity?"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, update # (μ = #): the previous velocity is +# and the mean gra"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioA parameter’s gradient flips sign every update (+, −, +, −). What does momentum do to its steps?"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "Compare update rules"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "One recorded update"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L3 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "a:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "b:mu:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "b:mu:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "b:mu:0.9 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "b:train (button): Train and record the momentum run"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:l3-live-velocity:0 (radio): —"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-rule:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-rule:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-rule:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-state:0 (radio): One velocity for every parameter"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-state:1 (radio): A second learning rate"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-state:2 (radio): A copy of the training data"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-wobble:0 (radio): Makes them smaller: the opposite signs partly cancel in the velocity"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-wobble:1 (radio): Makes them larger"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "check:mo-wobble:2 (radio): Nothing: momentum only changes the learning rate"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Adam: Adaptive Optimization →"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h3: Momentum without memory"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h3: Plain steps against momentum"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h3: Same η, better result"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h3: Speed builds up"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "h3: The velocity, update by update"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "legend: Momentum coefficient μ"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat extra does momentum keep between updates, compared with plain gradient descent?"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceWith μ = #, the previous velocity is v = # and the new mean gradient is ḡ = #. What is the new velocity?"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, what is the new velocity of an update?"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "information",
+    "text": "legend: ScenarioA parameter’s gradient flips sign every update (+, −, +, −). What does momentum do to its steps?"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "panel",
+    "text": "Compare update rules"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 02",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "a:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:param (select): Parameterhidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hid"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:show (button): Show step ## in the record"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:update (range): Update number"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "c:update (range): Update number for the step sizes"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-adaptive:0 (radio): Both at most about η: each gradient is divided by its own typical size, so the step does not grow with the gradient"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-adaptive:1 (radio): The second moves # times further"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-adaptive:2 (radio): The first moves # times further"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-correct:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-correct:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-correct:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-state:0 (radio): Two: m and v (and one step count for all)"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-state:1 (radio): One, like momentum"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:ad-state:2 (radio): None"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-mhat:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-mhat:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-mhat:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Overfitting and Regularization →"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## "
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Loss after each epoch, for three optimisers: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Loss of the batch before each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Mean gradient ḡ and corrected first moment m̂ at each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Value of the output weight h₁ → output after each update: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: A step sized for each parameter"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Same step, different gradients"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: The first step"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: The moments, update by update"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Three optimisers"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Three optimisers, one task"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceAt update # with β₁ = # and gradient ḡ = #: m = #. What is m̂ = m/(#−β₁¹)?"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceHow many numbers does Adam keep for every parameter value, besides the value itself?"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, update t = #: m = # and β₁ = #. What is m̂ = m / (# − β₁ᵗ)?"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioOne weight always has gradients near #, another near #. With Adam, how do their steps compare?"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Compare optimisers"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "One recorded update"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L3 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "a:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "b:train (button): Train and record the Adam run"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-adaptive:0 (radio): Both at most about η: each gradient is divided by its own typical size, so the step does not grow with the gradient"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-adaptive:1 (radio): The second moves # times further"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-adaptive:2 (radio): The first moves # times further"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-correct:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-correct:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-correct:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-state:0 (radio): Two: m and v (and one step count for all)"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-state:1 (radio): One, like momentum"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:ad-state:2 (radio): None"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "check:l3-live-mhat:0 (radio): —"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Overfitting and Regularization →"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h3: A step sized for each parameter"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h3: Same step, different gradients"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h3: The first step"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h3: The moments, update by update"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h3: Three optimisers"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "h3: Three optimisers, one task"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "legend: Multiple choiceAt update # with β₁ = # and gradient ḡ = #: m = #. What is m̂ = m/(#−β₁¹)?"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "legend: Multiple choiceHow many numbers does Adam keep for every parameter value, besides the value itself?"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, what is the corrected first moment m̂?"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "information",
+    "text": "legend: ScenarioOne weight always has gradients near #, another near #. With Adam, how do their steps compare?"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "panel",
+    "text": "Compare optimisers"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 03",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:epoch (range): Epoch to inspect"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:lambda:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:lambda:0.003 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:lambda:0.01 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:lambda:0.03 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:train (button): Train and record"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:update (range): Update number for weight decay"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-decay:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-decay:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:l3-live-decay:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-decay:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-decay:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-decay:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-sign:0 (radio): Overfitting: the network is learning details of the training points that do not hold for new ones"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-sign:1 (radio): The learning rate is too large"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-sign:2 (radio): The held-out data are wrong"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-why-heldout:0 (radio): Otherwise their loss would no longer show how the network does on data it has not seen"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-why-heldout:1 (radio): They would make training slower"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:of-why-heldout:2 (radio): The engine cannot compute their gradient"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Level # overview →"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Held-out loss after each epoch, for each λ: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Training and held-out loss after each epoch: every value as a table"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "figcaption: After epoch #: shaded where the network answers #. The marks are the # training points."
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Different amounts of weight decay"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The right amount"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Too much of a good thing"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Training loss is not the goal"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Weight decay inside an update"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Where to stop"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: The network’s decision after epoch #"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy must the held-out points never be used for updates?"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWith weight decay λ = #, a weight w = # has mean gradient ḡ = #. What gradient does the optimiser receive"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part C, update #: the weight is w = #, its mean gradient ḡ = #, and λ "
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioTraining loss falls steadily; held-out loss falls, then rises. What is happening?"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Weight decay λ for the recorded run"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Compare weight decay"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L3 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "a:lambda:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "a:lambda:0.003 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "a:lambda:0.01 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "a:lambda:0.03 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "a:train (button): Train and record"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "b:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:l3-live-decay:0 (radio): —"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-decay:0 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-decay:1 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-decay:2 (radio): #"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-sign:0 (radio): Overfitting: the network is learning details of the training points that do not hold for new ones"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-sign:1 (radio): The learning rate is too large"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-sign:2 (radio): The held-out data are wrong"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-why-heldout:0 (radio): Otherwise their loss would no longer show how the network does on data it has not seen"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-why-heldout:1 (radio): They would make training slower"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "check:of-why-heldout:2 (radio): The engine cannot compute their gradient"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "next-experiment (a): Level # overview →"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h3: Different amounts of weight decay"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h3: The right amount"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h3: Too much of a good thing"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h3: Training loss is not the goal"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h3: Weight decay inside an update"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "h3: Where to stop"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy must the held-out points never be used for updates?"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceWith weight decay λ = #, a weight w = # has mean gradient ḡ = #. What gradient does the optimiser receive"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part C, what gradient does the optimiser receive with weight decay?"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "legend: ScenarioTraining loss falls steadily; held-out loss falls, then rises. What is happening?"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "information",
+    "text": "legend: Weight decay λ for the recorded run"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "panel",
+    "text": "Compare weight decay"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L3 experiment 04",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
     "screen": "learn: level 1",
     "kind": "control",
     "text": "start-level (a): Start learning →"
@@ -11173,6 +13393,41 @@
     "screen": "learn: level 2",
     "kind": "information",
     "text": "h3: Experiment #: Loss Functions: Measuring Prediction Error"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "control",
+    "text": "start-level-3 (a): Start Level # →"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "information",
+    "text": "h2: By the end you will understand"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "information",
+    "text": "h2: Your path"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "information",
+    "text": "h3: Experiment #: Adam: Adaptive Optimization"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "information",
+    "text": "h3: Experiment #: Learning Rate and Training Dynamics"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "information",
+    "text": "h3: Experiment #: Momentum: Smoothing the Update"
+  },
+  {
+    "screen": "learn: level 3",
+    "kind": "information",
+    "text": "h3: Experiment #: Overfitting and Regularization"
   },
   {
     "screen": "learn: levels",

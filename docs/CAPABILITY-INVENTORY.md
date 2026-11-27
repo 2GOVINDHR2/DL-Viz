@@ -12,7 +12,7 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 
 **How it protects the baseline.** Without `CAPTURE`, the same test fails if any baseline capability is missing from the current build, unless `reports/capability-removed.json` lists it with the ADR that removed it. A capability can be removed deliberately; it cannot disappear silently.
 
-**Totals:** 3333 capabilities over 39 screens.
+**Totals:** 3784 capabilities over 48 screens.
 
 **What it does not cover.** States that appear only after a particular interaction (a revealed prediction, a pinned comparison) are not captured here. They are covered by the e2e tests named in PROGRESS, Fix Round 5.
 
@@ -2566,6 +2566,550 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - legend: ScenarioA network has # weights and one loss. Why does the engine compute gradients backwards, from the loss?
 - legend: Step h
 
+## learn: L3 experiment 01 (trained)
+
+**Panels** (5)
+
+- Learning objectives
+- Learning rates to compare
+- One recorded update
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (47)
+
+- a:compare (button): Train these learning rates
+- a:lr:0.05 (checkbox): η = #
+- a:lr:0.5 (checkbox): η = #
+- a:lr:2 (checkbox): η = #
+- a:lr:30 (checkbox): η = #
+- a:lr:8 (checkbox): η = #
+- b:lr:0.05 (radio): #
+- b:lr:0.5 (radio): #
+- b:lr:2 (radio): #
+- b:lr:30 (radio): #
+- b:lr:8 (radio): #
+- b:param (select): Parameterhidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hid
+- b:show (button): Show step ## in the record
+- b:train (button): Train and record again
+- b:update (range): Update number
+- begin (a): Begin ↓
+- check:l3-live-step:0 (radio): +#
+- check:l3-live-step:1 (radio): #
+- check:l3-live-step:2 (radio): +#
+- check:lr-double:0 (radio): #
+- check:lr-double:1 (radio): #
+- check:lr-double:2 (radio): #
+- check:lr-rise:0 (radio): The learning rate is too large: steps overshoot the lower ground
+- check:lr-rise:1 (radio): The learning rate is too small
+- check:lr-rise:2 (radio): The network has too few neurons
+- check:lr-why-small:0 (radio): Training would need far more updates to get anywhere
+- check:lr-why-small:1 (radio): Tiny learning rates make the gradient wrong
+- check:lr-why-small:2 (radio): Tiny learning rates always diverge
+- next-experiment (a): Next: # · Momentum: Smoothing the Update →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (3)
+
+- Loss after each epoch, for each learning rate: every value as a table
+- Loss of the batch before each update: every value as a table
+- Value of the hidden bias of neuron # after each update: every value as a table
+
+**Information shown (headings, captions, legends)** (23)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Catch an overshoot
+- h3: Inside one run
+- h3: Same network, different learning rates
+- h3: The record of run #
+- h3: The useful middle
+- h3: Too careful
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Learning rate η for the recorded run
+- legend: Learning rates
+- legend: Multiple choiceAt one update the mean gradient of a weight is ḡ = #. With η = # the step is #. What is it with η = #?
+- legend: Multiple choiceWhy not always use a tiny learning rate to be safe?
+- legend: Predict the output · uses your current settingsIn Part B, update #: the mean gradient is ḡ = # and η = #. What is the st
+- legend: ScenarioA loss curve goes down, then up, then down again in big jumps. What is the most likely cause?
+- legend: Step size
+
+## learn: L3 experiment 01
+
+**Panels** (3)
+
+- Learning objectives
+- Learning rates to compare
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (25)
+
+- a:compare (button): Train these learning rates
+- a:lr:0.05 (checkbox): η = #
+- a:lr:0.5 (checkbox): η = #
+- a:lr:2 (checkbox): η = #
+- a:lr:30 (checkbox): η = #
+- a:lr:8 (checkbox): η = #
+- b:lr:0.05 (radio): #
+- b:lr:0.5 (radio): #
+- b:lr:2 (radio): #
+- b:lr:30 (radio): #
+- b:lr:8 (radio): #
+- b:train (button): Train and record this run
+- begin (a): Begin ↓
+- check:l3-live-step:0 (radio): —
+- check:lr-double:0 (radio): #
+- check:lr-double:1 (radio): #
+- check:lr-double:2 (radio): #
+- check:lr-rise:0 (radio): The learning rate is too large: steps overshoot the lower ground
+- check:lr-rise:1 (radio): The learning rate is too small
+- check:lr-rise:2 (radio): The network has too few neurons
+- check:lr-why-small:0 (radio): Training would need far more updates to get anywhere
+- check:lr-why-small:1 (radio): Tiny learning rates make the gradient wrong
+- check:lr-why-small:2 (radio): Tiny learning rates always diverge
+- next-experiment (a): Next: # · Momentum: Smoothing the Update →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (17)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Catch an overshoot
+- h3: Inside one run
+- h3: Same network, different learning rates
+- h3: The useful middle
+- h3: Too careful
+- legend: Learning rate η for the recorded run
+- legend: Learning rates
+- legend: Multiple choiceAt one update the mean gradient of a weight is ḡ = #. With η = # the step is #. What is it with η = #?
+- legend: Multiple choiceWhy not always use a tiny learning rate to be safe?
+- legend: Predict the output · uses your current settingsIn Part B, what is the step of an update?
+- legend: ScenarioA loss curve goes down, then up, then down again in big jumps. What is the most likely cause?
+
+## learn: L3 experiment 02 (trained)
+
+**Panels** (5)
+
+- Compare update rules
+- Learning objectives
+- One recorded update
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (40)
+
+- a:compare (button): Train the comparison
+- b:mu:0 (radio): #
+- b:mu:0.5 (radio): #
+- b:mu:0.9 (radio): #
+- b:param (select): Parameterhidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hid
+- b:show (button): Show step ## in the record
+- b:train (button): Train and record again
+- b:update (range): Update number
+- begin (a): Begin ↓
+- check:l3-live-velocity:0 (radio): +#
+- check:l3-live-velocity:1 (radio): +#
+- check:l3-live-velocity:2 (radio): +#
+- check:mo-rule:0 (radio): #
+- check:mo-rule:1 (radio): #
+- check:mo-rule:2 (radio): #
+- check:mo-state:0 (radio): One velocity for every parameter
+- check:mo-state:1 (radio): A second learning rate
+- check:mo-state:2 (radio): A copy of the training data
+- check:mo-wobble:0 (radio): Makes them smaller: the opposite signs partly cancel in the velocity
+- check:mo-wobble:1 (radio): Makes them larger
+- check:mo-wobble:2 (radio): Nothing: momentum only changes the learning rate
+- next-experiment (a): Next: # · Adam: Adaptive Optimization →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (4)
+
+- Loss after each epoch, with and without momentum: every value as a table
+- Loss of the batch before each update: every value as a table
+- Mean gradient ḡ and velocity v at each update: every value as a table
+- Value of the output weight h₁ → output after each update: every value as a table
+
+**Information shown (headings, captions, legends)** (22)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Momentum without memory
+- h3: Plain steps against momentum
+- h3: Same η, better result
+- h3: Speed builds up
+- h3: The record of run #
+- h3: The velocity, update by update
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Momentum coefficient μ
+- legend: Multiple choiceWhat extra does momentum keep between updates, compared with plain gradient descent?
+- legend: Multiple choiceWith μ = #, the previous velocity is v = # and the new mean gradient is ḡ = #. What is the new velocity?
+- legend: Predict the output · uses your current settingsIn Part B, update # (μ = #): the previous velocity is +# and the mean gra
+- legend: ScenarioA parameter’s gradient flips sign every update (+, −, +, −). What does momentum do to its steps?
+- legend: Step size
+
+## learn: L3 experiment 02
+
+**Panels** (3)
+
+- Compare update rules
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (18)
+
+- a:compare (button): Train the comparison
+- b:mu:0 (radio): #
+- b:mu:0.5 (radio): #
+- b:mu:0.9 (radio): #
+- b:train (button): Train and record the momentum run
+- begin (a): Begin ↓
+- check:l3-live-velocity:0 (radio): —
+- check:mo-rule:0 (radio): #
+- check:mo-rule:1 (radio): #
+- check:mo-rule:2 (radio): #
+- check:mo-state:0 (radio): One velocity for every parameter
+- check:mo-state:1 (radio): A second learning rate
+- check:mo-state:2 (radio): A copy of the training data
+- check:mo-wobble:0 (radio): Makes them smaller: the opposite signs partly cancel in the velocity
+- check:mo-wobble:1 (radio): Makes them larger
+- check:mo-wobble:2 (radio): Nothing: momentum only changes the learning rate
+- next-experiment (a): Next: # · Adam: Adaptive Optimization →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (16)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Momentum without memory
+- h3: Plain steps against momentum
+- h3: Same η, better result
+- h3: Speed builds up
+- h3: The velocity, update by update
+- legend: Momentum coefficient μ
+- legend: Multiple choiceWhat extra does momentum keep between updates, compared with plain gradient descent?
+- legend: Multiple choiceWith μ = #, the previous velocity is v = # and the new mean gradient is ḡ = #. What is the new velocity?
+- legend: Predict the output · uses your current settingsIn Part B, what is the new velocity of an update?
+- legend: ScenarioA parameter’s gradient flips sign every update (+, −, +, −). What does momentum do to its steps?
+
+## learn: L3 experiment 03 (trained)
+
+**Panels** (5)
+
+- Compare optimisers
+- Learning objectives
+- One recorded update
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (38)
+
+- a:compare (button): Train the comparison
+- b:param (select): Parameterhidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hidden weight x₁ → neuron #hid
+- b:show (button): Show step ## in the record
+- b:train (button): Train and record again
+- b:update (range): Update number
+- begin (a): Begin ↓
+- c:update (range): Update number for the step sizes
+- check:ad-adaptive:0 (radio): Both at most about η: each gradient is divided by its own typical size, so the step does not grow with the gradient
+- check:ad-adaptive:1 (radio): The second moves # times further
+- check:ad-adaptive:2 (radio): The first moves # times further
+- check:ad-correct:0 (radio): #
+- check:ad-correct:1 (radio): #
+- check:ad-correct:2 (radio): #
+- check:ad-state:0 (radio): Two: m and v (and one step count for all)
+- check:ad-state:1 (radio): One, like momentum
+- check:ad-state:2 (radio): None
+- check:l3-live-mhat:0 (radio): #
+- check:l3-live-mhat:1 (radio): #
+- check:l3-live-mhat:2 (radio): #
+- next-experiment (a): Next: # · Overfitting and Regularization →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (4)
+
+- Loss after each epoch, for three optimisers: every value as a table
+- Loss of the batch before each update: every value as a table
+- Mean gradient ḡ and corrected first moment m̂ at each update: every value as a table
+- Value of the output weight h₁ → output after each update: every value as a table
+
+**Information shown (headings, captions, legends)** (22)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A step sized for each parameter
+- h3: Same step, different gradients
+- h3: The first step
+- h3: The moments, update by update
+- h3: The record of run #
+- h3: Three optimisers
+- h3: Three optimisers, one task
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Multiple choiceAt update # with β₁ = # and gradient ḡ = #: m = #. What is m̂ = m/(#−β₁¹)?
+- legend: Multiple choiceHow many numbers does Adam keep for every parameter value, besides the value itself?
+- legend: Predict the output · uses your current settingsIn Part B, update t = #: m = # and β₁ = #. What is m̂ = m / (# − β₁ᵗ)?
+- legend: ScenarioOne weight always has gradients near #, another near #. With Adam, how do their steps compare?
+- legend: Step size
+
+## learn: L3 experiment 03
+
+**Panels** (3)
+
+- Compare optimisers
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (15)
+
+- a:compare (button): Train the comparison
+- b:train (button): Train and record the Adam run
+- begin (a): Begin ↓
+- check:ad-adaptive:0 (radio): Both at most about η: each gradient is divided by its own typical size, so the step does not grow with the gradient
+- check:ad-adaptive:1 (radio): The second moves # times further
+- check:ad-adaptive:2 (radio): The first moves # times further
+- check:ad-correct:0 (radio): #
+- check:ad-correct:1 (radio): #
+- check:ad-correct:2 (radio): #
+- check:ad-state:0 (radio): Two: m and v (and one step count for all)
+- check:ad-state:1 (radio): One, like momentum
+- check:ad-state:2 (radio): None
+- check:l3-live-mhat:0 (radio): —
+- next-experiment (a): Next: # · Overfitting and Regularization →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (16)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A step sized for each parameter
+- h3: Same step, different gradients
+- h3: The first step
+- h3: The moments, update by update
+- h3: Three optimisers
+- h3: Three optimisers, one task
+- legend: Multiple choiceAt update # with β₁ = # and gradient ḡ = #: m = #. What is m̂ = m/(#−β₁¹)?
+- legend: Multiple choiceHow many numbers does Adam keep for every parameter value, besides the value itself?
+- legend: Predict the output · uses your current settingsIn Part B, what is the corrected first moment m̂?
+- legend: ScenarioOne weight always has gradients near #, another near #. With Adam, how do their steps compare?
+
+## learn: L3 experiment 04 (trained)
+
+**Panels** (4)
+
+- Compare weight decay
+- Learning objectives
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (40)
+
+- a:epoch (range): Epoch to inspect
+- a:lambda:0 (radio): #
+- a:lambda:0.003 (radio): #
+- a:lambda:0.01 (radio): #
+- a:lambda:0.03 (radio): #
+- a:train (button): Train and record
+- b:compare (button): Train the comparison
+- begin (a): Begin ↓
+- c:update (range): Update number for weight decay
+- check:l3-live-decay:0 (radio): #
+- check:l3-live-decay:1 (radio): #
+- check:l3-live-decay:2 (radio): #
+- check:of-decay:0 (radio): #
+- check:of-decay:1 (radio): #
+- check:of-decay:2 (radio): #
+- check:of-sign:0 (radio): Overfitting: the network is learning details of the training points that do not hold for new ones
+- check:of-sign:1 (radio): The learning rate is too large
+- check:of-sign:2 (radio): The held-out data are wrong
+- check:of-why-heldout:0 (radio): Otherwise their loss would no longer show how the network does on data it has not seen
+- check:of-why-heldout:1 (radio): They would make training slower
+- check:of-why-heldout:2 (radio): The engine cannot compute their gradient
+- next-experiment (a): Level # overview →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (2)
+
+- Held-out loss after each epoch, for each λ: every value as a table
+- Training and held-out loss after each epoch: every value as a table
+
+**Information shown (headings, captions, legends)** (25)
+
+- figcaption: After epoch #: shaded where the network answers #. The marks are the # training points.
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Different amounts of weight decay
+- h3: The record of run #
+- h3: The right amount
+- h3: Too much of a good thing
+- h3: Training loss is not the goal
+- h3: Weight decay inside an update
+- h3: Where to stop
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- h4: The network’s decision after epoch #
+- legend: Detail
+- legend: Multiple choiceWhy must the held-out points never be used for updates?
+- legend: Multiple choiceWith weight decay λ = #, a weight w = # has mean gradient ḡ = #. What gradient does the optimiser receive
+- legend: Predict the output · uses your current settingsIn Part C, update #: the weight is w = #, its mean gradient ḡ = #, and λ 
+- legend: ScenarioTraining loss falls steadily; held-out loss falls, then rises. What is happening?
+- legend: Step size
+- legend: Weight decay λ for the recorded run
+
+## learn: L3 experiment 04
+
+**Panels** (3)
+
+- Compare weight decay
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (19)
+
+- a:lambda:0 (radio): #
+- a:lambda:0.003 (radio): #
+- a:lambda:0.01 (radio): #
+- a:lambda:0.03 (radio): #
+- a:train (button): Train and record
+- b:compare (button): Train the comparison
+- begin (a): Begin ↓
+- check:l3-live-decay:0 (radio): —
+- check:of-decay:0 (radio): #
+- check:of-decay:1 (radio): #
+- check:of-decay:2 (radio): #
+- check:of-sign:0 (radio): Overfitting: the network is learning details of the training points that do not hold for new ones
+- check:of-sign:1 (radio): The learning rate is too large
+- check:of-sign:2 (radio): The held-out data are wrong
+- check:of-why-heldout:0 (radio): Otherwise their loss would no longer show how the network does on data it has not seen
+- check:of-why-heldout:1 (radio): They would make training slower
+- check:of-why-heldout:2 (radio): The engine cannot compute their gradient
+- next-experiment (a): Level # overview →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (17)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Different amounts of weight decay
+- h3: The right amount
+- h3: Too much of a good thing
+- h3: Training loss is not the goal
+- h3: Weight decay inside an update
+- h3: Where to stop
+- legend: Multiple choiceWhy must the held-out points never be used for updates?
+- legend: Multiple choiceWith weight decay λ = #, a weight w = # has mean gradient ḡ = #. What gradient does the optimiser receive
+- legend: Predict the output · uses your current settingsIn Part C, what gradient does the optimiser receive with weight decay?
+- legend: ScenarioTraining loss falls steadily; held-out loss falls, then rises. What is happening?
+- legend: Weight decay λ for the recorded run
+
 ## learn: level 1
 
 **Controls (data-control id, element, accessible name)** (1)
@@ -2598,6 +3142,21 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - h3: Experiment #: Derivatives and Gradient Descent: How Parameters Learn
 - h3: Experiment #: Forward Propagation: From Input to Prediction
 - h3: Experiment #: Loss Functions: Measuring Prediction Error
+
+## learn: level 3
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- start-level-3 (a): Start Level # →
+
+**Information shown (headings, captions, legends)** (6)
+
+- h2: By the end you will understand
+- h2: Your path
+- h3: Experiment #: Adam: Adaptive Optimization
+- h3: Experiment #: Learning Rate and Training Dynamics
+- h3: Experiment #: Momentum: Smoothing the Update
+- h3: Experiment #: Overfitting and Regularization
 
 ## learn: levels
 

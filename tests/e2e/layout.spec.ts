@@ -23,7 +23,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { EXPERIMENTS } from '../../src/experiments/registry';
-import { unlockAll } from './helpers';
+import { LEVEL3_PAGES, trainLevel3, unlockAll } from './helpers';
 
 export interface Violation {
   screen: string;
@@ -325,6 +325,41 @@ test('II. Level 1: no horizontal scroll, and no element escapes or clips, at fiv
   const real = all.filter((v) => !v.element.includes('lv-visually-hidden'));
   writeFileSync(
     resolve(import.meta.dirname, '../../reports/layout-level1.json'),
+    JSON.stringify(real, null, 2) + '\n',
+  );
+  expect(
+    real.map((v) => `${v.kind} ${v.screen}: ${v.element} beyond ${v.parent} by ${v.overflowPx}px`),
+  ).toEqual([]);
+});
+
+test('III. Level 3: no horizontal scroll, and no element escapes or clips, at five widths down to a phone', async ({
+  page,
+}) => {
+  test.setTimeout(1_200_000);
+  const all: Violation[] = [];
+  for (const width of [1440, 1024, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 800 });
+    for (const url of LEVEL3_PAGES) {
+      await page.goto(url);
+      await expect(page.locator('main h1').first()).toBeVisible();
+      const n = url.match(/experiment-0(\d)/)?.[1];
+      for (const state of n ? ['opened', 'trained'] : ['opened']) {
+        if (state === 'trained') await trainLevel3(page, Number(n));
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await page.waitForTimeout(250);
+        const tag = `${url} @${width} ${state}`;
+        const scroll = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        if (scroll > 0)
+          all.push({ screen: tag, kind: 'escape', element: 'page', parent: 'viewport', overflowPx: scroll });
+        all.push(...(await overflows(page, tag)), ...(await clipped(page, tag)));
+      }
+    }
+  }
+  const real = all.filter((v) => !v.element.includes('lv-visually-hidden'));
+  writeFileSync(
+    resolve(import.meta.dirname, '../../reports/layout-level3.json'),
     JSON.stringify(real, null, 2) + '\n',
   );
   expect(

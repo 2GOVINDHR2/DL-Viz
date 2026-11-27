@@ -8,7 +8,7 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
 import { EXPERIMENTS } from '../../src/experiments/registry';
-import { openExperiment, unlockAll } from './helpers';
+import { LEVEL3_PAGES, openExperiment, trainLevel3, unlockAll } from './helpers';
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 const results: Record<
@@ -266,6 +266,35 @@ test.describe('accessibility (WCAG 2.1 AA, automated)', () => {
         );
         await page.waitForTimeout(200);
         await audit(page, `Level 1 experiment 04 trained, ${d} (${scheme})`);
+      }
+    }
+  });
+
+  test('every Level 3 page, both themes: as opened with every disclosure open, the guided tour, and each experiment trained', async ({
+    page,
+  }) => {
+    test.setTimeout(600_000);
+    for (const scheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme: scheme });
+      for (const url of LEVEL3_PAGES) {
+        await page.goto(url);
+        await expect(page.locator('main h1').first()).toBeVisible();
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await audit(page, `Level 3 ${url} (${scheme})`);
+        const n = url.match(/experiment-0(\d)/)?.[1];
+        if (!n) continue;
+        if (n === '1') {
+          await page.locator('[data-control="tour:start"]').click();
+          await audit(page, `Level 3 experiment 01: tour open (${scheme})`);
+          await page.getByRole('button', { name: 'Skip tour' }).click();
+        }
+        await trainLevel3(page, Number(n));
+        await page.evaluate(() =>
+          document.querySelectorAll('details').forEach((d) => d.setAttribute('open', '')),
+        );
+        await audit(page, `Level 3 experiment 0${n} trained (${scheme})`);
       }
     }
   });
