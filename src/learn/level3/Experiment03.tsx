@@ -280,13 +280,16 @@ function PartC({
   read: (a: number, b: number) => Promise<Instruction[]>;
 }) {
   const [n, setN] = useState(10);
-  const [rows, setRows] = useState<StepRow[] | null>(null);
+  // The rows are kept with the update they were read for, so the text never names one update while showing another's
+  // values (the slider moves before the new update has been read).
+  const [at, setAt] = useState<{ n: number; rows: StepRow[] } | null>(null);
+  const rows = at?.rows ?? null;
   useEffect(() => {
     if (!header) return;
     let live = true;
     read(header.epochStarts[n - 1], header.epochStarts[n])
-      .then((ins) => live && setRows(stepsAt(header, ins)))
-      .catch(() => live && setRows(null));
+      .then((ins) => live && setAt({ n, rows: stepsAt(header, ins) }))
+      .catch(() => live && setAt(null));
     return () => {
       live = false;
     };
@@ -351,10 +354,10 @@ function PartC({
           {rows && (
             <>
               <p className="lv-small" data-value="ratios">
-                At update {n}: the largest gradient is {fmt(gRatio, 1)}× the smallest, and no step is larger
-                than {fmt(maxStep, 2)}·η. {pairs} pairs of parameters have gradients more than 10× apart but
-                steps less than 3× apart; with plain gradient descent their steps would also be more than 10×
-                apart.
+                At update {at!.n}: the largest gradient is {fmt(gRatio, 1)}× the smallest, and no step is
+                larger than {fmt(maxStep, 2)}·η. {pairs} pairs of parameters have gradients more than 10×
+                apart but steps less than 3× apart; with plain gradient descent their steps would also be more
+                than 10× apart.
               </p>
               <div
                 className="lv-table-wrap"

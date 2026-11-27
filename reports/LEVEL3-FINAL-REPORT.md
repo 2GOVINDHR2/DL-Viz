@@ -87,7 +87,28 @@ The order follows the update rule as it grows. Experiments 01–03 share one tas
 
 ## 7. Test results
 
-RESULTS_PLACEHOLDER
+All runs were made on this machine (Linux, Chromium only), from a clean `dist` build.
+
+| Check | Result |
+|---|---|
+| Typecheck (`tsc -b`) | clean |
+| Lint (`eslint`, 0 warnings allowed) | clean |
+| Format (`prettier --check .`) | clean |
+| Unit (`tests/unit`) | **61 files, 717 of 717 pass**, including 42 Level 3 tests in 6 files |
+| Gradcheck / parity (TF.js) / determinism | 48 / 8 / 18, all pass |
+| Level 3 engine gate | all pass (§4) |
+| Build (`npm run build`) | passes (the usual chunk-size warning) |
+| **Full Chromium e2e, 134 tests** | **132 passed, 2 failed on the first run.** Both were then fixed or re-checked, see below |
+| Level 1 / Level 2 regression | all their e2e specs, unit tests, a11y and layout checks pass in the full run |
+| Level 3 e2e specs | Exp01 6, Exp02 6, Exp03 5, Exp04 5. All pass, including Exp03 Part C repeated 5× after the fix |
+| Accessibility (axe, WCAG 2.1 A/AA) | **135 screens, 0 violations**, of which 20 are Level 3 screens (both themes) |
+| Layout | Level 1, Level 2 and Level 3 tests pass. Level 3: 0 violations at 1440–320 px |
+| Capability inventory | passes against the baseline with the Level 3 screens appended |
+| e2e mutation audit, Level 3 (`reports/mutation-e2e-level3.json`, `reports/mutation-targeted.json`) | 121 assertions: 67 live by mechanical mutants and 41 by targeted mutants (35 new). The other 13 are 8 negative assertions and 5 shared-helper waits, not mutated separately. **One hollow assertion was found and fixed** (Exp01: a negative loss lost its sign when parsed) |
+
+**The two first-run failures:**
+1. **`level3-exp03` Part C (a real app defect, fixed).** After the update slider moved, the paragraph named the new update while still showing the previous update's values, until the new one had been read. The rows are now stored with their own update number, and the text uses it.
+2. **`perf-cnn` (environment).** Peak renderer memory was 734 MB against the 700 MB regression guard. This is the existing workbench CNN, not Level 3 code. It ran after ~125 other tests in the same browser; **run on its own, it passes.** It is noted here, not hidden.
 
 ## 8. Limitations and open items
 
@@ -99,7 +120,19 @@ RESULTS_PLACEHOLDER
 
 ## 9. Commits (this overnight run)
 
-COMMITS_PLACEHOLDER
+- `9d75cb6` Level 3 e2e mutation audit; fix a hollow assertion in the Experiment 01 spec
+- `031ad6b` Level 3 targeted e2e mutants; final report draft (results pending)
+- `a313765` Level 3 screenshots (desktop and mobile); regenerated validation report and NPM spec tables
+- `11205f3` Level 3 integration: Exp04 e2e spec, Level 3 in a11y/layout/capability checks; fix narrow key-value layout
+- `9d07a9f` Level 3 Experiment 04: overfitting and regularization; ADR-099
+- `18bef57` Level 3 Experiment 03 e2e spec
+- `936cac9` Level 3 Experiment 03: Adam; Experiment 02 e2e spec
+- `a9cb352` Level 3 Experiment 02: momentum; Experiment 01 e2e spec
+- `6b1035f` Level 3 Experiment 01: learning rate and training dynamics, and Level 3 infrastructure
+- `e5b597c` Level 3 gate: Adam, L2 weight decay and a held-out split in the engine
+- `94d6e81` Level 2 Stage 6 completed: recorded forward steps in the final challenge
+- `114470f` Level 3 overnight run: baseline audit and resume file
+- (this report and the Part C fix: the final commit)
 
 ## 10. Recommended review steps
 

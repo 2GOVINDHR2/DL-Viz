@@ -427,6 +427,86 @@
     "passes": 34,
     "violations": []
   },
+  "Level 3 /#/level-3 (light)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-01 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 01: tour open (light)": {
+    "passes": 28,
+    "violations": []
+  },
+  "Level 3 experiment 01 trained (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-02 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 02 trained (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-03 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 03 trained (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-04 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 04 trained (light)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 3 /#/level-3 (dark)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-01 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 01: tour open (dark)": {
+    "passes": 28,
+    "violations": []
+  },
+  "Level 3 experiment 01 trained (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-02 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 02 trained (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-03 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 03 trained (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 3 /#/level-3/experiment-04 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 3 experiment 04 trained (dark)": {
+    "passes": 33,
+    "violations": []
+  },
   "study: researcher": {
     "passes": 7,
     "violations": []

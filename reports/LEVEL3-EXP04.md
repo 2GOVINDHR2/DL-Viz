@@ -51,4 +51,4 @@
   - **The page renders.**
 - **The vocabulary test** includes Experiment 04.
 - **Browser check (1280 px, dev server):** Parts A, B and C ran with no console errors (`l3e4.cjs`).
-- **e2e:** `tests/e2e/level3-exp04.spec.ts`, delegated to a Sonnet agent.
+- **e2e:** `tests/e2e/level3-exp04.spec.ts` (written by a Sonnet agent), 5 of 5 pass.
