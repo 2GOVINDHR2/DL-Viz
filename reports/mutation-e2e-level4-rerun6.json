@@ -187,9 +187,10 @@
     "negative": false,
     "text": "expect(vector(after)).toHaveLength(2);",
     "blank": "survived",
-    "noAction": "n/a",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "passed at : "
+      "blank": "passed at : ",
+      "no-action": "failed at 43: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
     }
   },
   {
@@ -199,9 +200,12 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": false,
     "text": "await expect(b.locator('svg[role=\"img\"]').first()).toHaveAttribute( 'aria-label', /Latent codes of the 24 images during epoch 150/, );",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 17,52: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
   },
   {
     "id": "level4-exp06.spec:59",
@@ -210,9 +214,12 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": false,
     "text": "await expect(b.locator('details table tbody tr')).toHaveCount(24);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 59: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
   },
   {
     "id": "level4-exp06.spec:64",
@@ -221,9 +228,11 @@
     "fn": "Part B: the latent table and the measured distances",
     "negative": true,
     "text": "expect(m, text).not.toBeNull();",
-    "blank": "n/a",
+    "blank": "elsewhere",
     "noAction": "n/a",
-    "detail": {}
+    "detail": {
+      "blank": "timedOut at 68: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+    }
   },
   {
     "id": "level4-exp06.spec:65",
