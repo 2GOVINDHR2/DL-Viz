@@ -12,7 +12,7 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 
 **How it protects the baseline.** Without `CAPTURE`, the same test fails if any baseline capability is missing from the current build, unless `reports/capability-removed.json` lists it with the ADR that removed it. A capability can be removed deliberately; it cannot disappear silently.
 
-**Totals:** 3784 capabilities over 48 screens.
+**Totals:** 4518 capabilities over 61 screens.
 
 **What it does not cover.** States that appear only after a particular interaction (a revealed prediction, a pinned comparison) are not captured here. They are covered by the e2e tests named in PROGRESS, Fix Round 5.
 
@@ -3110,6 +3110,884 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - legend: ScenarioTraining loss falls steadily; held-out loss falls, then rises. What is happening?
 - legend: Weight decay λ for the recorded run
 
+## learn: L4 experiment 01 (trained)
+
+**Panels** (3)
+
+- Learning objectives
+- Stride and padding
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (42)
+
+- a:cell (table): Feature map (engine)#####
+- a:cell:0 (button): row # column #: #
+- a:cell:1 (button): row # column #: #
+- a:cell:2 (button): row # column #: #
+- a:cell:3 (button): row # column #: #
+- a:cell:4 (button): row # column #: #
+- a:cell:5 (button): row # column #: #
+- a:cell:6 (button): row # column #: #
+- a:cell:7 (button): row # column #: #
+- a:cell:8 (button): row # column #: #
+- a:next (button): Next position ▶
+- a:prev (button): ◀ Previous position
+- b:padding:0 (radio): #
+- b:padding:1 (radio): #
+- b:stride:1 (radio): #
+- b:stride:2 (radio): #
+- begin (a): Begin ↓
+- c:cell (table): Pooled map (engine): choose a cell#.#.#
+- c:cell:0 (button): row # column #: #
+- c:cell:1 (button): row # column #: #
+- c:cell:2 (button): row # column #: #
+- c:cell:3 (button): row # column #: #
+- c:mode:avg (radio): Average
+- c:mode:max (radio): Max
+- check:cv-maxpool:0 (radio): #
+- check:cv-maxpool:1 (radio): #
+- check:cv-maxpool:2 (radio): #
+- check:cv-size:0 (radio): #×#
+- check:cv-size:1 (radio): #×#
+- check:cv-size:2 (radio): #×#
+- check:cv-weights:0 (radio): #: four kernels of #×# reused at every position
+- check:cv-weights:1 (radio): #
+- check:cv-weights:2 (radio): # #
+- check:l4-live-size:0 (radio): #
+- check:l4-live-size:1 (radio): #
+- check:l4-live-size:2 (radio): #
+- d:pattern:corner (radio): Corner
+- d:pattern:horizontal (radio): Horizontal edge
+- d:pattern:uniform (radio): Uniform
+- d:pattern:vertical (radio): Vertical edge
+- next-experiment (a): Next: # · CNN Training: From Image to Prediction →
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (1)
+
+- The engine’s record of this convolution
+
+**Information shown (headings, captions, legends)** (34)
+
+- caption: Feature map (engine)
+- caption: Feature map (engine): #×#
+- caption: Feature map (given)
+- caption: Horizontal-edge kernel’s feature map
+- caption: Input image
+- caption: Input image (the outlined patch is under the kernel)
+- caption: Input: Corner
+- caption: Kernel (chosen by hand)
+- caption: Patch × kernel, element by element (worked out here)
+- caption: Pooled map (engine): choose a cell
+- caption: Steps in the engine’s record
+- caption: Strongest response of each kernel (largest absolute value in its feature map)
+- caption: Vertical-edge kernel’s feature map
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Find the strongest response
+- h3: Inspect a convolution
+- h3: Keep the size
+- h3: Nothing to see
+- h3: Pooling
+- h3: Stride and padding
+- h3: What a kernel responds to
+- legend: Input pattern
+- legend: Multiple choiceA layer maps a #×#×# image to # feature maps with #×# kernels. How many weights does it have, biases asid
+- legend: Multiple choiceMax pooling #×# on the block [# #; # #]. What is the output?
+- legend: Padding
+- legend: Pooling
+- legend: Predict the output · uses your current settingsWith your Part B settings (#×# input, #×# kernel, stride # padding #), ho
+- legend: Predict the outputA #×# input, a #×# kernel, stride # no padding. How large is the feature map?
+- legend: Stride
+
+## learn: L4 experiment 01
+
+**Panels** (3)
+
+- Learning objectives
+- Stride and padding
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (42)
+
+- a:cell (table): Feature map (engine)#####
+- a:cell:0 (button): row # column #: #
+- a:cell:1 (button): row # column #: #
+- a:cell:2 (button): row # column #: #
+- a:cell:3 (button): row # column #: #
+- a:cell:4 (button): row # column #: #
+- a:cell:5 (button): row # column #: #
+- a:cell:6 (button): row # column #: #
+- a:cell:7 (button): row # column #: #
+- a:cell:8 (button): row # column #: #
+- a:next (button): Next position ▶
+- a:prev (button): ◀ Previous position
+- b:padding:0 (radio): #
+- b:padding:1 (radio): #
+- b:stride:1 (radio): #
+- b:stride:2 (radio): #
+- begin (a): Begin ↓
+- c:cell (table): Pooled map (engine): choose a cell#.#.#
+- c:cell:0 (button): row # column #: #
+- c:cell:1 (button): row # column #: #
+- c:cell:2 (button): row # column #: #
+- c:cell:3 (button): row # column #: #
+- c:mode:avg (radio): Average
+- c:mode:max (radio): Max
+- check:cv-maxpool:0 (radio): #
+- check:cv-maxpool:1 (radio): #
+- check:cv-maxpool:2 (radio): #
+- check:cv-size:0 (radio): #×#
+- check:cv-size:1 (radio): #×#
+- check:cv-size:2 (radio): #×#
+- check:cv-weights:0 (radio): #: four kernels of #×# reused at every position
+- check:cv-weights:1 (radio): #
+- check:cv-weights:2 (radio): # #
+- check:l4-live-size:0 (radio): #
+- check:l4-live-size:1 (radio): #
+- check:l4-live-size:2 (radio): #
+- d:pattern:corner (radio): Corner
+- d:pattern:horizontal (radio): Horizontal edge
+- d:pattern:uniform (radio): Uniform
+- d:pattern:vertical (radio): Vertical edge
+- next-experiment (a): Next: # · CNN Training: From Image to Prediction →
+- tour:start (button): ▶ Start guided tour
+
+**Disclosure sections** (1)
+
+- The engine’s record of this convolution
+
+**Information shown (headings, captions, legends)** (34)
+
+- caption: Feature map (engine)
+- caption: Feature map (engine): #×#
+- caption: Feature map (given)
+- caption: Horizontal-edge kernel’s feature map
+- caption: Input image
+- caption: Input image (the outlined patch is under the kernel)
+- caption: Input: Vertical edge
+- caption: Kernel (chosen by hand)
+- caption: Patch × kernel, element by element (worked out here)
+- caption: Pooled map (engine): choose a cell
+- caption: Steps in the engine’s record
+- caption: Strongest response of each kernel (largest absolute value in its feature map)
+- caption: Vertical-edge kernel’s feature map
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Find the strongest response
+- h3: Inspect a convolution
+- h3: Keep the size
+- h3: Nothing to see
+- h3: Pooling
+- h3: Stride and padding
+- h3: What a kernel responds to
+- legend: Input pattern
+- legend: Multiple choiceA layer maps a #×#×# image to # feature maps with #×# kernels. How many weights does it have, biases asid
+- legend: Multiple choiceMax pooling #×# on the block [# #; # #]. What is the output?
+- legend: Padding
+- legend: Pooling
+- legend: Predict the output · uses your current settingsWith your Part B settings (#×# input, #×# kernel, stride # padding #), ho
+- legend: Predict the outputA #×# input, a #×# kernel, stride # no padding. How large is the feature map?
+- legend: Stride
+
+## learn: L4 experiment 02 (trained)
+
+**Panels** (3)
+
+- Learning objectives
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (38)
+
+- a:train (button): Train and record again
+- b:epoch (range): Epoch for the forward pass
+- b:example (select): Image# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)#
+- begin (a): Begin ↓
+- c:epoch (range): Epoch for the kernels
+- check:cn-flatten:0 (radio): #
+- check:cn-flatten:1 (radio): #
+- check:cn-flatten:2 (radio): #
+- check:cn-kernel-grad:0 (radio): The same weight is used at every position, so every position’s effect on the loss adds up
+- check:cn-kernel-grad:1 (radio): Each position has its own copy of the weight
+- check:cn-kernel-grad:2 (radio): Only the centre position matters
+- check:cn-loss:0 (radio): ≈ # (−ln #)
+- check:cn-loss:1 (radio): #
+- check:cn-loss:2 (radio): #
+- check:l4-live-prob:0 (radio): horizontal
+- check:l4-live-prob:1 (radio): vertical
+- check:l4-live-prob:2 (radio): diagonal
+- d:update (range): Update number
+- d:weight (select): Kernel weightkernel # row # column #kernel # row # column #kernel # row # column #kernel # row # column #kernel # row # 
+- next-experiment (a): Next: # · Recurrent Neural Networks: Learning from Sequences →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (2)
+
+- Loss on the # images after each epoch: every value as a table
+- This image’s steps in the record
+
+**Information shown (headings, captions, legends)** (33)
+
+- caption: Dense layer and softmax
+- caption: Input image #
+- caption: Kernel # after epoch #
+- caption: Kernel # at the start
+- caption: Map #
+- caption: Steps in the engine’s record
+- figcaption: Layer #: convolution over all four maps, then ReLU (four #×# maps)
+- figcaption: Layer #: convolution, then ReLU (four #×# feature maps)
+- figcaption: Layer #: max pooling #×# (four #×# maps)
+- figcaption: Layer #: max pooling #×# (four #×# maps), flattened to # values
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: An early mistake
+- h3: Confident at the end
+- h3: Follow one image through the network
+- h3: Kernels move
+- h3: One update of a kernel weight
+- h3: The kernels learn
+- h3: The record of run #
+- h3: Train the CNN
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Multiple choiceThe network gives the correct class probability #. What is the cross-entropy loss?
+- legend: Multiple choiceWhy does one kernel weight get a gradient from every position of the image?
+- legend: Predict the output · uses your current settingsIn Part B, image # at epoch # has class probabilities #, #, # (horizontal
+- legend: Predict the outputThe last pooling layer gives # feature maps of #×#. How many inputs does the dense layer receive after
+- legend: Step size
+
+## learn: L4 experiment 02
+
+**Panels** (2)
+
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (14)
+
+- a:train (button): Train and record
+- begin (a): Begin ↓
+- check:cn-flatten:0 (radio): #
+- check:cn-flatten:1 (radio): #
+- check:cn-flatten:2 (radio): #
+- check:cn-kernel-grad:0 (radio): The same weight is used at every position, so every position’s effect on the loss adds up
+- check:cn-kernel-grad:1 (radio): Each position has its own copy of the weight
+- check:cn-kernel-grad:2 (radio): Only the centre position matters
+- check:cn-loss:0 (radio): ≈ # (−ln #)
+- check:cn-loss:1 (radio): #
+- check:cn-loss:2 (radio): #
+- check:l4-live-prob:0 (radio): —
+- next-experiment (a): Next: # · Recurrent Neural Networks: Learning from Sequences →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (17)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: An early mistake
+- h3: Confident at the end
+- h3: Follow one image through the network
+- h3: Kernels move
+- h3: One update of a kernel weight
+- h3: The kernels learn
+- h3: Train the CNN
+- legend: Multiple choiceThe network gives the correct class probability #. What is the cross-entropy loss?
+- legend: Multiple choiceWhy does one kernel weight get a gradient from every position of the image?
+- legend: Predict the output · uses your current settingsIn Part B, which class does the network predict for the image shown?
+- legend: Predict the outputThe last pooling layer gives # feature maps of #×#. How many inputs does the dense layer receive after
+
+## learn: L4 experiment 03 (trained)
+
+**Panels** (3)
+
+- Learning objectives
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (38)
+
+- a:epoch (range): Epoch of the recorded pass
+- a:example (select): Sequence#
+- a:train (button): Train and record again
+- b:next (button): Next time step ▶
+- b:prev (button): ◀ Previous time step
+- b:show (button): Show this step in the record, instruction ##
+- begin (a): Begin ↓
+- check:l4-live-memory:0 (radio): #
+- check:l4-live-memory:1 (radio): #
+- check:l4-live-memory:2 (radio): #
+- check:rn-count:0 (radio): #
+- check:rn-count:1 (radio): # #
+- check:rn-count:2 (radio): #
+- check:rn-depends:0 (radio): x₃ and h₂, and through h₂ on x₁ and x₂
+- check:rn-depends:1 (radio): Only x₃
+- check:rn-depends:2 (radio): x₁, x₂, x₃ through separate weights each
+- check:rn-order:0 (radio): Each one needs the previous hidden state
+- check:rn-order:1 (radio): The engine is slow
+- check:rn-order:2 (radio): The inputs arrive one per second
+- next-experiment (a): Next: # · Backpropagation Through Time: How Recurrent Networks Learn →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (2)
+
+- Loss on the # sequences after each epoch: every value as a table
+- Which recorded value each time step uses
+
+**Information shown (headings, captions, legends)** (25)
+
+- caption: Sequence # epoch #: h₀ = # → h₁ → … → h₅
+- caption: U, the recurrent weights (#×#)
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Before it learned
+- h3: Follow the memory
+- h3: From the last hidden state to a prediction
+- h3: One time step
+- h3: One U for all
+- h3: The record of run #
+- h3: The same weights at every time step
+- h3: Unroll the network
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Multiple choiceWhat does the hidden state h₃ depend on?
+- legend: Predict the output · uses your current settingsIn Part B, step # of the sequence shown: x₂ = #, and h₁ = (#, #, #, #). W
+- legend: Predict the outputThis layer has # input feature and # hidden units: W is #×# U is #×# b has # values. How many paramete
+- legend: ScenarioWhy can the five hidden states not all be computed at the same moment?
+- legend: Step size
+
+## learn: L4 experiment 03
+
+**Panels** (2)
+
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (14)
+
+- a:train (button): Train and record
+- begin (a): Begin ↓
+- check:l4-live-memory:0 (radio): —
+- check:rn-count:0 (radio): #
+- check:rn-count:1 (radio): # #
+- check:rn-count:2 (radio): #
+- check:rn-depends:0 (radio): x₃ and h₂, and through h₂ on x₁ and x₂
+- check:rn-depends:1 (radio): Only x₃
+- check:rn-depends:2 (radio): x₁, x₂, x₃ through separate weights each
+- check:rn-order:0 (radio): Each one needs the previous hidden state
+- check:rn-order:1 (radio): The engine is slow
+- check:rn-order:2 (radio): The inputs arrive one per second
+- next-experiment (a): Next: # · Backpropagation Through Time: How Recurrent Networks Learn →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (17)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Before it learned
+- h3: Follow the memory
+- h3: From the last hidden state to a prediction
+- h3: One time step
+- h3: One U for all
+- h3: The same weights at every time step
+- h3: Unroll the network
+- legend: Multiple choiceWhat does the hidden state h₃ depend on?
+- legend: Predict the output · uses your current settingsIn Part B, what is the first value of the hidden state h₂?
+- legend: Predict the outputThis layer has # input feature and # hidden units: W is #×# U is #×# b has # values. How many paramete
+- legend: ScenarioWhy can the five hidden states not all be computed at the same moment?
+
+## learn: L4 experiment 04 (trained)
+
+**Panels** (5)
+
+- Learning objectives
+- Probe settings
+- Trace explorer
+- What you will understand
+- Which time steps a window reaches
+
+**Controls (data-control id, element, accessible name)** (49)
+
+- a:epoch (range): Epoch of the recorded pass
+- a:example (select): Sequence#
+- a:train (button): Train and record again
+- b:earlier (button): Earlier time step ▶
+- b:later (button): ◀ Later time step
+- begin (a): Begin ↓
+- c:entry (select): Entry of Urow # column #row # column #row # column #row # column #row # column #row # column #row # column #row # column
+- check:bp-factor:0 (radio): # of its size (#¹⁰)
+- check:bp-factor:1 (radio): half its size
+- check:bp-factor:2 (radio): # times its size
+- check:bp-sum:0 (radio): The sum of the four contributions, one per time step
+- check:bp-sum:1 (radio): Only the last time step’s contribution
+- check:bp-sum:2 (radio): Their average
+- check:bp-trunc:0 (radio): No gradient reaches time step # so the weights are never directly taught to keep x₁
+- check:bp-trunc:1 (radio): The forward pass skips x₁
+- check:bp-trunc:2 (radio): Nothing: truncation only makes training faster
+- check:l4-live-usum:0 (radio): #
+- check:l4-live-usum:1 (radio): #
+- check:l4-live-usum:2 (radio): #
+- d:compare (button): Train the comparison
+- d:window:0 (radio): full
+- d:window:1 (radio): #
+- d:window:2 (radio): #
+- d:window:3 (radio): #
+- e:input:0.01 (radio): # (tanh nearly straight)
+- e:input:0.5 (radio): # (tanh bends)
+- e:scale:0.5 (radio): #
+- e:scale:1 (radio): #
+- e:scale:1.5 (radio): #
+- e:scale:2 (radio): #
+- next-experiment (a): Next: # · LSTM and GRU: Gated Recurrent Architectures →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (1)
+
+- Loss after each epoch: full and truncated BPTT: every value as a table
+
+**Information shown (headings, captions, legends)** (29)
+
+- caption: Sequence # epoch #: label # prediction p = #
+- caption: U contribution at t = #
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Back to the start
+- h3: Backward, one time step at a time
+- h3: Forward, unrolled
+- h3: Full against truncated
+- h3: Gradients that shrink or grow
+- h3: Make it explode
+- h3: Make it vanish
+- h3: One weight, several contributions
+- h3: The record of run #
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: First input x₁
+- legend: Multiple choiceGoing back one time step multiplies the gradient roughly by #. After # steps back it is about…
+- legend: Multiple choiceU is used at time steps # # # and # of an example. What is U’s gradient for that example?
+- legend: Predict the output · uses your current settingsIn Part C, U’s first entry received the contributions #, #, +#, # at time
+- legend: Recurrent weight scale s
+- legend: ScenarioWith truncated BPTT over the last # time steps, the label depends on x₁ of a #-step sequence. What is the proble
+- legend: Step size
+- legend: Window
+
+## learn: L4 experiment 04
+
+**Panels** (4)
+
+- Learning objectives
+- Probe settings
+- What you will understand
+- Which time steps a window reaches
+
+**Controls (data-control id, element, accessible name)** (25)
+
+- a:train (button): Train and record
+- begin (a): Begin ↓
+- check:bp-factor:0 (radio): # of its size (#¹⁰)
+- check:bp-factor:1 (radio): half its size
+- check:bp-factor:2 (radio): # times its size
+- check:bp-sum:0 (radio): The sum of the four contributions, one per time step
+- check:bp-sum:1 (radio): Only the last time step’s contribution
+- check:bp-sum:2 (radio): Their average
+- check:bp-trunc:0 (radio): No gradient reaches time step # so the weights are never directly taught to keep x₁
+- check:bp-trunc:1 (radio): The forward pass skips x₁
+- check:bp-trunc:2 (radio): Nothing: truncation only makes training faster
+- check:l4-live-usum:0 (radio): —
+- d:compare (button): Train the comparison
+- d:window:0 (radio): full
+- d:window:1 (radio): #
+- d:window:2 (radio): #
+- d:window:3 (radio): #
+- e:input:0.01 (radio): # (tanh nearly straight)
+- e:input:0.5 (radio): # (tanh bends)
+- e:scale:0.5 (radio): #
+- e:scale:1 (radio): #
+- e:scale:1.5 (radio): #
+- e:scale:2 (radio): #
+- next-experiment (a): Next: # · LSTM and GRU: Gated Recurrent Architectures →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (21)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Back to the start
+- h3: Backward, one time step at a time
+- h3: Forward, unrolled
+- h3: Full against truncated
+- h3: Gradients that shrink or grow
+- h3: Make it explode
+- h3: Make it vanish
+- h3: One weight, several contributions
+- legend: First input x₁
+- legend: Multiple choiceGoing back one time step multiplies the gradient roughly by #. After # steps back it is about…
+- legend: Multiple choiceU is used at time steps # # # and # of an example. What is U’s gradient for that example?
+- legend: Predict the output · uses your current settingsIn Part C, what is U’s gradient (first entry) for the example shown?
+- legend: Recurrent weight scale s
+- legend: ScenarioWith truncated BPTT over the last # time steps, the label depends on x₁ of a #-step sequence. What is the proble
+- legend: Window
+
+## learn: L4 experiment 05 (trained)
+
+**Panels** (4)
+
+- Compare recurrent layers
+- Learning objectives
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (40)
+
+- a:example (select): Sequence#
+- a:step (range): Time step
+- a:train (button): Train and record the LSTM again
+- begin (a): Begin ↓
+- c:train (button): Train and record the GRU
+- check:gt-forget:0 (radio): #
+- check:gt-forget:1 (radio): #
+- check:gt-forget:2 (radio): #
+- check:gt-gradient:0 (radio): Along the cell state the gradient is only multiplied by the forget gate, which can stay near #
+- check:gt-gradient:1 (radio): It has more parameters
+- check:gt-gradient:2 (radio): It uses a larger learning rate
+- check:gt-gru-state:0 (radio): A separate cell state
+- check:gt-gru-state:1 (radio): Gates
+- check:gt-gru-state:2 (radio): Shared weights across time
+- check:l4-live-cell:0 (radio): #
+- check:l4-live-cell:1 (radio): #
+- check:l4-live-cell:2 (radio): +#
+- d:compare (button): Train the comparison
+- d:seed:1 (radio): #
+- d:seed:2 (radio): #
+- d:seed:3 (radio): #
+- next-experiment (a): Next: # · Autoencoders: Learning Latent Representations →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (1)
+
+- Loss after each epoch, three recurrent layers: every value as a table
+
+**Information shown (headings, captions, legends)** (27)
+
+- caption: All six time steps of the sequence (gate values are averages over the # units)
+- caption: Gradient passed back along the cell state, ∂ℓ/∂cₜ₋₁ through f ⊙ cₜ₋₁ (recorded): on this path it is multiplied only by f
+- caption: Time step # each unit (worked out here from the recorded gates and states)
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Keep it
+- h3: No universal winner
+- h3: Plain, LSTM and GRU compared
+- h3: The cost of gates
+- h3: The GRU cell
+- h3: The LSTM cell
+- h3: The record of run #
+- h3: What the gates do
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Multiple choiceWhat does a GRU not have that an LSTM has?
+- legend: Predict the output · uses your current settingsIn Part A, time step # first unit: f = #, cₜ₋₁ = +#, i = #, g = #. What i
+- legend: Predict the outputAn LSTM unit has cₜ₋₁ = # forget gate f = #, input gate i = # and candidate g = #. What is cₜ?
+- legend: ScenarioWhy can an LSTM carry a gradient across many time steps more easily than a plain recurrent layer?
+- legend: Seed
+- legend: Step size
+
+## learn: L4 experiment 05
+
+**Panels** (3)
+
+- Compare recurrent layers
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (19)
+
+- a:train (button): Train and record the LSTM
+- begin (a): Begin ↓
+- c:train (button): Train and record the GRU
+- check:gt-forget:0 (radio): #
+- check:gt-forget:1 (radio): #
+- check:gt-forget:2 (radio): #
+- check:gt-gradient:0 (radio): Along the cell state the gradient is only multiplied by the forget gate, which can stay near #
+- check:gt-gradient:1 (radio): It has more parameters
+- check:gt-gradient:2 (radio): It uses a larger learning rate
+- check:gt-gru-state:0 (radio): A separate cell state
+- check:gt-gru-state:1 (radio): Gates
+- check:gt-gru-state:2 (radio): Shared weights across time
+- check:l4-live-cell:0 (radio): —
+- d:compare (button): Train the comparison
+- d:seed:1 (radio): #
+- d:seed:2 (radio): #
+- d:seed:3 (radio): #
+- next-experiment (a): Next: # · Autoencoders: Learning Latent Representations →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (18)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: Keep it
+- h3: No universal winner
+- h3: Plain, LSTM and GRU compared
+- h3: The cost of gates
+- h3: The GRU cell
+- h3: The LSTM cell
+- h3: What the gates do
+- legend: Multiple choiceWhat does a GRU not have that an LSTM has?
+- legend: Predict the output · uses your current settingsIn Part A, what is the first value of the cell state cₜ?
+- legend: Predict the outputAn LSTM unit has cₜ₋₁ = # forget gate f = #, input gate i = # and candidate g = #. What is cₜ?
+- legend: ScenarioWhy can an LSTM carry a gradient across many time steps more easily than a plain recurrent layer?
+- legend: Seed
+
+## learn: L4 experiment 06 (trained)
+
+**Panels** (4)
+
+- Compare code sizes
+- Learning objectives
+- Trace explorer
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (37)
+
+- a:epoch (range): Epoch of the recorded pass
+- a:example (select): Image# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)#
+- a:train (button): Train and record again
+- b:epoch (range): Epoch for the latent space
+- begin (a): Begin ↓
+- check:ae-meaning:0 (radio): Only that the encoder places similar images near each other here; the axes have no given meaning
+- check:ae-meaning:1 (radio): The first latent number means “horizontal”
+- check:ae-meaning:2 (radio): The autoencoder has learned to classify
+- check:ae-mse:0 (radio): #
+- check:ae-mse:1 (radio): #
+- check:ae-mse:2 (radio): #
+- check:ae-target:0 (radio): The image itself
+- check:ae-target:1 (radio): The image’s class
+- check:ae-target:2 (radio): The latent code
+- check:l4-live-recon:0 (radio): #
+- check:l4-live-recon:1 (radio): #
+- check:l4-live-recon:2 (radio): #
+- e:compare (button): Train the comparison
+- next-experiment (a): Level # overview →
+- tour:start (button): ▶ Start guided tour
+- trace:back (button): ◀ Previous stage
+- trace:detail:layers (radio): Layers
+- trace:detail:operations (radio): Operations
+- trace:detail:stages (radio): Stages
+- trace:end (button): Go to the end of the run
+- trace:epoch (button): Epoch #: average loss #
+- trace:next (button): Next stage ▶
+- trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##
+- trace:node:batch (button): End of epoch: test every examplecheck
+- trace:node:batch (button): Start of epoch: choose the order of the examplescontrol
+- trace:play (button): ▶▶ Watch
+- trace:position (range): Position in the record# / #
+- trace:size:batch (radio): Batch
+- trace:size:epoch (radio): Epoch
+- trace:size:phase (radio): Stage
+- trace:size:sample (radio): Example
+- trace:start (button): Go to the start of the run
+
+**Disclosure sections** (3)
+
+- Every latent code as a table
+- Image # reconstructed at three epochs
+- Reconstruction loss after each epoch: every value as a table
+
+**Information shown (headings, captions, legends)** (31)
+
+- caption: Epoch #: loss #
+- caption: Input
+- caption: Input image # (# values)
+- caption: Reconstruction
+- caption: Reconstruction (# values)
+- caption: Reconstruction − input (worked out here)
+- figcaption: horizontal vertical diagonal· the outlined mark is the image chosen above
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A bigger code
+- h3: Before training
+- h3: Hardest to rebuild
+- h3: Reconstruction loss
+- h3: The decoder
+- h3: The encoder
+- h3: The latent space
+- h3: The record of run #
+- h3: Training
+- h4: Before the run
+- h4: Epochs
+- h4: Inside epoch # of #
+- legend: Detail
+- legend: Multiple choiceWhat is the target of an autoencoder for an input image?
+- legend: Predict the output · uses your current settingsIn Part D, image # at epoch #: which number is its reconstruction loss (m
+- legend: Predict the outputAn input (# #) is reconstructed as (#, #). What is the mean squared reconstruction loss?
+- legend: ScenarioThe latent codes of horizontal bars land in one corner of the plot. What can you conclude?
+- legend: Step size
+
+## learn: L4 experiment 06
+
+**Panels** (2)
+
+- Learning objectives
+- What you will understand
+
+**Controls (data-control id, element, accessible name)** (14)
+
+- a:train (button): Train and record
+- begin (a): Begin ↓
+- check:ae-meaning:0 (radio): Only that the encoder places similar images near each other here; the axes have no given meaning
+- check:ae-meaning:1 (radio): The first latent number means “horizontal”
+- check:ae-meaning:2 (radio): The autoencoder has learned to classify
+- check:ae-mse:0 (radio): #
+- check:ae-mse:1 (radio): #
+- check:ae-mse:2 (radio): #
+- check:ae-target:0 (radio): The image itself
+- check:ae-target:1 (radio): The image’s class
+- check:ae-target:2 (radio): The latent code
+- check:l4-live-recon:0 (radio): —
+- next-experiment (a): Level # overview →
+- tour:start (button): ▶ Start guided tour
+
+**Information shown (headings, captions, legends)** (18)
+
+- h2: Afterwards you will understand
+- h2: Explore
+- h2: In this experiment you will
+- h2: Key ideas
+- h2: Knowledge check
+- h2: The experiment
+- h3: A bigger code
+- h3: Before training
+- h3: Hardest to rebuild
+- h3: Reconstruction loss
+- h3: The decoder
+- h3: The encoder
+- h3: The latent space
+- h3: Training
+- legend: Multiple choiceWhat is the target of an autoencoder for an input image?
+- legend: Predict the output · uses your current settingsIn Part D, what is the reconstruction loss of the image shown?
+- legend: Predict the outputAn input (# #) is reconstructed as (#, #). What is the mean squared reconstruction loss?
+- legend: ScenarioThe latent codes of horizontal bars land in one corner of the plot. What can you conclude?
+
 ## learn: level 1
 
 **Controls (data-control id, element, accessible name)** (1)
@@ -3157,6 +4035,23 @@ Numbers are shown as `#`, so an entry means the same capability whatever values 
 - h3: Experiment #: Learning Rate and Training Dynamics
 - h3: Experiment #: Momentum: Smoothing the Update
 - h3: Experiment #: Overfitting and Regularization
+
+## learn: level 4
+
+**Controls (data-control id, element, accessible name)** (1)
+
+- start-level-4 (a): Start Level # →
+
+**Information shown (headings, captions, legends)** (8)
+
+- h2: By the end you will understand
+- h2: Your path
+- h3: Experiment #: Autoencoders: Learning Latent Representations
+- h3: Experiment #: Backpropagation Through Time: How Recurrent Networks Learn
+- h3: Experiment #: CNN Training: From Image to Prediction
+- h3: Experiment #: Convolutional Neural Networks: From Filters to Feature Maps
+- h3: Experiment #: LSTM and GRU: Gated Recurrent Architectures
+- h3: Experiment #: Recurrent Neural Networks: Learning from Sequences
 
 ## learn: levels
 

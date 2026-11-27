@@ -313,7 +313,7 @@ function PartB({ steps, jump }: { steps: RnnStep[] | null; jump: (n: number) => 
           className="lv-btn lv-btn-small"
           onClick={() => {
             void jump(s.h.id);
-            document.getElementById('lv-explorer-anchor')?.scrollIntoView({ block: 'start' });
+            document.querySelector('[aria-label="Trace explorer"]')?.scrollIntoView({ block: 'start' });
           }}
           data-control="b:show"
           aria-label={`Show this step in the record, instruction #${s.h.id}`}
@@ -484,7 +484,6 @@ export function L4Experiment03() {
       <PartB steps={steps} jump={run.jump} />
       <PartC steps={steps} read={read} />
       <PartD run={run} ex={ex} />
-      <div id="lv-explorer-anchor" />
       {run.ready && (
         <TraceWordingProvider value={wording}>
           <TraceExplorer stale={false} />

@@ -13310,6 +13310,3631 @@
     "text": "What you will understand"
   },
   {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell (table): Feature map (engine)#####"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:0 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:1 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:2 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:3 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:4 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:5 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:6 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:7 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:cell:8 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:next (button): Next position ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "a:prev (button): ◀ Previous position"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:padding:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:padding:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:stride:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "b:stride:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:cell (table): Pooled map (engine): choose a cell#.#.#"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:cell:0 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:cell:1 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:cell:2 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:cell:3 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:mode:avg (radio): Average"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "c:mode:max (radio): Max"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-maxpool:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-maxpool:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-maxpool:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-size:0 (radio): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-size:1 (radio): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-size:2 (radio): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-weights:0 (radio): #: four kernels of #×# reused at every position"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-weights:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:cv-weights:2 (radio): # #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-size:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-size:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-size:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "d:pattern:corner (radio): Corner"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "d:pattern:horizontal (radio): Horizontal edge"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "d:pattern:uniform (radio): Uniform"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "d:pattern:vertical (radio): Vertical edge"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · CNN Training: From Image to Prediction →"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "disclosure",
+    "text": "The engine’s record of this convolution"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Feature map (engine)"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Feature map (engine): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Feature map (given)"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Horizontal-edge kernel’s feature map"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Input image"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Input image (the outlined patch is under the kernel)"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Input: Corner"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Kernel (chosen by hand)"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Patch × kernel, element by element (worked out here)"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Pooled map (engine): choose a cell"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Steps in the engine’s record"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Strongest response of each kernel (largest absolute value in its feature map)"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "caption: Vertical-edge kernel’s feature map"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Find the strongest response"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Inspect a convolution"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Keep the size"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Nothing to see"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Pooling"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: Stride and padding"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "h3: What a kernel responds to"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Input pattern"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceA layer maps a #×#×# image to # feature maps with #×# kernels. How many weights does it have, biases asid"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceMax pooling #×# on the block [# #; # #]. What is the output?"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Padding"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Pooling"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith your Part B settings (#×# input, #×# kernel, stride # padding #), ho"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the outputA #×# input, a #×# kernel, stride # no padding. How large is the feature map?"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "information",
+    "text": "legend: Stride"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "Stride and padding"
+  },
+  {
+    "screen": "learn: L4 experiment 01 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell (table): Feature map (engine)#####"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:0 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:1 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:2 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:3 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:4 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:5 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:6 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:7 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:cell:8 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:next (button): Next position ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "a:prev (button): ◀ Previous position"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "b:padding:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "b:padding:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "b:stride:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "b:stride:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:cell (table): Pooled map (engine): choose a cell#.#.#"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:cell:0 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:cell:1 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:cell:2 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:cell:3 (button): row # column #: #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:mode:avg (radio): Average"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "c:mode:max (radio): Max"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-maxpool:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-maxpool:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-maxpool:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-size:0 (radio): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-size:1 (radio): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-size:2 (radio): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-weights:0 (radio): #: four kernels of #×# reused at every position"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-weights:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:cv-weights:2 (radio): # #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:l4-live-size:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:l4-live-size:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "check:l4-live-size:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "d:pattern:corner (radio): Corner"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "d:pattern:horizontal (radio): Horizontal edge"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "d:pattern:uniform (radio): Uniform"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "d:pattern:vertical (radio): Vertical edge"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · CNN Training: From Image to Prediction →"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "disclosure",
+    "text": "The engine’s record of this convolution"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Feature map (engine)"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Feature map (engine): #×#"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Feature map (given)"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Horizontal-edge kernel’s feature map"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Input image"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Input image (the outlined patch is under the kernel)"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Input: Vertical edge"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Kernel (chosen by hand)"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Patch × kernel, element by element (worked out here)"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Pooled map (engine): choose a cell"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Steps in the engine’s record"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Strongest response of each kernel (largest absolute value in its feature map)"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "caption: Vertical-edge kernel’s feature map"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: Find the strongest response"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: Inspect a convolution"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: Keep the size"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: Nothing to see"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: Pooling"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: Stride and padding"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "h3: What a kernel responds to"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Input pattern"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceA layer maps a #×#×# image to # feature maps with #×# kernels. How many weights does it have, biases asid"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Multiple choiceMax pooling #×# on the block [# #; # #]. What is the output?"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Padding"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Pooling"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsWith your Part B settings (#×# input, #×# kernel, stride # padding #), ho"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Predict the outputA #×# input, a #×# kernel, stride # no padding. How large is the feature map?"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "information",
+    "text": "legend: Stride"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "panel",
+    "text": "Stride and padding"
+  },
+  {
+    "screen": "learn: L4 experiment 01",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "a:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:epoch (range): Epoch for the forward pass"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "b:example (select): Image# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)#"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "c:epoch (range): Epoch for the kernels"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-flatten:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-flatten:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-flatten:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-kernel-grad:0 (radio): The same weight is used at every position, so every position’s effect on the loss adds up"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-kernel-grad:1 (radio): Each position has its own copy of the weight"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-kernel-grad:2 (radio): Only the centre position matters"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-loss:0 (radio): ≈ # (−ln #)"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-loss:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:cn-loss:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-prob:0 (radio): horizontal"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-prob:1 (radio): vertical"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-prob:2 (radio): diagonal"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "d:update (range): Update number"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "d:weight (select): Kernel weightkernel # row # column #kernel # row # column #kernel # row # column #kernel # row # column #kernel # row # "
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Recurrent Neural Networks: Learning from Sequences →"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "disclosure",
+    "text": "Loss on the # images after each epoch: every value as a table"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "disclosure",
+    "text": "This image’s steps in the record"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "caption: Dense layer and softmax"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "caption: Input image #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "caption: Kernel # after epoch #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "caption: Kernel # at the start"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "caption: Map #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "caption: Steps in the engine’s record"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "figcaption: Layer #: convolution over all four maps, then ReLU (four #×# maps)"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "figcaption: Layer #: convolution, then ReLU (four #×# feature maps)"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "figcaption: Layer #: max pooling #×# (four #×# maps)"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "figcaption: Layer #: max pooling #×# (four #×# maps), flattened to # values"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: An early mistake"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Confident at the end"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Follow one image through the network"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Kernels move"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: One update of a kernel weight"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: The kernels learn"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h3: Train the CNN"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceThe network gives the correct class probability #. What is the cross-entropy loss?"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy does one kernel weight get a gradient from every position of the image?"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, image # at epoch # has class probabilities #, #, # (horizontal"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the outputThe last pooling layer gives # feature maps of #×#. How many inputs does the dense layer receive after"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L4 experiment 02 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "a:train (button): Train and record"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-flatten:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-flatten:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-flatten:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-kernel-grad:0 (radio): The same weight is used at every position, so every position’s effect on the loss adds up"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-kernel-grad:1 (radio): Each position has its own copy of the weight"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-kernel-grad:2 (radio): Only the centre position matters"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-loss:0 (radio): ≈ # (−ln #)"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-loss:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:cn-loss:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "check:l4-live-prob:0 (radio): —"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Recurrent Neural Networks: Learning from Sequences →"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: An early mistake"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: Confident at the end"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: Follow one image through the network"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: Kernels move"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: One update of a kernel weight"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: The kernels learn"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "h3: Train the CNN"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceThe network gives the correct class probability #. What is the cross-entropy loss?"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhy does one kernel weight get a gradient from every position of the image?"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, which class does the network predict for the image shown?"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "information",
+    "text": "legend: Predict the outputThe last pooling layer gives # feature maps of #×#. How many inputs does the dense layer receive after"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 02",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "a:epoch (range): Epoch of the recorded pass"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "a:example (select): Sequence#"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "a:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:next (button): Next time step ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:prev (button): ◀ Previous time step"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "b:show (button): Show this step in the record, instruction ##"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-memory:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-memory:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-memory:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-count:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-count:1 (radio): # #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-count:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-depends:0 (radio): x₃ and h₂, and through h₂ on x₁ and x₂"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-depends:1 (radio): Only x₃"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-depends:2 (radio): x₁, x₂, x₃ through separate weights each"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-order:0 (radio): Each one needs the previous hidden state"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-order:1 (radio): The engine is slow"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "check:rn-order:2 (radio): The inputs arrive one per second"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Backpropagation Through Time: How Recurrent Networks Learn →"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Loss on the # sequences after each epoch: every value as a table"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "disclosure",
+    "text": "Which recorded value each time step uses"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "caption: Sequence # epoch #: h₀ = # → h₁ → … → h₅"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "caption: U, the recurrent weights (#×#)"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Before it learned"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Follow the memory"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: From the last hidden state to a prediction"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: One time step"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: One U for all"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: The same weights at every time step"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h3: Unroll the network"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does the hidden state h₃ depend on?"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, step # of the sequence shown: x₂ = #, and h₁ = (#, #, #, #). W"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the outputThis layer has # input feature and # hidden units: W is #×# U is #×# b has # values. How many paramete"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioWhy can the five hidden states not all be computed at the same moment?"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L4 experiment 03 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "a:train (button): Train and record"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:l4-live-memory:0 (radio): —"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-count:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-count:1 (radio): # #"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-count:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-depends:0 (radio): x₃ and h₂, and through h₂ on x₁ and x₂"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-depends:1 (radio): Only x₃"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-depends:2 (radio): x₁, x₂, x₃ through separate weights each"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-order:0 (radio): Each one needs the previous hidden state"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-order:1 (radio): The engine is slow"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "check:rn-order:2 (radio): The inputs arrive one per second"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Backpropagation Through Time: How Recurrent Networks Learn →"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: Before it learned"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: Follow the memory"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: From the last hidden state to a prediction"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: One time step"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: One U for all"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: The same weights at every time step"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "h3: Unroll the network"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does the hidden state h₃ depend on?"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part B, what is the first value of the hidden state h₂?"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "legend: Predict the outputThis layer has # input feature and # hidden units: W is #×# U is #×# b has # values. How many paramete"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "information",
+    "text": "legend: ScenarioWhy can the five hidden states not all be computed at the same moment?"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 03",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:epoch (range): Epoch of the recorded pass"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:example (select): Sequence#"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "a:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:earlier (button): Earlier time step ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "b:later (button): ◀ Later time step"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "c:entry (select): Entry of Urow # column #row # column #row # column #row # column #row # column #row # column #row # column #row # column"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-factor:0 (radio): # of its size (#¹⁰)"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-factor:1 (radio): half its size"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-factor:2 (radio): # times its size"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-sum:0 (radio): The sum of the four contributions, one per time step"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-sum:1 (radio): Only the last time step’s contribution"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-sum:2 (radio): Their average"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-trunc:0 (radio): No gradient reaches time step # so the weights are never directly taught to keep x₁"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-trunc:1 (radio): The forward pass skips x₁"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:bp-trunc:2 (radio): Nothing: truncation only makes training faster"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-usum:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-usum:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-usum:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "d:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "d:window:0 (radio): full"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "d:window:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "d:window:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "d:window:3 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "e:input:0.01 (radio): # (tanh nearly straight)"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "e:input:0.5 (radio): # (tanh bends)"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "e:scale:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "e:scale:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "e:scale:1.5 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "e:scale:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · LSTM and GRU: Gated Recurrent Architectures →"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "disclosure",
+    "text": "Loss after each epoch: full and truncated BPTT: every value as a table"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: Sequence # epoch #: label # prediction p = #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "caption: U contribution at t = #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Back to the start"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Backward, one time step at a time"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Forward, unrolled"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Full against truncated"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Gradients that shrink or grow"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Make it explode"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: Make it vanish"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: One weight, several contributions"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: First input x₁"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceGoing back one time step multiplies the gradient roughly by #. After # steps back it is about…"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceU is used at time steps # # # and # of an example. What is U’s gradient for that example?"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part C, U’s first entry received the contributions #, #, +#, # at time"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Recurrent weight scale s"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioWith truncated BPTT over the last # time steps, the label depends on x₁ of a #-step sequence. What is the proble"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "information",
+    "text": "legend: Window"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Probe settings"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 04 (trained)",
+    "kind": "panel",
+    "text": "Which time steps a window reaches"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "a:train (button): Train and record"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-factor:0 (radio): # of its size (#¹⁰)"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-factor:1 (radio): half its size"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-factor:2 (radio): # times its size"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-sum:0 (radio): The sum of the four contributions, one per time step"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-sum:1 (radio): Only the last time step’s contribution"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-sum:2 (radio): Their average"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-trunc:0 (radio): No gradient reaches time step # so the weights are never directly taught to keep x₁"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-trunc:1 (radio): The forward pass skips x₁"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:bp-trunc:2 (radio): Nothing: truncation only makes training faster"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "check:l4-live-usum:0 (radio): —"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "d:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "d:window:0 (radio): full"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "d:window:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "d:window:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "d:window:3 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "e:input:0.01 (radio): # (tanh nearly straight)"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "e:input:0.5 (radio): # (tanh bends)"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "e:scale:0.5 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "e:scale:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "e:scale:1.5 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "e:scale:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · LSTM and GRU: Gated Recurrent Architectures →"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Back to the start"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Backward, one time step at a time"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Forward, unrolled"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Full against truncated"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Gradients that shrink or grow"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Make it explode"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: Make it vanish"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "h3: One weight, several contributions"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: First input x₁"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceGoing back one time step multiplies the gradient roughly by #. After # steps back it is about…"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: Multiple choiceU is used at time steps # # # and # of an example. What is U’s gradient for that example?"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part C, what is U’s gradient (first entry) for the example shown?"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: Recurrent weight scale s"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: ScenarioWith truncated BPTT over the last # time steps, the label depends on x₁ of a #-step sequence. What is the proble"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "information",
+    "text": "legend: Window"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "panel",
+    "text": "Probe settings"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 04",
+    "kind": "panel",
+    "text": "Which time steps a window reaches"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:example (select): Sequence#"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:step (range): Time step"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "a:train (button): Train and record the LSTM again"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "c:train (button): Train and record the GRU"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-forget:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-forget:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-forget:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-gradient:0 (radio): Along the cell state the gradient is only multiplied by the forget gate, which can stay near #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-gradient:1 (radio): It has more parameters"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-gradient:2 (radio): It uses a larger learning rate"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-gru-state:0 (radio): A separate cell state"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-gru-state:1 (radio): Gates"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:gt-gru-state:2 (radio): Shared weights across time"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-cell:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-cell:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-cell:2 (radio): +#"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:seed:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:seed:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "d:seed:3 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Autoencoders: Learning Latent Representations →"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "disclosure",
+    "text": "Loss after each epoch, three recurrent layers: every value as a table"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: All six time steps of the sequence (gate values are averages over the # units)"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: Gradient passed back along the cell state, ∂ℓ/∂cₜ₋₁ through f ⊙ cₜ₋₁ (recorded): on this path it is multiplied only by f"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "caption: Time step # each unit (worked out here from the recorded gates and states)"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Keep it"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: No universal winner"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: Plain, LSTM and GRU compared"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: The cost of gates"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: The GRU cell"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: The LSTM cell"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h3: What the gates do"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does a GRU not have that an LSTM has?"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part A, time step # first unit: f = #, cₜ₋₁ = +#, i = #, g = #. What i"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the outputAn LSTM unit has cₜ₋₁ = # forget gate f = #, input gate i = # and candidate g = #. What is cₜ?"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioWhy can an LSTM carry a gradient across many time steps more easily than a plain recurrent layer?"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Seed"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Compare recurrent layers"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L4 experiment 05 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "a:train (button): Train and record the LSTM"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "c:train (button): Train and record the GRU"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-forget:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-forget:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-forget:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-gradient:0 (radio): Along the cell state the gradient is only multiplied by the forget gate, which can stay near #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-gradient:1 (radio): It has more parameters"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-gradient:2 (radio): It uses a larger learning rate"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-gru-state:0 (radio): A separate cell state"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-gru-state:1 (radio): Gates"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:gt-gru-state:2 (radio): Shared weights across time"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "check:l4-live-cell:0 (radio): —"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "d:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "d:seed:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "d:seed:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "d:seed:3 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "next-experiment (a): Next: # · Autoencoders: Learning Latent Representations →"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: Keep it"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: No universal winner"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: Plain, LSTM and GRU compared"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: The cost of gates"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: The GRU cell"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: The LSTM cell"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "h3: What the gates do"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat does a GRU not have that an LSTM has?"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part A, what is the first value of the cell state cₜ?"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "legend: Predict the outputAn LSTM unit has cₜ₋₁ = # forget gate f = #, input gate i = # and candidate g = #. What is cₜ?"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "legend: ScenarioWhy can an LSTM carry a gradient across many time steps more easily than a plain recurrent layer?"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "information",
+    "text": "legend: Seed"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "panel",
+    "text": "Compare recurrent layers"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 05",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "a:epoch (range): Epoch of the recorded pass"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "a:example (select): Image# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)# (horizontal)# (vertical)# (diagonal)#"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "a:train (button): Train and record again"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "b:epoch (range): Epoch for the latent space"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-meaning:0 (radio): Only that the encoder places similar images near each other here; the axes have no given meaning"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-meaning:1 (radio): The first latent number means “horizontal”"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-meaning:2 (radio): The autoencoder has learned to classify"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-mse:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-mse:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-mse:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-target:0 (radio): The image itself"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-target:1 (radio): The image’s class"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:ae-target:2 (radio): The latent code"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-recon:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-recon:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "check:l4-live-recon:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "e:compare (button): Train the comparison"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "next-experiment (a): Level # overview →"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:back (button): ◀ Previous stage"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:detail:layers (radio): Layers"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:detail:operations (radio): Operations"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:detail:stages (radio): Stages"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:end (button): Go to the end of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:epoch (button): Epoch #: average loss #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:next (button): Next stage ▶"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Batch # of # · examples ## ## ## ## ## ## ## ##"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): End of epoch: test every examplecheck"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:node:batch (button): Start of epoch: choose the order of the examplescontrol"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:play (button): ▶▶ Watch"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:position (range): Position in the record# / #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:size:batch (radio): Batch"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:size:epoch (radio): Epoch"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:size:phase (radio): Stage"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:size:sample (radio): Example"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "control",
+    "text": "trace:start (button): Go to the start of the run"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "disclosure",
+    "text": "Every latent code as a table"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "disclosure",
+    "text": "Image # reconstructed at three epochs"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "disclosure",
+    "text": "Reconstruction loss after each epoch: every value as a table"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "caption: Epoch #: loss #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "caption: Input"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "caption: Input image # (# values)"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "caption: Reconstruction"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "caption: Reconstruction (# values)"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "caption: Reconstruction − input (worked out here)"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "figcaption: horizontal vertical diagonal· the outlined mark is the image chosen above"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: A bigger code"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: Before training"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: Hardest to rebuild"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: Reconstruction loss"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: The decoder"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: The encoder"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: The latent space"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: The record of run #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h3: Training"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h4: Before the run"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h4: Epochs"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "h4: Inside epoch # of #"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "legend: Detail"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is the target of an autoencoder for an input image?"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part D, image # at epoch #: which number is its reconstruction loss (m"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "legend: Predict the outputAn input (# #) is reconstructed as (#, #). What is the mean squared reconstruction loss?"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "legend: ScenarioThe latent codes of horizontal bars land in one corner of the plot. What can you conclude?"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "information",
+    "text": "legend: Step size"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "panel",
+    "text": "Compare code sizes"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "panel",
+    "text": "Trace explorer"
+  },
+  {
+    "screen": "learn: L4 experiment 06 (trained)",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "a:train (button): Train and record"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "begin (a): Begin ↓"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-meaning:0 (radio): Only that the encoder places similar images near each other here; the axes have no given meaning"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-meaning:1 (radio): The first latent number means “horizontal”"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-meaning:2 (radio): The autoencoder has learned to classify"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-mse:0 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-mse:1 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-mse:2 (radio): #"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-target:0 (radio): The image itself"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-target:1 (radio): The image’s class"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:ae-target:2 (radio): The latent code"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "check:l4-live-recon:0 (radio): —"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "next-experiment (a): Level # overview →"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "control",
+    "text": "tour:start (button): ▶ Start guided tour"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h2: Afterwards you will understand"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h2: Explore"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h2: In this experiment you will"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h2: Key ideas"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h2: Knowledge check"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h2: The experiment"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: A bigger code"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: Before training"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: Hardest to rebuild"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: Reconstruction loss"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: The decoder"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: The encoder"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: The latent space"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "h3: Training"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "legend: Multiple choiceWhat is the target of an autoencoder for an input image?"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "legend: Predict the output · uses your current settingsIn Part D, what is the reconstruction loss of the image shown?"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "legend: Predict the outputAn input (# #) is reconstructed as (#, #). What is the mean squared reconstruction loss?"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "information",
+    "text": "legend: ScenarioThe latent codes of horizontal bars land in one corner of the plot. What can you conclude?"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "panel",
+    "text": "Learning objectives"
+  },
+  {
+    "screen": "learn: L4 experiment 06",
+    "kind": "panel",
+    "text": "What you will understand"
+  },
+  {
     "screen": "learn: level 1",
     "kind": "control",
     "text": "start-level (a): Start learning →"
@@ -13428,6 +17053,51 @@
     "screen": "learn: level 3",
     "kind": "information",
     "text": "h3: Experiment #: Overfitting and Regularization"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "control",
+    "text": "start-level-4 (a): Start Level # →"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h2: By the end you will understand"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h2: Your path"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h3: Experiment #: Autoencoders: Learning Latent Representations"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h3: Experiment #: Backpropagation Through Time: How Recurrent Networks Learn"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h3: Experiment #: CNN Training: From Image to Prediction"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h3: Experiment #: Convolutional Neural Networks: From Filters to Feature Maps"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h3: Experiment #: LSTM and GRU: Gated Recurrent Architectures"
+  },
+  {
+    "screen": "learn: level 4",
+    "kind": "information",
+    "text": "h3: Experiment #: Recurrent Neural Networks: Learning from Sequences"
   },
   {
     "screen": "learn: levels",

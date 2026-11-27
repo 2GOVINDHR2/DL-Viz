@@ -243,14 +243,16 @@ function PartB({
             <dt>This step’s contribution to U (hₜ₋₁ᵀ · ∂ℓ/∂zₜ)</dt>
             <dd data-value="du">
               {b.dU ? (
-                <MatrixGrid
-                  values={values(b.dU)}
-                  rows={H}
-                  cols={H}
-                  digits={4}
-                  caption={`U contribution at t = ${b.t}`}
-                  hideCaption
-                />
+                <div className="lv-matrix-scroll">
+                  <MatrixGrid
+                    values={values(b.dU)}
+                    rows={H}
+                    cols={H}
+                    digits={4}
+                    caption={`U contribution at t = ${b.t}`}
+                    hideCaption
+                  />
+                </div>
               ) : (
                 <span className="lv-small lv-muted">
                   none: at t = 1 there is no hₜ₋₁ (h₀ = 0), so U was not used
