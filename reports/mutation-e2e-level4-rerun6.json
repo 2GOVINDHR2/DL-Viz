@@ -1,0 +1,351 @@
+[
+  {
+    "id": "helpers:46",
+    "file": "tests/e2e/helpers.ts",
+    "line": 46,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(page.locator('[data-value=\"regularized\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:48",
+    "file": "tests/e2e/helpers.ts",
+    "line": 48,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(b.locator('tr[data-lambda]')).toHaveCount(4, { timeout: 120_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:51",
+    "file": "tests/e2e/helpers.ts",
+    "line": 51,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(a.locator('tr[data-lr], tr[data-run]').first()).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:53",
+    "file": "tests/e2e/helpers.ts",
+    "line": 53,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(b.locator('[data-control=\"b:update\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:73",
+    "file": "tests/e2e/helpers.ts",
+    "line": 73,
+    "fn": "trainLevel4",
+    "negative": true,
+    "text": "switch (n) { case 1: await page.locator('[data-control=\"a:next\"]').click(); await page.locator('label:has([data-control=\"b:padding:1\"])').click(); await page.lo",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:18",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 18,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-control=\"a:example\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:19",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 19,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-value=\"code\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 19,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:20",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 20,
+    "fn": "train",
+    "negative": false,
+    "text": "await expect(sectionD(page).locator('[data-value=\"worst\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 20,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 18,36: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:29",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 29,
+    "fn": "vector",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:38",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 38,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-encoder=\"0\"]')).toHaveCount(1);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:40",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 40,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "expect(vector(before)).toHaveLength(2);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result",
+      "no-action": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:41",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 41,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "expect(vector(await value(sectionA(page), 'enc'))).toHaveLength(8);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "no result"
+    }
+  },
+  {
+    "id": "level4-exp06.spec:43",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 43,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-encoder=\"7\"]')).toHaveCount(1);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:44",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 44,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": true,
+    "text": "await expect.poll(async () => value(sectionA(page), 'code')).not.toBe(before);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:46",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 46,
+    "fn": "Part A: the encoder code has two numbers and follows the chosen image",
+    "negative": false,
+    "text": "expect(vector(after)).toHaveLength(2);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:54",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 54,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "await expect(b.locator('svg[role=\"img\"]').first()).toHaveAttribute( 'aria-label', /Latent codes of the 24 images during epoch 150/, );",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:59",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 59,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "await expect(b.locator('details table tbody tr')).toHaveCount(24);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:64",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 64,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:65",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 65,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "expect(num(m![1])).toBeGreaterThan(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:66",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 66,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "expect(num(m![2])).toBeGreaterThan(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:69",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 69,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": false,
+    "text": "await expect(b.locator('svg[role=\"img\"]').first()).toHaveAttribute('aria-label', /during epoch 1$/);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:70",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 70,
+    "fn": "Part B: the latent table and the measured distances",
+    "negative": true,
+    "text": "await expect.poll(read).not.toBe(text);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:142",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 142,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:144",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 144,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:146",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 146,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:147",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 147,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:154",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 154,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "await expect(q.getByText('Train the autoencoder in Part A first.')).toBeVisible();",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:158",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 158,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "await expect(options.first()).toBeVisible({ timeout: 60_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:164",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 164,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "expect(Math.abs(num(texts[best].trim()) - loss)).toBeLessThanOrEqual(0.00006);",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level4-exp06.spec:166",
+    "file": "tests/e2e/level4-exp06.spec.ts",
+    "line": 166,
+    "fn": "Check: the live question accepts the reconstruction loss of Part D",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  }
+]
