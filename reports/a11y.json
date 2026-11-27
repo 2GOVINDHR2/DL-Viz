@@ -507,6 +507,118 @@
     "passes": 33,
     "violations": []
   },
+  "Level 4 /#/level-4 (light)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-01 (light)": {
+    "passes": 28,
+    "violations": []
+  },
+  "Level 4 experiment 01: tour open (light)": {
+    "passes": 31,
+    "violations": []
+  },
+  "Level 4 experiment 01 explored or trained (light)": {
+    "passes": 28,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-02 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 4 experiment 02 explored or trained (light)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-03 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 4 experiment 03 explored or trained (light)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-04 (light)": {
+    "passes": 31,
+    "violations": []
+  },
+  "Level 4 experiment 04 explored or trained (light)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-05 (light)": {
+    "passes": 30,
+    "violations": []
+  },
+  "Level 4 experiment 05 explored or trained (light)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-06 (light)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 4 experiment 06 explored or trained (light)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4 (dark)": {
+    "passes": 22,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-01 (dark)": {
+    "passes": 28,
+    "violations": []
+  },
+  "Level 4 experiment 01: tour open (dark)": {
+    "passes": 31,
+    "violations": []
+  },
+  "Level 4 experiment 01 explored or trained (dark)": {
+    "passes": 28,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-02 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 4 experiment 02 explored or trained (dark)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-03 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 4 experiment 03 explored or trained (dark)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-04 (dark)": {
+    "passes": 31,
+    "violations": []
+  },
+  "Level 4 experiment 04 explored or trained (dark)": {
+    "passes": 33,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-05 (dark)": {
+    "passes": 30,
+    "violations": []
+  },
+  "Level 4 experiment 05 explored or trained (dark)": {
+    "passes": 32,
+    "violations": []
+  },
+  "Level 4 /#/level-4/experiment-06 (dark)": {
+    "passes": 25,
+    "violations": []
+  },
+  "Level 4 experiment 06 explored or trained (dark)": {
+    "passes": 33,
+    "violations": []
+  },
   "study: researcher": {
     "passes": 7,
     "violations": []

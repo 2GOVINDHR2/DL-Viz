@@ -6,7 +6,7 @@
 
 | Evidence | Result |
 |---|---|
-| Finite-difference gradient checks | 35 op cases + 9 whole-model cases; worst max. relative deviation 1.18e-6 (tolerance 1e-5) |
+| Finite-difference gradient checks | 38 op cases + 12 whole-model cases; worst max. relative deviation 2.94e-6 (tolerance 1e-5) |
 | TF.js parity | 8 / 8 architectures agree on every loss and every parameter after every step (≥ 100 steps); worst abs. deviation: loss 1.04e-6, parameters 1.25e-6 |
 | Determinism (engine) | 8 / 8 architectures bit-identical across repeats, seed-sensitive, and identical after checkpoint resume |
 | Determinism (trace) | 8 / 8 traces have identical SHA-256 over 3 repeated runs and differ under another seed |
@@ -20,7 +20,7 @@
 | Frame rate during animated stepping | 60 fps | XOR: 60.0 / 60.3 / 59.9 fps (operation / layer / example); CNN: 59.6 / 57.2 fps (operation / layer) | ✓ met (≥ 55 fps measured as 60 fps vsync with timer jitter) |
 | Main thread never freezes | heavy work in a worker | CNN generation (6.0 s in the worker): longest main-thread frame 17 ms, 95th percentile 17 ms | ✓ met |
 | Memory at the largest experiment (CNN) | under ~500 MB | live after GC: 81 MB (worker heap 6 MB + array buffers 75 MB; main-thread heap 22 MB); peak resident set of the tab's renderer 543 MB | ✓ met for live memory; peak RSS is at or slightly above the budget (allocator high-water mark of short-lived training buffers; see KNOWN-GAPS) |
-| Accessibility: designed to WCAG 2.1 AA | no automated violations; manual criterion review | axe-core on 115 screens (63 expert-workbench screens including the export panel, 44 novice-path screens in both themes, 8 Study Mode screens): 0 violations | no automated violations; manual review in docs/ACCESSIBILITY.md. **Conformance not established:** automated tools detect only a subset of WCAG failures, and the tool has **not been validated with screen-reader users** |
+| Accessibility: designed to WCAG 2.1 AA | no automated violations; manual criterion review | axe-core on 163 screens (111 expert-workbench screens including the export panel, 44 novice-path screens in both themes, 8 Study Mode screens): 0 violations | no automated violations; manual review in docs/ACCESSIBILITY.md. **Conformance not established:** automated tools detect only a subset of WCAG failures, and the tool has **not been validated with screen-reader users** |
 | Colour-blind-safe palettes | ΔE ≥ 15 for every meaningful pair under protanopia and deuteranopia | worst: 16.1 (series 2–3 (dark)) | ✓ met |
 | Usable at 1280×720 | all experiments | every Playwright test runs at a 1280×720 viewport | ✓ met |
 | NaN/overflow is a teachable event, never a crash | — | five pathologies produced and caught (docs/PATHOLOGIES.md) | ✓ met |
@@ -76,6 +76,7 @@ Central differences with h = 10⁻⁶ in float64, on L = Σ f(x) ⊙ R for a ran
 | mseLoss — multi-output [3,4] | 12 | 7.81e-11 | 1.05e-8 |
 | mul — broadcast [3,4]*[1,4] | 16 | 5.41e-11 | 5.32e-9 |
 | neg — shape [3,4] | 12 | 1.83e-10 | 2.22e-10 |
+| oneMinus — shape [3,4] | 12 | 1.50e-10 | 1.22e-10 |
 | relu — shape [3,4] | 12 | 1.56e-10 | 1.47e-10 |
 | reshape — [2,3,2,2] -> [2,12] | 24 | 2.46e-10 | 1.83e-10 |
 | sigmoid — shape [3,4] | 12 | 1.59e-10 | 4.45e-9 |
@@ -83,9 +84,11 @@ Central differences with h = 10⁻⁶ in float64, on L = Σ f(x) ⊙ R for a ran
 | softmaxCrossEntropy — one-hot [4,3] | 12 | 2.74e-10 | 1.15e-8 |
 | softmaxCrossEntropy — soft labels [2,4] | 8 | 3.66e-10 | 6.06e-8 |
 | square — shape [3,4] | 12 | 2.49e-10 | 6.57e-9 |
+| stopGradient — stop(a) ⊙ b, gradient of b | 12 | 6.40e-11 | 1.18e-9 |
 | sub — broadcast [3,4]-[3,1] | 15 | 1.90e-10 | 2.23e-10 |
 | sum — shape [3,4] | 12 | 3.85e-10 | 5.25e-10 |
 | tanh — shape [3,4] | 12 | 2.63e-10 | 8.55e-9 |
+| timeStep — step 2 of [2,4,3] | 24 | 7.08e-11 | 8.48e-11 |
 
 ### 1.2 Composite layers and whole models (gradient of the loss w.r.t. every parameter)
 
@@ -97,8 +100,11 @@ Central differences with h = 10⁻⁶ in float64, on L = Σ f(x) ⊙ R for a ran
 | dense layer, linear + MSE | 8 | 5.73e-11 | 8.33e-10 |
 | dense layer, relu + MSE | 16 | 2.46e-11 | 2.58e-9 |
 | dense layer, tanh + MSE | 16 | 6.35e-11 | 3.38e-9 |
+| gru (hidden 3, 4 time steps, 2 features) → dense sigmoid | 58 | 9.05e-11 | 1.76e-6 |
+| lstm (hidden 3, 4 time steps, 2 features) → dense sigmoid | 76 | 9.21e-11 | 2.94e-6 |
 | MLP 2-4-1 XOR shape (sigmoid, BCE) | 17 | 1.11e-10 | 2.05e-7 |
 | MLP 2-8-3 softmax + CCE (fused) | 51 | 1.82e-10 | 3.34e-7 |
+| rnn (hidden 3, 4 time steps, 2 features) → dense sigmoid | 22 | 9.47e-11 | 1.88e-8 |
 | single neuron (sigmoid, BCE) | 3 | 4.23e-11 | 8.68e-10 |
 
 ## 2. TF.js parity (`tests/parity`)

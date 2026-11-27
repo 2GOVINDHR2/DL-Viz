@@ -25,7 +25,7 @@ Every one of these instructions can be stepped to, has its full numerical result
 |---|---|
 | Instructions (full run, 60 epochs) | 3,422 |
 | Instructions in one epoch | 57 |
-| Distinct instruction kinds used | 22 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 22 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 39,003 |
@@ -71,7 +71,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 40 epochs) | 4,922 |
 | Instructions in one epoch | 123 |
-| Distinct instruction kinds used | 22 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 22 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 5,402 |
@@ -117,7 +117,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 20 epochs) | 17,584 |
 | Instructions in one epoch | 879 |
-| Distinct instruction kinds used | 23 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 23 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 47,053 |
@@ -164,7 +164,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 30 epochs) | 14,402 |
 | Instructions in one epoch | 480 |
-| Distinct instruction kinds used | 22 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 22 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 35,613 |
@@ -210,7 +210,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 40 epochs) | 22,522 |
 | Instructions in one epoch | 563 |
-| Distinct instruction kinds used | 22 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 22 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 24,562 |
@@ -256,7 +256,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 30 epochs) | 17,224 |
 | Instructions in one epoch | 574 |
-| Distinct instruction kinds used | 23 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 23 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 53,083 |
@@ -303,7 +303,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 150 epochs) | 14,854 |
 | Instructions in one epoch | 99 |
-| Distinct instruction kinds used | 23 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 23 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 124,817 |
@@ -350,7 +350,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 3 epochs) | 125,791 |
 | Instructions in one epoch | 41,929 |
-| Distinct instruction kinds used | 30 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 30 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 87,802,960 |
@@ -404,7 +404,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 20 epochs) | 110,898 |
 | Instructions in one epoch | 5,544 |
-| Distinct instruction kinds used | 23 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 23 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 1,252,917 |
@@ -451,7 +451,7 @@ Distribution by kind:
 |---|---|
 | Instructions (full run, 30 epochs) | 16,892 |
 | Instructions in one epoch | 563 |
-| Distinct instruction kinds used | 22 (of 30 registered, all explained) |
+| Distinct instruction kinds used | 22 (of 39 registered, all explained) |
 | Nesting depth (epoch → batch → sample → phase → layer → operation) | 6 |
 | Granularity levels | 6 |
 | Stored values | 18,422 |

@@ -11,17 +11,10 @@
 | 3 | Recurrent engine gate, then Exp 03 (vanilla RNN) | done (`reports/LEVEL4-STAGE3.md`, ADR-102); e2e spec passes 8 of 8 |
 | 4 | Exp 04 (BPTT) | done (`reports/LEVEL4-STAGE4.md`); e2e spec passes 6 of 6 |
 | 5 | Exp 05 (LSTM and GRU) | done (`reports/LEVEL4-STAGE5.md`); e2e spec passes 5 of 5 |
-| 6 | Exp 06 (autoencoder) | done (`reports/LEVEL4-STAGE6.md`); e2e spec delegated: check that `tests/e2e/level4-exp06.spec.ts` exists and passes |
-| 7 | Level 4 integration | pending |
-| 8 | Final regression and `reports/LEVEL4-FINAL-REPORT.md` | pending |
+| 6 | Exp 06 (autoencoder) | done (`reports/LEVEL4-STAGE6.md`); e2e spec passes 7 of 7 |
+| 7 | Level 4 integration | done: a11y, layout IV, capability inventory, screenshots, ADR-103; e2e mutation audit (157 of 250 live by mechanical mutants; 52 of 52 targeted mutants killed) |
+| 8 | Final regression and `reports/LEVEL4-FINAL-REPORT.md` | done: clean build; unit 806/806, gradcheck 54/54, parity 8/8, determinism 18/18, e2e 175/175 |
 
 ## Next action
 
-**Stage 7: Level 4 integration.**
-1. Add Level 4 pages to `a11y.spec.ts` (both themes, opened and trained), with a new test.
-2. Add them to `layout.spec.ts` as test IV (1440–320 px, opened and trained); add a `trainLevel4` helper to `tests/e2e/helpers.ts`.
-3. Run the capability inventory with `CAPTURE=append`, and record the "Beyond Level 3" card (now "The full workbench") in `reports/capability-removed.json`.
-4. Take screenshots to `docs/screenshots/level4`.
-5. Run the mutation audit of the Level 4 e2e specs.
-
-**Then Stage 8:** the full regression from a clean build, and `reports/LEVEL4-FINAL-REPORT.md`.
+**None. Level 4 is complete** (`reports/LEVEL4-FINAL-REPORT.md`). Do not begin Level 5, Transformers or global fine-tuning without a new instruction from the user.

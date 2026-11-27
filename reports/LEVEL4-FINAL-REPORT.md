@@ -101,7 +101,29 @@ Every run is small enough to train and record in the browser within a few second
 
 ## 7. Test results (Stage 8, from a clean build)
 
-RESULTS_PLACEHOLDER
+All suites ran on 2026-11-27 after `rm -rf dist test-results .tmp`, a fresh `npm run build`, and with no mutation files present.
+
+| Suite | Result |
+|---|---|
+| Typecheck (`tsc -b`) | **pass** |
+| Lint (`eslint --max-warnings=0`) | **pass** |
+| Format (`prettier --check`) | **pass** |
+| Unit (`tests/unit`) | **806 / 806** (69 files), including the Level 4 experiment tests, the recurrent gate and the vocabulary test |
+| Gradcheck | **54 / 54**; worst max. relative deviation 2.94e-6 (tolerance 1e-5) |
+| TF.js parity | **8 / 8** |
+| Determinism | **18 / 18** (engine and trace hashes; feed-forward traces unchanged) |
+| Build (`tsc -b && vite build`) | **pass** |
+| Chromium e2e, full suite | **175 / 175 passed in 10.9 min**, no retries. It includes the six Level 4 specs (39 tests), Levels 1–3, accessibility, layout I–IV, the capability inventory and performance |
+| Accessibility (axe-core, in the e2e run) | **0 violations on 163 screens**, both themes |
+| Performance (in the e2e run) | `perf` and `perf-cnn` pass; `perf-cnn` peak renderer memory 541 MB (guard 700 MB) |
+| `npm run report` | regenerated `docs/VALIDATION-REPORT.md`, `docs/TRACE-STATISTICS.md` and the NPM spec tables |
+
+**Educational regression.**
+- **Unit tests, on real recorded runs.** Each experiment's test recomputes by hand, from the record, the values its page shows. The `level4-vocabulary` test probes the explorer of Experiments 02–06 at the forward, loss, backward, accumulation (`GRAD_SUM`), update and end-of-run points, and fails if the Level 4 wording is reverted.
+- **e2e mutation audit** (`reports/mutation-e2e-level4.json`, `reports/mutation-targeted.json`):
+  - 250 assertions. 157 are live by mechanical mutants (blanked page, or the interaction removed).
+  - **52 targeted mutants**, each making one shown value wrong (an engine value off by one, a check mark inverted, a loss shifted, a gate value moved out of its range). **52 of 52 were killed at their own line; no hollow assertion was found.**
+  - The remainder are listed in §8.
 
 ## 8. Limitations
 
@@ -127,8 +149,34 @@ RESULTS_PLACEHOLDER
 
 ## 10. Commits (Level 4)
 
-COMMITS_PLACEHOLDER
+- `0b60be7` Level 4 final report: draft (Stage 8 e2e results pending)
+- `5ea0902` Level 4 targeted e2e mutants: 52 of 52 killed at their own line; no hollow assertion
+- `3a51ce9` Level 4 targeted mutants: results so far (run in progress)
+- `91cb359` Level 4 mutation audit: merge the Exp06 1-worker re-run (157 of 250 live by mechanical mutants)
+- `fde7180` Level 4 mutation re-run of Exp06: progress
+- `3bac35c` Level 4 mutation re-run of Exp06: progress
+- `281fc45` Level 4 mutation re-run of Exp06 (1 worker): partial results, run in progress
+- `f67c7e5` Level 4 mutation audit: merge the 2-worker re-run (152 of 250 live by mechanical mutants); targeted mutant for the Exp04 question
+- `f09310d` Level 4 mutation re-run (2 workers) for the tests that timed out: partial results, run in progress
+- `73aaf56` Level 4 e2e mutation audit (mechanical mutants) and 51 targeted mutants for the value assertions
+- `dab5c1d` ADR-103: Level 4 Experiments 03–06 and cross-runtime determinism
+- `f30dbbc` Level 4 integration: layout fixes (Exp 03 anchor, Exp 04 grid on phones); capability inventory with Level 4 screens
+- `8df369d` Level 4: Experiment 06 e2e spec; Level 4 in a11y, layout and capability specs (trainLevel4); screenshots
+- `cffe36d` Level 4, Stage 6: Experiment 06 (autoencoder); Experiment 05 e2e spec
+- `ed6025a` Level 4, Stage 5: Experiment 05 (LSTM and GRU)
+- `9482de3` Level 4 Experiment 04 e2e spec
+- `71b2b1a` Level 4, Stage 4: Experiment 04 (backpropagation through time); Experiment 03 e2e spec
+- `ddbe4ca` Level 4, Stage 3: Experiment 03 (vanilla RNN); explorer names recurrent parameters
+- `cc0dd58` Lint and format fixes
+- `4bfcffa` Level 4, Stage 3 gate: recurrent engine support (RNN, LSTM, GRU, truncated BPTT) and GRAD_SUM in the NPM trace
+- `b9c2068` Level 4 Experiments 01 and 02 e2e specs
+- `37b7882` Level 4, Stage 2: Level 4 shell, Experiments 01 (convolution) and 02 (CNN training); explorer fixes for CNNs
+- `f54daa9` Level 4, Stage 1: audit and capability gate
+- (this report, the resume file and the regenerated validation documents: the final commit)
 
 ## 11. Repository status
 
-REPO_PLACEHOLDER
+- Branch `claude/exciting-heisenberg-weq2n6`, pushed. No pull request was opened.
+- The working tree is clean after the final commit. Ignored build output only (`dist/`, `test-results/`).
+- Level 4 decisions: ADR-100 to ADR-103 in `docs/DECISIONS.md`. Stage reports: `reports/LEVEL4-AUDIT.md` and `reports/LEVEL4-STAGE2.md` … `LEVEL4-STAGE6.md`.
+- **Level 4 is complete.** The fine-tuning phase has not been started.
