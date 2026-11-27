@@ -94,7 +94,7 @@ All runs were made on this machine (Linux, Chromium only), from a clean `dist` b
 | Typecheck (`tsc -b`) | clean |
 | Lint (`eslint`, 0 warnings allowed) | clean |
 | Format (`prettier --check .`) | clean |
-| Unit (`tests/unit`) | **61 files, 717 of 717 pass**, including 42 Level 3 tests in 6 files |
+| Unit (`tests/unit`) | **61 files, 721 of 721 pass** (final run), including 46 Level 3 tests in 6 files |
 | Gradcheck / parity (TF.js) / determinism | 48 / 8 / 18, all pass |
 | Level 3 engine gate | all pass (§4) |
 | Build (`npm run build`) | passes (the usual chunk-size warning) |
@@ -142,3 +142,15 @@ All runs were made on this machine (Linux, Chromium only), from a clean `dist` b
 4. Check the Level 3 e2e specs: `npx playwright test tests/e2e/level3-exp0 --project=chromium`.
 5. Look through `docs/screenshots/level3/`, desktop and mobile.
 6. Optionally, try Firefox and WebKit by hand. They were not tested overnight.
+
+## 11. Follow-up after review (2026-11-27)
+
+Two items left open in the first version of this report were completed:
+
+1. **The explorer's wording is now checked on real Level 3 runs.**
+   - `tests/unit/level3-vocabulary.test.ts` trains each experiment's own recorded run. It renders the page with its trace explorer at seven points: the forward pass, the backward pass, every update kind (GRAD_ACCUMULATE, OPTIMIZER_STATE, COMPUTE_UPDATE, APPLY_UPDATE), and the end of the run.
+   - **This found a defect, now fixed.** The explorer in Experiments 02–04 used Level 2's plain-gradient-descent wording ("Update: w ← w − η·g", "The step is −η·g", "new value = old value − η·g"), which is wrong for momentum, Adam and weight decay.
+   - `level3Wording` now names the step Δ and states each optimiser's rule; Experiment 01 (plain η) is unchanged. The test fails for Experiments 02, 03 and 04 without the fix (commit `6390e39`).
+2. **A full regression was run after all fixes, from a clean `dist` build.** typecheck, lint and format are clean. Unit tests pass 721 of 721, gradcheck 48, parity 8, determinism 18. The **full Chromium e2e suite passed 133 of 134.**
+   - **The single failure is `perf-cnn`'s memory guard:** peak renderer memory was 791 MB against a 700 MB guard in the existing workbench CNN, not Level 3 code. It ran after ~125 other tests in the same browser.
+   - **Run on its own immediately afterwards, it passes.** It also failed the same way in the first full run, so it depends on suite order and the machine. It has not been fixed and is left for a decision: raise the guard, or run perf specs in a fresh browser.
