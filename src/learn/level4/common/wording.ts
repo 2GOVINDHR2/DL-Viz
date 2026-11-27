@@ -1,7 +1,7 @@
 /**
- * Level 4's words for the shared trace explorer (ADR-090 pattern): Level 2's, plus the convolutional, pooling and
- * flattening steps (Experiments 01–02). Recurrent kinds are added by the experiments that teach them. Levels 1–3 are
- * unchanged.
+ * Level 4's words for the shared trace explorer (ADR-090 pattern): a base (Level 2's, or Level 3's for a run trained
+ * with Adam, whose update is not −η·ḡ), plus the convolutional steps (Experiments 01–02) and the sequence steps
+ * (Experiment 03 on). Levels 1–3 are unchanged.
  */
 import { LEVEL2_WORDING, type TraceWording } from '../../trace/wording';
 
@@ -15,7 +15,18 @@ const CNN_KINDS: Record<string, string> = {
   GRAD_FLATTEN: 'give the gradient back its feature-map shape',
 };
 
-export function level4Wording(extra: Record<string, string> = {}): TraceWording {
+/** The steps of a recurrent layer (Experiment 03 on; the words avoid terms taught later). */
+export const RNN_KINDS: Record<string, string> = {
+  SELECT_STEP: 'read the input of the next time step',
+  ADD: 'add the part from the input and the part from the previous hidden state',
+  GRAD_SELECT_STEP: 'gradient of one time step’s input',
+  GRAD_SUM: 'add up the gradient contributions of a value used at several time steps',
+};
+
+export function level4Wording(
+  extra: Record<string, string> = {},
+  base: TraceWording = LEVEL2_WORDING,
+): TraceWording {
   const kinds = { ...CNN_KINDS, ...extra };
-  return { ...LEVEL2_WORDING, kind: (k) => kinds[k] ?? LEVEL2_WORDING.kind(k) };
+  return { ...base, kind: (k) => kinds[k] ?? base.kind(k) };
 }

@@ -7,8 +7,8 @@
 | # | Stage | Status |
 |---|---|---|
 | 1 | Audit and capability gate (`reports/LEVEL4-AUDIT.md`) | done |
-| 2 | CNN: Exp 01 (filters to feature maps), Exp 02 (CNN training) | done (`reports/LEVEL4-STAGE2.md`); e2e specs delegated: check that `tests/e2e/level4-exp01.spec.ts` and `-exp02` exist and pass |
-| 3 | Recurrent engine gate, then Exp 03 (vanilla RNN) | pending |
+| 2 | CNN: Exp 01 (filters to feature maps), Exp 02 (CNN training) | done (`reports/LEVEL4-STAGE2.md`); e2e specs pass 7 + 6 |
+| 3 | Recurrent engine gate, then Exp 03 (vanilla RNN) | done (`reports/LEVEL4-STAGE3.md`, ADR-102); e2e spec delegated: check that `tests/e2e/level4-exp03.spec.ts` exists and passes |
 | 4 | Exp 04 (BPTT) | pending |
 | 5 | Exp 05 (LSTM and GRU) | pending |
 | 6 | Exp 06 (autoencoder) | pending |
@@ -17,19 +17,10 @@
 
 ## Next action
 
-**Stage 3: the recurrent engine gate.** Follow `reports/LEVEL4-AUDIT.md` items 1–4, 6 and 7.
-
-1. **New ops:** `timeStep` (attr t) and `oneMinus`, with mappings to new kinds `SELECT_STEP`, `GRAD_SELECT_STEP`, `ONE_MINUS` and `GRAD_ONE_MINUS`.
-2. **Elementwise mappings:** `ADD`, `GRAD_ADD`, `MULTIPLY` and `GRAD_MULTIPLY`.
-3. **`GRAD_SUM` in the emitter,** for any value with more than one gradient contribution.
-4. **`EntryMeta.step` and `EntryMeta.gate`,** copied to the instruction meta.
-5. **Extension layers** `rnn`, `lstm` and `gru`, plus a sequence dataset.
-6. **The gate tests:**
-   - gradcheck for the new ops and layers;
-   - TF.js parity of the cells;
-   - `GRAD_SUM` equals the tape's total gradient;
-   - grammar conformance and reconstruction;
-   - determinism;
-   - existing traces unchanged (`reports/trace-hash.json`).
-
-Then build Exp 03.
+**Stage 4: Experiment 04 (BPTT).**
+- **Part A:** forward unrolling.
+- **Part B:** backward step by step: GRAD_INIT, then ∂ℓ/∂hₜ and ∂ℓ/∂zₜ per step (GRAD_ACTIVATE operands and results), and U's per-step GRAD_MATMUL_W.
+- **Part C:** U's contributions and their GRAD_SUM.
+- **Part D:** full against truncated (rnn `window`) through compareRuns, plus a recorded truncated run with its STOP_GRADIENT.
+- **Part E:** gradient size per time step from engine probes with U = s·I, for several s. Report what the record shows; do not claim it always vanishes.
+- **Gradient clipping:** not implemented; say so.

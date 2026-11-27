@@ -12,11 +12,21 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import type { DatasetSpec } from '../../src/core/engine/protocol';
 import type { TrainConfig } from '../../src/core/engine/session';
-import { L4_CNN, l4CnnConfig, LEVEL4_TERMS, type Level4Id } from '../../src/experiments/level4';
+import {
+  L4_CNN,
+  l4CnnConfig,
+  L4_RNN,
+  l4RnnConfig,
+  LEVEL4_TERMS,
+  type Level4Id,
+} from '../../src/experiments/level4';
+import { level3Wording } from '../../src/learn/level3/common/wording';
+import type { TraceWording } from '../../src/learn/trace/wording';
 import { LEVEL_4 } from '../../src/learn/curriculum';
-import { level4Wording } from '../../src/learn/level4/common/wording';
+import { level4Wording, RNN_KINDS } from '../../src/learn/level4/common/wording';
 import { L4Experiment01 } from '../../src/learn/level4/Experiment01';
 import { L4Experiment02 } from '../../src/learn/level4/Experiment02';
+import { L4Experiment03 } from '../../src/learn/level4/Experiment03';
 import { Level4Landing } from '../../src/learn/pages/Level4Landing';
 import { inProcessEngine, setEngineFactory } from '../../src/learn/trace/engine';
 import { renderCurrentRunState, useRun } from '../../src/learn/trace/store';
@@ -25,6 +35,7 @@ const ORDER: Level4Id[] = ['01', '02', '03', '04', '05', '06'];
 const PAGES: Partial<Record<Level4Id, () => ReactElement>> = {
   '01': L4Experiment01,
   '02': L4Experiment02,
+  '03': L4Experiment03,
 };
 
 const text = (html: string): string =>
@@ -72,7 +83,7 @@ describe('Level 4 vocabulary', () => {
     );
   });
 
-  const RECORDED: [Level4Id, TrainConfig, DatasetSpec, string[]][] = [
+  const RECORDED: [Level4Id, TrainConfig, DatasetSpec, string[], TraceWording?][] = [
     [
       '02',
       l4CnnConfig(),
@@ -89,9 +100,28 @@ describe('Level 4 vocabulary', () => {
         'APPLY_UPDATE',
       ],
     ],
+    [
+      '03',
+      l4RnnConfig(),
+      L4_RNN.dataset,
+      [
+        'SELECT_STEP',
+        'MATMUL',
+        'ADD',
+        'ACTIVATE',
+        'COMPUTE_LOSS',
+        'GRAD_ACTIVATE',
+        'GRAD_MATMUL_W',
+        'GRAD_SUM',
+        'GRAD_ACCUMULATE',
+        'OPTIMIZER_STATE',
+        'COMPUTE_UPDATE',
+        'APPLY_UPDATE',
+      ],
+      level4Wording(RNN_KINDS, level3Wording({ optimizer: 'adam', decay: false })),
+    ],
   ];
-  const words = level4Wording();
-  for (const [id, config, dataset, kinds] of RECORDED)
+  for (const [id, config, dataset, kinds, words = level4Wording()] of RECORDED)
     it(`Experiment ${id}, trained, with its explorer at every kind of step, uses no later term and describes each step`, async () => {
       const restore = setEngineFactory(inProcessEngine);
       try {
@@ -115,6 +145,12 @@ describe('Level 4 vocabulary', () => {
           expect(text(html), `${kind} at ${at}`).toContain(`Last step executed: ${words.kind(kind)}`);
           // The explorer describes a CNN layer by layer, and does not list an image's 64 pixels as inputs.
           expect(text(html)).not.toContain('→ ?');
+          if (id === '03') {
+            expect(text(html)).toContain('Network 5×1 → recurrent layer (4 hidden units)');
+            // The parameter picker names W, U and b of the recurrent layer, not three times “Biases”.
+            expect(text(html)).toContain('Recurrent weights U of hidden layer 1');
+            expect(text(html)).toContain('Input weights W of hidden layer 1');
+          }
           if (id === '02') {
             expect(text(html)).toContain('Network 1×8×8 → convolution 4 × 3×3 (relu) → max pooling 2×2');
             if (kind === 'CONV2D') expect(text(html)).toMatch(/Example #1: inputs \(64 values\)/);
@@ -126,7 +162,10 @@ describe('Level 4 vocabulary', () => {
       }
     }, 120_000);
 
-  it('Level 4’s words cover the CNN steps (not the generic fallback)', () => {
+  it('Level 4’s words cover the CNN and sequence steps (not the generic fallback)', () => {
+    const words = level4Wording(RNN_KINDS);
+    for (const k of ['SELECT_STEP', 'ADD', 'GRAD_SUM'])
+      expect(words.kind(k)).not.toBe(k.toLowerCase().replace(/_/g, ' '));
     for (const k of ['CONV2D', 'POOL', 'FLATTEN', 'GRAD_CONV2D', 'GRAD_POOL', 'GRAD_FLATTEN'])
       expect(words.kind(k)).not.toBe(k.toLowerCase().replace(/_/g, ' '));
   });

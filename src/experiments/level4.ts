@@ -60,6 +60,35 @@ export function l4CnnConfig(epochs = L4_CNN.epochs): TrainConfig {
   };
 }
 
+/** Experiment 03's task: is the sum of five values positive? A recurrent layer of 4 hidden units reads them in order. */
+export const L4_RNN = {
+  dataset: { kind: 'sequence', task: 'sum', n: 32, steps: 5, seed: 2 } as DatasetSpec,
+  steps: 5,
+  hidden: 4,
+  epochs: 40,
+  lr: 0.05,
+  batchSize: 8,
+};
+
+export function l4RnnConfig(epochs = L4_RNN.epochs): TrainConfig {
+  return {
+    seed: 1,
+    epochs,
+    batchSize: L4_RNN.batchSize,
+    shuffle: false,
+    loss: 'bce',
+    optimizer: { type: 'adam', lr: L4_RNN.lr, beta1: 0.9, beta2: 0.999, epsilon: 1e-8 },
+    boundaryGrid: 0,
+    model: {
+      inputShape: [L4_RNN.steps, 1],
+      layers: [
+        { type: 'extension', kind: 'rnn', options: { hidden: L4_RNN.hidden } },
+        { type: 'dense', units: 1, activation: 'sigmoid' },
+      ],
+    },
+  };
+}
+
 const later = (
   id: string,
   title: string,
@@ -380,13 +409,152 @@ export const LEVEL4_EXPERIMENTS: LessonExperiment[] = [
       },
     ],
   },
-  later(
-    '03',
-    'Recurrent Neural Networks: Learning from Sequences',
-    'Read a sequence one step at a time, carrying a hidden state forward.',
-    '20–25 min',
-    'Recurrence',
-  ),
+  {
+    id: '03',
+    title: 'Recurrent Neural Networks: Learning from Sequences',
+    short: 'Read a sequence one step at a time, carrying a hidden state forward.',
+    description:
+      'Some inputs are sequences: the order matters, and the length can vary. A recurrent network reads one element at a time and keeps a hidden state, a small vector that summarises what it has read so far. Here a recurrent layer learns whether five numbers add up to more than zero, and you follow its hidden state from one time step to the next, in the engine’s record.',
+    minutes: '20–25 min',
+    concept: 'Recurrence',
+    objectives: [
+      'Unroll a recurrent layer into one copy per time step and read its inputs and hidden states.',
+      'Compute a hidden state from the input, the previous hidden state and the weights.',
+      'Recognise that the same weights are used at every time step.',
+      'Explain how the final hidden state becomes the prediction.',
+    ],
+    outcomes: [
+      'what a hidden state is',
+      'why the same weights serve every time step',
+      'how a recurrent network turns a sequence into one prediction',
+    ],
+    primer: {
+      intro:
+        'A dense network reads all its inputs at once. A recurrent network reads a sequence one element at a time, and carries what it has read so far in its hidden state.',
+      terms: [
+        {
+          term: 'Sequence and time step',
+          meaning: 'An ordered list of inputs x₁, x₂, …; position t in the list is time step t.',
+          role: 'input',
+        },
+        {
+          term: 'Hidden state hₜ',
+          meaning: 'A small vector the layer updates at every time step: its summary of the sequence so far.',
+          role: 'correct',
+        },
+        {
+          term: 'Recurrent connection',
+          meaning:
+            'The previous hidden state hₜ₋₁ is an input of the next step: hₜ = tanh(xₜ·W + hₜ₋₁·U + b).',
+          role: 'weight',
+        },
+        {
+          term: 'Unrolling',
+          meaning:
+            'Drawing the layer once per time step, left to right, so that each copy shows one step’s computation.',
+        },
+        {
+          term: 'Shared weights',
+          meaning: 'W, U and b are the same at every time step: one set of weights, used again and again.',
+          role: 'bias',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'rn-train',
+        title: 'Train the network',
+        text: 'The engine trains a recurrent layer of 4 hidden units on 32 sequences of five numbers.',
+        doThis: 'Train and record.',
+        waitFor: 'trained',
+      },
+      {
+        target: 'rn-unroll',
+        title: 'Unrolled in time',
+        text: 'One column per time step: the input, the hidden state before and the hidden state after.',
+        doThis: 'Choose another sequence.',
+        waitFor: 'rn-example-picked',
+      },
+      {
+        target: 'rn-step',
+        title: 'One time step',
+        text: 'The new hidden state mixes the current input and the previous hidden state.',
+        doThis: 'Move to another time step.',
+        waitFor: 'rn-step-moved',
+      },
+      {
+        target: 'rn-shared',
+        title: 'Shared weights',
+        text: 'Every time step multiplies by the same W and the same U: the same recorded values.',
+        doThis: 'Look at the table, then read the prediction below.',
+        waitFor: 'rn-shared-seen',
+      },
+    ],
+    challenges: [
+      {
+        id: 'rn-all',
+        title: 'Follow the memory',
+        prompt: 'In Part B, visit all five time steps of one sequence.',
+        notice: 'Each hidden state depends on the one before: they can only be computed in order.',
+        doneOn: 'rn-all-steps',
+      },
+      {
+        id: 'rn-wrong',
+        title: 'Before it learned',
+        prompt: 'In Part D, at epoch 1, find a sequence whose prediction is wrong.',
+        notice: 'Untrained, the final hidden state carries no useful summary yet.',
+        doneOn: 'rn-wrong-found',
+      },
+      {
+        id: 'rn-same',
+        title: 'One U for all',
+        prompt: 'In Part C, check which recorded value each time step’s U refers to.',
+        notice: 'It is the same at every step: the layer has one U, however long the sequence.',
+        doneOn: 'rn-shared-seen',
+      },
+    ],
+    questions: [
+      {
+        id: 'rn-depends',
+        kind: 'choice',
+        prompt: 'What does the hidden state h₃ depend on?',
+        options: [
+          {
+            text: 'x₃ and h₂, and through h₂ on x₁ and x₂',
+            correct: true,
+            feedback: 'Right. h₃ = tanh(x₃·W + h₂·U + b), and h₂ already summarises x₁ and x₂.',
+          },
+          { text: 'Only x₃', feedback: 'That would be a dense layer applied to each step separately.' },
+          { text: 'x₁, x₂, x₃ through separate weights each', feedback: 'There are no separate weights per step.' },
+        ],
+      },
+      {
+        id: 'rn-count',
+        kind: 'predict',
+        prompt:
+          'This layer has 1 input feature and 4 hidden units: W is 1×4, U is 4×4, b has 4 values. How many parameters would it have for sequences of 50 steps?',
+        options: [
+          { text: '24', correct: true, feedback: 'Right. The same 24 parameters serve every time step.' },
+          { text: '1 200', feedback: 'That would be 24 per step; the weights are shared.' },
+          { text: '120', feedback: 'The count does not depend on the length.' },
+        ],
+      },
+      {
+        id: 'rn-order',
+        kind: 'scenario',
+        prompt: 'Why can the five hidden states not all be computed at the same moment?',
+        options: [
+          {
+            text: 'Each one needs the previous hidden state',
+            correct: true,
+            feedback: 'Right. The recurrent connection forces the order h₁, h₂, h₃, …',
+          },
+          { text: 'The engine is slow', feedback: 'It is the computation itself that needs the order.' },
+          { text: 'The inputs arrive one per second', feedback: 'The whole sequence is available; hₜ still needs hₜ₋₁.' },
+        ],
+      },
+    ],
+  },
   later(
     '04',
     'Backpropagation Through Time: How Recurrent Networks Learn',

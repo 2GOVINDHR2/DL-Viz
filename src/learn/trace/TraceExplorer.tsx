@@ -273,6 +273,33 @@ const grid2d = (shape: readonly number[]): [number, number] =>
       ? [shape[0] * shape[1] * shape[2], shape[3]]
       : [1, shape.reduce((a, b) => a * b, 1)];
 
+/** Gate letters of the LSTM (f, i, g, o) and GRU (z, r, n) parameter roles (ADR-102). */
+const GATE_WORDS: Record<string, string> = {
+  f: 'forget gate',
+  i: 'input gate',
+  g: 'candidate',
+  o: 'output gate',
+  z: 'update gate',
+  r: 'reset gate',
+  n: 'candidate',
+};
+
+/** A parameter's role in words: built-in weights and biases, and the recurrent layers' W, U, b (with a gate). */
+export function roleWords(role: string): string {
+  if (role === 'weight') return 'Weights';
+  if (role === 'bias') return 'Biases';
+  const base =
+    role[0] === 'W'
+      ? 'Input weights'
+      : role[0] === 'U'
+        ? 'Recurrent weights'
+        : role[0] === 'b'
+          ? 'Biases'
+          : role;
+  const gate = GATE_WORDS[role.slice(1)];
+  return gate ? `${base} ${role} (${gate})` : `${base} ${role}`;
+}
+
 function Matrix({ t, label }: { t: Tensor; label: string }) {
   const [r, c] = grid2d(t.shape);
   return (
@@ -395,7 +422,7 @@ function ParameterInspector() {
             const q = header.model.params.find((x) => x.name === n)!;
             return (
               <option key={n} value={n}>
-                {q.role === 'weight' ? 'Weights' : 'Biases'} of {layerWords(header, q.layer).toLowerCase()}
+                {roleWords(q.role)} of {layerWords(header, q.layer).toLowerCase()}
               </option>
             );
           })}
@@ -404,11 +431,13 @@ function ParameterInspector() {
       {cur ? (
         <>
           <p className="lv-small lv-muted" style={{ margin: 0 }}>
-            {p.role === 'weight' && p.shape.length === 4
-              ? `${p.shape[0]} kernels of ${p.shape[1]} channel${p.shape[1] > 1 ? 's' : ''}, each ${p.shape[2]}×${p.shape[3]}: one ${p.shape[3]}-wide row per kernel row.`
-              : p.role === 'weight'
-                ? `Rows: inputs to the layer (${p.shape[0]}); columns: its neurons (${p.shape[1]}).`
-                : `One per neuron (${p.shape[0]}).`}{' '}
+            {p.role !== 'weight' && p.role !== 'bias' && p.shape.length === 2
+              ? `Rows: ${p.role.startsWith('U') ? 'the previous hidden state' : 'inputs to the layer'} (${p.shape[0]}); columns: hidden units (${p.shape[1]}).`
+              : p.role === 'weight' && p.shape.length === 4
+                ? `${p.shape[0]} kernels of ${p.shape[1]} channel${p.shape[1] > 1 ? 's' : ''}, each ${p.shape[2]}×${p.shape[3]}: one ${p.shape[3]}-wide row per kernel row.`
+                : p.role === 'weight'
+                  ? `Rows: inputs to the layer (${p.shape[0]}); columns: its neurons (${p.shape[1]}).`
+                  : `One per neuron (${p.shape[0]}).`}{' '}
             Set by instruction #{cur.producedBy}.
           </p>
           <div className="lv-row" style={{ alignItems: 'flex-start' }}>
@@ -675,7 +704,11 @@ export function TraceExplorer({ stale }: { stale: boolean }) {
             ? `${l.mode === 'max' ? 'max' : 'average'} pooling ${l.size}×${l.size}`
             : l.type === 'flatten'
               ? 'flatten'
-              : String(l.kind),
+              : l.kind === 'rnn'
+                ? `recurrent layer (${String(l.options?.hidden)} hidden units)`
+                : l.kind === 'lstm' || l.kind === 'gru'
+                  ? `${l.kind.toUpperCase()} (${String(l.options?.hidden)} hidden units)`
+                  : String(l.kind),
     )
     .join(' → ');
   return (
