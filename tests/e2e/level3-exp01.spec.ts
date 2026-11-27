@@ -102,7 +102,7 @@ test('Part B: eta 8 overshoots at update 1 and eta 0.05 takes a much smaller ste
   const box = await setUpdate(page, 1);
   const lossText = await value(box, 'loss-after');
   expect(lossText).toContain('↑ the loss rose');
-  const lossAfter = num(/[−+]?\d+(\.\d+)?/.exec(lossText.replace(/−/g, '-'))![0]);
+  const lossAfter = num(/[-+]?\d+(\.\d+)?/.exec(lossText.replace(/−/g, '-'))![0]);
   const lossBefore = num(
     (await box.locator('dt:has-text("Batch loss before") + dd').innerText()).trim().split(/\s/)[0],
   );

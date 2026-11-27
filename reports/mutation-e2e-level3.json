@@ -1,0 +1,1680 @@
+[
+  {
+    "id": "helpers:32",
+    "file": "tests/e2e/helpers.ts",
+    "line": 32,
+    "fn": "openExperiment",
+    "negative": false,
+    "text": "await expect(page.locator('.position[data-cursor=\"-1\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:46",
+    "file": "tests/e2e/helpers.ts",
+    "line": 46,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(page.locator('[data-value=\"regularized\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:48",
+    "file": "tests/e2e/helpers.ts",
+    "line": 48,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(b.locator('tr[data-lambda]')).toHaveCount(4, { timeout: 120_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:51",
+    "file": "tests/e2e/helpers.ts",
+    "line": 51,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(a.locator('tr[data-lr], tr[data-run]').first()).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "helpers:53",
+    "file": "tests/e2e/helpers.ts",
+    "line": 53,
+    "fn": "trainLevel3",
+    "negative": false,
+    "text": "await expect(b.locator('[data-control=\"b:update\"]')).toBeVisible({ timeout: 90_000 });",
+    "blank": "n/a",
+    "noAction": "n/a",
+    "detail": {}
+  },
+  {
+    "id": "level3-exp01.spec:16",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 16,
+    "fn": "trainA",
+    "negative": false,
+    "text": "await expect(row(page, '2')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 16,44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 16,44: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:22",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 22,
+    "fn": "trainB",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:update\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 22,81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 22,81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:28",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 28,
+    "fn": "setUpdate",
+    "negative": false,
+    "text": "await expect(box).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 28,82: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 28,91: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:38",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 38,
+    "fn": "beforeAfter",
+    "negative": true,
+    "text": "expect(m, text).not.toBeNull();",
+    "blank": "killed",
+    "noAction": "n/a",
+    "detail": {
+      "blank": "failed at 38,88: ReferenceError: page is not defined"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:53",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 53,
+    "fn": "Part A: each learning rate gets its verdict and the loss and rise counts agree",
+    "negative": false,
+    "text": "await expect(row(page, lr).locator('td').last()).toContainText(verdict);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 53: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,44: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:59",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 59,
+    "fn": "Part A: each learning rate gets its verdict and the loss and rise counts agree",
+    "negative": false,
+    "text": "expect(c2).toHaveLength(4);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,44: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:60",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 60,
+    "fn": "Part A: each learning rate gets its verdict and the loss and rise counts agree",
+    "negative": false,
+    "text": "expect(Number(c2[2].trim())).toBe(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,44: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:61",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 61,
+    "fn": "Part A: each learning rate gets its verdict and the loss and rise counts agree",
+    "negative": false,
+    "text": "expect(Number(c8[2].trim())).toBeGreaterThanOrEqual(5);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,44: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:63",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 63,
+    "fn": "Part A: each learning rate gets its verdict and the loss and rise counts agree",
+    "negative": false,
+    "text": "expect(final2).toBeLessThan(num(c005[1]));",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,44: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:64",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 64,
+    "fn": "Part A: each learning rate gets its verdict and the loss and rise counts agree",
+    "negative": false,
+    "text": "expect(final2).toBeLessThan(num(c8[1]));",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,44: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:72",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 72,
+    "fn": "Part A: unchecking two learning rates leaves exactly three rows",
+    "negative": false,
+    "text": "await expect(row(page, '2')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 72: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 72: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:73",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 73,
+    "fn": "Part A: unchecking two learning rates leaves exactly three rows",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('tr[data-lr]')).toHaveCount(3);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 73: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 72: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:74",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 74,
+    "fn": "Part A: unchecking two learning rates leaves exactly three rows",
+    "negative": true,
+    "text": "await expect(row(page, '8')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 72: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:85",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 85,
+    "fn": "Part B with eta 2: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(deltaText).toContain('✓ −η·ḡ, checked here');",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,86: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,81: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:87",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 87,
+    "fn": "Part B with eta 2: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(Math.abs(delta - -2 * grad)).toBeLessThanOrEqual(1e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,36,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,81: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:89",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 89,
+    "fn": "Part B with eta 2: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(Math.abs(ba.before + delta - ba.after)).toBeLessThanOrEqual(0.0001);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 26,91: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,81: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:94",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 94,
+    "fn": "Part B with eta 2: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-value=\"update-number\"]')).toHaveText('10 of 60');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 20,81: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:96",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 96,
+    "fn": "Part B with eta 2: the recorded step is -eta times the gradient and updates chain",
+    "negative": false,
+    "text": "expect(ten.before).toBe(nine.after);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 20,81: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:104",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 104,
+    "fn": "Part B: eta 8 overshoots at update 1 and eta 0.05 takes a much smaller step",
+    "negative": false,
+    "text": "expect(lossText).toContain('↑ the loss rose');",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 107: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,101: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:109",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 109,
+    "fn": "Part B: eta 8 overshoots at update 1 and eta 0.05 takes a much smaller step",
+    "negative": false,
+    "text": "expect(lossAfter).toBeGreaterThan(lossBefore);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,101: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:114",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 114,
+    "fn": "Part B: eta 8 overshoots at update 1 and eta 0.05 takes a much smaller step",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:train\"]')).toContainText('Train and record again');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:117",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 117,
+    "fn": "Part B: eta 8 overshoots at update 1 and eta 0.05 takes a much smaller step",
+    "negative": false,
+    "text": "expect(smallStep).toBeLessThan(0.01);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:118",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 118,
+    "fn": "Part B: eta 8 overshoots at update 1 and eta 0.05 takes a much smaller step",
+    "negative": false,
+    "text": "expect(bigStep).toBeGreaterThan(smallStep);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:128",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 128,
+    "fn": "Part B: another parameter changes the panel and Show moves the explorer",
+    "negative": true,
+    "text": "await expect(changed).not.toHaveText(first);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 128: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 128: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:133",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 133,
+    "fn": "Part B: another parameter changes the panel and Show moves the explorer",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"trace:position\"]')).toHaveValue(id);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 133: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 133: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:139",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 139,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 139: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 139: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:141",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 141,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(row(page, '2')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 141: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 141: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:142",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 142,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 141: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:144",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 144,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp01.spec:145",
+    "file": "tests/e2e/level3-exp01.spec.ts",
+    "line": 145,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:16",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 16,
+    "fn": "trainA",
+    "negative": false,
+    "text": "await expect(row(page, 'plain gradient descent')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 16,40: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 16,40: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:22",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 22,
+    "fn": "trainB",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:update\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 22,53: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 22,53: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:28",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 28,
+    "fn": "setUpdate",
+    "negative": false,
+    "text": "await expect(box).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 28,54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 28,61: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:44",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 44,
+    "fn": "Part A: momentum reaches a lower epoch-60 loss, and more momentum is lower still",
+    "negative": false,
+    "text": "expect(high).toBeLessThan(half);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,40: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:45",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 45,
+    "fn": "Part A: momentum reaches a lower epoch-60 loss, and more momentum is lower still",
+    "negative": false,
+    "text": "expect(half).toBeLessThan(plain);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,40: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:46",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 46,
+    "fn": "Part A: momentum reaches a lower epoch-60 loss, and more momentum is lower still",
+    "negative": false,
+    "text": "expect(high).toBeLessThan(0.1);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,40: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:55",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 55,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "expect(num(await value(box1, 'prev'))).toBe(0);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,55: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:56",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 56,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "await expect(box1.locator('[data-value=\"prev\"]')).toContainText('(starts at 0)');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 56: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:59",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 59,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "expect(Math.abs(v1 - grad1)).toBeLessThanOrEqual(1e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 26,61: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:64",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 64,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "expect(Math.abs(v2 - (0.9 * v1 + grad2))).toBeLessThanOrEqual(2e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,65: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:66",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 66,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "expect(Math.abs(delta2 - -0.5 * v2)).toBeLessThanOrEqual(1e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,67: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:68",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 68,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "expect(Math.abs(plain2 - -0.5 * grad2)).toBeLessThanOrEqual(1e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:69",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 69,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "await expect(box2.locator('[data-value=\"velocity\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 69: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:70",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 70,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": false,
+    "text": "await expect(box2.locator('[data-value=\"delta\"]')).toContainText('✓ checked here');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 70: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:71",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 71,
+    "fn": "Part B with mu 0.9: velocity chains from the previous velocity and the steps match",
+    "negative": true,
+    "text": "await expect(box1.locator('[data-value=\"velocity\"]')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 20,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:79",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 79,
+    "fn": "Part B with mu 0: momentum collapses to plain gradient descent",
+    "negative": false,
+    "text": "expect(Math.abs(num(await value(box, 'velocity')) - grad)).toBeLessThanOrEqual(1e-6);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,79: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,76: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:80",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 80,
+    "fn": "Part B with mu 0: momentum collapses to plain gradient descent",
+    "negative": false,
+    "text": "expect(Math.abs(num(await value(box, 'delta')) - num(await value(box, 'plain')))).toBeLessThanOrEqual(1e-6);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,80: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 20,76: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:81",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 81,
+    "fn": "Part B with mu 0: momentum collapses to plain gradient descent",
+    "negative": false,
+    "text": "await expect(box.locator('[data-value=\"ratio\"]')).toHaveText('1.00×');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 81: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 20,76: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:95",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 95,
+    "fn": "Part B with mu 0.9: some update has a momentum step more than twice the plain step",
+    "negative": false,
+    "text": "expect(best).toBeGreaterThan(2);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 20,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:106",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 106,
+    "fn": "Part B: Show moves the explorer to the id in its label",
+    "negative": false,
+    "text": "await expect(page.locator('[data-control=\"trace:position\"]')).toHaveValue(id);",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 106: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:112",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 112,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:114",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 114,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 114: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:116",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 116,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 116: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp02.spec:117",
+    "file": "tests/e2e/level3-exp02.spec.ts",
+    "line": 117,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 116: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:17",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 17,
+    "fn": "trainA",
+    "negative": false,
+    "text": "await expect(row(page, 'Adam')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 17,42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 17,42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:22",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 22,
+    "fn": "trainB",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('[data-control=\"b:update\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 22,53: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 22,53: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:28",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 28,
+    "fn": "setUpdate",
+    "negative": false,
+    "text": "await expect(box).toBeVisible();",
+    "blank": "killed",
+    "noAction": "survived",
+    "detail": {
+      "blank": "failed at 28,54: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "passed at : "
+    }
+  },
+  {
+    "id": "level3-exp03.spec:46",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 46,
+    "fn": "Part A: Adam reaches a lower epoch-60 loss than momentum, which beats plain descent",
+    "negative": false,
+    "text": "expect(adam).toBeLessThan(momentum);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,42: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:47",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 47,
+    "fn": "Part A: Adam reaches a lower epoch-60 loss than momentum, which beats plain descent",
+    "negative": false,
+    "text": "expect(momentum).toBeLessThan(plain);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,42: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:48",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 48,
+    "fn": "Part A: Adam reaches a lower epoch-60 loss than momentum, which beats plain descent",
+    "negative": false,
+    "text": "expect(adam).toBeLessThan(0.15);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 16,42: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:55",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 55,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "expect(num(await value(box, 't'))).toBe(1);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,55: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:57",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 57,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "expect(Math.abs(num(await value(box, 'm')) - 0.1 * grad)).toBeLessThanOrEqual(1e-6);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,57: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:58",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 58,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "expect(Math.abs(num(await value(box, 'mhat')) - grad)).toBeLessThanOrEqual(1e-6);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,58: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:60",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 60,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "expect(ratio).toBeGreaterThan(0.999);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,62: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:61",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 61,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "expect(ratio).toBeLessThan(1.001);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,62: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:63",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 63,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "expect(Math.abs(delta - -0.05 * Math.sign(grad))).toBeLessThanOrEqual(1e-5);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 64: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:64",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 64,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "await expect(box.getByText('m̂ = ḡ exactly')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 64: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:65",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 65,
+    "fn": "Part B update 1: the first Adam step is eta in size, whatever the gradient",
+    "negative": false,
+    "text": "await expect(box.getByText('✓ checked here')).toHaveCount(5);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 65: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,53: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:74",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 74,
+    "fn": "Part B update 2: the moving average chains and bias correction divides by 0.19",
+    "negative": false,
+    "text": "expect(num(await value(box2, 't'))).toBe(2);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,74: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:77",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 77,
+    "fn": "Part B update 2: the moving average chains and bias correction divides by 0.19",
+    "negative": false,
+    "text": "expect(Math.abs(m2 - (0.9 * m1 + 0.1 * grad2))).toBeLessThanOrEqual(2e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 33,78: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:79",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 79,
+    "fn": "Part B update 2: the moving average chains and bias correction divides by 0.19",
+    "negative": false,
+    "text": "expect(Math.abs(mhat2 - m2 / 0.19)).toBeLessThanOrEqual(1e-5);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 21,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:80",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 80,
+    "fn": "Part B update 2: the moving average chains and bias correction divides by 0.19",
+    "negative": true,
+    "text": "await expect(box2.getByText('m̂ = ḡ exactly')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 21,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:81",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 81,
+    "fn": "Part B update 2: the moving average chains and bias correction divides by 0.19",
+    "negative": true,
+    "text": "await expect(box1.locator('[data-value=\"m\"]')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 21,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:91",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 91,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "await expect(slider).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 91: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:92",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 92,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "await expect(slider).toHaveValue('10');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 92: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:94",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 94,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "await expect(text).toContainText('At update 10:');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:95",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 95,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "await expect( c.getByRole('region', { name: 'Gradient and step of every parameter' }).locator('tbody tr'), ).toHaveCount(25);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 97: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:107",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 107,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "expect(at10.y).toBeLessThanOrEqual(1.5);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 111: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:108",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 108,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "expect(at10.k).toBeGreaterThanOrEqual(1);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 111: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:109",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 109,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "expect(at10.x).toBeGreaterThan(10);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 111: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 21,88: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:112",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 112,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "await expect(text).toContainText('At update 1:');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:114",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 114,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "expect(at1.y).toBeGreaterThan(0.99);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 115: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:115",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 115,
+    "fn": "Part C: every step is about eta while gradients differ widely; update 1 gives exactly eta",
+    "negative": false,
+    "text": "expect(at1.y).toBeLessThan(1.01);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 115: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m",
+      "no-action": "failed at 112: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:121",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 121,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:123",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 123,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 121: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:125",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 125,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 125: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp03.spec:126",
+    "file": "tests/e2e/level3-exp03.spec.ts",
+    "line": 126,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 125: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:17",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 17,
+    "fn": "trainA",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-control=\"a:epoch\"]')).toBeVisible({ timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 17,52: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 17,52: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:22",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 22,
+    "fn": "trainB",
+    "negative": false,
+    "text": "await expect(sectionB(page).locator('tbody tr[data-lambda]')).toHaveCount(4, { timeout: 120_000 });",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 22,72: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 22,72: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:31",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 31,
+    "fn": "setUpdate",
+    "negative": false,
+    "text": "await expect(box).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 31,98: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 31,98: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:54",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 54,
+    "fn": "Part A with lambda 0: the best epoch is the default, and training on overfits",
+    "negative": false,
+    "text": "expect(parseInt(await aValue(page, 'epoch'), 10)).toBe(best.epoch);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 26,54: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 15,52: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:55",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 55,
+    "fn": "Part A with lambda 0: the best epoch is the default, and training on overfits",
+    "negative": false,
+    "text": "expect(num((await aValue(page, 'held')).split('·')[0])).toBe(best.loss);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 26,55: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 15,52: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:58",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 58,
+    "fn": "Part A with lambda 0: the best epoch is the default, and training on overfits",
+    "negative": false,
+    "text": "await expect(sectionA(page).locator('[data-value=\"epoch\"]')).toHaveText('300');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 58: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 58: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:61",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 61,
+    "fn": "Part A with lambda 0: the best epoch is the default, and training on overfits",
+    "negative": false,
+    "text": "expect(heldEnd).toBeGreaterThan(2 * best.loss);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 63: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 58: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:62",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 62,
+    "fn": "Part A with lambda 0: the best epoch is the default, and training on overfits",
+    "negative": false,
+    "text": "expect(trainEnd).toBeLessThan(0.05);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 63: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 58: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:63",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 63,
+    "fn": "Part A with lambda 0: the best epoch is the default, and training on overfits",
+    "negative": false,
+    "text": "await expect(sectionC(page).getByText('Choose λ greater than 0')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 63: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 58: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:73",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 73,
+    "fn": "Part B: weight decay lowers the final held-out loss, and the training loss rises with lambda",
+    "negative": false,
+    "text": "await expect(tableRow(page, '0')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 73: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:76",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 76,
+    "fn": "Part B: weight decay lowers the final held-out loss, and the training loss rises with lambda",
+    "negative": false,
+    "text": "expect(await heldEnd('0.01')).toBeLessThan(await heldEnd('0'));",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 48,74,76: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 15,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:83",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 83,
+    "fn": "Part B: weight decay lowers the final held-out loss, and the training loss rises with lambda",
+    "negative": false,
+    "text": "expect(losses[i]).toBeGreaterThan(losses[i - 1]);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "timedOut at 48,84: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+      "no-action": "timedOut at 15,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:85",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 85,
+    "fn": "Part B: weight decay lowers the final held-out loss, and the training loss rises with lambda",
+    "negative": false,
+    "text": "expect(bestB.epoch).toBe(bestA.epoch);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:86",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 86,
+    "fn": "Part B: weight decay lowers the final held-out loss, and the training loss rises with lambda",
+    "negative": false,
+    "text": "expect(bestB.loss).toBe(bestA.loss);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "timedOut at 15,70: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:94",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 94,
+    "fn": "Part C: the penalty gradient is lambda times the weight, and the optimiser receives their sum",
+    "negative": false,
+    "text": "await expect(sectionA(page).getByText('Loss after each epoch (λ = 0.01)')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 94: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:96",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 96,
+    "fn": "Part C: the penalty gradient is lambda times the weight, and the optimiser receives their sum",
+    "negative": false,
+    "text": "await expect(slider).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 96: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:105",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 105,
+    "fn": "Part C: the penalty gradient is lambda times the weight, and the optimiser receives their sum",
+    "negative": false,
+    "text": "expect(Math.abs(decay - 0.01 * w)).toBeLessThanOrEqual(1e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 108: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:106",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 106,
+    "fn": "Part C: the penalty gradient is lambda times the weight, and the optimiser receives their sum",
+    "negative": false,
+    "text": "expect(Math.abs(reg - (grad + decay))).toBeLessThanOrEqual(2e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 108: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:107",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 107,
+    "fn": "Part C: the penalty gradient is lambda times the weight, and the optimiser receives their sum",
+    "negative": false,
+    "text": "expect(Math.abs(after - (w + delta))).toBeLessThanOrEqual(2e-6);",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 108: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:108",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 108,
+    "fn": "Part C: the penalty gradient is lambda times the weight, and the optimiser receives their sum",
+    "negative": false,
+    "text": "await expect(box.getByText('✓ checked here')).toHaveCount(2);",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 108: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "timedOut at 15,93: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:115",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 115,
+    "fn": "Check: the live decay question accepts the recorded gradient",
+    "negative": false,
+    "text": "await expect(q.getByText('Train a run with λ > 0 in Part A first.')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 115: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:117",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 117,
+    "fn": "Check: the live decay question accepts the recorded gradient",
+    "negative": false,
+    "text": "await expect(sectionC(page).locator('[data-control=\"c:update\"]')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 117: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:118",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 118,
+    "fn": "Check: the live decay question accepts the recorded gradient",
+    "negative": false,
+    "text": "await expect(q.getByText('update 3')).toBeVisible({ timeout: 60_000 });",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 118: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 115: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:123",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 123,
+    "fn": "Check: the live decay question accepts the recorded gradient",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:124",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 124,
+    "fn": "Check: the live decay question accepts the recorded gradient",
+    "negative": false,
+    "text": "await expect(q.locator('.lv-feedback')).toContainText('as recorded');",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 124: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 123: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:130",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 130,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:132",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 132,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": false,
+    "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 132: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:134",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 134,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "killed",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  },
+  {
+    "id": "level3-exp04.spec:135",
+    "file": "tests/e2e/level3-exp04.spec.ts",
+    "line": 135,
+    "fn": "Tour: training advances to step 2 and Skip tour removes it",
+    "negative": true,
+    "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
+    "blank": "survived",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "passed at : ",
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
+  }
+]

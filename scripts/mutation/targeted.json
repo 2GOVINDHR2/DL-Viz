@@ -1164,7 +1164,9 @@
       }
     ],
     "spec": "tests/e2e/level3-exp01.spec.ts",
-    "grep": "eta 8 overshoots"
+    "grep": "eta 8 overshoots",
+    "outcome": "fixed",
+    "fix": "the loss after was parsed with [−+]? after replacing − by -, so a negative value lost its sign; the pattern is now [-+]?"
   },
   {
     "ids": ["level3-exp01.spec:117"],

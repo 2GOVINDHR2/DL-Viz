@@ -509,5 +509,293 @@
     "mutant": "the forward list shows values shifted by 0.5",
     "outcome": "killed",
     "detail": "failed at 197: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:59",
+    "claim": "the comparison row has four value cells",
+    "mutant": "the rises column is dropped",
+    "outcome": "killed",
+    "detail": "failed at 59: Error: expect(received).toHaveLength(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:60",
+    "claim": "η = 2 has no rising epoch",
+    "mutant": "the rises column shows one more",
+    "outcome": "killed",
+    "detail": "failed at 60: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level3-exp01.spec:61",
+    "claim": "η = 8 rises at least five times",
+    "mutant": "the rises column is capped at 1",
+    "outcome": "killed",
+    "detail": "failed at 61: Error: expect(received).toBeGreaterThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:63",
+    "claim": "η = 2 ends lower than η = 0.05",
+    "mutant": "η = 2 shows a final loss of 9",
+    "outcome": "killed",
+    "detail": "failed at 63: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:64",
+    "claim": "η = 2 ends lower than η = 8",
+    "mutant": "η = 8 shows a final loss of 0",
+    "outcome": "killed",
+    "detail": "failed at 64: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:85",
+    "claim": "the recorded step is −η·ḡ, checked here",
+    "mutant": "the step read from the record is scaled by 1.5",
+    "outcome": "killed",
+    "detail": "failed at 85: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level3-exp01.spec:87",
+    "claim": "the recorded step is −η·ḡ, checked here",
+    "mutant": "the step read from the record is scaled by 1.5",
+    "outcome": "killed",
+    "detail": "failed at 85: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level3-exp01.spec:89",
+    "claim": "before + Δ = after",
+    "mutant": "the value after is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 89: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:96",
+    "claim": "update 10's value before is update 9's value after",
+    "mutant": "update 10's value before is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 96: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level3-exp01.spec:104",
+    "claim": "η = 8 overshoots at update 1",
+    "mutant": "the rise is never reported",
+    "outcome": "killed",
+    "detail": "failed at 104: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level3-exp01.spec:109",
+    "claim": "the loss after is higher than before",
+    "mutant": "the loss after is shown 10 lower",
+    "outcome": "fixed",
+    "detail": "failed at 109: Error: expect(received).toBeGreaterThan(expected)",
+    "fix": "the loss after was parsed with [−+]? after replacing − by -, so a negative value lost its sign; the pattern is now [-+]?"
+  },
+  {
+    "id": "level3-exp01.spec:117",
+    "claim": "η = 0.05 takes a step under 0.01",
+    "mutant": "η = 0.05 steps are shown 100× larger",
+    "outcome": "killed",
+    "detail": "failed at 117: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp01.spec:118",
+    "claim": "η = 8's step is larger than η = 0.05's",
+    "mutant": "η = 8's step is shown as 0",
+    "outcome": "killed",
+    "detail": "failed at 118: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:44",
+    "claim": "μ = 0.9 ends lowest, below 0.1",
+    "mutant": "μ = 0.9 shows a final loss of 1",
+    "outcome": "killed",
+    "detail": "failed at 44: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:46",
+    "claim": "μ = 0.9 ends lowest, below 0.1",
+    "mutant": "μ = 0.9 shows a final loss of 1",
+    "outcome": "killed",
+    "detail": "failed at 44: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:45",
+    "claim": "μ = 0.5 ends below plain descent",
+    "mutant": "plain descent shows a final loss of 0.01",
+    "outcome": "killed",
+    "detail": "failed at 45: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:59",
+    "claim": "v = μ·v + ḡ from the recorded values",
+    "mutant": "the velocity is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 59: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:64",
+    "claim": "v = μ·v + ḡ from the recorded values",
+    "mutant": "the velocity is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 59: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:66",
+    "claim": "Δ = −η·v",
+    "mutant": "the step is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 66: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:68",
+    "claim": "the plain step is −η·ḡ",
+    "mutant": "the plain step is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 68: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp02.spec:95",
+    "claim": "some momentum step is more than twice the plain step",
+    "mutant": "the ratio is capped at 1.5",
+    "outcome": "killed",
+    "detail": "failed at 95: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:46",
+    "claim": "Adam ends lowest, below 0.15",
+    "mutant": "Adam shows a final loss of 1",
+    "outcome": "killed",
+    "detail": "failed at 46: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:48",
+    "claim": "Adam ends lowest, below 0.15",
+    "mutant": "Adam shows a final loss of 1",
+    "outcome": "killed",
+    "detail": "failed at 46: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:47",
+    "claim": "momentum ends below plain descent",
+    "mutant": "plain descent shows a final loss of 0.01",
+    "outcome": "killed",
+    "detail": "failed at 47: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:60",
+    "claim": "the first step is η in size",
+    "mutant": "the step ratio is shown 0.9×",
+    "outcome": "killed",
+    "detail": "failed at 60: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:61",
+    "claim": "the first step is η in size",
+    "mutant": "the step ratio is shown 1.1×",
+    "outcome": "killed",
+    "detail": "failed at 61: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:63",
+    "claim": "Δ = −η·sign(ḡ) at update 1",
+    "mutant": "the step is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 63: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:77",
+    "claim": "m₂ = 0.9·m₁ + 0.1·ḡ₂",
+    "mutant": "m is shown 0.01 higher from update 2",
+    "outcome": "killed",
+    "detail": "failed at 77: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:79",
+    "claim": "m̂₂ = m₂ / 0.19",
+    "mutant": "m̂ is shown 0.01 higher from update 2",
+    "outcome": "killed",
+    "detail": "failed at 79: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:107",
+    "claim": "no step larger than about η",
+    "mutant": "the largest step is shown 1.6× larger",
+    "outcome": "killed",
+    "detail": "failed at 107: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:114",
+    "claim": "no step larger than about η",
+    "mutant": "the largest step is shown 1.6× larger",
+    "outcome": "killed",
+    "detail": "failed at 107: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:108",
+    "claim": "at least one pair with gradients >10× apart and steps <3× apart",
+    "mutant": "the pair count is shown as 0",
+    "outcome": "killed",
+    "detail": "failed at 108: Error: expect(received).toBeGreaterThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp03.spec:109",
+    "claim": "gradients more than 10× apart",
+    "mutant": "the gradient spread is shown as 5",
+    "outcome": "killed",
+    "detail": "failed at 109: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level3-exp04.spec:61",
+    "claim": "held-out loss at epoch 300 is more than twice its lowest",
+    "mutant": "held-out loss is shown at a third",
+    "outcome": "killed",
+    "detail": "failed at 61: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level3-exp04.spec:62",
+    "claim": "training loss at epoch 300 is below 0.05",
+    "mutant": "training loss is shown 0.1 higher",
+    "outcome": "killed",
+    "detail": "failed at 62: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level3-exp04.spec:83",
+    "claim": "training loss at the end rises with λ",
+    "mutant": "λ = 0.03 shows a training loss of 0",
+    "outcome": "killed",
+    "detail": "failed at 83: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level3-exp04.spec:85",
+    "claim": "the comparison's λ = 0 lowest held-out is Part A's",
+    "mutant": "the lowest epoch is shown one later",
+    "outcome": "killed",
+    "detail": "failed at 85: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level3-exp04.spec:86",
+    "claim": "the comparison's λ = 0 lowest held-out is Part A's",
+    "mutant": "the lowest epoch is shown one later",
+    "outcome": "killed",
+    "detail": "failed at 85: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level3-exp04.spec:105",
+    "claim": "λ·w is the decay shown",
+    "mutant": "the decay is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 105: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp04.spec:106",
+    "claim": "the optimiser receives ḡ + λ·w",
+    "mutant": "the regularised gradient is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 106: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level3-exp04.spec:107",
+    "claim": "w after = w + Δ",
+    "mutant": "the weight after is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 107: Error: expect(received).toBeLessThanOrEqual(expected)"
   }
 ]
