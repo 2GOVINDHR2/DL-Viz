@@ -135,7 +135,7 @@ The table is generated from the instruction-kind registry and from traces of eve
 | Kind | Phase | Operand roles | Result slots | Metadata keys | Symbolic form (example) | Meaning |
 |---|---|---|---|---|---|---|
 | `GRAD_ACCUMULATE` | update | `sample gradient` | `grad` | `param`, `batchSize` | `ḡ(W¹) = (1/B) Σₛ ∂ℓₛ/∂W¹` | Average this parameter's per-example gradients over the mini-batch. |
-| `OPTIMIZER_STATE` | update | `mean gradient`, `previous velocity` | `velocity` | `param`, `momentum` | `v(W¹) ← 0.9·v + ḡ` | Update the momentum accumulator. |
+| `OPTIMIZER_STATE` | update | `mean gradient`, `previous velocity` | `velocity` | `param`, `momentum` | `v(W¹) ← 0.9·v + ḡ` | Update the optimiser state: the momentum accumulator, or Adam’s moment estimates (m, v, m̂, v̂). |
 | `COMPUTE_UPDATE` | update | `mean gradient`, `velocity` | `delta` | `param`, `lr`, `optimizer` | `ΔW¹ = −0.5 · ḡ` | Scale the (momentum-smoothed) gradient by −η to get the step. |
 | `APPLY_UPDATE` | update | `parameter`, `step` | `value` | `param` | `W¹ ← W¹ + ΔW¹` | Add the step to the parameter. |
 
