@@ -117,15 +117,7 @@ function PartA({ run }: { run: Run }) {
   );
 }
 
-function FeatureMaps({
-  ins,
-  size,
-  title,
-}: {
-  ins: Instruction;
-  size: number;
-  title: string;
-}) {
+function FeatureMaps({ ins, size, title }: { ins: Instruction; size: number; title: string }) {
   const ms = maps(ins.results.out.data, 4);
   const scale = Math.max(1e-9, ...ms.flat().map(Math.abs));
   return (

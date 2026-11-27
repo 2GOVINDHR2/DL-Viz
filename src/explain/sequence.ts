@@ -45,7 +45,7 @@ registerExplainer('GRAD_MULTIPLY', (i, ctx) => {
   const b = operand(i, ctx, 'b');
   return {
     general: `\\frac{\\partial \\ell}{\\partial a} = g \\odot b,\\quad \\frac{\\partial \\ell}{\\partial b} = g \\odot a`,
-    substituted: `${a ? `a = ${texVec(a)}` : ''}${a && b ? ',\; ' : ''}${b ? `b = ${texVec(b)}` : ''}`,
+    substituted: `${a ? `a = ${texVec(a)}` : ''}${a && b ? ',\\; ' : ''}${b ? `b = ${texVec(b)}` : ''}`,
     sentence: `Each factor of an element-by-element product receives the upstream gradient times the other factor${at(i)}${inGate(i)}.`,
   };
 });
