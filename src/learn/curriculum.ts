@@ -58,7 +58,7 @@ export const LEVEL_4: LevelDescriptor = {
   number: 4,
   experiments: LEVEL4_EXPERIMENTS,
   // Opened as each experiment is built (reports/LEVEL4-RESUME.md).
-  open: new Set<string>(['01', '02', '03', '04', '05']),
+  open: new Set<string>(['01', '02', '03', '04', '05', '06']),
   experimentHref: href.level4Experiment,
   statusKey: (id) => `l4:${id}`,
   before: { label: 'Level 4 overview', href: href.level4 },

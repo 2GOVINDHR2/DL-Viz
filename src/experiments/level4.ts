@@ -172,26 +172,44 @@ export const l4GatedConfig = (kind: 'lstm' | 'gru'): TrainConfig =>
 export const l4GatedCompareConfig = (kind: 'rnn' | 'lstm' | 'gru', seed: number): TrainConfig =>
   sequenceConfig(kind, L4_GATED.compare.hidden, L4_GATED.compare.steps, L4_GATED.compare.epochs, seed);
 
-const later = (
-  id: string,
-  title: string,
-  short: string,
-  minutes: string,
-  concept: string,
-): LessonExperiment => ({
-  id,
-  title,
-  short,
-  description: short,
-  minutes,
-  concept,
-  objectives: [],
-  outcomes: [],
-  primer: { intro: '', terms: [] },
-  tour: [],
-  challenges: [],
-  questions: [],
-});
+/**
+ * Experiment 06's autoencoder: 24 noisy 5×5 bar images, flattened to 25 values; 25 → 8 (tanh) → 2 (the latent code,
+ * linear) → 8 (tanh) → 25 (sigmoid), mean squared error against the input itself (sweep: loss 0.216 → 0.063 in 150
+ * epochs; a 3-value code reaches 0.029, a 4-value code only 0.051: larger is not always better).
+ */
+export const L4_AE = {
+  dataset: { kind: 'barsAutoencode', n: 24, size: 5, seed: 4 } as DatasetSpec,
+  classes: ['horizontal', 'vertical', 'diagonal'],
+  size: 5,
+  hidden: 8,
+  latent: 2,
+  epochs: 150,
+  lr: 0.02,
+  batchSize: 8,
+  latents: [1, 2, 3, 4],
+};
+
+export function l4AeConfig(latent = L4_AE.latent, epochs = L4_AE.epochs): TrainConfig {
+  const n = L4_AE.size * L4_AE.size;
+  return {
+    seed: 1,
+    epochs,
+    batchSize: L4_AE.batchSize,
+    shuffle: false,
+    loss: 'mse',
+    optimizer: { type: 'adam', lr: L4_AE.lr, beta1: 0.9, beta2: 0.999, epsilon: 1e-8 },
+    boundaryGrid: 0,
+    model: {
+      inputShape: [n],
+      layers: [
+        { type: 'dense', units: L4_AE.hidden, activation: 'tanh' },
+        { type: 'dense', units: latent, activation: 'linear' },
+        { type: 'dense', units: L4_AE.hidden, activation: 'tanh' },
+        { type: 'dense', units: n, activation: 'sigmoid' },
+      ],
+    },
+  };
+}
 
 export const LEVEL4_EXPERIMENTS: LessonExperiment[] = [
   {
@@ -963,13 +981,158 @@ export const LEVEL4_EXPERIMENTS: LessonExperiment[] = [
       },
     ],
   },
-  later(
-    '06',
-    'Autoencoders: Learning Latent Representations',
-    'Squeeze an input into a few numbers and rebuild it from them.',
-    '20–25 min',
-    'Representation learning',
-  ),
+  {
+    id: '06',
+    title: 'Autoencoders: Learning Latent Representations',
+    short: 'Squeeze an input into a few numbers and rebuild it from them.',
+    description:
+      'An autoencoder is trained to output its own input. That sounds trivial, but the data must pass through a narrow middle layer of only a few numbers: the latent code. To rebuild 25 pixels from 2 numbers, the network has to find a compact description of the images it sees. Here you follow an image through the encoder to its latent code and through the decoder back to a reconstruction, measure the reconstruction loss, and watch training improve it.',
+    minutes: '20–25 min',
+    concept: 'Representation learning',
+    objectives: [
+      'Name the encoder, the latent representation and the decoder of an autoencoder.',
+      'Follow an image from its 25 pixels to a 2-number latent code and back.',
+      'Compute the reconstruction loss from the input and its reconstruction.',
+      'Explain why the narrow latent layer forces a compact representation.',
+      'See how training, and the size of the latent code, change the reconstructions.',
+    ],
+    outcomes: [
+      'what an autoencoder learns without labels',
+      'what a latent code is, and what it is not',
+      'how reconstruction loss guides the training',
+    ],
+    primer: {
+      intro:
+        'Until now every network learned to predict a label. An autoencoder has no labels: its target is its own input.',
+      terms: [
+        {
+          term: 'Encoder',
+          meaning: 'The first half of the network: it maps the input to a short vector.',
+          role: 'input',
+        },
+        {
+          term: 'Latent representation (code)',
+          meaning:
+            'The short vector in the middle, here 2 numbers for a 25-pixel image. Everything the decoder knows about the image must pass through it.',
+          role: 'weight',
+        },
+        {
+          term: 'Decoder',
+          meaning: 'The second half: it maps the latent code back to an output the size of the input.',
+          role: 'bias',
+        },
+        {
+          term: 'Reconstruction loss',
+          meaning:
+            'How far the output is from the input: here the mean of the squared differences over the 25 pixels.',
+          role: 'incorrect',
+        },
+        {
+          term: 'Dimensionality reduction',
+          meaning:
+            'Describing data with fewer numbers than it has. A 2-number code is a reduction from 25 dimensions to 2.',
+          role: 'correct',
+        },
+      ],
+    },
+    tour: [
+      {
+        target: 'ae-train',
+        title: 'Train the autoencoder',
+        text: 'The target of every image is the image itself. No labels are used.',
+        doThis: 'Train and record.',
+        waitFor: 'trained',
+      },
+      {
+        target: 'ae-encoder',
+        title: 'Encoder',
+        text: '25 pixels become 8 hidden values, then 2 numbers: the latent code.',
+        doThis: 'Choose another image.',
+        waitFor: 'ae-example-picked',
+      },
+      {
+        target: 'ae-latent',
+        title: 'The latent space',
+        text: 'Each image is one point. The classes are coloured here only for you; the network never saw them.',
+        doThis: 'Choose another epoch for the latent space.',
+        waitFor: 'ae-latent-epoch',
+      },
+      {
+        target: 'ae-decoder',
+        title: 'Decoder and loss',
+        text: 'From 2 numbers back to 25 pixels; the loss compares them with the input.',
+        doThis: 'Look at the differences, then compare code sizes in Part E.',
+        waitFor: 'ae-compared',
+      },
+    ],
+    challenges: [
+      {
+        id: 'ae-worst',
+        title: 'Hardest to rebuild',
+        prompt: 'In Part D, at the last epoch, find the image with the largest reconstruction loss.',
+        notice: 'Some images do not fit the compact description as well as others.',
+        doneOn: 'ae-worst-found',
+      },
+      {
+        id: 'ae-early',
+        title: 'Before training',
+        prompt: 'In Part E, compare the reconstruction at epoch 1 with the last epoch.',
+        notice: 'At first the output is a grey blur; training teaches the decoder where bars can be.',
+        doneOn: 'ae-epochs-seen',
+      },
+      {
+        id: 'ae-size',
+        title: 'A bigger code',
+        prompt: 'In Part E, compare the loss for codes of 1, 2, 3 and 4 numbers.',
+        notice:
+          'A 1-number code loses the most detail. A larger code can let more detail through, but training does not always use it: compare the measured losses instead of assuming a larger code always wins.',
+        doneOn: 'ae-compared',
+      },
+    ],
+    questions: [
+      {
+        id: 'ae-target',
+        kind: 'choice',
+        prompt: 'What is the target of an autoencoder for an input image?',
+        options: [
+          { text: 'The image itself', correct: true, feedback: 'Right. It learns to reproduce its input.' },
+          { text: 'The image’s class', feedback: 'No labels are used.' },
+          { text: 'The latent code', feedback: 'The code is learned, never given.' },
+        ],
+      },
+      {
+        id: 'ae-mse',
+        kind: 'predict',
+        prompt:
+          'An input (1, 0) is reconstructed as (0.8, 0.2). What is the mean squared reconstruction loss?',
+        options: [
+          { text: '0.04', correct: true, feedback: 'Right. ((0.2)² + (0.2)²) / 2 = 0.04.' },
+          {
+            text: '0.2',
+            feedback: 'That is the mean absolute difference; the loss squares the differences.',
+          },
+          { text: '0.08', feedback: 'That is the sum; the loss averages over the values.' },
+        ],
+      },
+      {
+        id: 'ae-meaning',
+        kind: 'scenario',
+        prompt: 'The latent codes of horizontal bars land in one corner of the plot. What can you conclude?',
+        options: [
+          {
+            text: 'Only that the encoder places similar images near each other here; the axes have no given meaning',
+            correct: true,
+            feedback: 'Right. Nothing told the network what the two numbers should mean.',
+          },
+          {
+            text: 'The first latent number means “horizontal”',
+            feedback: 'The network was never told about classes.',
+          },
+          { text: 'The autoencoder has learned to classify', feedback: 'It was never trained to classify.' },
+        ],
+      },
+    ],
+  },
 ];
 
 export type Level4Id = '01' | '02' | '03' | '04' | '05' | '06';

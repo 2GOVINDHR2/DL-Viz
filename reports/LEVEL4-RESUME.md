@@ -10,18 +10,18 @@
 | 2 | CNN: Exp 01 (filters to feature maps), Exp 02 (CNN training) | done (`reports/LEVEL4-STAGE2.md`); e2e specs pass 7 + 6 |
 | 3 | Recurrent engine gate, then Exp 03 (vanilla RNN) | done (`reports/LEVEL4-STAGE3.md`, ADR-102); e2e spec passes 8 of 8 |
 | 4 | Exp 04 (BPTT) | done (`reports/LEVEL4-STAGE4.md`); e2e spec passes 6 of 6 |
-| 5 | Exp 05 (LSTM and GRU) | done (`reports/LEVEL4-STAGE5.md`); e2e spec delegated: check that `tests/e2e/level4-exp05.spec.ts` exists and passes |
-| 6 | Exp 06 (autoencoder) | pending |
+| 5 | Exp 05 (LSTM and GRU) | done (`reports/LEVEL4-STAGE5.md`); e2e spec passes 5 of 5 |
+| 6 | Exp 06 (autoencoder) | done (`reports/LEVEL4-STAGE6.md`); e2e spec delegated: check that `tests/e2e/level4-exp06.spec.ts` exists and passes |
 | 7 | Level 4 integration | pending |
 | 8 | Final regression and `reports/LEVEL4-FINAL-REPORT.md` | pending |
 
 ## Next action
 
-**Stage 6: Experiment 06 (autoencoder),** on `barsAutoencode`: n = 24, 4×4 or 6×6 images flattened, a dense encoder to a latent of 2 or 3, then a decoder with sigmoid, MSE loss.
-- **A:** the encoder, input → latent.
-- **B:** the latent values for all images, plotted when 2-D.
-- **C:** the decoder, latent → reconstruction.
-- **D:** the reconstruction loss, by hand against the record.
-- **E:** training, with the loss curve and reconstructions at several epochs.
+**Stage 7: Level 4 integration.**
+1. Add Level 4 pages to `a11y.spec.ts` (both themes, opened and trained), with a new test.
+2. Add them to `layout.spec.ts` as test IV (1440–320 px, opened and trained); add a `trainLevel4` helper to `tests/e2e/helpers.ts`.
+3. Run the capability inventory with `CAPTURE=append`, and record the "Beyond Level 3" card (now "The full workbench") in `reports/capability-removed.json`.
+4. Take screenshots to `docs/screenshots/level4`.
+5. Run the mutation audit of the Level 4 e2e specs.
 
-Say nothing about semantic meaning unless it is shown.
+**Then Stage 8:** the full regression from a clean build, and `reports/LEVEL4-FINAL-REPORT.md`.
