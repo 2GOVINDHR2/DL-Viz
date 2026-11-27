@@ -13,21 +13,38 @@
 import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Browser, type Page } from '@playwright/test';
 import { unlockAll } from './helpers';
 
-const rendererRssMB = (): number | null => {
+/**
+ * Resident set (MB) of the largest Chromium renderer process, from one `ps` snapshot: `own` counts only the given
+ * process ids (the renderers of this test's browser), so a renderer of a test running in parallel in another
+ * Playwright worker, or of any other Chromium on the machine, is never measured; `any` counts every renderer on the
+ * machine (diagnostics only).
+ */
+const rendererRssMB = (own: Set<number> | null): { own: number | null; any: number } | null => {
   try {
-    const kb = execSync('ps -eo rss=,args=')
+    const rows = execSync('ps -eo pid=,rss=,args=')
       .toString()
       .split('\n')
       .filter((l) => l.includes('--type=renderer'))
-      .reduce((m, l) => Math.max(m, Number(l.trim().split(/\s+/)[0])), 0);
-    return Math.round(kb / 1024);
+      .map((l) => l.trim().split(/\s+/).map(Number));
+    const max = (r: number[][]): number => Math.round(r.reduce((m, [, rss]) => Math.max(m, rss), 0) / 1024);
+    return { own: own ? max(rows.filter(([pid]) => own.has(pid))) : null, any: max(rows) };
   } catch {
     return null;
   }
 };
+
+/** The renderer process ids of one Chromium browser, from the DevTools protocol (SystemInfo.getProcessInfo). */
+async function rendererPids(browser: Browser): Promise<Set<number>> {
+  const cdp = await browser.newBrowserCDPSession();
+  const { processInfo } = (await cdp.send('SystemInfo.getProcessInfo')) as {
+    processInfo: { type: string; id: number }[];
+  };
+  await cdp.detach();
+  return new Set(processInfo.filter((p) => p.type === 'renderer').map((p) => p.id));
+}
 
 async function runFor(
   page: Page,
@@ -101,11 +118,38 @@ async function workerProbe(
     });
 }
 
-test('CNN: generation, responsiveness, frame rate and memory', async ({ page, browserName }) => {
+test('CNN: generation, responsiveness, frame rate and memory', async ({
+  playwright,
+  browserName,
+  launchOptions,
+  baseURL,
+  viewport,
+}) => {
   test.setTimeout(180_000);
+  // A browser process of its own: nothing an earlier test in this worker did (pages, workers, the allocator's
+  // high-water mark) is in it, and its renderer ids are known, so a renderer of a test running in parallel in
+  // another worker is never measured.
+  const browser = await playwright[browserName].launch(launchOptions);
+  const context = await browser.newContext({ baseURL, viewport });
+  const page = await context.newPage();
   const probe = await workerProbe(page);
+  const chromium = browserName === 'chromium';
+  let own = chromium ? await rendererPids(browser) : null;
   let peak = 0;
-  const poll = setInterval(() => (peak = Math.max(peak, rendererRssMB() ?? 0)), 250);
+  let peakAll = 0;
+  const sample = (): void => {
+    const r = rendererRssMB(own);
+    if (r?.own) peak = Math.max(peak, r.own);
+    if (r) peakAll = Math.max(peakAll, r.any);
+  };
+  const poll = setInterval(() => {
+    sample();
+    if (chromium)
+      void rendererPids(browser).then(
+        (p) => (own = p),
+        () => undefined,
+      );
+  }, 250);
   await unlockAll(page);
   await page.goto('/?mode=expert');
   await expect(page.locator('.position[data-cursor="-1"]')).toBeVisible();
@@ -142,7 +186,7 @@ test('CNN: generation, responsiveness, frame rate and memory', async ({ page, br
     return m ? Math.round(m.usedJSHeapSize / 1048576) : null;
   });
   clearInterval(poll);
-  peak = Math.max(peak, rendererRssMB() ?? 0);
+  sample();
   let workerLive: Record<string, number> | null = null;
   if (probe) {
     await probe('HeapProfiler.collectGarbage');
@@ -164,6 +208,8 @@ test('CNN: generation, responsiveness, frame rate and memory', async ({ page, br
     run_layer,
     jsHeapMB,
     peakRendererRssMB: peak || null,
+    // Every renderer on the machine, this test's or not: diagnostics only, never asserted.
+    peakAnyRendererRssMB: peakAll || null,
     workerLiveAfterGc: workerLive,
   };
   // Written only under the measurement protocol (`npm run measure` sets MEASURE=1; VERIFICATION-METHOD §7).
@@ -175,5 +221,13 @@ test('CNN: generation, responsiveness, frame rate and memory', async ({ page, br
   if (workerLive) expect(workerLive.jsHeapMB + workerLive.arrayBuffersMB).toBeLessThan(500);
   // Peak RSS includes the allocator's high-water mark from short-lived training buffers; it sits near the
   // ~500 MB budget (reported in VALIDATION-REPORT and KNOWN-GAPS). This guard only catches regressions.
+  test.info().annotations.push({
+    type: 'memory',
+    description: `own renderer peak ${result.peakRendererRssMB} MB; any renderer on the machine ${result.peakAnyRendererRssMB} MB`,
+  });
+  console.log(
+    `[perf-cnn] own renderer peak ${result.peakRendererRssMB} MB; any renderer ${result.peakAnyRendererRssMB} MB`,
+  );
+  await browser.close();
   if (result.peakRendererRssMB) expect(result.peakRendererRssMB).toBeLessThan(700);
 });
