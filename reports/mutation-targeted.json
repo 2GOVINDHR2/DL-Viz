@@ -860,5 +860,306 @@
     "mutant": "epoch 1 shows the final loss",
     "outcome": "killed",
     "detail": "failed at 56: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:75",
+    "claim": "the correct class is marked",
+    "mutant": "the correct-class marker is removed",
+    "outcome": "killed",
+    "detail": "failed at 75: Error: expect(received).toBeGreaterThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:76",
+    "claim": "the probabilities sum to 1",
+    "mutant": "the probabilities are shown scaled by 0.9",
+    "outcome": "killed",
+    "detail": "failed at 76: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:78",
+    "claim": "the loss is −ln(probability of the correct class)",
+    "mutant": "the loss is shown 0.1 higher",
+    "outcome": "killed",
+    "detail": "failed at 78: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:83",
+    "claim": "the prediction is the class with the largest probability",
+    "mutant": "the next class is named",
+    "outcome": "killed",
+    "detail": "failed at 83: Error: vertical ✓ correct"
+  },
+  {
+    "id": "level4-exp02.spec:85",
+    "claim": "the first images are predicted correctly",
+    "mutant": "the correct/wrong mark is inverted",
+    "outcome": "killed",
+    "detail": "failed at 85: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level4-exp02.spec:114",
+    "claim": "the step is checked as −η·ḡ",
+    "mutant": "the check is inverted",
+    "outcome": "killed",
+    "detail": "failed at 114: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level4-exp02.spec:116",
+    "claim": "the step equals −η·ḡ",
+    "mutant": "the step is shown doubled",
+    "outcome": "killed",
+    "detail": "failed at 116: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:118",
+    "claim": "before + step = after",
+    "mutant": "the after value is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 118: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp02.spec:124",
+    "claim": "the next update starts where the previous ended",
+    "mutant": "before and after are shifted by an amount that grows with the update number",
+    "outcome": "killed",
+    "detail": "failed at 124: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp03.spec:73",
+    "claim": "the inputs lie in [−1, 1]",
+    "mutant": "the inputs are shown 2 higher",
+    "outcome": "killed",
+    "detail": "failed at 73: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp03.spec:78",
+    "claim": "each hidden state has four values",
+    "mutant": "one value of each hidden state is dropped",
+    "outcome": "killed",
+    "detail": "failed at 78: Error: expect(received).toHaveLength(expected)"
+  },
+  {
+    "id": "level4-exp03.spec:80",
+    "claim": "the hidden-state values are numbers",
+    "mutant": "positive values are shown as text",
+    "outcome": "killed",
+    "detail": "failed at 80: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp03.spec:81",
+    "claim": "the hidden-state values are at least −1",
+    "mutant": "the values are shown 3 lower",
+    "outcome": "killed",
+    "detail": "failed at 81: Error: expect(received).toBeGreaterThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp03.spec:82",
+    "claim": "the hidden-state values are at most 1",
+    "mutant": "the values are shown 3 higher",
+    "outcome": "killed",
+    "detail": "failed at 82: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp03.spec:106",
+    "claim": "hₜ₋₁ has four values",
+    "mutant": "one value of hₜ₋₁ is dropped",
+    "outcome": "killed",
+    "detail": "failed at 106: Error: expect(received).toHaveLength(expected)"
+  },
+  {
+    "id": "level4-exp03.spec:158",
+    "claim": "the label follows the sign of the sum",
+    "mutant": "the label is inverted",
+    "outcome": "killed",
+    "detail": "failed at 158: Error: expect(received).toBe(expected) // Object.is equality"
+  },
+  {
+    "id": "level4-exp03.spec:162",
+    "claim": "the loss is checked",
+    "mutant": "the check is inverted",
+    "outcome": "killed",
+    "detail": "failed at 162: Error: expect(received).toContain(expected) // indexOf"
+  },
+  {
+    "id": "level4-exp03.spec:164",
+    "claim": "the loss is the binary cross-entropy of p",
+    "mutant": "the loss is shown 0.1 higher",
+    "outcome": "killed",
+    "detail": "failed at 164: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp03.spec:178",
+    "claim": "the loss at epoch 1 is larger than at epoch 40",
+    "mutant": "the epoch-1 loss is shown as 0",
+    "outcome": "killed",
+    "detail": "failed at 178: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp04.spec:51",
+    "claim": "what step t sends back arrives at step t − 1",
+    "mutant": "the gradient sent back is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 51: Error: expect(received).toEqual(expected) // deep equality"
+  },
+  {
+    "id": "level4-exp04.spec:92",
+    "claim": "full BPTT ends below 0.01",
+    "mutant": "every final loss is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 92: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp04.spec:93",
+    "claim": "full BPTT ends below every window",
+    "mutant": "window 3's loss is shown as 0.0001",
+    "outcome": "killed",
+    "detail": "failed at 93: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp04.spec:94",
+    "claim": "window 1 ends above window 2",
+    "mutant": "window 2's loss is shown as 9",
+    "outcome": "killed",
+    "detail": "failed at 94: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp04.spec:95",
+    "claim": "window 2 ends above window 3",
+    "mutant": "window 3's loss is shown as 9",
+    "outcome": "killed",
+    "detail": "failed at 95: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:59",
+    "claim": "kept + written = cₜ in the gate table",
+    "mutant": "the written part is shown doubled",
+    "outcome": "killed",
+    "detail": "failed at 59: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:60",
+    "claim": "the table's cₜ is the step's cₜ",
+    "mutant": "the step's cₜ is shown 0.01 higher",
+    "outcome": "killed",
+    "detail": "failed at 60: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:71",
+    "claim": "the forget gate has three values",
+    "mutant": "one forget-gate value is dropped",
+    "outcome": "killed",
+    "detail": "failed at 71: Error: expect(received).toHaveLength(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:73",
+    "claim": "the gate values are above 0",
+    "mutant": "the forget gate is shown 1 lower",
+    "outcome": "killed",
+    "detail": "failed at 73: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:74",
+    "claim": "the gate values are below 1",
+    "mutant": "the forget gate is shown 1 higher",
+    "outcome": "killed",
+    "detail": "failed at 74: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:78",
+    "claim": "the candidate has three values",
+    "mutant": "one candidate value is dropped",
+    "outcome": "killed",
+    "detail": "failed at 78: Error: expect(received).toHaveLength(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:80",
+    "claim": "the candidate is above −1",
+    "mutant": "the candidate is shown 2 lower",
+    "outcome": "killed",
+    "detail": "failed at 80: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:81",
+    "claim": "the candidate is below 1",
+    "mutant": "the candidate is shown 2 higher",
+    "outcome": "killed",
+    "detail": "failed at 81: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:127",
+    "claim": "the LSTM learns the 10-step task",
+    "mutant": "the LSTM's loss is shown 1 higher",
+    "outcome": "killed",
+    "detail": "failed at 127: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:128",
+    "claim": "the GRU learns the 10-step task",
+    "mutant": "the GRU's loss is shown 1 higher",
+    "outcome": "killed",
+    "detail": "failed at 128: Error: expect(received).toBeLessThan(expected)"
+  },
+  {
+    "id": "level4-exp05.spec:166",
+    "claim": "an option is the recorded cₜ",
+    "mutant": "the right option is shown 0.01 off",
+    "outcome": "killed",
+    "detail": "failed at 166: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:65",
+    "claim": "the within-class distance is measured (above 0)",
+    "mutant": "the within-class distance is shown as 0",
+    "outcome": "killed",
+    "detail": "failed at 65: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:66",
+    "claim": "the between-class distance is measured (above 0)",
+    "mutant": "the between-class distance is shown as 0",
+    "outcome": "killed",
+    "detail": "failed at 66: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:83",
+    "claim": "the reconstruction is at least 0",
+    "mutant": "the reconstruction is shown 1 lower",
+    "outcome": "killed",
+    "detail": "failed at 83: Error: expect(received).toBeGreaterThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:84",
+    "claim": "the reconstruction is at most 1",
+    "mutant": "the reconstruction is shown 1 higher",
+    "outcome": "killed",
+    "detail": "failed at 84: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:102",
+    "claim": "the largest loss is at least the shown image's loss",
+    "mutant": "the smallest loss is shown as the largest",
+    "outcome": "killed",
+    "detail": "failed at 102: Error: expect(received).toBeGreaterThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:135",
+    "claim": "the 1-number code reconstructs worst",
+    "mutant": "the 1-number code's loss is shown as 0",
+    "outcome": "killed",
+    "detail": "failed at 135: Error: expect(received).toBeGreaterThan(expected)"
+  },
+  {
+    "id": "level4-exp06.spec:164",
+    "claim": "an option is the recorded loss",
+    "mutant": "the right option is shown 0.01 off",
+    "outcome": "killed",
+    "detail": "failed at 164: Error: expect(received).toBeLessThanOrEqual(expected)"
+  },
+  {
+    "id": "level4-exp04.spec:153",
+    "claim": "an option is the recorded sum for U",
+    "mutant": "the right option is shown 0.001 off",
+    "outcome": "killed",
+    "detail": "failed at 153: Error: expect(received).toBeLessThanOrEqual(expected)"
   }
 ]
