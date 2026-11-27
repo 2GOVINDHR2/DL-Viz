@@ -744,10 +744,10 @@
     "negative": false,
     "text": "expect(Math.abs(one.before + delta - one.after)).toBeLessThanOrEqual(0.0002);",
     "blank": "elsewhere",
-    "noAction": "n/a",
+    "noAction": "elsewhere",
     "detail": {
       "blank": "failed at 119: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
-      "no-action": "no result"
+      "no-action": "timedOut at 16,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -757,11 +757,11 @@
     "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
     "negative": false,
     "text": "await expect(sectionD(page).locator('[data-value=\"update-number\"]')).toHaveText(/^1 of 180$/);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 119: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 16,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -771,11 +771,11 @@
     "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
     "negative": false,
     "text": "await expect(sectionD(page).locator('[data-value=\"update-number\"]')).toHaveText('2 of 180');",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 122: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 16,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -785,11 +785,11 @@
     "fn": "Part D: the recorded step is -eta times the gradient and updates chain",
     "negative": false,
     "text": "expect(two.before).toBe(one.after);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "survived",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "passed at :  (re-run, 2 workers)",
+      "no-action": "timedOut at 16,110: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -799,11 +799,11 @@
     "fn": "Trace explorer appears after training",
     "negative": false,
     "text": "await expect(page.getByText('The record of run')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 130: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 16,129: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -813,11 +813,11 @@
     "fn": "Trace explorer appears after training",
     "negative": false,
     "text": "await expect(page.getByText('Network 1×8×8 → convolution 4 × 3×3 (relu)').first()).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 131: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 16,129: \u001b[31mTest timeout of 60000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -827,11 +827,11 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": false,
     "text": "await expect(page.getByText('step 1 of 4')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "killed",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 137: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 137: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -841,11 +841,11 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": false,
     "text": "await expect(page.getByText('step 2 of 4')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 139: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 137: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -855,11 +855,11 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": true,
     "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "survived",
+    "noAction": "killed",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "passed at :  (re-run, 2 workers)",
+      "no-action": "failed at 141: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -1596,10 +1596,10 @@
     "fn": "Check: the live memory question accepts the recorded hidden state",
     "negative": false,
     "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
-    "blank": "n/a",
+    "blank": "killed",
     "noAction": "n/a",
     "detail": {
-      "blank": "no result",
+      "blank": "failed at 223: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
       "no-action": "no result"
     }
   },
@@ -1665,11 +1665,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "await expect(box).toHaveAttribute('data-back-step', '5', { timeout: 90_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 39: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1679,11 +1679,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "expect(await value(box, 'back-step')).toBe('t = 5 (step 1 of the backward pass)');",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "timedOut at 23,40: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1693,11 +1693,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "await expect(box.locator('table.lv-mgrid')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 41: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1707,11 +1707,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "await expect(box.locator('[data-value=\"dz\"]')).toContainText('✓ checked here');",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 42: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1721,11 +1721,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "expect(vector(await value(box, 'dh'))).toHaveLength(4);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "timedOut at 23,43: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1735,11 +1735,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "expect(dhPrev5).toHaveLength(4);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1749,11 +1749,11 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "await expect(sectionB(page).locator('[data-control=\"b:later\"]')).toBeDisabled();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 46: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "timedOut at 17,37: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)"
     }
   },
   {
@@ -1763,10 +1763,10 @@
     "fn": "Part B: the backward pass starts at t = 5 and walks back to t = 1",
     "negative": false,
     "text": "await expect(box).toHaveAttribute('data-back-step', '4');",
-    "blank": "n/a",
+    "blank": "killed",
     "noAction": "killed",
     "detail": {
-      "blank": "no result",
+      "blank": "failed at 49: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
       "no-action": "failed at 49: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
     }
   },
@@ -2100,10 +2100,10 @@
     "negative": true,
     "text": "await expect(page.getByText('step 2 of 4')).toHaveCount(0);",
     "blank": "survived",
-    "noAction": "n/a",
+    "noAction": "killed",
     "detail": {
       "blank": "passed at : ",
-      "no-action": "no result"
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2113,11 +2113,11 @@
     "fn": "Tour: training advances to step 2 and Skip tour removes it",
     "negative": true,
     "text": "await expect(page.getByRole('button', { name: 'Skip tour' })).toHaveCount(0);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "survived",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "passed at :  (re-run, 2 workers)",
+      "no-action": "failed at 134: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2127,11 +2127,11 @@
     "fn": "Check: the live question accepts the recorded sum for U",
     "negative": false,
     "text": "await expect(q.getByText('Train the network in Part A first.')).toBeVisible();",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "killed",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2141,11 +2141,11 @@
     "fn": "Check: the live question accepts the recorded sum for U",
     "negative": false,
     "text": "await expect(sectionC(page).locator('[data-value=\"usum\"]')).toBeVisible({ timeout: 90_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 144: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2155,11 +2155,11 @@
     "fn": "Check: the live question accepts the recorded sum for U",
     "negative": false,
     "text": "await expect(q.getByText('What is its gradient for this example?')).toBeVisible({ timeout: 60_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 145: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2169,11 +2169,11 @@
     "fn": "Check: the live question accepts the recorded sum for U",
     "negative": false,
     "text": "expect(Math.abs(num(texts[best].trim()) - total)).toBeLessThanOrEqual(6e-6);",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "elsewhere",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "timedOut at 154: \u001b[31mTest timeout of 180000ms exceeded.\u001b[39m (re-run, 2 workers)",
+      "no-action": "failed at 142: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2183,11 +2183,11 @@
     "fn": "Check: the live question accepts the recorded sum for U",
     "negative": false,
     "text": "await expect(q.locator('.lv-feedback')).toContainText('Correct');",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "killed",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 155: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 155: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2197,11 +2197,11 @@
     "fn": "train",
     "negative": false,
     "text": "await expect(sectionA(page).locator('[data-control=\"a:example\"]')).toBeVisible({ timeout: 120_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "killed",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 18,40: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 18,40: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {
@@ -2211,11 +2211,11 @@
     "fn": "train",
     "negative": false,
     "text": "await expect(sectionA(page).locator('table[data-lstm-overview]')).toBeVisible({ timeout: 120_000 });",
-    "blank": "n/a",
-    "noAction": "n/a",
+    "blank": "killed",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result",
-      "no-action": "no result"
+      "blank": "failed at 19,40: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)",
+      "no-action": "failed at 18,40: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed (re-run, 2 workers)"
     }
   },
   {

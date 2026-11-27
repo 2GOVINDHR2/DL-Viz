@@ -2235,5 +2235,19 @@
     ],
     "spec": "tests/e2e/level4-exp06.spec.ts",
     "grep": "live question accepts the reconstruction loss"
+  },
+  {
+    "ids": ["level4-exp04.spec:153"],
+    "claim": "an option is the recorded sum for U",
+    "mutant": "the right option is shown 0.001 off",
+    "file": "src/learn/level4/Experiment04.tsx",
+    "patches": [
+      {
+        "find": "{ t: fmtSigned(total, 5), ok: true }",
+        "replace": "{ t: fmtSigned(total + 0.001, 5), ok: true }"
+      }
+    ],
+    "spec": "tests/e2e/level4-exp04.spec.ts",
+    "grep": "live question accepts the recorded sum"
   }
 ]
