@@ -145,9 +145,10 @@
     "negative": false,
     "text": "expect(vector(await value(sectionA(page), 'enc'))).toHaveLength(8);",
     "blank": "n/a",
-    "noAction": "n/a",
+    "noAction": "elsewhere",
     "detail": {
-      "blank": "no result"
+      "blank": "no result",
+      "no-action": "timedOut at 17,36: \u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
     }
   },
   {
@@ -157,9 +158,12 @@
     "fn": "Part A: the encoder code has two numbers and follows the chosen image",
     "negative": false,
     "text": "await expect(sectionA(page).locator('[data-encoder=\"7\"]')).toHaveCount(1);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "killed",
+    "detail": {
+      "blank": "failed at 43: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed",
+      "no-action": "failed at 43: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:44",
@@ -168,9 +172,12 @@
     "fn": "Part A: the encoder code has two numbers and follows the chosen image",
     "negative": true,
     "text": "await expect.poll(async () => value(sectionA(page), 'code')).not.toBe(before);",
-    "blank": "n/a",
-    "noAction": "n/a",
-    "detail": {}
+    "blank": "killed",
+    "noAction": "elsewhere",
+    "detail": {
+      "blank": "failed at 44: Error: Timeout 5000ms exceeded while waiting on the predicate",
+      "no-action": "failed at 43: Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed"
+    }
   },
   {
     "id": "level4-exp06.spec:46",
@@ -179,9 +186,11 @@
     "fn": "Part A: the encoder code has two numbers and follows the chosen image",
     "negative": false,
     "text": "expect(vector(after)).toHaveLength(2);",
-    "blank": "n/a",
+    "blank": "survived",
     "noAction": "n/a",
-    "detail": {}
+    "detail": {
+      "blank": "passed at : "
+    }
   },
   {
     "id": "level4-exp06.spec:54",
