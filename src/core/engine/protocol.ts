@@ -29,6 +29,14 @@ export type DatasetSpec =
   | ({ kind: 'spiral'; n: number; classes: number; seed: number } & HeldOut)
   | ({ kind: 'line'; n: number; seed: number } & HeldOut)
   | { kind: 'bars'; n: number; size: number; seed: number }
+  /**
+   * Seeded sequences of T values in [−1, 1], one feature per step (Level 4, ADR-102), labelled 1 or 0:
+   * 'sum': is the sum positive? (the whole sequence matters); 'first': is the first value positive? (a long-range
+   * dependency: the answer is at the start, the prediction at the end).
+   */
+  | ({ kind: 'sequence'; task: 'sum' | 'first'; n: number; steps: number; seed: number } & HeldOut)
+  /** The bars images flattened, with targets equal to the inputs: data for an autoencoder (Level 4). */
+  | { kind: 'barsAutoencode'; n: number; size: number; seed: number }
   /** Given examples. `shape` (Level 4, ADR-100) gives each row's per-sample shape, e.g. [1, 5, 5] for an image. */
   | { kind: 'points'; xs: number[][]; ys: number[][]; name: string; shape?: number[] }
   /** A dataset the host was given in advance (large bundled assets, loaded lazily by the worker). */

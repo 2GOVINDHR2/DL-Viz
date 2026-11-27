@@ -169,7 +169,16 @@
             "BATCH_BEGIN",
             "BATCH_END",
             "EVAL_BEGIN",
-            "EVAL_END"
+            "EVAL_END",
+            "SELECT_STEP",
+            "GRAD_SELECT_STEP",
+            "ADD",
+            "MULTIPLY",
+            "GRAD_MULTIPLY",
+            "ONE_MINUS",
+            "GRAD_ONE_MINUS",
+            "STOP_GRADIENT",
+            "GRAD_SUM"
           ]
         },
         "path": {
@@ -961,6 +970,232 @@
               "results": {
                 "required": [
                   "loss"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "SELECT_STEP"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "forward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "out"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "GRAD_SELECT_STEP"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "backward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "grad"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "ADD"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "forward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "out"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "MULTIPLY"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "forward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "out"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "GRAD_MULTIPLY"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "backward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "a",
+                  "b"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "ONE_MINUS"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "forward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "out"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "GRAD_ONE_MINUS"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "backward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "grad"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "STOP_GRADIENT"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "forward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "out"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "GRAD_SUM"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "path": {
+                "properties": {
+                  "phase": {
+                    "const": "backward"
+                  }
+                }
+              },
+              "results": {
+                "required": [
+                  "grad"
                 ]
               }
             }

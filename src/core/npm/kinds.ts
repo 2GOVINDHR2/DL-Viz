@@ -467,3 +467,135 @@ for (const [op, loss] of [
     ],
   });
 }
+
+// --------------------------------------------- sequences and gated cells (Level 4, ADR-102)
+//
+// Recurrent layers are built from ordinary ops; these kinds name the steps that feed-forward networks never needed.
+// Every recurrent instruction also carries `meta.step` (the time step, 1-based) and, inside a gated cell,
+// `meta.gate` (the emitter copies them from the tape entry).
+
+const stepOf = (i: Omit<Instruction, 'symbolic'>): string =>
+  i.meta.step === undefined ? '' : `⁽${str(i.meta.step)}⁾`;
+
+const sequenceKinds: KindSpec[] = [
+  {
+    kind: 'SELECT_STEP',
+    phase: 'forward',
+    results: ['out'],
+    summary: 'Take the input of one time step out of the sequence.',
+    learnerGloss: 'Read the next element of the sequence.',
+    symbolic: (i) => `x${stepOf(i)} = x[t = ${str(i.meta.step)}]`,
+  },
+  {
+    kind: 'GRAD_SELECT_STEP',
+    phase: 'backward',
+    results: ['grad'],
+    summary: 'Place the gradient of one time step’s input back into the sequence.',
+    learnerGloss: 'Send the learning signal back to one element of the sequence.',
+    symbolic: (i) => `∂L/∂x[t = ${str(i.meta.step)}]`,
+  },
+  {
+    kind: 'ADD',
+    phase: 'forward',
+    results: ['out'],
+    summary: 'Add two values elementwise.',
+    learnerGloss: 'Add two sets of numbers, one by one.',
+    symbolic: (i) => `a + b${stepOf(i)}`,
+  },
+  {
+    kind: 'MULTIPLY',
+    phase: 'forward',
+    results: ['out'],
+    summary: 'Multiply two values elementwise (⊙).',
+    learnerGloss: 'Multiply two sets of numbers, one by one.',
+    symbolic: (i) => `a ⊙ b${stepOf(i)}`,
+  },
+  {
+    kind: 'GRAD_MULTIPLY',
+    phase: 'backward',
+    results: ['a', 'b'],
+    summary: 'Gradient of an elementwise product: ∂L/∂a = g ⊙ b and ∂L/∂b = g ⊙ a.',
+    learnerGloss: 'Work out the learning signal for both numbers that were multiplied.',
+    symbolic: (i) => `∂L/∂a = g ⊙ b, ∂L/∂b = g ⊙ a${stepOf(i)}`,
+  },
+  {
+    kind: 'ONE_MINUS',
+    phase: 'forward',
+    results: ['out'],
+    summary: 'Compute 1 − a elementwise.',
+    learnerGloss: 'Take the share a gate does not let through.',
+    symbolic: (i) => `1 − a${stepOf(i)}`,
+  },
+  {
+    kind: 'GRAD_ONE_MINUS',
+    phase: 'backward',
+    results: ['grad'],
+    summary: 'Gradient through 1 − a: the upstream gradient with its sign reversed.',
+    learnerGloss: 'Pass the learning signal back, with its sign flipped.',
+    symbolic: (i) => `∂L/∂a = −g${stepOf(i)}`,
+  },
+  {
+    kind: 'STOP_GRADIENT',
+    phase: 'forward',
+    results: ['out'],
+    summary:
+      'Pass a value on unchanged, but let no gradient flow back through it (truncated backpropagation).',
+    learnerGloss: 'Use this value, but do not send learning signals back through it.',
+    symbolic: (i) => `stop-gradient(h${stepOf(i)})`,
+  },
+  {
+    kind: 'GRAD_SUM',
+    phase: 'backward',
+    results: ['grad'],
+    summary:
+      'Add up the gradient contributions of a value used in several places (a weight shared across time steps, a state feeding several gates).',
+    learnerGloss: 'This value was used more than once: add up what each use contributes.',
+    symbolic: (i) =>
+      i.meta.param
+        ? `∂ℓ/∂${paramSym(i.meta.param)} = Σ over ${str(i.meta.uses)} uses`
+        : `g = Σ over ${str(i.meta.uses)} uses${stepOf(i)}`,
+  },
+];
+sequenceKinds.forEach(registerInstructionKind);
+
+registerOpMapping({
+  op: 'timeStep',
+  forwardKind: 'SELECT_STEP',
+  forwardRoles: ['sequence'],
+  backward: [{ kind: 'GRAD_SELECT_STEP', slots: [{ slot: 'grad', input: 0 }], operands: [up()] }],
+});
+// The gradient of a sum is the upstream gradient for both terms: no instruction, no duplicate values.
+registerOpMapping({
+  op: 'add',
+  forwardKind: 'ADD',
+  forwardRoles: ['a', 'b'],
+  passthrough: [0, 1],
+  backward: [],
+});
+registerOpMapping({
+  op: 'mul',
+  forwardKind: 'MULTIPLY',
+  forwardRoles: ['a', 'b'],
+  backward: [
+    {
+      kind: 'GRAD_MULTIPLY',
+      slots: [
+        { slot: 'a', input: 0 },
+        { slot: 'b', input: 1 },
+      ],
+      operands: [up(), inp(0, 'a'), inp(1, 'b')],
+    },
+  ],
+});
+registerOpMapping({
+  op: 'oneMinus',
+  forwardKind: 'ONE_MINUS',
+  forwardRoles: ['input'],
+  backward: [{ kind: 'GRAD_ONE_MINUS', slots: [{ slot: 'grad', input: 0 }], operands: [up()] }],
+});
+registerOpMapping({
+  op: 'stopGradient',
+  forwardKind: 'STOP_GRADIENT',
+  forwardRoles: ['input'],
+  backward: [],
+});

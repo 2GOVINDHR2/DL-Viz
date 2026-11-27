@@ -35,6 +35,18 @@
     "maxAbs": 6.352855741464936e-11,
     "maxRel": 3.3758518783771244e-9
   },
+  "model:gru (hidden 3, 4 time steps, 2 features) → dense sigmoid": {
+    "id": "model:gru (hidden 3, 4 time steps, 2 features) → dense sigmoid",
+    "elements": 58,
+    "maxAbs": 9.054230867659718e-11,
+    "maxRel": 0.000001762029556236173
+  },
+  "model:lstm (hidden 3, 4 time steps, 2 features) → dense sigmoid": {
+    "id": "model:lstm (hidden 3, 4 time steps, 2 features) → dense sigmoid",
+    "elements": 76,
+    "maxAbs": 9.20998008760443e-11,
+    "maxRel": 0.0000029359865751030115
+  },
   "model:MLP 2-4-1 XOR shape (sigmoid, BCE)": {
     "id": "model:MLP 2-4-1 XOR shape (sigmoid, BCE)",
     "elements": 17,
@@ -46,6 +58,12 @@
     "elements": 51,
     "maxAbs": 1.8205079804767266e-10,
     "maxRel": 3.3413937068141364e-7
+  },
+  "model:rnn (hidden 3, 4 time steps, 2 features) → dense sigmoid": {
+    "id": "model:rnn (hidden 3, 4 time steps, 2 features) → dense sigmoid",
+    "elements": 22,
+    "maxAbs": 9.468753732477797e-11,
+    "maxRel": 1.8800685263425995e-8
   },
   "model:single neuron (sigmoid, BCE)": {
     "id": "model:single neuron (sigmoid, BCE)",
@@ -203,6 +221,12 @@
     "maxAbs": 1.8275825297564552e-10,
     "maxRel": 2.2249478307674525e-10
   },
+  "op:oneMinus — shape [3,4]": {
+    "id": "op:oneMinus — shape [3,4]",
+    "elements": 12,
+    "maxAbs": 1.5030865441190144e-10,
+    "maxRel": 1.2186326114667083e-10
+  },
   "op:relu — shape [3,4]": {
     "id": "op:relu — shape [3,4]",
     "elements": 12,
@@ -245,6 +269,12 @@
     "maxAbs": 2.487053132882444e-10,
     "maxRel": 6.5737405857522034e-9
   },
+  "op:stopGradient — stop(a) ⊙ b, gradient of b": {
+    "id": "op:stopGradient — stop(a) ⊙ b, gradient of b",
+    "elements": 12,
+    "maxAbs": 6.40038785859609e-11,
+    "maxRel": 1.1754370086217096e-9
+  },
   "op:sub — broadcast [3,4]-[3,1]": {
     "id": "op:sub — broadcast [3,4]-[3,1]",
     "elements": 15,
@@ -262,5 +292,11 @@
     "elements": 12,
     "maxAbs": 2.6278568210358344e-10,
     "maxRel": 8.552634301570412e-9
+  },
+  "op:timeStep — step 2 of [2,4,3]": {
+    "id": "op:timeStep — step 2 of [2,4,3]",
+    "elements": 24,
+    "maxAbs": 7.082467945451754e-11,
+    "maxRel": 8.484168586197529e-11
   }
 }

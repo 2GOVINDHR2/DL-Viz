@@ -1,0 +1,61 @@
+{
+  "R1": {
+    "rnn": "every step equal to 1e-12",
+    "lstm": "gates, cell and hidden state equal to 1e-12",
+    "gru": "gates, candidate and hidden state equal to 1e-12"
+  },
+  "R2": {
+    "rnn": {
+      "params": 5,
+      "maxAbsDiff": 3.801279480075692e-8
+    },
+    "lstm": {
+      "params": 14,
+      "maxAbsDiff": 1.8772220666818384e-8
+    },
+    "gru": {
+      "params": 11,
+      "maxAbsDiff": 2.5797136316008107e-8
+    }
+  },
+  "R3": {
+    "rnn": {
+      "uses": {
+        "U": 4,
+        "W": 5
+      },
+      "equalToTape": true
+    }
+  },
+  "R5": {
+    "window1": "U gradient = full run’s last-step contribution",
+    "stopGradientSteps": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "R6": {
+    "rnn": {
+      "instructions": 1787,
+      "identical": true,
+      "grammar": true
+    },
+    "rnn-window2": {
+      "instructions": 1547,
+      "identical": true,
+      "grammar": true
+    },
+    "lstm": {
+      "instructions": 6668,
+      "identical": true,
+      "grammar": true
+    },
+    "gru": {
+      "instructions": 5297,
+      "identical": true,
+      "grammar": true
+    }
+  }
+}

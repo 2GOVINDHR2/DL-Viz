@@ -1,4 +1,5 @@
 import './builtins';
+import './sequence';
 
 export {
   explain,

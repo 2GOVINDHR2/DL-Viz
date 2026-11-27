@@ -138,3 +138,45 @@ export function bars(n: number, size: number, seed: number): Dataset {
     classes: ['horizontal', 'vertical', 'diagonal'],
   };
 }
+
+/**
+ * Seeded sequences for the recurrent experiments (Level 4, ADR-102): n sequences of `steps` values drawn uniformly
+ * from [−1, 1], shape [n, steps, 1]. Label 1 when the sum is positive ('sum') or when the first value is positive
+ * ('first'). Classes alternate (the sign of a value is flipped when needed) so both are equally common.
+ */
+export function sequences(task: 'sum' | 'first', n: number, steps: number, seed: number): Dataset {
+  const rng = new Rng(seed);
+  const xs: number[] = [];
+  const labels: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const want = i % 2;
+    const seq = Array.from({ length: steps }, () => Math.round(rng.uniform(-1, 1) * 100) / 100);
+    if (task === 'first') {
+      if (seq[0] === 0) seq[0] = 0.5;
+      if ((seq[0] > 0 ? 1 : 0) !== want) seq[0] = -seq[0];
+    } else {
+      let s = seq.reduce((a, b) => a + b, 0);
+      if (s === 0) {
+        seq[0] += 0.1;
+        s = 0.1;
+      }
+      if ((s > 0 ? 1 : 0) !== want) for (let t = 0; t < steps; t++) seq[t] = -seq[t];
+    }
+    xs.push(...seq);
+    labels.push(want);
+  }
+  return {
+    name: `sequence-${task}`,
+    xs: Tensor.from([n, steps, 1], xs),
+    ys: encode(labels, 2, 'binary'),
+    classes:
+      task === 'first' ? ['first value negative', 'first value positive'] : ['sum negative', 'sum positive'],
+  };
+}
+
+/** The bars images, flattened to vectors, with the targets equal to the inputs (an autoencoder's task). */
+export function barsAutoencode(n: number, size: number, seed: number): Dataset {
+  const b = bars(n, size, seed);
+  const flat = b.xs.reshape([n, size * size]);
+  return { name: 'bars-autoencode', xs: flat, ys: flat, classes: b.classes };
+}

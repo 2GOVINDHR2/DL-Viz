@@ -44,6 +44,15 @@ const LABEL: Record<string, string> = {
   BATCH_END: 'the end of a batch',
   EVAL_BEGIN: 'the start of an evaluation',
   EVAL_END: 'the evaluation result',
+  SELECT_STEP: 'reading one time step',
+  GRAD_SELECT_STEP: 'the gradient of one time step’s input',
+  ADD: 'adding two contributions',
+  MULTIPLY: 'an element-by-element product',
+  GRAD_MULTIPLY: 'the gradient of a product',
+  ONE_MINUS: 'one minus the gate',
+  GRAD_ONE_MINUS: 'the gradient of one minus the gate',
+  STOP_GRADIENT: 'cutting the backward pass',
+  GRAD_SUM: 'adding up the contributions of a value used several times',
 };
 
 /** The kind's meaning, as NPM-SPEC §4.1 gives it: a full sentence. */

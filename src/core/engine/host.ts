@@ -54,6 +54,10 @@ export function resolveDataset(spec: DatasetSpec): Dataset {
       return D.line(spec.n, spec.seed);
     case 'bars':
       return D.bars(spec.n, spec.size, spec.seed);
+    case 'sequence':
+      return D.sequences(spec.task, spec.n, spec.steps, spec.seed);
+    case 'barsAutoencode':
+      return D.barsAutoencode(spec.n, spec.size, spec.seed);
     case 'points':
       return {
         name: spec.name,

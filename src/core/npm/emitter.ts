@@ -15,6 +15,7 @@ import type {
   SessionObserver,
   TrainingSession,
 } from '../engine/session';
+import { add } from '../tensor/ops';
 import { Tensor } from '../tensor/tensor';
 import {
   type Instruction,
@@ -136,7 +137,6 @@ export class NpmEmitter implements SessionObserver {
       layer,
     });
     const producers = new Map<number, Operand>();
-    const gradProducers = new Map<number, Operand>();
     const paramByVar = new Map<number, string>();
     for (const [name, v] of rec.paramVars) {
       producers.set(v.id, this.state.paramRefs.get(name)!);
@@ -184,6 +184,8 @@ export class NpmEmitter implements SessionObserver {
       }
       const m = opMapping(e.op);
       const meta: Record<string, MetaValue> = { ...(m.meta?.(e.attrs, e.op) ?? {}) };
+      if (e.meta.step !== undefined) meta.step = e.meta.step;
+      if (e.meta.gate !== undefined) meta.gate = e.meta.gate;
       if (e.meta.onGradientPath === false) meta.fusedWithLoss = true;
       if (isLoss) meta.outputLayer = outputLayer;
       const slot = isLoss ? 'loss' : 'out';
@@ -202,10 +204,66 @@ export class NpmEmitter implements SessionObserver {
     this.sampleLossRefs.push({ ...(lossRef as Operand), role: 'sample loss' });
 
     // ---- backward
+    //
+    // Every gradient contribution to a value is kept, in the order the tape added it (backward step, then input
+    // index). A value with one contribution is referenced directly, as always. A value used in several places (a
+    // weight shared across time steps, a hidden state feeding several gates) gets a GRAD_SUM instruction whose
+    // operands are all its contributions and whose result is their sum, added in the tape's order so that it equals
+    // the tape's gradient exactly (ADR-102). Feed-forward networks never use a value twice, so their traces are
+    // unchanged.
+    interface Contribution {
+      ref: Operand;
+      value: Tensor;
+      order: number;
+    }
+    const contributions = new Map<number, Contribution[]>();
+    const summed = new Map<number, Operand>();
+    const contribute = (v: Var, ref: Operand, value: Tensor, order: number): void => {
+      const list = contributions.get(v.id) ?? [];
+      list.push({ ref, value, order });
+      contributions.set(v.id, list);
+    };
     const grads = new Map<string, Operand>();
     let bLayer: string | null = null;
     let lastGrad: Operand | null = null;
+    let stepMeta: Record<string, MetaValue> = {};
+    const sumOf = (list: Contribution[], meta: Record<string, MetaValue>): Operand => {
+      const sorted = [...list].sort((a, b) => a.order - b.order);
+      let total = sorted[0].value;
+      for (const c of sorted.slice(1)) total = add(total, c.value);
+      const [r] = this.emit(
+        'GRAD_SUM',
+        at('backward', bLayer),
+        sorted.map((c) => ({ ...c.ref, role: 'contribution' })),
+        { grad: total },
+        { ...meta, uses: sorted.length },
+      );
+      lastGrad = r;
+      return r;
+    };
+    /** The gradient of `v`: its single contribution, or the sum of all of them. */
+    const gradientOf = (v: Var): Operand | null => {
+      const done = summed.get(v.id);
+      if (done) return done;
+      const list = contributions.get(v.id);
+      if (!list || list.length === 0) return null;
+      if (list.length === 1) return list[0].ref;
+      const r = sumOf(list, stepMeta);
+      summed.set(v.id, r);
+      return r;
+    };
     const closeBackwardLayer = (): void => {
+      if (bLayer) {
+        // A parameter used more than once in this layer: its per-example gradient is the sum of its uses.
+        for (const [id, name] of paramByVar) {
+          const list = contributions.get(id);
+          if (!list || list.length < 2 || summed.has(id)) continue;
+          if (this.session.model.params.find((q) => q.name === name)?.layer !== bLayer) continue;
+          const r = sumOf(list, { param: name, shared: true });
+          summed.set(id, r);
+          grads.set(name, { ...r, role: 'sample gradient' });
+        }
+      }
       if (bLayer && lastGrad)
         this.emit(
           'BACKWARD_LAYER_END',
@@ -215,7 +273,7 @@ export class NpmEmitter implements SessionObserver {
           { layer: bLayer },
         );
     };
-    for (const step of rec.backwardSteps) {
+    rec.backwardSteps.forEach((step, stepIndex) => {
       const e: TapeEntry = step.entry;
       const isLoss = e.meta.layer === 'loss';
       const entryLayer = isLoss ? null : (e.meta.layer ?? null);
@@ -224,11 +282,14 @@ export class NpmEmitter implements SessionObserver {
         bLayer = entryLayer;
         lastGrad = null;
       }
+      stepMeta = {};
+      if (e.meta.step !== undefined) stepMeta.step = e.meta.step;
+      if (e.meta.gate !== undefined) stepMeta.gate = e.meta.gate;
       const m = opMapping(e.op);
       const resolve = (src: OperandSource, role: string): Operand => {
         switch (src.from) {
           case 'upstream': {
-            const g = gradProducers.get(e.output.id);
+            const g = gradientOf(e.output);
             if (!g) throw new Error(`no upstream gradient for ${e.op}`);
             return { ...g, role };
           }
@@ -247,7 +308,7 @@ export class NpmEmitter implements SessionObserver {
           if (g) results[slot] = g;
         }
         if (Object.keys(results).length === 0) continue;
-        const meta: Record<string, MetaValue> = { ...(m.meta?.(e.attrs, e.op) ?? {}) };
+        const meta: Record<string, MetaValue> = { ...(m.meta?.(e.attrs, e.op) ?? {}), ...stepMeta };
         if (isLoss) {
           meta.wrt = e.op === 'softmaxCrossEntropy' ? 'logits' : 'output';
           meta.outputLayer = outputLayer;
@@ -264,18 +325,19 @@ export class NpmEmitter implements SessionObserver {
           const r = bySlot.get(slot);
           if (!r) continue;
           const v = e.inputs[input];
-          gradProducers.set(v.id, r);
+          contribute(v, r, results[slot], stepIndex * 16 + input);
           const param = paramByVar.get(v.id);
           if (param) grads.set(param, { ...r, role: 'sample gradient' });
           lastGrad = r;
         }
       }
-      // ∂ℓ/∂(pre-bias value) is the upstream gradient itself.
+      // ∂ℓ/∂(input) of a sum or of the pre-bias value is the upstream gradient itself: no instruction.
       for (const k of m.passthrough ?? []) {
-        const g = gradProducers.get(e.output.id);
-        if (g) gradProducers.set(e.inputs[k].id, g);
+        const g = step.gradInputs[k];
+        const up = gradientOf(e.output);
+        if (g && up) contribute(e.inputs[k], up, g, stepIndex * 16 + k);
       }
-    }
+    });
     closeBackwardLayer();
     this.sampleGradRefs.push(grads);
   }

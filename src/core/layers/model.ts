@@ -9,6 +9,8 @@ import type { InitializerName } from '../rng/init';
 import { conv2dOutputSize } from '../tensor/ops';
 import { ShapeError } from '../tensor/tensor';
 import { extensionLayer, type LayerOptions } from './extensions';
+// Registers the recurrent extension layers (rnn, lstm, gru; Level 4, ADR-102).
+import './recurrent';
 
 export type Activation = 'linear' | 'sigmoid' | 'tanh' | 'relu' | 'softmax';
 

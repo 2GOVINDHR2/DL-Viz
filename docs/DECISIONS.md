@@ -968,3 +968,31 @@ Also clarified:
   - An image example's label listed all 64 pixel values; it now gives a count.
   - The parameter inspector had called a 4×1×3×3 kernel tensor "rows: inputs (4), columns: neurons (1)". It now describes kernels and shows one k-wide row per kernel row.
 - **Level 4 wording.** `level4Wording()` adds plain descriptions of `CONV2D`, `POOL`, `FLATTEN` and their gradients; the explorer had shown the raw kind names.
+
+## ADR-102 — 2026-11-27 — Recurrent engine support: RNN, LSTM, GRU, BPTT in the NPM trace
+- **Ops** (`autodiff/ops.ts`, each gradchecked):
+  - `timeStep` takes x[:, t] from [N, T, F];
+  - `oneMinus` computes 1 − a;
+  - `stopGradient` is the identity forward with no gradient backward. It is checked as one factor of a product, plus a tape test showing it blocks the gradient.
+- **Layers** (`layers/recurrent.ts`) are extension layers `rnn`, `lstm` and `gru`, with options `hidden` and, for `rnn` only, `window`.
+  - They are built only from engine ops, one time step after another, so backpropagation through time is the tape's ordinary backward pass.
+  - Parameter roles: W multiplies the input, U the previous hidden state, b is the bias. Gates are suffixed: LSTM f, i, g, o; GRU z, r, n.
+  - h₀ = c₀ = 0. The step-1 terms that would multiply them are omitted rather than computed, giving identical values with no constant in the trace. The GRU's reset gate therefore first appears at step 2.
+- **Truncation.** With window k, only the last k time steps' operations receive a gradient. The hidden state entering step t passes through `STOP_GRADIENT` when t ≤ T − k + 1. Window T is full BPTT.
+- **NPM additions** (`kinds.ts`). New kinds:
+  - `SELECT_STEP`, `GRAD_SELECT_STEP`, `ADD` (its gradient passes through, so no backward instruction), `MULTIPLY`, `GRAD_MULTIPLY`, `ONE_MINUS`, `GRAD_ONE_MINUS` and `STOP_GRADIENT`;
+  - **`GRAD_SUM`.** When a value's gradient has several contributions, the emitter records them all and emits `GRAD_SUM`. Its operands are the contributions, and its result is their sum, added in the tape's order, so it equals the tape's gradient bit for bit.
+    - **For a parameter** (`meta.param`, `meta.uses`), it is the per-example shared-weight accumulation across time steps. `GRAD_ACCUMULATE` then averages the examples' `GRAD_SUM`s.
+    - **For a hidden state,** it is the sum of its uses: in an LSTM, four gates.
+- **Time steps.** `EntryMeta.step` and `gate` are copied into every recurrent instruction's meta, forward and backward. Symbolic forms show the step. The nest path (Epoch → Batch → Sample → Phase → Layer) is unchanged; the time step is queryable metadata within the layer.
+- **Grammar unchanged.** New kinds fall into the forward and backward categories. Feed-forward traces are byte-identical, checked by the trace-hash determinism tests.
+- **Data.** `sequence` (seeded values in [−1, 1], shape [n, T, 1]; task `sum` or `first`, with classes balanced) and `barsAutoencode` (bar images flattened, targets equal to the inputs).
+- **Explainers and learner glosses** cover every new kind (`src/explain/sequence.ts`), and the committed `schema.json` is regenerated.
+- **Gate results** (`tests/unit/level4-recurrent-gate.test.ts`, `reports/level4-recurrent-gate.json`):
+  - forward passes recomputed by hand at every step and gate, to 1e-12;
+  - per-example gradients against TF.js `tf.grads` of the same cells: RNN 3.8e-8, LSTM 1.9e-8, GRU 2.6e-8 (float32);
+  - `GRAD_SUM` equal to the tape's gradient exactly;
+  - one recorded value referenced by every time step's use of a weight;
+  - window 1 gives exactly the last-step contribution;
+  - identical regeneration and checkpoint replay, and grammar conformance.
+  - Gradcheck also covers whole RNN, LSTM and GRU layers.

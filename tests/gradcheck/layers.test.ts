@@ -122,6 +122,16 @@ describe('gradcheck: composite layers and whole models', () => {
       loss: 'bce',
       batch: 2,
     },
+    // Level 4 (ADR-102): recurrent layers unrolled on the tape; every parameter is used at every time step.
+    ...(['rnn', 'lstm', 'gru'] as const).map((kind) => ({
+      id: `${kind} (hidden 3, 4 time steps, 2 features) → dense sigmoid`,
+      config: {
+        inputShape: [4, 2],
+        layers: [{ type: 'extension' as const, kind, options: { hidden: 3 } }, dense(1, 'sigmoid')],
+      },
+      loss: 'bce' as const,
+      batch: 2,
+    })),
   ];
   models.forEach(({ id, config, loss, batch }, i) => {
     it(id, () => {

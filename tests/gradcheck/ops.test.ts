@@ -184,6 +184,23 @@ const cases: Case[] = [
     build: (t, v) => t.apply('softmaxCrossEntropy', v),
     differentiable: [true, false],
   },
+  // Level 4 (ADR-102)
+  {
+    op: 'timeStep',
+    label: 'step 2 of [2,4,3]',
+    inputs: () => [randomTensor(rng, [2, 4, 3])],
+    build: (t, [a]) => t.apply('timeStep', [a], { t: 2 }),
+  },
+  unary('oneMinus', () => randomTensor(rng, [3, 4])),
+  {
+    // stopGradient has no gradient by design (finite differences would see the identity), so its input is not
+    // checked; the other factor's gradient must still be right. tests/unit/level4-recurrent-gate checks the block.
+    op: 'stopGradient',
+    label: 'stop(a) ⊙ b, gradient of b',
+    inputs: () => [randomTensor(rng, [3, 4]), randomTensor(rng, [3, 4])],
+    build: (t, [a, b]) => t.apply('mul', [t.apply('stopGradient', [a]), b]),
+    differentiable: [false, true],
+  },
 ];
 
 const results: CheckResult[] = [];

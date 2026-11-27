@@ -34,6 +34,10 @@ export interface EntryMeta {
   readonly layer?: string;
   /** False for values computed only for display (e.g. softmax probabilities beside a fused loss). */
   readonly onGradientPath?: boolean;
+  /** Time step (1-based) of a recurrent layer's operation (Level 4, ADR-102). */
+  readonly step?: number;
+  /** Which part of a gated cell the operation belongs to, e.g. "forget" or "candidate". */
+  readonly gate?: string;
 }
 
 export interface TapeEntry {

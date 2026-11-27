@@ -210,6 +210,46 @@ registerOp({
   backward: ({ grad, inputs: [a] }) => [grad.reshape(a.shape)],
 });
 
+// ------------------------------------------------------------------- sequences (Level 4, ADR-102)
+
+// x [N, T, F] → x[:, t, :] [N, F]. The gradient is zero except at step t.
+registerOp({
+  name: 'timeStep',
+  arity: 1,
+  forward: ([x], attrs) => {
+    const t = numAttr(attrs, 't');
+    const [n, steps, f] = x.shape;
+    if (x.rank !== 3 || t < 0 || t >= steps) throw new ShapeError(`timeStep ${t} of [${x.shape}]`);
+    const out = new Float64Array(n * f);
+    for (let i = 0; i < n; i++) out.set(x.data.subarray((i * steps + t) * f, (i * steps + t + 1) * f), i * f);
+    return { value: Tensor.adopt([n, f], out) };
+  },
+  backward: ({ grad, inputs: [x], attrs }) => {
+    const t = numAttr(attrs, 't');
+    const [n, steps, f] = x.shape;
+    const out = new Float64Array(x.size);
+    for (let i = 0; i < n; i++) out.set(grad.data.subarray(i * f, (i + 1) * f), (i * steps + t) * f);
+    return [Tensor.adopt(x.shape, out)];
+  },
+});
+
+// 1 − a, elementwise (the GRU's 1 − z).
+registerOp({
+  name: 'oneMinus',
+  arity: 1,
+  forward: ([a]) => ({ value: T.map(a, (x) => 1 - x) }),
+  backward: ({ grad }) => [T.neg(grad)],
+});
+
+// The identity in the forward pass; no gradient flows back through it. Truncated backpropagation through time cuts
+// the backward pass here; the forward values are unchanged.
+registerOp({
+  name: 'stopGradient',
+  arity: 1,
+  forward: ([a]) => ({ value: a }),
+  backward: () => [null],
+});
+
 // ----------------------------------------------------------------- convolution
 
 registerOp({
